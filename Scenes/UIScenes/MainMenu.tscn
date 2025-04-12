@@ -1,0 +1,135 @@
+[gd_scene load_steps=8 format=3 uid="uid://3n4enlhcgms4"]
+
+[ext_resource type="Texture2D" uid="uid://0byb8mpdvpgy" path="res://Assets/UI/Art/Background.png" id="1_iyrik"]
+[ext_resource type="Texture2D" uid="uid://chlxnfe6hn0g8" path="res://Assets/UI/Buttons/Default.png" id="2_15g01"]
+[ext_resource type="Texture2D" uid="uid://c24rj5whejiqf" path="res://Assets/UI/Buttons/Pressed.png" id="3_8atao"]
+[ext_resource type="Texture2D" uid="uid://diwbtlspro883" path="res://Assets/UI/Buttons/Hover.png" id="4_p0gwc"]
+[ext_resource type="FontFile" uid="uid://bxh8oh1s7ap4j" path="res://Assets/Fonts/medodicaregular.otf" id="5_15g01"]
+
+[sub_resource type="FontVariation" id="FontVariation_15g01"]
+base_font = ExtResource("5_15g01")
+
+[sub_resource type="LabelSettings" id="LabelSettings_8atao"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_iyrik")
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 60
+
+[node name="VBox" type="VBoxContainer" parent="Margin"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 8
+
+[node name="NovoJogo" type="TextureButton" parent="Margin/VBox"]
+custom_minimum_size = Vector2(384, 96)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_15g01")
+texture_pressed = ExtResource("3_8atao")
+texture_hover = ExtResource("4_p0gwc")
+
+[node name="Label" type="Label" parent="Margin/VBox/NovoJogo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_15g01")
+text = "Novo Jogo"
+label_settings = SubResource("LabelSettings_8atao")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sobre" type="TextureButton" parent="Margin/VBox"]
+custom_minimum_size = Vector2(384, 96)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_15g01")
+texture_pressed = ExtResource("3_8atao")
+texture_hover = ExtResource("4_p0gwc")
+
+[node name="Label" type="Label" parent="Margin/VBox/Sobre"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_15g01")
+text = "Sobre"
+label_settings = SubResource("LabelSettings_8atao")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Enviar Feedback" type="TextureButton" parent="Margin/VBox"]
+custom_minimum_size = Vector2(384, 96)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_15g01")
+texture_pressed = ExtResource("3_8atao")
+texture_hover = ExtResource("4_p0gwc")
+
+[node name="Label" type="Label" parent="Margin/VBox/Enviar Feedback"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_15g01")
+text = "Enviar Feedback"
+label_settings = SubResource("LabelSettings_8atao")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sair" type="TextureButton" parent="Margin/VBox"]
+custom_minimum_size = Vector2(384, 96)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_15g01")
+texture_pressed = ExtResource("3_8atao")
+texture_hover = ExtResource("4_p0gwc")
+
+[node name="Label" type="Label" parent="Margin/VBox/Sair"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_15g01")
+text = "Sair"
+label_settings = SubResource("LabelSettings_8atao")
+horizontal_alignment = 1
+vertical_alignment = 1

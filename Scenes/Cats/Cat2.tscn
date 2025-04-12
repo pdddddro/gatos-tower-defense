@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://3jtbn8jl8ier"]
+
+[ext_resource type="Texture2D" uid="uid://bds10xfsba410" path="res://Assets/Cats/Cat2/Gatinho2.png" id="1_0bhlc"]
+[ext_resource type="Script" uid="uid://drtnf6143pkfe" path="res://Scenes/Cats/Cat2.gd" id="1_yvo25"]
+
+[node name="Cat2" type="Node2D"]
+script = ExtResource("1_yvo25")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_0bhlc")
+
+[node name="Marker2D" type="Marker2D" parent="Sprite2D"]
+position = Vector2(8, 0)
