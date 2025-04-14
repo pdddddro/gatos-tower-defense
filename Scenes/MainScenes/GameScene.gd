@@ -38,6 +38,7 @@ func update_cat_preview():
 	
 	if exclusion_layer.get_cell_source_id(current_tile) == -1:
 		get_node("UI").update_cat_preview(tile_position, "ad54ff")
+		
 		build_valid = true
 		build_location = tile_position
 
@@ -45,7 +46,7 @@ func update_cat_preview():
 		get_node("UI").update_cat_preview(tile_position, "adff45")
 		build_valid = false
 	
-	print(build_valid)
+#	print(build_valid)
 	
 func cancel_build_mode():
 	build_mode = false
