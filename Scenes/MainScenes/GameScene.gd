@@ -10,7 +10,6 @@ var build_type
 func _ready() -> void:
 	map_node = get_node("Map1")
 	for i in get_tree().get_nodes_in_group("build_buttons"):
-		#i.pressed.connect(self.initiate_build_mode, [i.get_name()])
 		i.pressed.connect(Callable(self, "initiate_build_mode").bind(i.get_name()))
 	
 func _process(delta):
@@ -32,18 +31,17 @@ func initiate_build_mode(cat_type):
 func update_cat_preview():
 	var mouse_position = get_global_mouse_position()
 	var exclusion_layer = map_node.get_node("Exclusion")
-	var scaled_mouse_position = exclusion_layer.to_local(mouse_position) / exclusion_layer.scale
-	var current_tile = exclusion_layer.local_to_map(scaled_mouse_position)
-	var tile_position = exclusion_layer.map_to_local(current_tile) * exclusion_layer.scale
+	var current_tile = exclusion_layer.local_to_map(mouse_position)
+	var tile_position = exclusion_layer.map_to_local(current_tile)
 	
 	if exclusion_layer.get_cell_source_id(current_tile) == -1:
-		get_node("UI").update_cat_preview(tile_position, "ad54ff")
+		get_node("UI").update_cat_preview(tile_position, "12a0ff")
 		
 		build_valid = true
 		build_location = tile_position
 
 	else:
-		get_node("UI").update_cat_preview(tile_position, "adff45")
+		get_node("UI").update_cat_preview(tile_position, "ff5439")
 		build_valid = false
 	
 #	print(build_valid)

@@ -34,7 +34,7 @@ grow_vertical = 0
 theme_override_constants/separation = 0
 
 [node name="Cat1" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -50,7 +50,7 @@ grow_vertical = 2
 texture = ExtResource("2_68uyl")
 
 [node name="Cat2" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0

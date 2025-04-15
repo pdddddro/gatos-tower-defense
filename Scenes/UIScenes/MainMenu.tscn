@@ -12,6 +12,7 @@ base_font = ExtResource("5_15g01")
 [sub_resource type="LabelSettings" id="LabelSettings_8atao"]
 
 [node name="MainMenu" type="Control"]
+custom_minimum_size = Vector2(640, 360)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,25 +21,25 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Background" type="TextureRect" parent="."]
+texture_filter = 1
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 1280.0
+offset_bottom = 720.0
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_iyrik")
 
 [node name="Margin" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(600, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 60
-theme_override_constants/margin_top = 60
-theme_override_constants/margin_right = 60
-theme_override_constants/margin_bottom = 60
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
 
 [node name="VBox" type="VBoxContainer" parent="Margin"]
 layout_mode = 2
@@ -47,12 +48,15 @@ size_flags_vertical = 8
 theme_override_constants/separation = 8
 
 [node name="NovoJogo" type="TextureButton" parent="Margin/VBox"]
-custom_minimum_size = Vector2(384, 96)
+custom_minimum_size = Vector2(200, 32)
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 0
 texture_normal = ExtResource("2_15g01")
 texture_pressed = ExtResource("3_8atao")
 texture_hover = ExtResource("4_p0gwc")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="Label" type="Label" parent="Margin/VBox/NovoJogo"]
 layout_mode = 1
@@ -69,12 +73,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Sobre" type="TextureButton" parent="Margin/VBox"]
-custom_minimum_size = Vector2(384, 96)
+custom_minimum_size = Vector2(200, 32)
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 0
+size_flags_vertical = 0
 texture_normal = ExtResource("2_15g01")
 texture_pressed = ExtResource("3_8atao")
 texture_hover = ExtResource("4_p0gwc")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="Label" type="Label" parent="Margin/VBox/Sobre"]
 layout_mode = 1
@@ -91,12 +98,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Enviar Feedback" type="TextureButton" parent="Margin/VBox"]
-custom_minimum_size = Vector2(384, 96)
+custom_minimum_size = Vector2(200, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = ExtResource("2_15g01")
 texture_pressed = ExtResource("3_8atao")
 texture_hover = ExtResource("4_p0gwc")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="Label" type="Label" parent="Margin/VBox/Enviar Feedback"]
 layout_mode = 1
@@ -113,12 +122,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Sair" type="TextureButton" parent="Margin/VBox"]
-custom_minimum_size = Vector2(384, 96)
+custom_minimum_size = Vector2(200, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = ExtResource("2_15g01")
 texture_pressed = ExtResource("3_8atao")
 texture_hover = ExtResource("4_p0gwc")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="Label" type="Label" parent="Margin/VBox/Sair"]
 layout_mode = 1
