@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2bflmucnup4x"]
+
+[ext_resource type="Texture2D" uid="uid://drlilq6agtcwk" path="res://Assets/Enemies/slime1.png" id="1_holcu"]
+[ext_resource type="Script" uid="uid://c5cilqwnocbk1" path="res://Scenes/Enemies/Slime1.gd" id="1_qq56m"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qq56m"]
+radius = 4.0
+height = 14.0
+
+[node name="Slime1" type="PathFollow2D"]
+loop = false
+script = ExtResource("1_qq56m")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0, -3)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_qq56m")
+
+[node name="Slime1" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(0, -16)
+texture = ExtResource("1_holcu")

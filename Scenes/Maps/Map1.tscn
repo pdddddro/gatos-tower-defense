@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=4 uid="uid://b4lqfl3wc00q3"]
+[gd_scene load_steps=9 format=4 uid="uid://b4lqfl3wc00q3"]
 
 [ext_resource type="Texture2D" uid="uid://dvcgnh7qynftu" path="res://Assets/Environment/Tilesets/grass.png" id="1_wlapn"]
+[ext_resource type="Texture2D" uid="uid://c8o3n4fgb8asm" path="res://Assets/Environment/Tilesets/Exclusion.png" id="2_gatv1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dsyx2"]
 texture = ExtResource("1_wlapn")
@@ -17,9 +18,21 @@ texture_region_size = Vector2i(32, 32)
 0:3/0 = 0
 0:1/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_66ww1"]
+texture = ExtResource("2_gatv1")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_cphd2"]
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_m6jp7")
+sources/5 = SubResource("TileSetAtlasSource_66ww1")
+
+[sub_resource type="Curve2D" id="Curve2D_gatv1"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -8, 175, -8.10744, 0.0686317, 8.10744, -0.0686317, 136, 175, -0.122822, -7.82938, 0.122822, 7.82938, 144, 183, -0.176365, -8.2626, 0.176365, 8.2626, 144, 263, -7.74603, 0.209999, 7.74603, -0.209999, 152, 271, -8.1175, -0.0581077, 8.1175, 0.0581077, 264, 271, 0.161786, 8.08034, -0.161786, -8.08034, 272, 263, 0.29281, 8.04476, -0.29281, -8.04476, 272, 119, -8.15321, -0.0639608, 8.15321, 0.0639608, 280, 111, -7.93252, 0, 7.93252, 0, 424, 111, 0.0471185, -8.25716, -0.0471185, 8.25716, 432, 119, -0.20503, -7.60269, 0.20503, 7.60269, 432, 231, -8.03473, 0, 8.03473, 0, 440, 239, 0, 0, 0, 0, 664, 239)
+}
+point_count = 14
 
 [node name="Map1" type="Node2D"]
 
@@ -32,3 +45,7 @@ tile_map_data = PackedByteArray("AAAAAAUAAAAAAAEAAAABAAUAAAAAAAEAAAACAAUAAAAAAAE
 tile_set = SubResource("TileSet_cphd2")
 
 [node name="Cats" type="Node2D" parent="."]
+
+[node name="Path" type="Path2D" parent="."]
+position = Vector2(0, 1)
+curve = SubResource("Curve2D_gatv1")

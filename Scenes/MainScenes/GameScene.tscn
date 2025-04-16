@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://b3oj3u5omej0y"]
+[gd_scene load_steps=9 format=3 uid="uid://b3oj3u5omej0y"]
 
 [ext_resource type="Script" uid="uid://d3rxrafiwqqn2" path="res://Scenes/MainScenes/GameScene.gd" id="1_hosin"]
 [ext_resource type="PackedScene" uid="uid://b4lqfl3wc00q3" path="res://Scenes/Maps/Map1.tscn" id="1_ianr5"]
 [ext_resource type="Texture2D" uid="uid://bylssofy7xqo5" path="res://Assets/Cats/Cat1/Gatinho1.png" id="2_68uyl"]
 [ext_resource type="Script" uid="uid://befst367i3h8q" path="res://Scenes/MainScenes/Ui.gd" id="3_flvd6"]
 [ext_resource type="Texture2D" uid="uid://bds10xfsba410" path="res://Assets/Cats/Cat2/Gatinho2.png" id="5_tnagp"]
+[ext_resource type="Texture2D" uid="uid://8adf7fkny4qr" path="res://Assets/Icons/Play.png" id="6_jem3k"]
+[ext_resource type="Texture2D" uid="uid://bjfvhsd0bqhge" path="res://Assets/Icons/Pause.png" id="7_tcjp3"]
+[ext_resource type="Texture2D" uid="uid://bm2q0l76lgbhc" path="res://Assets/Icons/SpeedUp.png" id="8_br1xs"]
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_hosin")
@@ -64,3 +67,36 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_tnagp")
+
+[node name="GameControls" type="HBoxContainer" parent="UI/HUD"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -36.0
+offset_top = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="PausePlay" type="TextureButton" parent="UI/HUD/GameControls"]
+process_mode = 3
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 0
+toggle_mode = true
+texture_normal = ExtResource("6_jem3k")
+texture_pressed = ExtResource("7_tcjp3")
+stretch_mode = 3
+
+[node name="SpeedUp" type="TextureButton" parent="UI/HUD/GameControls"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 0
+texture_normal = ExtResource("8_br1xs")
+texture_pressed = ExtResource("6_jem3k")
+stretch_mode = 3
+
+[connection signal="pressed" from="UI/HUD/GameControls/PausePlay" to="." method="_on_pause_play_pressed"]
+[connection signal="pressed" from="UI/HUD/GameControls/SpeedUp" to="." method="_on_speed_up_pressed"]
