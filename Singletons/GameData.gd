@@ -3,13 +3,13 @@ extends Node
 var cat_data = {
 	"Cat1": {
 		"damage": 20,
-		"ref": 1,
+		"atkcooldown": 1,
 		"range": 256
 	},
 	
 	"Cat2": {
 		"damage": 20,
-		"ref": 2,
+		"atkcooldown": 1,
 		"range": 128
 	}
 }

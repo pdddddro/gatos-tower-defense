@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8egjyxqol2tu"]
+[gd_scene load_steps=5 format=3 uid="uid://b8egjyxqol2tu"]
 
 [ext_resource type="Script" uid="uid://bo7c5fxk1mcdy" path="res://Scenes/Cats/Cat1.gd" id="1_xd2np"]
 [ext_resource type="Texture2D" uid="uid://bylssofy7xqo5" path="res://Assets/Cats/Cat1/Gatinho1.png" id="2_cqc6i"]
 [ext_resource type="Texture2D" uid="uid://coyq0rpglv1ng" path="res://Assets/Cats/Cat2/Sprite-0001.png" id="2_jeqfy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jeqfy"]
 
 [node name="Cat1" type="Node2D"]
 script = ExtResource("1_xd2np")
@@ -20,3 +22,11 @@ texture = ExtResource("2_cqc6i")
 
 [node name="Aim" type="Marker2D" parent="Sprite2D"]
 position = Vector2(8, 0)
+
+[node name="Range" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
+shape = SubResource("CircleShape2D_jeqfy")
+
+[connection signal="body_entered" from="Range" to="." method="_on_range_body_entered"]
+[connection signal="body_exited" from="Range" to="." method="_on_range_body_exited"]
