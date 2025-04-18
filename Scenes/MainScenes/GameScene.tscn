@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b3oj3u5omej0y"]
+[gd_scene load_steps=10 format=3 uid="uid://b3oj3u5omej0y"]
 
 [ext_resource type="Script" uid="uid://d3rxrafiwqqn2" path="res://Scenes/MainScenes/GameScene.gd" id="1_hosin"]
 [ext_resource type="PackedScene" uid="uid://b4lqfl3wc00q3" path="res://Scenes/Maps/Map1.tscn" id="1_ianr5"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://8adf7fkny4qr" path="res://Assets/Icons/Play.png" id="6_jem3k"]
 [ext_resource type="Texture2D" uid="uid://bjfvhsd0bqhge" path="res://Assets/Icons/Pause.png" id="7_tcjp3"]
 [ext_resource type="Texture2D" uid="uid://bm2q0l76lgbhc" path="res://Assets/Icons/SpeedUp.png" id="8_br1xs"]
+[ext_resource type="Texture2D" uid="uid://c3db0asf0yfe" path="res://Assets/Icons/NormalSpeed.png" id="9_tcjp3"]
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_hosin")
@@ -82,21 +83,22 @@ grow_vertical = 0
 
 [node name="PausePlay" type="TextureButton" parent="UI/HUD/GameControls"]
 process_mode = 3
-custom_minimum_size = Vector2(16, 16)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
 toggle_mode = true
 texture_normal = ExtResource("6_jem3k")
 texture_pressed = ExtResource("7_tcjp3")
-stretch_mode = 3
+stretch_mode = 0
 
 [node name="SpeedUp" type="TextureButton" parent="UI/HUD/GameControls"]
-custom_minimum_size = Vector2(16, 16)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
+toggle_mode = true
 texture_normal = ExtResource("8_br1xs")
-texture_pressed = ExtResource("6_jem3k")
-stretch_mode = 3
+texture_pressed = ExtResource("9_tcjp3")
+stretch_mode = 0
 
 [connection signal="pressed" from="UI/HUD/GameControls/PausePlay" to="." method="_on_pause_play_pressed"]
 [connection signal="pressed" from="UI/HUD/GameControls/SpeedUp" to="." method="_on_speed_up_pressed"]

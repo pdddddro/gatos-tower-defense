@@ -8,16 +8,17 @@ radius = 4.0
 height = 14.0
 
 [node name="Slime1" type="PathFollow2D"]
+rotates = false
 loop = false
 script = ExtResource("1_qq56m")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(0, -3)
+position = Vector2(0, 2)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_qq56m")
 
 [node name="Slime1" type="Sprite2D" parent="CharacterBody2D"]
-position = Vector2(0, -16)
+position = Vector2(0, -12)
 texture = ExtResource("1_holcu")
