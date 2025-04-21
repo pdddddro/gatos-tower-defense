@@ -1,5 +1,7 @@
 extends Node2D
 
+signal game_finished(result)
+
 var map_node
 
 var build_mode = false
@@ -11,11 +13,16 @@ var build_tile
 var current_wave = 0
 var enemies_in_wave = 0
 
+var base_health = 100
+
 func _ready() -> void:
 	map_node = get_node("Map1")
+	get_node("UI/HUD/MarginContainer/Status/HeartContainer/HeartLabel").text = str(base_health)
+	
 	for i in get_tree().get_nodes_in_group("build_buttons"):
 		i.pressed.connect(Callable(self, "initiate_build_mode").bind(i.get_name()))
-	
+
+			
 func _process(delta):
 	if build_mode:
 		update_cat_preview()
@@ -45,6 +52,9 @@ func retrieve_wave_data():
 func spawn_enemies(wave_data):
 	for i in wave_data:
 		var new_enemy = load("res://Scenes/Enemies/" + i[0] + ".tscn").instantiate()
+		
+		new_enemy.connect("base_damage", self.on_base_damage)
+		
 		map_node.get_node("Path").add_child(new_enemy, true)
 		await get_tree().create_timer(i[1]).timeout
 
@@ -91,6 +101,19 @@ func verify_and_build():
 		map_node.get_node("Cats").add_child(new_cat, true)
 		#Adicionar um tile de Exclusion para impedir 2 gatos no mesmo lugar
 		map_node.get_node("Exclusion").set_cell(build_tile, 5, Vector2i(0, 0))
+
+
+##
+## Updates Health Bar
+##
+
+func on_base_damage(damage):
+	base_health -= damage
+	if base_health <= 0:
+		emit_signal("game_finished", false)
+		
+	else:
+		get_node("UI/HUD/MarginContainer/Status/HeartContainer/HeartLabel").text = str(base_health)
 
 ##
 ## Game Control Functions
