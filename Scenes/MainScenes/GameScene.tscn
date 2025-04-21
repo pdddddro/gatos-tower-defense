@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b3oj3u5omej0y"]
+[gd_scene load_steps=13 format=3 uid="uid://b3oj3u5omej0y"]
 
 [ext_resource type="Script" uid="uid://d3rxrafiwqqn2" path="res://Scenes/MainScenes/GameScene.gd" id="1_hosin"]
 [ext_resource type="PackedScene" uid="uid://b4lqfl3wc00q3" path="res://Scenes/Maps/Map1.tscn" id="1_ianr5"]
@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://bjfvhsd0bqhge" path="res://Assets/Icons/Pause.png" id="7_tcjp3"]
 [ext_resource type="Texture2D" uid="uid://bm2q0l76lgbhc" path="res://Assets/Icons/SpeedUp.png" id="8_br1xs"]
 [ext_resource type="Texture2D" uid="uid://c3db0asf0yfe" path="res://Assets/Icons/NormalSpeed.png" id="9_tcjp3"]
+[ext_resource type="Texture2D" uid="uid://d0s1xis4xqbm6" path="res://Assets/Icons/Fish1.png" id="10_h0y4r"]
+[ext_resource type="FontFile" uid="uid://bxh8oh1s7ap4j" path="res://Assets/Fonts/medodicaregular.otf" id="11_j856t"]
+[ext_resource type="Texture2D" uid="uid://c2mp38rjif3i5" path="res://Assets/Icons/Heart.png" id="12_wb53i"]
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_hosin")
@@ -27,24 +30,32 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="BuildBar" type="HBoxContainer" parent="UI/HUD"]
+[node name="MarginContainer" type="MarginContainer" parent="UI/HUD"]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -32.0
-offset_right = 64.0
-grow_vertical = 0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="BuildBar" type="HBoxContainer" parent="UI/HUD/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
 theme_override_constants/separation = 0
 
-[node name="Cat1" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
+[node name="Cat1" type="TextureButton" parent="UI/HUD/MarginContainer/BuildBar" groups=["build_buttons"]]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 stretch_mode = 0
 
-[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/Cat1"]
+[node name="Icon" type="TextureRect" parent="UI/HUD/MarginContainer/BuildBar/Cat1"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -53,14 +64,14 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_68uyl")
 
-[node name="Cat2" type="TextureButton" parent="UI/HUD/BuildBar" groups=["build_buttons"]]
+[node name="Cat2" type="TextureButton" parent="UI/HUD/MarginContainer/BuildBar" groups=["build_buttons"]]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 stretch_mode = 0
 
-[node name="Icon" type="TextureRect" parent="UI/HUD/BuildBar/Cat2"]
+[node name="Icon" type="TextureRect" parent="UI/HUD/MarginContainer/BuildBar/Cat2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -69,19 +80,12 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_tnagp")
 
-[node name="GameControls" type="HBoxContainer" parent="UI/HUD"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -36.0
-offset_top = -16.0
-grow_horizontal = 0
-grow_vertical = 0
+[node name="GameControls" type="HBoxContainer" parent="UI/HUD/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
 
-[node name="PausePlay" type="TextureButton" parent="UI/HUD/GameControls"]
+[node name="PausePlay" type="TextureButton" parent="UI/HUD/MarginContainer/GameControls"]
 process_mode = 3
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -91,7 +95,7 @@ texture_normal = ExtResource("6_jem3k")
 texture_pressed = ExtResource("7_tcjp3")
 stretch_mode = 0
 
-[node name="SpeedUp" type="TextureButton" parent="UI/HUD/GameControls"]
+[node name="SpeedUp" type="TextureButton" parent="UI/HUD/MarginContainer/GameControls"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -100,5 +104,41 @@ texture_normal = ExtResource("8_br1xs")
 texture_pressed = ExtResource("9_tcjp3")
 stretch_mode = 0
 
-[connection signal="pressed" from="UI/HUD/GameControls/PausePlay" to="." method="_on_pause_play_pressed"]
-[connection signal="pressed" from="UI/HUD/GameControls/SpeedUp" to="." method="_on_speed_up_pressed"]
+[node name="Status" type="HBoxContainer" parent="UI/HUD/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 16
+
+[node name="FishContainer" type="HBoxContainer" parent="UI/HUD/MarginContainer/Status"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 4
+
+[node name="FishIcon" type="TextureRect" parent="UI/HUD/MarginContainer/Status/FishContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("10_h0y4r")
+
+[node name="FishLabel" type="Label" parent="UI/HUD/MarginContainer/Status/FishContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("11_j856t")
+text = "10000"
+
+[node name="HeartContainer" type="HBoxContainer" parent="UI/HUD/MarginContainer/Status"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 4
+
+[node name="HeartIcon" type="TextureRect" parent="UI/HUD/MarginContainer/Status/HeartContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("12_wb53i")
+
+[node name="HeartLabel" type="Label" parent="UI/HUD/MarginContainer/Status/HeartContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("11_j856t")
+text = "10000"
+
+[connection signal="pressed" from="UI/HUD/MarginContainer/GameControls/PausePlay" to="." method="_on_pause_play_pressed"]
+[connection signal="pressed" from="UI/HUD/MarginContainer/GameControls/SpeedUp" to="." method="_on_speed_up_pressed"]
