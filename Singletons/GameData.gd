@@ -9,7 +9,7 @@ var cat_data = {
 	
 	"Cat2": {
 		"damage": 20,
-		"atkcooldown": 1,
+		"atkcooldown": 0.5,
 		"range": 128
 	}
 }
