@@ -15,6 +15,8 @@ var enemies_in_wave = 0
 
 var base_health = 100
 
+@onready var pause_play_button = get_node("UI/HUD/MarginContainer/GameControls/PausePlay")
+
 func _ready() -> void:
 	map_node = get_node("Map1")
 	get_node("UI/HUD/MarginContainer/Status/HeartContainer/HeartLabel").text = str(base_health)
@@ -44,8 +46,10 @@ func start_next_wave():
 	spawn_enemies(wave_data)
 	
 func retrieve_wave_data():
+	# Ta com um bug que quando o slime tira vida ele nao ve como uma wave finalizada
+	
 	var wave_data = GameData.waves["wave" + str(current_wave)]
-	current_wave += 1
+	#current_wave += 1 #Isso tava aqui, movi para _on_pause_play_pressed()
 	enemies_in_wave = wave_data.size()
 	return wave_data
 
@@ -64,9 +68,12 @@ func spawn_enemies(wave_data):
 
 func _on_enemy_defeated():
 	enemies_in_wave -= 1
+	
 	print(enemies_in_wave)
 	if enemies_in_wave <= 0:
 		print("Wave finalizada!")
+		
+		pause_play_button.button_pressed = false
 
 ##
 ## Building Functions
@@ -128,19 +135,22 @@ func on_base_damage(damage):
 ## Game Control Functions
 ##
 
-func _on_pause_play_pressed() -> void:
-	
+func _on_pause_play_pressed():
 	if build_mode:
 		cancel_build_mode()
-	
-	if get_tree().is_paused():
-		get_tree().paused = false
-		
-	elif current_wave == 0:
-		current_wave += 1
-		start_next_wave()
-		
+
+	# Se o botão está pressionado, vamos dar play na próxima wave
+	if pause_play_button.button_pressed:
+		# Só inicia wave se nenhuma estiver ativa
+		if enemies_in_wave <= 0:
+			current_wave += 1 #Antes isso nao tava aqui, espero que nao de nenhum bug
+			print("Iniciando wave " + str(current_wave))
+			start_next_wave()
+		else:
+			# Apenas despausa o jogo se ele estiver pausado
+			get_tree().paused = false
 	else:
+		# Botão despressionado → Pausar o jogo
 		get_tree().paused = true
 
 func _on_speed_up_pressed() -> void:
