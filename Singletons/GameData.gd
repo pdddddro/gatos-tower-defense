@@ -20,3 +20,15 @@ var enemies_data = {
 		"speed": 10
 	}
 }
+
+var waves = {
+	"wave1": [
+		["Slime1", 0.5],
+		["Slime1", 0.5],
+	],
+	
+	"wave2": [
+		["Slime1", 0.5],
+		["Slime1", 0.5],
+	]
+}

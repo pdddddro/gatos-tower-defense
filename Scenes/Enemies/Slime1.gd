@@ -1,6 +1,7 @@
 extends PathFollow2D
 
 signal base_damage(damage)
+signal enemy_defeated
 
 var speed = 100
 var hp = 40
@@ -23,4 +24,5 @@ func on_hit(damage):
 		on_destroy()
 		
 func on_destroy():
+	emit_signal("enemy_defeated")
 	queue_free()

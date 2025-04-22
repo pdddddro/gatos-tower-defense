@@ -44,19 +44,29 @@ func start_next_wave():
 	spawn_enemies(wave_data)
 	
 func retrieve_wave_data():
-	var wave_data = [["Slime1", 0.5], ["Slime1", 0.5], ["Slime1", 0.5], ["Slime1", 0.5], ["Slime1", 0.5], ["Slime1", 0.5], ["Slime1", 0.5]]
+	var wave_data = GameData.waves["wave" + str(current_wave)]
 	current_wave += 1
 	enemies_in_wave = wave_data.size()
 	return wave_data
 
 func spawn_enemies(wave_data):
 	for i in wave_data:
+		
 		var new_enemy = load("res://Scenes/Enemies/" + i[0] + ".tscn").instantiate()
 		
 		new_enemy.connect("base_damage", self.on_base_damage)
+		new_enemy.connect("enemy_defeated", Callable(self, "_on_enemy_defeated"))
 		
 		map_node.get_node("Path").add_child(new_enemy, true)
 		await get_tree().create_timer(i[1]).timeout
+		
+		print(enemies_in_wave)
+
+func _on_enemy_defeated():
+	enemies_in_wave -= 1
+	print(enemies_in_wave)
+	if enemies_in_wave <= 0:
+		print("Wave finalizada!")
 
 ##
 ## Building Functions
@@ -101,7 +111,6 @@ func verify_and_build():
 		map_node.get_node("Cats").add_child(new_cat, true)
 		#Adicionar um tile de Exclusion para impedir 2 gatos no mesmo lugar
 		map_node.get_node("Exclusion").set_cell(build_tile, 5, Vector2i(0, 0))
-
 
 ##
 ## Updates Health Bar
