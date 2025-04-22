@@ -3,7 +3,7 @@ extends PathFollow2D
 signal base_damage(damage)
 signal enemy_defeated
 
-var speed = 100
+var speed = 1000
 var hp = 40
 
 var base_damage_value = 21
@@ -11,16 +11,23 @@ var base_damage_value = 21
 func _physics_process(delta: float) -> void:
 	if progress_ratio == 1.0:
 		emit_signal("base_damage", base_damage_value)
-		queue_free()
+		
+		if dead == false:
+			on_destroy()
+			dead = true
 	
 	move(delta)
 	
 func move(delta):
 	set_progress(get_progress() + speed * delta )
 
+var dead = false
+
 func on_hit(damage):
 	hp -= damage
-	if hp <= 0:
+	
+	if hp <= 0 and dead == false:
+		dead = true
 		on_destroy()
 		
 func on_destroy():

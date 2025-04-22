@@ -125,6 +125,7 @@ func verify_and_build():
 
 func on_base_damage(damage):
 	base_health -= damage
+	
 	if base_health <= 0:
 		emit_signal("game_finished", false)
 		
