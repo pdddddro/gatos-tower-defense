@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ceimd68i7dbol"
-path="res://.godot/imported/Gatinho1.png-6617e83a33245cba0f49f535b7c772ec.ctex"
+uid="uid://domqh7uvsmf3g"
+path="res://.godot/imported/animation.png-2d27c2529c7f1e3d29457bbc1265b9a4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Cats/Cat1/Gatinho1.png"
-dest_files=["res://.godot/imported/Gatinho1.png-6617e83a33245cba0f49f535b7c772ec.ctex"]
+source_file="res://Assets/Cats/Cat1/animation.png"
+dest_files=["res://.godot/imported/animation.png-2d27c2529c7f1e3d29457bbc1265b9a4.ctex"]
 
 [params]
 

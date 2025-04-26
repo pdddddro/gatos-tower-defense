@@ -24,7 +24,6 @@ var enemies_data = {
 var waves = {
 	"wave1": [
 		["Slime1", 0.5],
-		["Slime1", 0.5],
 	],
 	
 	"wave2": [

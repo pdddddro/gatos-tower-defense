@@ -162,4 +162,4 @@ func _on_speed_up_pressed() -> void:
 	if Engine.get_time_scale() == 2.0:
 		Engine.set_time_scale(1.0)
 	else:
-		Engine.set_time_scale(2.0)
+		Engine.set_time_scale(0.5)
