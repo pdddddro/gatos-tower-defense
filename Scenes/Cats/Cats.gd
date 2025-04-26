@@ -28,8 +28,6 @@ func _physics_process(delta: float) -> void:
 		status = "Idle"
 		enemy = null
 		update_animation(Vector2.ZERO)
-		
-	print(status)
 
 func select_enemy():
 	var enemy_progress_array = []
@@ -56,7 +54,7 @@ func update_animation(direction):
 		dir += "Left"
 	else:
 		dir += "Right"
-		
+	
 	$AnimatedSprite2D.play(status + dir)
 
 func attack():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b8egjyxqol2tu"]
+[gd_scene load_steps=19 format=3 uid="uid://b8egjyxqol2tu"]
 
 [ext_resource type="Script" uid="uid://bo7c5fxk1mcdy" path="res://Scenes/Cats/Cat1.gd" id="1_xd2np"]
 [ext_resource type="Texture2D" uid="uid://coyq0rpglv1ng" path="res://Assets/Cats/Cat2/Sprite-0001.png" id="2_jeqfy"]
@@ -7,6 +7,26 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_hagm5"]
 atlas = ExtResource("3_jeqfy")
 region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7f671"]
+atlas = ExtResource("3_jeqfy")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mf1yk"]
+atlas = ExtResource("3_jeqfy")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3wtat"]
+atlas = ExtResource("3_jeqfy")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ilpq"]
+atlas = ExtResource("3_jeqfy")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cskr"]
+atlas = ExtResource("3_jeqfy")
+region = Rect2(128, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_66kkb"]
 atlas = ExtResource("3_jeqfy")
@@ -41,32 +61,92 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hagm5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7f671")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mf1yk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3wtat")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ilpq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5cskr")
 }],
-"loop": true,
+"loop": false,
 "name": &"AttackDownLeft",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_66kkb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7f671")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mf1yk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3wtat")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ilpq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5cskr")
 }],
-"loop": true,
+"loop": false,
 "name": &"AttackDownRight",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_78e4f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7f671")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mf1yk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3wtat")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ilpq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5cskr")
 }],
-"loop": true,
+"loop": false,
 "name": &"AttackUpLeft",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_i3fkb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7f671")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mf1yk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3wtat")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ilpq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5cskr")
 }],
-"loop": true,
+"loop": false,
 "name": &"AttackUpRight",
 "speed": 5.0
 }, {
@@ -74,7 +154,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jeqfy")
 }],
-"loop": true,
+"loop": false,
 "name": &"IdleDownLeft",
 "speed": 5.0
 }, {
@@ -82,7 +162,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_edhuf")
 }],
-"loop": true,
+"loop": false,
 "name": &"IdleDownRight",
 "speed": 5.0
 }, {
@@ -90,7 +170,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sfbs0")
 }],
-"loop": true,
+"loop": false,
 "name": &"IdleUpLeft",
 "speed": 5.0
 }, {
@@ -98,7 +178,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1eyla")
 }],
-"loop": true,
+"loop": false,
 "name": &"IdleUpRight",
 "speed": 5.0
 }]
@@ -118,7 +198,7 @@ texture = ExtResource("2_jeqfy")
 texture_filter = 1
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_edhuf")
-animation = &"IdleDownRight"
+animation = &"AttackDownLeft"
 
 [node name="Aim" type="Marker2D" parent="AnimatedSprite2D"]
 position = Vector2(8, 0)

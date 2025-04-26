@@ -5,7 +5,7 @@ func _ready():
 
 func load_main_menu():
 	get_node("MainMenu/Margin/VBox/NovoJogo").pressed.connect(on_new_game_pressed)
-	get_node("MainMenu/Margin/VBox/Sair").pressed.connect(on_quit_pressed)
+#	get_node("MainMenu/Margin/VBox/Sair").pressed.connect(on_quit_pressed)
 
 func on_new_game_pressed():
 	get_node("MainMenu").queue_free()
@@ -13,8 +13,8 @@ func on_new_game_pressed():
 	game_scene.connect("game_finished", self.unload_game)
 	add_child(game_scene)
 	
-func on_quit_pressed():
-	get_tree().quit()
+#func on_quit_pressed():
+	#get_tree().quit()
 
 func unload_game(result):
 	get_node("GameScene").queue_free()
