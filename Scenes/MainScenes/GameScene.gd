@@ -2,26 +2,38 @@ extends Node2D
 
 signal game_finished(result)
 
+# Map
 var map_node
 
+# Controls
+var is_dragging = false
+var drag_start_pos = Vector2.ZERO
+var drag_threshold = 10 # pixels
+
+var cat_preview = null
+
+@onready var pause_play_button = get_node("UI/HUD/MarginContainer/GameControls/PausePlay")
+
+# Build
 var build_mode = false
 var build_valid = false
 var build_location
 var build_type
 var build_tile
 
+# Wave
 var current_wave = 1
 var enemies_in_wave = 0
+@onready var WaveCount = get_node("UI/HUD/MarginContainer/WaveCount")
 
+# Status
 var base_health = 100
-
 var fish_quantity = 100
 
 @onready var fish_label = get_node("UI/HUD/MarginContainer/Status/FishContainer/FishLabel")
 
-@onready var pause_play_button = get_node("UI/HUD/MarginContainer/GameControls/PausePlay")
-
-@onready var WaveCount = get_node("UI/HUD/MarginContainer/WaveCount")
+func _input(event):
+	pass
 
 func _ready() -> void:
 	map_node = get_node("Map1")
@@ -31,7 +43,6 @@ func _ready() -> void:
 	
 	for i in get_tree().get_nodes_in_group("build_buttons"):
 		i.pressed.connect(Callable(self, "initiate_build_mode").bind(i.get_name()))
-
 			
 func _process(delta):
 
@@ -39,6 +50,7 @@ func _process(delta):
 		update_cat_preview()
 	
 func _unhandled_input(event: InputEvent) -> void:
+
 	if event.is_action_released("ui_cancel") and build_mode == true:
 		cancel_build_mode()
 	if event.is_action_released("ui_accept") and build_mode == true:
@@ -57,10 +69,7 @@ func update_build_buttons():
 		else:
 			button.modulate = Color("FFFFFF")
 
-##
 ## Wave Functions
-##
-
 func start_next_wave():
 	var wave_data = retrieve_wave_data()
 	await get_tree().create_timer(0.2).timeout ## Delay entre uma wave e outra
@@ -110,10 +119,7 @@ func check_wave_end():
 		
 		pause_play_button.button_pressed = false
 
-##
 ## Building Functions
-##
-
 func initiate_build_mode(cat_type):
 	if build_mode:
 		cancel_build_mode()
@@ -160,10 +166,7 @@ func verify_and_build():
 			#Adicionar um tile de Exclusion para impedir 2 gatos no mesmo lugar
 			map_node.get_node("Exclusion").set_cell(build_tile, 5, Vector2i(0, 0))
 			
-##
 ## Updates Health Bar
-##
-
 func on_base_damage(damage):
 	base_health -= damage
 	
@@ -173,18 +176,12 @@ func on_base_damage(damage):
 	else:
 		get_node("UI/HUD/MarginContainer/Status/HeartContainer/HeartLabel").text = str(base_health)
 
-##
 ## Fish Control
-##
-
 func update_fish_label():
 	fish_label.text = str(fish_quantity)
 	update_build_buttons()
 
-##
 ## Game Control Functions
-##
-
 func _on_pause_play_pressed():
 	if build_mode:
 		cancel_build_mode()
