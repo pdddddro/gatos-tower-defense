@@ -32,13 +32,12 @@ var fish_quantity = 100
 
 @onready var fish_label = get_node("UI/HUD/MarginContainer/Status/FishContainer/FishLabel")
 
-func _input(event):
-	pass
-
 func _ready() -> void:
 	map_node = get_node("Map1")
 	get_node("UI/HUD/MarginContainer/Status/HeartContainer/HeartLabel").text = str(base_health)
-
+	
+	WaveCount.text = "Rodada " + str(current_wave) + "/50"
+	
 	update_fish_label()
 	
 	for i in get_tree().get_nodes_in_group("build_buttons"):
@@ -115,7 +114,7 @@ func check_wave_end():
 	if enemies_in_wave <= 0:
 		print("Wave finalizada!")
 		current_wave += 1
-		WaveCount.text = str(current_wave)
+		WaveCount.text = "Rodada " + str(current_wave) + "/50"
 		
 		pause_play_button.button_pressed = false
 

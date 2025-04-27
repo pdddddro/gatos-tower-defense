@@ -17,7 +17,6 @@ func _physics_process(delta: float) -> void:
 	if enemy_array.size() != 0 and built:
 		
 		select_enemy()
-		
 		turn()
 		
 		if attack_ready:
@@ -28,6 +27,8 @@ func _physics_process(delta: float) -> void:
 		status = "Idle"
 		enemy = null
 		update_animation(Vector2.ZERO)
+		
+	print(enemy_array)
 
 func select_enemy():
 	var enemy_progress_array = []

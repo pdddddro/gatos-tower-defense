@@ -1,11 +1,74 @@
-[gd_scene load_steps=4 format=3 uid="uid://c2bflmucnup4x"]
+[gd_scene load_steps=10 format=3 uid="uid://c2bflmucnup4x"]
 
-[ext_resource type="Texture2D" uid="uid://drlilq6agtcwk" path="res://Assets/Enemies/slime1.png" id="1_holcu"]
 [ext_resource type="Script" uid="uid://c5cilqwnocbk1" path="res://Scenes/Enemies/Slime1.gd" id="1_qq56m"]
+[ext_resource type="Texture2D" uid="uid://nrgg1mad2mdm" path="res://Assets/Enemies/slimeanimations.png" id="2_qq56m"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qq56m"]
 radius = 4.0
 height = 14.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xx1a5"]
+atlas = ExtResource("2_qq56m")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ffcu"]
+atlas = ExtResource("2_qq56m")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w27yb"]
+atlas = ExtResource("2_qq56m")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tj8aa"]
+atlas = ExtResource("2_qq56m")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dc1vj"]
+atlas = ExtResource("2_qq56m")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nlrk2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xx1a5")
+}],
+"loop": false,
+"name": &"Dead",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ffcu")
+}],
+"loop": false,
+"name": &"WalkDown",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w27yb")
+}],
+"loop": false,
+"name": &"WalkLeft",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tj8aa")
+}],
+"loop": false,
+"name": &"WalkRight",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dc1vj")
+}],
+"loop": false,
+"name": &"WalkUp",
+"speed": 1.0
+}]
 
 [node name="Slime1" type="PathFollow2D"]
 rotates = false
@@ -19,6 +82,7 @@ position = Vector2(0, 2)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_qq56m")
 
-[node name="Slime1" type="Sprite2D" parent="CharacterBody2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 position = Vector2(0, -12)
-texture = ExtResource("1_holcu")
+sprite_frames = SubResource("SpriteFrames_nlrk2")
+animation = &"Dead"
