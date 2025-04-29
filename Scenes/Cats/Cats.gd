@@ -27,8 +27,6 @@ func _physics_process(delta: float) -> void:
 		status = "Idle"
 		enemy = null
 		update_animation(Vector2.ZERO)
-		
-	print(enemy_array)
 
 func select_enemy():
 	var enemy_progress_array = []

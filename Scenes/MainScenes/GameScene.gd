@@ -75,8 +75,6 @@ func start_next_wave():
 	spawn_enemies(wave_data)
 	
 func retrieve_wave_data():
-	# Ta com um bug que quando o slime tira vida ele nao ve como uma wave finalizada
-	
 	#current_wave += 1 #Isso tava aqui, movi para _on_pause_play_pressed()
 	var wave_data = GameData.waves["wave" + str(current_wave)]
 	enemies_in_wave = wave_data.size()

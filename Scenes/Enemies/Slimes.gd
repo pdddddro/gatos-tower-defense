@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 	
 	update_animation(direction)
 
-	if progress_ratio == 1.0:
+	if progress_ratio == 1.0 and !dead:
 		emit_signal("base_damage", enemy_damage)
 
 		if dead == false:
@@ -41,7 +41,8 @@ func _physics_process(delta: float) -> void:
 			dead = true
 			queue_free()
 	
-	move(delta)
+	if dead == false:
+		move(delta)
 
 func move(delta):
 	set_progress(get_progress() + speed * delta )
@@ -67,6 +68,7 @@ func on_hit(damage):
 	
 	if hp <= 0 and dead == false:
 		dead = true
+		
 		emit_signal("enemy_defeated", type)
 		
 		sprite.play("Dead")
