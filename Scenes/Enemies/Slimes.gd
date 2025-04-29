@@ -70,7 +70,7 @@ func on_hit(damage):
 		dead = true
 		
 		emit_signal("enemy_defeated", type)
-		
+		$CharacterBody2D/CollisionShape2D.disabled = true
 		sprite.play("Dead")
 		await sprite.animation_finished
 		
