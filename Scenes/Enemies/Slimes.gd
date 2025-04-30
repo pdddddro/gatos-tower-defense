@@ -63,6 +63,8 @@ func update_animation(direction: Vector2):
 	#print(anim)
 	#$AnimatedSprite2D.play(anim)
 
+var collision_shape = true
+
 func on_hit(damage):
 	hp -= damage
 	
@@ -71,8 +73,11 @@ func on_hit(damage):
 		dead = true
 		emit_signal("enemy_defeated", type)
 		$CharacterBody2D/CollisionShape2D.disabled = true
+		
+		
 		sprite.play("Dead")
 		await sprite.animation_finished
+		collision_shape = false
 		
 		queue_free()
 		
