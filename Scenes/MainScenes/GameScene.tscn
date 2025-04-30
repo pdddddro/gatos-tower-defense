@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://b3oj3u5omej0y"]
+[gd_scene load_steps=11 format=3 uid="uid://b3oj3u5omej0y"]
 
 [ext_resource type="Script" uid="uid://d3rxrafiwqqn2" path="res://Scenes/MainScenes/GameScene.gd" id="1_hosin"]
 [ext_resource type="PackedScene" uid="uid://b4lqfl3wc00q3" path="res://Scenes/Maps/Map1.tscn" id="1_ianr5"]
 [ext_resource type="Texture2D" uid="uid://bkttfrcv1d5uu" path="res://Assets/Cats/Chicao/Chicao.png" id="2_68uyl"]
 [ext_resource type="Script" uid="uid://befst367i3h8q" path="res://Scenes/MainScenes/Ui.gd" id="3_flvd6"]
 [ext_resource type="Texture2D" uid="uid://c061d35ptj35w" path="res://Assets/Cats/Pele/Pele.png" id="5_tnagp"]
+[ext_resource type="Texture2D" uid="uid://dv4rjr6dy714l" path="res://Assets/Icons/Cat3.png" id="6_br1xs"]
 [ext_resource type="Texture2D" uid="uid://8adf7fkny4qr" path="res://Assets/Icons/Play.png" id="6_jem3k"]
 [ext_resource type="Texture2D" uid="uid://d0s1xis4xqbm6" path="res://Assets/Icons/Fish1.png" id="10_h0y4r"]
 [ext_resource type="FontFile" uid="uid://bxh8oh1s7ap4j" path="res://Assets/Fonts/medodicaregular.otf" id="11_j856t"]
@@ -77,6 +78,10 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_tnagp")
 
+[node name="CatShop" type="TextureButton" parent="UI/HUD/MarginContainer/BuildBar"]
+layout_mode = 2
+texture_normal = ExtResource("6_br1xs")
+
 [node name="GameControls" type="HBoxContainer" parent="UI/HUD/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
@@ -133,4 +138,5 @@ size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("11_j856t")
 text = "Rodada n/n"
 
+[connection signal="pressed" from="UI/HUD/MarginContainer/BuildBar/CatShop" to="." method="_on_cat_shop_pressed"]
 [connection signal="pressed" from="UI/HUD/MarginContainer/GameControls/Play" to="." method="_on_play_pressed"]

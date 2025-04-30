@@ -211,3 +211,15 @@ func _on_play_pressed() -> void:
 		Engine.set_time_scale(2.0)
 		play_button.texture_normal = speed_up
 		fast_mode = true
+
+
+@onready var CatShopScene = preload("res://Scenes/UIScenes/CatShop.tscn")
+
+var cat_shop_instance: Control = null
+
+func _on_cat_shop_pressed() -> void:
+	if not cat_shop_instance:
+		cat_shop_instance = CatShopScene.instantiate()
+		$UI/HUD/MarginContainer.add_child(cat_shop_instance)
+		cat_shop_instance.visible = true
+	

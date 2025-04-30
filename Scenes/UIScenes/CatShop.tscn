@@ -1,0 +1,86 @@
+[gd_scene load_steps=6 format=3 uid="uid://d0y6aaiw6832f"]
+
+[ext_resource type="Texture2D" uid="uid://dv4rjr6dy714l" path="res://Assets/Icons/Cat3.png" id="1_0a4tl"]
+[ext_resource type="Texture2D" uid="uid://baya31xk74k60" path="res://Assets/UI/card_background.png" id="2_16rpb"]
+[ext_resource type="FontFile" uid="uid://bxh8oh1s7ap4j" path="res://Assets/Fonts/medodicaregular.otf" id="3_x4m3i"]
+[ext_resource type="Texture2D" uid="uid://bkttfrcv1d5uu" path="res://Assets/Cats/Chicao/Chicao.png" id="4_08dg7"]
+[ext_resource type="Texture2D" uid="uid://d0s1xis4xqbm6" path="res://Assets/Icons/Fish1.png" id="5_y8xan"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -116.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_0a4tl")
+
+[node name="HFlowContainer" type="HFlowContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/HFlowContainer"]
+custom_minimum_size = Vector2(64, 96)
+layout_mode = 2
+texture_normal = ExtResource("2_16rpb")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HFlowContainer/TextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HFlowContainer/TextureButton/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/HFlowContainer/TextureButton/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("3_x4m3i")
+text = "Pelé"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HFlowContainer/TextureButton/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("4_08dg7")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HFlowContainer/TextureButton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="FishIcon" type="TextureRect" parent="VBoxContainer/HFlowContainer/TextureButton/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("5_y8xan")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/HFlowContainer/TextureButton/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("3_x4m3i")
+theme_override_font_sizes/font_size = 16
+text = "Preço"
