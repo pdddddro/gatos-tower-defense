@@ -35,7 +35,10 @@ func select_enemy():
 		
 	var max_offset = enemy_progress_array.max()
 	var enemy_index = enemy_progress_array.find(max_offset)
+	
+	# Seleciona o inimigo que estiver mais perto do final
 	enemy = enemy_array[enemy_index]
+	
 
 func turn():
 	var direction = (enemy.position - self.position).normalized()
@@ -56,14 +59,23 @@ func update_animation(direction):
 	
 	$AnimatedSprite2D.play(status + dir)
 
+var projectile_scene = preload("res://Scenes/Cats/Projectile.tscn")
+
 func attack():
+		
 	attack_ready = false
-	enemy.on_hit(GameData.cat_data[type]["damage"])
-	await get_tree().create_timer(GameData.cat_data[type]["atkcooldown"]).timeout
-	attack_ready = true
-	
+
 	if enemy_array.size() > 0:
+		print(attack_ready)
+		
+		var projectile = projectile_scene.instantiate()
+		get_parent().add_child(projectile)
+		projectile.global_position = global_position
+		projectile.enemy = enemy
+		enemy.on_hit(GameData.cat_data[type]["damage"])
+		await get_tree().create_timer(GameData.cat_data[type]["atkcooldown"]).timeout
 		attack_ready = true
+		
 	else:
 		status = "Idle"
 		attack_ready = true

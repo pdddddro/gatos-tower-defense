@@ -1,16 +1,16 @@
 extends Node
 
 var cat_data = {
-	"Cat1": {
+	"Chicao": {
 		"damage": 20,
-		"atkcooldown": 2,
+		"atkcooldown": 1,
 		"range": 256,
 		"cost": 100
 	},
 	
-	"Cat2": {
+	"Pele": {
 		"damage": 20,
-		"atkcooldown": 0.5,
+		"atkcooldown": 1,
 		"range": 128,
 		"cost": 50
 	}

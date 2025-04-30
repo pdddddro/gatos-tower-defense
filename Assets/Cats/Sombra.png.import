@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://coyq0rpglv1ng"
-path="res://.godot/imported/Sprite-0001.png-974e74a031f089aafbb9b86814b0effa.ctex"
+uid="uid://dvhrsyngix8od"
+path="res://.godot/imported/Sombra.png-89500d5e7f42bdefbc4c87c8ee3b5dec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Cats/Cat2/Sprite-0001.png"
-dest_files=["res://.godot/imported/Sprite-0001.png-974e74a031f089aafbb9b86814b0effa.ctex"]
+source_file="res://Assets/Cats/Sombra.png"
+dest_files=["res://.godot/imported/Sombra.png-89500d5e7f42bdefbc4c87c8ee3b5dec.ctex"]
 
 [params]
 

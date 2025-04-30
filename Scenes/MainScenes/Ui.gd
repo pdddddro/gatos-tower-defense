@@ -2,7 +2,7 @@ extends CanvasLayer
 
 func set_cat_preview(cat_type, mouse_position):
 	
-	var drag_cat = load("res://Scenes/Cats/" + cat_type + ".tscn").instantiate()
+	var drag_cat = load("res://Scenes/Cats/" + cat_type + "/" + cat_type + ".tscn").instantiate()
 	drag_cat.set_name("DragCat")
 	drag_cat.modulate = Color("ad54ff")
 	

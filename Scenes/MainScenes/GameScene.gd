@@ -12,7 +12,7 @@ var drag_threshold = 10 # pixels
 
 var cat_preview = null
 
-@onready var pause_play_button = get_node("UI/HUD/MarginContainer/GameControls/PausePlay")
+@onready var play_button = get_node("UI/HUD/MarginContainer/GameControls/Play")
 
 # Build
 var build_mode = false
@@ -33,6 +33,7 @@ var fish_quantity = 100
 @onready var fish_label = get_node("UI/HUD/MarginContainer/Status/FishContainer/FishLabel")
 
 func _ready() -> void:
+	
 	map_node = get_node("Map1")
 	get_node("UI/HUD/MarginContainer/Status/HeartContainer/HeartLabel").text = str(base_health)
 	
@@ -114,7 +115,12 @@ func check_wave_end():
 		current_wave += 1
 		WaveCount.text = "Rodada " + str(current_wave) + "/50"
 		
-		pause_play_button.button_pressed = false
+		play_button.texture_normal = play
+		
+		if fast_mode:
+			fast_mode = false
+		else:
+			fast_mode = true
 
 ## Building Functions
 func initiate_build_mode(cat_type):
@@ -154,7 +160,7 @@ func verify_and_build():
 			fish_quantity -= cat_cost
 			update_fish_label()
 			
-			var new_cat = load("res://Scenes/Cats/" + build_type + ".tscn").instantiate()
+			var new_cat = load("res://Scenes/Cats/" + build_type + "/" + build_type + ".tscn").instantiate()
 			new_cat.position = build_location
 			new_cat.built = true
 			new_cat.type = build_type
@@ -179,30 +185,29 @@ func update_fish_label():
 	update_build_buttons()
 
 ## Game Control Functions
-func _on_pause_play_pressed():
+
+@onready var speed_up = preload("res://Assets/Icons/SpeedUp.png")
+@onready var normal_speed = preload("res://Assets/Icons/NormalSpeed.png")
+@onready var play = preload("res://Assets/Icons/Play.png")
+
+var fast_mode = true
+
+func _on_play_pressed() -> void:
 	if build_mode:
 		cancel_build_mode()
 
-	# Se o botão está pressionado, vamos dar play na próxima wave
-	if pause_play_button.button_pressed:
-		# Só inicia wave se nenhuma estiver ativa
-		if enemies_in_wave <= 0:
-			#current_wave += 1 #Antes isso nao tava aqui, espero que nao de nenhum bug
-			print("Iniciando wave " + str(current_wave))
-			start_next_wave()
-		else:
-			# Apenas despausa o jogo se ele estiver pausado
-			get_tree().paused = false
-	else:
-		# Botão despressionado → Pausar o jogo
-		get_tree().paused = true
+	# Inicia a wave se nenhuma estiver ativa
+	if enemies_in_wave <= 0:
+		print("Iniciando wave " + str(current_wave))
+		start_next_wave()
 
-func _on_speed_up_pressed() -> void:
-	
-	if build_mode:
-		cancel_build_mode()
-	
-	if Engine.get_time_scale() == 2.0:
+# Alterna velocidade e textura
+	if fast_mode:
 		Engine.set_time_scale(1.0)
+		play_button.texture_normal = normal_speed
+		fast_mode = false
+		
 	else:
 		Engine.set_time_scale(2.0)
+		play_button.texture_normal = speed_up
+		fast_mode = true

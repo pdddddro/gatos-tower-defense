@@ -1,59 +1,59 @@
-[gd_scene load_steps=19 format=3 uid="uid://b8egjyxqol2tu"]
+[gd_scene load_steps=19 format=3 uid="uid://t6hqh1fygyxx"]
 
-[ext_resource type="Script" uid="uid://bo7c5fxk1mcdy" path="res://Scenes/Cats/Cat1.gd" id="1_xd2np"]
-[ext_resource type="Texture2D" uid="uid://coyq0rpglv1ng" path="res://Assets/Cats/Cat2/Sprite-0001.png" id="2_jeqfy"]
-[ext_resource type="Texture2D" uid="uid://domqh7uvsmf3g" path="res://Assets/Cats/Cat1/animation.png" id="3_jeqfy"]
+[ext_resource type="Script" uid="uid://bo7c5fxk1mcdy" path="res://Scenes/Cats/Chicao/Chicao.gd" id="1_ah5gc"]
+[ext_resource type="Texture2D" uid="uid://dvhrsyngix8od" path="res://Assets/Cats/Sombra.png" id="2_17dmv"]
+[ext_resource type="Texture2D" uid="uid://domqh7uvsmf3g" path="res://Assets/Cats/Chicao/animation.png" id="3_rjr4t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hagm5"]
-atlas = ExtResource("3_jeqfy")
+atlas = ExtResource("3_rjr4t")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7f671"]
-atlas = ExtResource("3_jeqfy")
+atlas = ExtResource("3_rjr4t")
 region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mf1yk"]
-atlas = ExtResource("3_jeqfy")
+atlas = ExtResource("3_rjr4t")
 region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3wtat"]
-atlas = ExtResource("3_jeqfy")
+atlas = ExtResource("3_rjr4t")
 region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8ilpq"]
-atlas = ExtResource("3_jeqfy")
+atlas = ExtResource("3_rjr4t")
 region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5cskr"]
-atlas = ExtResource("3_jeqfy")
+atlas = ExtResource("3_rjr4t")
 region = Rect2(128, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_66kkb"]
-atlas = ExtResource("3_jeqfy")
+atlas = ExtResource("3_rjr4t")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_78e4f"]
-atlas = ExtResource("3_jeqfy")
+atlas = ExtResource("3_rjr4t")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i3fkb"]
-atlas = ExtResource("3_jeqfy")
+atlas = ExtResource("3_rjr4t")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jeqfy"]
-atlas = ExtResource("3_jeqfy")
+atlas = ExtResource("3_rjr4t")
 region = Rect2(0, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_edhuf"]
-atlas = ExtResource("3_jeqfy")
+atlas = ExtResource("3_rjr4t")
 region = Rect2(32, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sfbs0"]
-atlas = ExtResource("3_jeqfy")
+atlas = ExtResource("3_rjr4t")
 region = Rect2(64, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1eyla"]
-atlas = ExtResource("3_jeqfy")
+atlas = ExtResource("3_rjr4t")
 region = Rect2(96, 32, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_edhuf"]
@@ -186,22 +186,24 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_jeqfy"]
 
 [node name="Cat1" type="Node2D"]
-script = ExtResource("1_xd2np")
+script = ExtResource("1_ah5gc")
+
+[node name="ProjectileContainer" type="Node" parent="."]
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.341176)
 y_sort_enabled = true
 position = Vector2(-1, -2)
-texture = ExtResource("2_jeqfy")
+texture = ExtResource("2_17dmv")
+
+[node name="Aim" type="Marker2D" parent="."]
+position = Vector2(8, -4)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_edhuf")
 animation = &"AttackDownLeft"
-
-[node name="Aim" type="Marker2D" parent="AnimatedSprite2D"]
-position = Vector2(8, 0)
 
 [node name="Range" type="Area2D" parent="."]
 

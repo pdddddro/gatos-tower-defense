@@ -67,8 +67,8 @@ func on_hit(damage):
 	hp -= damage
 	
 	if hp <= 0 and dead == false:
-		dead = true
 		
+		dead = true
 		emit_signal("enemy_defeated", type)
 		$CharacterBody2D/CollisionShape2D.disabled = true
 		sprite.play("Dead")
