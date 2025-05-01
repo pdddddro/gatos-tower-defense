@@ -47,6 +47,7 @@ size_flags_vertical = 8
 theme_override_constants/separation = 0
 
 [node name="Chicao" type="TextureButton" parent="UI/HUD/MarginContainer/BuildBar" groups=["build_buttons"]]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -63,6 +64,7 @@ grow_vertical = 2
 texture = ExtResource("2_68uyl")
 
 [node name="Pele" type="TextureButton" parent="UI/HUD/MarginContainer/BuildBar" groups=["build_buttons"]]
+visible = false
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -79,8 +81,12 @@ grow_vertical = 2
 texture = ExtResource("5_tnagp")
 
 [node name="CatShop" type="TextureButton" parent="UI/HUD/MarginContainer/BuildBar"]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture_normal = ExtResource("6_br1xs")
+stretch_mode = 0
 
 [node name="GameControls" type="HBoxContainer" parent="UI/HUD/MarginContainer"]
 layout_mode = 2
