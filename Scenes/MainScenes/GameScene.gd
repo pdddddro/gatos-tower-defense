@@ -53,6 +53,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	if event.is_action_released("ui_cancel") and build_mode == true:
 		cancel_build_mode()
+		
 	if event.is_action_released("ui_accept") and build_mode == true:
 		verify_and_build()
 		cancel_build_mode()
@@ -124,6 +125,7 @@ func check_wave_end():
 
 ## Building Functions
 func initiate_build_mode(cat_type):
+	print("Building Mode Iniciado")
 	if build_mode:
 		cancel_build_mode()
 		
@@ -154,7 +156,9 @@ func cancel_build_mode():
 	get_node("UI/CatPreview").free()
 	
 func verify_and_build():
+	print("Antes de verificar")
 	if build_valid:
+		print("Berificou")
 		var cat_cost = GameData.cat_data[build_type]["cost"]
 		if fish_quantity >= cat_cost:
 			fish_quantity -= cat_cost
