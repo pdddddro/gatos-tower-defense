@@ -1,15 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://d0y6aaiw6832f"]
+[gd_scene load_steps=14 format=3 uid="uid://d0y6aaiw6832f"]
 
-[ext_resource type="Texture2D" uid="uid://dv4rjr6dy714l" path="res://Assets/Icons/Cat3.png" id="1_0a4tl"]
 [ext_resource type="Script" uid="uid://dh2a0v6qsoipe" path="res://Scenes/UIScenes/cat_shop.gd" id="1_1txux"]
-[ext_resource type="Texture2D" uid="uid://bd41dm7yapu6s" path="res://Assets/UI/ui_background.png" id="2_08dg7"]
+[ext_resource type="Texture2D" uid="uid://ycbwxuewd3jo" path="res://Assets/Icons/Catt3.png" id="2_1txux"]
 [ext_resource type="Texture2D" uid="uid://baya31xk74k60" path="res://Assets/UI/card_background.png" id="2_16rpb"]
 [ext_resource type="Texture2D" uid="uid://clqf5htsi1rom" path="res://Assets/Icons/Cards2.png" id="2_hxsv2"]
 [ext_resource type="Texture2D" uid="uid://bgba1jqqv4rpe" path="res://Assets/Icons/Close.png" id="2_yltp7"]
 [ext_resource type="FontFile" uid="uid://bxh8oh1s7ap4j" path="res://Assets/Fonts/medodicaregular.otf" id="3_x4m3i"]
 [ext_resource type="Texture2D" uid="uid://bkttfrcv1d5uu" path="res://Assets/Cats/Chicao/Chicao.png" id="4_08dg7"]
+[ext_resource type="Texture2D" uid="uid://dv3g48f7hixr8" path="res://Assets/UI/cardbackground.png" id="5_1txux"]
 [ext_resource type="Texture2D" uid="uid://d0s1xis4xqbm6" path="res://Assets/Icons/Fish1.png" id="5_y8xan"]
 [ext_resource type="Texture2D" uid="uid://b2k4kdiabya5n" path="res://Assets/Icons/Info.png" id="7_y8xan"]
+[ext_resource type="Texture2D" uid="uid://dvhrsyngix8od" path="res://Assets/Cats/Sombra.png" id="8_06878"]
 
 [sub_resource type="Theme" id="Theme_y8xan"]
 
@@ -52,7 +53,7 @@ custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-texture_normal = ExtResource("1_0a4tl")
+texture_normal = ExtResource("2_1txux")
 stretch_mode = 0
 
 [node name="Cards" type="TextureButton" parent="MarginContainer/VBoxContainer/ActionContainer/Shops"]
@@ -85,14 +86,19 @@ custom_minimum_size = Vector2(324, 128)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
-texture = ExtResource("2_08dg7")
+texture = ExtResource("5_1txux")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/CatShopContainer/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 144.0
+offset_bottom = 128.0
 grow_horizontal = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
@@ -138,15 +144,34 @@ theme = SubResource("Theme_hxsv2")
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_x4m3i")
 theme_override_font_sizes/font_size = 16
 text = "Cartolina"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton/VBoxContainer"]
-custom_minimum_size = Vector2(32, 32)
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.341176)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("8_06878")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton/VBoxContainer/TextureRect2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -18.0
+offset_right = 17.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 texture = ExtResource("4_08dg7")
@@ -168,6 +193,7 @@ expand_mode = 1
 texture_filter = 3
 layout_mode = 2
 size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_x4m3i")
 theme_override_font_sizes/font_size = 16
 text = "100"

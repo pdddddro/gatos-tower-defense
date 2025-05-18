@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bd41dm7yapu6s"
-path="res://.godot/imported/ui_background.png-96245b8b1c9b9a3ac1baa1ca25571714.ctex"
+uid="uid://oowv72istub4"
+path="res://.godot/imported/shadow_normal_slime.png-1c1411db6bf0afcbaf9d54d5d907b83d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/ui_background.png"
-dest_files=["res://.godot/imported/ui_background.png-96245b8b1c9b9a3ac1baa1ca25571714.ctex"]
+source_file="res://Assets/Enemies/shadow_normal_slime.png"
+dest_files=["res://.godot/imported/shadow_normal_slime.png-1c1411db6bf0afcbaf9d54d5d907b83d.ctex"]
 
 [params]
 
