@@ -5,6 +5,7 @@ extends PathFollow2D
 signal base_damage(damage)
 signal enemy_defeated(enemy_type)
 signal enemy_escaped()
+signal isdead()
 
 var speed = 0
 var hp = 0
@@ -72,12 +73,14 @@ func on_hit(damage):
 		
 		dead = true
 		emit_signal("enemy_defeated", type)
+		
 		$CharacterBody2D/CollisionShape2D.disabled = true
 		
-		
 		sprite.play("Dead")
+		
 		await sprite.animation_finished
 		collision_shape = false
+		emit_signal("isdead")
 		
 		queue_free()
 		

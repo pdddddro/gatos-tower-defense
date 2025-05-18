@@ -69,6 +69,7 @@ func attack():
 		print(attack_ready)
 		
 		var projectile = projectile_scene.instantiate()
+		
 		get_parent().add_child(projectile)
 		projectile.global_position = global_position
 		projectile.enemy = enemy
