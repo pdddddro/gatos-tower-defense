@@ -19,7 +19,7 @@ var cat_data = {
 var enemies_data = {
 	"Slime1": {
 		"damage": 1,
-		"speed": 100,
+		"speed": 60,
 		"hp": 40,
 		"fish_reward": 50
 	}

@@ -72,21 +72,21 @@ region = Rect2(192, 96, 32, 32)
 atlas = ExtResource("2_xx1a5")
 region = Rect2(192, 128, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_xx1a5"]
+atlas = ExtResource("2_xx1a5")
+region = Rect2(224, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dc1vj"]
+atlas = ExtResource("2_xx1a5")
+region = Rect2(224, 64, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_2na5o"]
 atlas = ExtResource("2_xx1a5")
-region = Rect2(256, 32, 32, 32)
+region = Rect2(224, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bmx5s"]
 atlas = ExtResource("2_xx1a5")
-region = Rect2(256, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_23f0a"]
-atlas = ExtResource("2_xx1a5")
-region = Rect2(256, 96, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dljvg"]
-atlas = ExtResource("2_xx1a5")
-region = Rect2(256, 128, 32, 32)
+region = Rect2(224, 128, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nlrk2"]
 animations = [{
@@ -105,7 +105,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Dead",
-"speed": 8.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -119,10 +119,13 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_m48ko")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o331k")
 }],
 "loop": true,
 "name": &"WalkDown",
-"speed": 8.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -136,10 +139,13 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jb1nw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ar8md")
 }],
 "loop": true,
 "name": &"WalkLeft",
-"speed": 8.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -153,12 +159,21 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_woyt5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_svc46")
 }],
 "loop": true,
 "name": &"WalkRight",
-"speed": 8.0
+"speed": 5.0
 }, {
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xx1a5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dc1vj")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2na5o")
 }, {
@@ -166,14 +181,11 @@ animations = [{
 "texture": SubResource("AtlasTexture_bmx5s")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_23f0a")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dljvg")
+"texture": SubResource("AtlasTexture_2na5o")
 }],
 "loop": true,
 "name": &"WalkUp",
-"speed": 8.0
+"speed": 5.0
 }]
 
 [node name="Slime1" type="PathFollow2D"]
