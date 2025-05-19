@@ -20,13 +20,13 @@ func _ready():
 	
 	cat_shop_container.visibility_layer = false
 	close_button.visibility_layer = false
-
+	self.mouse_filter = Control.MOUSE_FILTER_IGNORE 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	anchor_top = lerp(anchor_top,_target_anchor.x,lerp_speed)
 	anchor_bottom = lerp(anchor_bottom,_target_anchor.y,lerp_speed)
-
+	self.set_block_signals(not _popped_up)
 
 func _on_close_pressed():
 	if !_popped_up:
@@ -35,11 +35,11 @@ func _on_close_pressed():
 		
 		cat_shop_container.visibility_layer = true
 		close_button.visibility_layer = true
+
 	else:
 		
-		
+		self.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		_target_anchor = _down_anchor
-		
 		cat_shop_container.visibility_layer = false
 		close_button.visibility_layer = false
 		
@@ -54,10 +54,9 @@ func _on_cat_shop_pressed() -> void:
 		
 		_target_anchor = _up_anchor
 	else:
-		
+		self.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		cat_shop_container.visibility_layer = false
 		close_button.visibility_layer = false
-		
 		_target_anchor = _down_anchor
 	_popped_up = !_popped_up
 	
