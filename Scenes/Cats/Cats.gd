@@ -13,7 +13,6 @@ func _ready():
 		get_node("Range/CollisionShape2D").get_shape().radius = 0.5 * GameData.cat_data[type]["range"]
 
 func _physics_process(delta: float) -> void:
-
 	if enemy_array.size() != 0 and built:
 		
 		select_enemy()
@@ -26,7 +25,8 @@ func _physics_process(delta: float) -> void:
 	elif built:
 		status = "Idle"
 		enemy = null
-		update_animation(Vector2.ZERO)
+		update_animation(Vector2(-1 if last_flip_h else 1, 0))
+
 
 func select_enemy():
 	var enemy_progress_array = []
@@ -44,6 +44,8 @@ func turn():
 	var direction = (enemy.position - self.position).normalized()
 	update_animation(direction)
 
+var last_flip_h = false
+
 func update_animation(direction):
 	var dir = ""
 	
@@ -52,11 +54,19 @@ func update_animation(direction):
 	else:
 		dir += "Down"
 
+	# Só atualiza o flip se houver direção horizontal
 	if direction.x < 0:
-		dir += "Left"
-	else:
 		dir += "Right"
-	
+		$AnimatedSprite2D.flip_h = true
+		last_flip_h = true
+	elif direction.x > 0:
+		dir += "Right"
+		$AnimatedSprite2D.flip_h = false
+		last_flip_h = false
+	else:
+		# Se não houver movimento horizontal, mantém o último flip
+		$AnimatedSprite2D.flip_h = last_flip_h
+
 	$AnimatedSprite2D.play(status + dir)
 
 var projectile_scene = preload("res://Scenes/Cats/Projectile.tscn")

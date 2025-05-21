@@ -1,6 +1,6 @@
 [gd_scene load_steps=26 format=3 uid="uid://c2bflmucnup4x"]
 
-[ext_resource type="Script" uid="uid://c5cilqwnocbk1" path="res://Scenes/Enemies/Slime1.gd" id="1_qq56m"]
+[ext_resource type="Script" uid="uid://c5cilqwnocbk1" path="res://Scenes/Enemies/Plastico/Plastico.gd" id="1_qq56m"]
 [ext_resource type="Texture2D" uid="uid://cnox4qbe63t46" path="res://Assets/Enemies/sprite_sheet.png" id="2_xx1a5"]
 [ext_resource type="Texture2D" uid="uid://oowv72istub4" path="res://Assets/Enemies/shadow_normal_slime.png" id="3_xx1a5"]
 
@@ -188,7 +188,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Slime1" type="PathFollow2D"]
+[node name="Plastico" type="PathFollow2D"]
 y_sort_enabled = true
 rotates = false
 loop = false

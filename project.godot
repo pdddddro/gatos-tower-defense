@@ -43,6 +43,10 @@ folder_colors={
 "res://ui/": "orange"
 }
 
+[global_group]
+
+build_buttons=""
+
 [input]
 
 ui_accept={

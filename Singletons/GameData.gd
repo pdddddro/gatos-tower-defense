@@ -4,7 +4,7 @@ var cat_data = {
 	"Chicao": {
 		"damage": 20,
 		"atkcooldown": 1,
-		"range": 256,
+		"range": 196,
 		"cost": 100
 	},
 	
@@ -12,12 +12,44 @@ var cat_data = {
 		"damage": 20,
 		"atkcooldown": 1,
 		"range": 128,
-		"cost": 50
+		"cost": 100
+	},
+	
+	"Nino": {
+		"damage": 20,
+		"atkcooldown": 1,
+		"range": 160,
+		"cost": 100
+	},
+	
+	"Cartolina": {
+		"damage": 20,
+		"atkcooldown": 1,
+		"range": 160,
+		"cost": 100
 	}
 }
 
 var enemies_data = {
-	"Slime1": {
+	"Plastico": {
+		"damage": 1,
+		"speed": 60,
+		"hp": 40,
+		"fish_reward": 50
+	},
+	"Chiclete": {
+		"damage": 1,
+		"speed": 60,
+		"hp": 40,
+		"fish_reward": 50
+	},
+	"Metal": {
+		"damage": 1,
+		"speed": 60,
+		"hp": 40,
+		"fish_reward": 50
+	},
+	"Pilha": {
 		"damage": 1,
 		"speed": 60,
 		"hp": 40,
@@ -27,28 +59,6 @@ var enemies_data = {
 
 var waves = {
 	"wave1": [
-		["Slime1", 0.5],
-	],
-	
-	"wave2": [
-		["Slime1", 0.5],
-		["Slime1", 0.5],
-	],
-	
-		"wave3": [
-		["Slime1", 0.1],
-		["Slime1", 0.1],
-		["Slime1", 0.1],
-		["Slime1", 0.1],
-		["Slime1", 0.1],
-		["Slime1", 0.1],
-		["Slime1", 0.1],
-		["Slime1", 0.1],
-		["Slime1", 0.1],
-		["Slime1", 0.1],
-		["Slime1", 0.1],
-		["Slime1", 0.1],
-		["Slime1", 0.1],
-		["Slime1", 0.1],
+		["Plastico", 0.5],
 	],
 }

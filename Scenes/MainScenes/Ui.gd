@@ -8,8 +8,7 @@ func set_cat_preview(cat_type, mouse_position):
 	
 	var range_texture = Sprite2D.new()
 	range_texture.position = Vector2(0, 0)
-	
-	#
+
 	var scaling = GameData.cat_data[cat_type]["range"] / 128.0
 	range_texture.scale = Vector2(scaling, scaling)
 	var texture = load("res://Assets/UI/Range.png")

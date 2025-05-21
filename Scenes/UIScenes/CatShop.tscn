@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d0y6aaiw6832f"]
+[gd_scene load_steps=16 format=3 uid="uid://d0y6aaiw6832f"]
 
 [ext_resource type="Script" uid="uid://dh2a0v6qsoipe" path="res://Scenes/UIScenes/cat_shop.gd" id="1_1txux"]
 [ext_resource type="Texture2D" uid="uid://ycbwxuewd3jo" path="res://Assets/Icons/Catt3.png" id="2_1txux"]
@@ -7,10 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://bgba1jqqv4rpe" path="res://Assets/Icons/Close.png" id="2_yltp7"]
 [ext_resource type="FontFile" uid="uid://bxh8oh1s7ap4j" path="res://Assets/Fonts/medodicaregular.otf" id="3_x4m3i"]
 [ext_resource type="Texture2D" uid="uid://bkttfrcv1d5uu" path="res://Assets/Cats/Chicao/Chicao.png" id="4_08dg7"]
-[ext_resource type="Texture2D" uid="uid://dv3g48f7hixr8" path="res://Assets/UI/cardbackground.png" id="5_1txux"]
+[ext_resource type="Texture2D" uid="uid://dv3g48f7hixr8" path="res://Assets/UI/ui_background.png" id="5_1txux"]
 [ext_resource type="Texture2D" uid="uid://d0s1xis4xqbm6" path="res://Assets/Icons/Fish1.png" id="5_y8xan"]
-[ext_resource type="Texture2D" uid="uid://b2k4kdiabya5n" path="res://Assets/Icons/Info.png" id="7_y8xan"]
 [ext_resource type="Texture2D" uid="uid://dvhrsyngix8od" path="res://Assets/Cats/Sombra.png" id="8_06878"]
+[ext_resource type="Texture2D" uid="uid://c061d35ptj35w" path="res://Assets/Cats/Pele/Pele.png" id="11_ey0j2"]
+[ext_resource type="Texture2D" uid="uid://cyly7nfosdk6" path="res://Assets/Cats/Nino/Nino.png" id="12_20bdp"]
+[ext_resource type="Texture2D" uid="uid://ca7dcxojm22x4" path="res://Assets/Cats/Cartolina/Cartolina.png" id="13_20bdp"]
 
 [sub_resource type="Theme" id="Theme_y8xan"]
 
@@ -38,6 +40,7 @@ anchor_bottom = 1.0
 offset_top = -160.0
 offset_right = 324.0
 grow_vertical = 0
+mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -134,7 +137,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 mouse_filter = 2
 
-[node name="TextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList"]
+[node name="Chicao" type="TextureButton" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList" groups=["build_buttons"]]
 custom_minimum_size = Vector2(72, 0)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -143,7 +146,7 @@ mouse_default_cursor_shape = 2
 texture_normal = ExtResource("2_16rpb")
 stretch_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/Chicao"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -160,7 +163,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 theme = SubResource("Theme_hxsv2")
 
-[node name="CatName" type="Label" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton/VBoxContainer"]
+[node name="CatName" type="Label" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/Chicao/VBoxContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
@@ -168,18 +171,18 @@ size_flags_vertical = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_x4m3i")
 theme_override_font_sizes/font_size = 16
-text = "Cartolina"
+text = "Chicao"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton/VBoxContainer"]
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/Chicao/VBoxContainer"]
 self_modulate = Color(1, 1, 1, 0.341176)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("8_06878")
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton/VBoxContainer/TextureRect2"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/Chicao/VBoxContainer/TextureRect2"]
 texture_filter = 1
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
@@ -198,12 +201,12 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 texture = ExtResource("4_08dg7")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/Chicao/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 alignment = 1
 
-[node name="FishIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton/VBoxContainer/HBoxContainer"]
+[node name="FishIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/Chicao/VBoxContainer/HBoxContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
@@ -212,7 +215,7 @@ size_flags_vertical = 4
 texture = ExtResource("5_y8xan")
 expand_mode = 1
 
-[node name="CatPrice" type="Label" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton/VBoxContainer/HBoxContainer"]
+[node name="CatPrice" type="Label" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/Chicao/VBoxContainer/HBoxContainer"]
 texture_filter = 3
 layout_mode = 2
 size_flags_horizontal = 0
@@ -221,25 +224,16 @@ theme_override_fonts/font = ExtResource("3_x4m3i")
 theme_override_font_sizes/font_size = 16
 text = "100"
 
-[node name="TextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton"]
-visible = false
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 0
-offset_left = 44.0
-offset_top = 52.0
-offset_right = 60.0
-offset_bottom = 68.0
-texture_normal = ExtResource("7_y8xan")
-
-[node name="TextureButton2" type="TextureButton" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList"]
+[node name="Pele" type="TextureButton" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList" groups=["build_buttons"]]
 custom_minimum_size = Vector2(72, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("2_16rpb")
 stretch_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/Pele"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -256,29 +250,51 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 theme = SubResource("Theme_hxsv2")
 
-[node name="CatName" type="Label" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton2/VBoxContainer"]
+[node name="CatName" type="Label" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/Pele/VBoxContainer"]
+texture_filter = 1
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_x4m3i")
 theme_override_font_sizes/font_size = 16
-text = "Cartolina"
+text = "Pelé"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton2/VBoxContainer"]
-custom_minimum_size = Vector2(32, 32)
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/Pele/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.341176)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 0
-texture = ExtResource("4_08dg7")
+size_flags_vertical = 4
+texture = ExtResource("8_06878")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton2/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/Pele/VBoxContainer/TextureRect2"]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -18.0
+offset_right = 17.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("11_ey0j2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/Pele/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 alignment = 1
 
-[node name="FishIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton2/VBoxContainer/HBoxContainer"]
+[node name="FishIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/Pele/VBoxContainer/HBoxContainer"]
+texture_filter = 1
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -286,33 +302,25 @@ size_flags_vertical = 4
 texture = ExtResource("5_y8xan")
 expand_mode = 1
 
-[node name="CatPrice" type="Label" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton2/VBoxContainer/HBoxContainer"]
+[node name="CatPrice" type="Label" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/Pele/VBoxContainer/HBoxContainer"]
 texture_filter = 3
 layout_mode = 2
 size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_x4m3i")
 theme_override_font_sizes/font_size = 16
 text = "100"
 
-[node name="TextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton2"]
-visible = false
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 0
-offset_left = 44.0
-offset_top = 52.0
-offset_right = 60.0
-offset_bottom = 68.0
-texture_normal = ExtResource("7_y8xan")
-
-[node name="TextureButton3" type="TextureButton" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList"]
+[node name="Nino" type="TextureButton" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList" groups=["build_buttons"]]
 custom_minimum_size = Vector2(72, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("2_16rpb")
 stretch_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton3"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/Nino"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -329,29 +337,51 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 theme = SubResource("Theme_hxsv2")
 
-[node name="CatName" type="Label" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton3/VBoxContainer"]
+[node name="CatName" type="Label" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/Nino/VBoxContainer"]
+texture_filter = 1
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_x4m3i")
 theme_override_font_sizes/font_size = 16
-text = "Cartolina"
+text = "Nino"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton3/VBoxContainer"]
-custom_minimum_size = Vector2(32, 32)
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/Nino/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.341176)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 0
-texture = ExtResource("4_08dg7")
+size_flags_vertical = 4
+texture = ExtResource("8_06878")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton3/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/Nino/VBoxContainer/TextureRect2"]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -18.0
+offset_right = 17.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("12_20bdp")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/Nino/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 alignment = 1
 
-[node name="FishIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton3/VBoxContainer/HBoxContainer"]
+[node name="FishIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/Nino/VBoxContainer/HBoxContainer"]
+texture_filter = 1
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -359,33 +389,25 @@ size_flags_vertical = 4
 texture = ExtResource("5_y8xan")
 expand_mode = 1
 
-[node name="CatPrice" type="Label" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton3/VBoxContainer/HBoxContainer"]
+[node name="CatPrice" type="Label" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/Nino/VBoxContainer/HBoxContainer"]
 texture_filter = 3
 layout_mode = 2
 size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_x4m3i")
 theme_override_font_sizes/font_size = 16
 text = "100"
 
-[node name="TextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton3"]
-visible = false
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 0
-offset_left = 44.0
-offset_top = 52.0
-offset_right = 60.0
-offset_bottom = 68.0
-texture_normal = ExtResource("7_y8xan")
-
-[node name="TextureButton4" type="TextureButton" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList"]
+[node name="Cartolina" type="TextureButton" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList" groups=["build_buttons"]]
 custom_minimum_size = Vector2(72, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("2_16rpb")
 stretch_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton4"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/Cartolina"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -402,102 +424,51 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 theme = SubResource("Theme_hxsv2")
 
-[node name="CatName" type="Label" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton4/VBoxContainer"]
+[node name="CatName" type="Label" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/Cartolina/VBoxContainer"]
+texture_filter = 1
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_x4m3i")
 theme_override_font_sizes/font_size = 16
 text = "Cartolina"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton4/VBoxContainer"]
-custom_minimum_size = Vector2(32, 32)
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/Cartolina/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.341176)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 0
-texture = ExtResource("4_08dg7")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton4/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-alignment = 1
-
-[node name="FishIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton4/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-size_flags_horizontal = 0
 size_flags_vertical = 4
-texture = ExtResource("5_y8xan")
-expand_mode = 1
+texture = ExtResource("8_06878")
 
-[node name="CatPrice" type="Label" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton4/VBoxContainer/HBoxContainer"]
-texture_filter = 3
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_fonts/font = ExtResource("3_x4m3i")
-theme_override_font_sizes/font_size = 16
-text = "100"
-
-[node name="TextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton4"]
-visible = false
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 0
-offset_left = 44.0
-offset_top = 52.0
-offset_right = 60.0
-offset_bottom = 68.0
-texture_normal = ExtResource("7_y8xan")
-
-[node name="TextureButton5" type="TextureButton" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList"]
-custom_minimum_size = Vector2(72, 0)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-texture_normal = ExtResource("2_16rpb")
-stretch_mode = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton5"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/Cartolina/VBoxContainer/TextureRect2"]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -32.0
-offset_top = -36.0
-offset_right = 32.0
-offset_bottom = 36.0
+offset_left = -15.0
+offset_top = -18.0
+offset_right = 17.0
+offset_bottom = 14.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme = SubResource("Theme_hxsv2")
-
-[node name="CatName" type="Label" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton5/VBoxContainer"]
-custom_minimum_size = Vector2(64, 0)
-layout_mode = 2
-size_flags_vertical = 1
-theme_override_fonts/font = ExtResource("3_x4m3i")
-theme_override_font_sizes/font_size = 16
-text = "Cartolina"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton5/VBoxContainer"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-texture = ExtResource("4_08dg7")
+texture = ExtResource("13_20bdp")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton5/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/Cartolina/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 alignment = 1
 
-[node name="FishIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton5/VBoxContainer/HBoxContainer"]
+[node name="FishIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/Cartolina/VBoxContainer/HBoxContainer"]
+texture_filter = 1
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -505,169 +476,15 @@ size_flags_vertical = 4
 texture = ExtResource("5_y8xan")
 expand_mode = 1
 
-[node name="CatPrice" type="Label" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton5/VBoxContainer/HBoxContainer"]
+[node name="CatPrice" type="Label" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/Cartolina/VBoxContainer/HBoxContainer"]
 texture_filter = 3
 layout_mode = 2
 size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_x4m3i")
 theme_override_font_sizes/font_size = 16
 text = "100"
-
-[node name="TextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton5"]
-visible = false
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 0
-offset_left = 44.0
-offset_top = 52.0
-offset_right = 60.0
-offset_bottom = 68.0
-texture_normal = ExtResource("7_y8xan")
-
-[node name="TextureButton6" type="TextureButton" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList"]
-custom_minimum_size = Vector2(72, 0)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-texture_normal = ExtResource("2_16rpb")
-stretch_mode = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton6"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -32.0
-offset_top = -36.0
-offset_right = 32.0
-offset_bottom = 36.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme = SubResource("Theme_hxsv2")
-
-[node name="CatName" type="Label" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton6/VBoxContainer"]
-custom_minimum_size = Vector2(64, 0)
-layout_mode = 2
-size_flags_vertical = 1
-theme_override_fonts/font = ExtResource("3_x4m3i")
-theme_override_font_sizes/font_size = 16
-text = "Cartolina"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton6/VBoxContainer"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-texture = ExtResource("4_08dg7")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton6/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-alignment = 1
-
-[node name="FishIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton6/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture = ExtResource("5_y8xan")
-expand_mode = 1
-
-[node name="CatPrice" type="Label" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton6/VBoxContainer/HBoxContainer"]
-texture_filter = 3
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_fonts/font = ExtResource("3_x4m3i")
-theme_override_font_sizes/font_size = 16
-text = "100"
-
-[node name="TextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton6"]
-visible = false
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 0
-offset_left = 44.0
-offset_top = 52.0
-offset_right = 60.0
-offset_bottom = 68.0
-texture_normal = ExtResource("7_y8xan")
-
-[node name="TextureButton7" type="TextureButton" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList"]
-custom_minimum_size = Vector2(72, 0)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-texture_normal = ExtResource("2_16rpb")
-stretch_mode = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton7"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -32.0
-offset_top = -36.0
-offset_right = 32.0
-offset_bottom = 36.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme = SubResource("Theme_hxsv2")
-
-[node name="CatName" type="Label" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton7/VBoxContainer"]
-custom_minimum_size = Vector2(64, 0)
-layout_mode = 2
-size_flags_vertical = 1
-theme_override_fonts/font = ExtResource("3_x4m3i")
-theme_override_font_sizes/font_size = 16
-text = "Cartolina"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton7/VBoxContainer"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-texture = ExtResource("4_08dg7")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton7/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-alignment = 1
-
-[node name="FishIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton7/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture = ExtResource("5_y8xan")
-expand_mode = 1
-
-[node name="CatPrice" type="Label" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton7/VBoxContainer/HBoxContainer"]
-texture_filter = 3
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_fonts/font = ExtResource("3_x4m3i")
-theme_override_font_sizes/font_size = 16
-text = "100"
-
-[node name="TextureButton" type="TextureButton" parent="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/TextureButton7"]
-visible = false
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 0
-offset_left = 44.0
-offset_top = 52.0
-offset_right = 60.0
-offset_bottom = 68.0
-texture_normal = ExtResource("7_y8xan")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ActionContainer/Shops/CatShop" to="." method="_on_cat_shop_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ActionContainer/Close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList/Chicao" to="." method="_on_chicao_pressed"]

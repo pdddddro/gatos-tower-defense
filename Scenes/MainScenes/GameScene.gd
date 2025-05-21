@@ -65,10 +65,10 @@ func update_build_buttons():
 		button.disabled = fish_quantity < cat_cost
 		
 		if button.disabled:
-			button.modulate = Color("ff5439d9")
+			button.self_modulate = Color("cdc1b4a3")
 			
 		else:
-			button.modulate = Color("FFFFFF")
+			button.self_modulate = Color("FFFFFF")
 
 ## Wave Functions
 func start_next_wave():
@@ -85,7 +85,7 @@ func retrieve_wave_data():
 func spawn_enemies(wave_data):
 	for i in wave_data:
 		
-		var new_enemy = load("res://Scenes/Enemies/" + i[0] + ".tscn").instantiate()
+		var new_enemy = load("res://Scenes/Enemies/" + i[0] + "/" + i[0] + ".tscn").instantiate()
 		
 		new_enemy.type = i[0]
 
