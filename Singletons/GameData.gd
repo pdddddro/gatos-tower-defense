@@ -4,7 +4,7 @@ var cat_data = {
 	"Chicao": {
 		"damage": 20,
 		"atkcooldown": 1,
-		"range": 196,
+		"range": 800,
 		"cost": 100
 	},
 	
@@ -19,10 +19,17 @@ var cat_data = {
 		"damage": 20,
 		"atkcooldown": 1,
 		"range": 160,
-		"cost": 100
+		"cost": 50
 	},
 	
 	"Cartolina": {
+		"damage": 20,
+		"atkcooldown": 1,
+		"range": 160,
+		"cost": 100
+	},
+	
+	"Nut": {
 		"damage": 20,
 		"atkcooldown": 1,
 		"range": 160,
@@ -59,6 +66,9 @@ var enemies_data = {
 
 var waves = {
 	"wave1": [
-		["Plastico", 0.5],
+		["Pilha", 1],
+		["Plastico", 1],
+		["Chiclete", 1],
+		["Metal", 1]
 	],
 }

@@ -43,23 +43,23 @@ region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xv7ci"]
 atlas = ExtResource("3_tedku")
-region = Rect2(16, 96, 32, 32)
+region = Rect2(288, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x33nw"]
 atlas = ExtResource("3_tedku")
-region = Rect2(48, 96, 32, 32)
+region = Rect2(320, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vmd5b"]
 atlas = ExtResource("3_tedku")
-region = Rect2(80, 96, 32, 32)
+region = Rect2(352, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k5plb"]
 atlas = ExtResource("3_tedku")
-region = Rect2(112, 96, 32, 32)
+region = Rect2(384, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lfuu5"]
 atlas = ExtResource("3_tedku")
-region = Rect2(144, 96, 32, 32)
+region = Rect2(416, 32, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qs2hh"]
 animations = [{
@@ -183,9 +183,9 @@ animations = [{
 "duration": 0.3,
 "texture": SubResource("AtlasTexture_lfuu5")
 }],
-"loop": false,
+"loop": true,
 "name": &"IdleDownLeft",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,

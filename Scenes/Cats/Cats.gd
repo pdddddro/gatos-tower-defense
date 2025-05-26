@@ -80,9 +80,12 @@ func attack():
 		
 		var projectile = projectile_scene.instantiate()
 		
-		get_parent().add_child(projectile)
-		projectile.global_position = global_position
 		projectile.enemy = enemy
+		projectile.global_position = global_position
+		projectile.type = type
+		
+		get_parent().add_child(projectile)
+		
 		enemy.on_hit(GameData.cat_data[type]["damage"])
 		await get_tree().create_timer(GameData.cat_data[type]["atkcooldown"]).timeout
 		attack_ready = true

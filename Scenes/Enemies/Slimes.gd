@@ -60,9 +60,6 @@ func update_animation(direction: Vector2):
 		else:
 			anim = "WalkDown" if direction.y > 0 else "WalkUp"
 		sprite.play(anim)
-	
-	#print(anim)
-	#$AnimatedSprite2D.play(anim)
 
 var collision_shape = true
 

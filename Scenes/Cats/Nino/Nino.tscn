@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cbuier5l3bp7m"]
+[gd_scene load_steps=19 format=3 uid="uid://cbuier5l3bp7m"]
 
 [ext_resource type="Script" uid="uid://drtnf6143pkfe" path="res://Scenes/Cats/Pele/Pele.gd" id="1_nhsbb"]
 [ext_resource type="Texture2D" uid="uid://domqh7uvsmf3g" path="res://Assets/Cats/Chicao/animation.png" id="2_rvm13"]
@@ -33,33 +33,25 @@ region = Rect2(128, 32, 32, 32)
 atlas = ExtResource("2_rvm13")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_78e4f"]
-atlas = ExtResource("2_rvm13")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i3fkb"]
-atlas = ExtResource("2_rvm13")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0vk2m"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_yh2lq"]
 atlas = ExtResource("3_736gr")
-region = Rect2(16, 160, 32, 32)
+region = Rect2(64, 224, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wfxnj"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_o10ng"]
 atlas = ExtResource("3_736gr")
-region = Rect2(48, 160, 32, 32)
+region = Rect2(96, 224, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i0igr"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxv4p"]
 atlas = ExtResource("3_736gr")
-region = Rect2(80, 160, 32, 32)
+region = Rect2(128, 224, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4mhff"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bl0x2"]
 atlas = ExtResource("3_736gr")
-region = Rect2(112, 160, 32, 32)
+region = Rect2(160, 224, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_updgr"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_07odu"]
 atlas = ExtResource("3_736gr")
-region = Rect2(144, 160, 32, 32)
+region = Rect2(192, 224, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qs2hh"]
 animations = [{
@@ -111,45 +103,63 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_78e4f")
+"texture": SubResource("AtlasTexture_yh2lq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7f671")
+"texture": SubResource("AtlasTexture_o10ng")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mf1yk")
+"texture": SubResource("AtlasTexture_vxv4p")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3wtat")
+"texture": SubResource("AtlasTexture_o10ng")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8ilpq")
+"texture": SubResource("AtlasTexture_yh2lq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5cskr")
+"texture": SubResource("AtlasTexture_o10ng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxv4p")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_bl0x2")
+}, {
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_07odu")
 }],
-"loop": false,
+"loop": true,
 "name": &"AttackUpLeft",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_i3fkb")
+"texture": SubResource("AtlasTexture_yh2lq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7f671")
+"texture": SubResource("AtlasTexture_o10ng")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mf1yk")
+"texture": SubResource("AtlasTexture_vxv4p")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3wtat")
+"texture": SubResource("AtlasTexture_o10ng")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8ilpq")
+"texture": SubResource("AtlasTexture_yh2lq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5cskr")
+"texture": SubResource("AtlasTexture_o10ng")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxv4p")
+}, {
+"duration": 0.2,
+"texture": SubResource("AtlasTexture_bl0x2")
+}, {
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_07odu")
 }],
 "loop": false,
 "name": &"AttackUpRight",
@@ -157,31 +167,31 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0vk2m")
+"texture": SubResource("AtlasTexture_yh2lq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wfxnj")
+"texture": SubResource("AtlasTexture_o10ng")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_i0igr")
+"texture": SubResource("AtlasTexture_vxv4p")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wfxnj")
+"texture": SubResource("AtlasTexture_o10ng")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0vk2m")
+"texture": SubResource("AtlasTexture_yh2lq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wfxnj")
+"texture": SubResource("AtlasTexture_o10ng")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_i0igr")
+"texture": SubResource("AtlasTexture_vxv4p")
 }, {
 "duration": 0.2,
-"texture": SubResource("AtlasTexture_4mhff")
+"texture": SubResource("AtlasTexture_bl0x2")
 }, {
 "duration": 0.3,
-"texture": SubResource("AtlasTexture_updgr")
+"texture": SubResource("AtlasTexture_07odu")
 }],
 "loop": true,
 "name": &"IdleDownLeft",
@@ -189,31 +199,31 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0vk2m")
+"texture": SubResource("AtlasTexture_yh2lq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wfxnj")
+"texture": SubResource("AtlasTexture_o10ng")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_i0igr")
+"texture": SubResource("AtlasTexture_vxv4p")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wfxnj")
+"texture": SubResource("AtlasTexture_o10ng")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0vk2m")
+"texture": SubResource("AtlasTexture_yh2lq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wfxnj")
+"texture": SubResource("AtlasTexture_o10ng")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_i0igr")
+"texture": SubResource("AtlasTexture_vxv4p")
 }, {
 "duration": 0.2,
-"texture": SubResource("AtlasTexture_4mhff")
+"texture": SubResource("AtlasTexture_bl0x2")
 }, {
 "duration": 0.3,
-"texture": SubResource("AtlasTexture_updgr")
+"texture": SubResource("AtlasTexture_07odu")
 }],
 "loop": true,
 "name": &"IdleDownRight",

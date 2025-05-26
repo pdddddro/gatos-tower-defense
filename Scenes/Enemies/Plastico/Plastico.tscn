@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://c2bflmucnup4x"]
+[gd_scene load_steps=25 format=3 uid="uid://c2bflmucnup4x"]
 
 [ext_resource type="Script" uid="uid://c5cilqwnocbk1" path="res://Scenes/Enemies/Plastico/Plastico.gd" id="1_qq56m"]
 [ext_resource type="Texture2D" uid="uid://cnox4qbe63t46" path="res://Assets/Enemies/sprite_sheet.png" id="2_xx1a5"]
@@ -8,21 +8,17 @@
 radius = 4.0
 height = 14.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2ffcu"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_lopw5"]
 atlas = ExtResource("2_xx1a5")
 region = Rect2(288, 32, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_w27yb"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_s38xl"]
 atlas = ExtResource("2_xx1a5")
 region = Rect2(288, 64, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tj8aa"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_axqfp"]
 atlas = ExtResource("2_xx1a5")
 region = Rect2(288, 96, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nlrk2"]
-atlas = ExtResource("2_xx1a5")
-region = Rect2(288, 128, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i4bsh"]
 atlas = ExtResource("2_xx1a5")
@@ -92,20 +88,17 @@ region = Rect2(224, 128, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2ffcu")
+"texture": SubResource("AtlasTexture_lopw5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_w27yb")
+"texture": SubResource("AtlasTexture_s38xl")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tj8aa")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nlrk2")
+"texture": SubResource("AtlasTexture_axqfp")
 }],
 "loop": false,
 "name": &"Dead",
-"speed": 4.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,

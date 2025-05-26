@@ -8,9 +8,9 @@ var _up_anchor = Vector2(1-menu_size,1)
 var _down_anchor = Vector2(1,1+.365)
 var _target_anchor = _down_anchor
 
-@onready var cat_shop_container = $MarginContainer/VBoxContainer/CatShopContainer
+@onready var cat_shop_container = $MarginContainer/VBoxContainer/ShopContainer
 @onready var close_button = $MarginContainer/VBoxContainer/ActionContainer/Close
-@onready var cat_list = $MarginContainer/VBoxContainer/CatShopContainer/Background/MarginContainer/ScrollContainer/CatList
+@onready var cat_list = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -58,8 +58,3 @@ func _on_cat_shop_pressed() -> void:
 		close_button.visibility_layer = false
 		_target_anchor = _down_anchor
 	_popped_up = !_popped_up
-	
-
-
-func _on_chicao_pressed() -> void:
-	pass # Replace with function body.

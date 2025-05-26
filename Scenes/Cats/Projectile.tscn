@@ -1,35 +1,80 @@
-[gd_scene load_steps=6 format=3 uid="uid://bnwtcb3cixuh0"]
+[gd_scene load_steps=11 format=3 uid="uid://bnwtcb3cixuh0"]
 
 [ext_resource type="Script" uid="uid://dub7lrxxduh83" path="res://Scenes/Cats/Projectile.gd" id="1_bsn35"]
-[ext_resource type="Texture2D" uid="uid://c061d35ptj35w" path="res://Assets/Cats/Pele/Pele.png" id="2_qj1g6"]
+[ext_resource type="Texture2D" uid="uid://bj1wokpcgxo7i" path="res://Assets/Cats/Projetil-Sheet.png" id="2_bsn35"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0as84"]
-atlas = ExtResource("2_qj1g6")
-region = Rect2(16, 12, 4, 4)
+[sub_resource type="CircleShape2D" id="CircleShape2D_owymf"]
+radius = 11.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qj1g6"]
+atlas = ExtResource("2_bsn35")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrdhx"]
+atlas = ExtResource("2_bsn35")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3aaxc"]
+atlas = ExtResource("2_bsn35")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j3i2x"]
+atlas = ExtResource("2_bsn35")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mq28"]
+atlas = ExtResource("2_bsn35")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkvkn"]
+atlas = ExtResource("2_bsn35")
+region = Rect2(80, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qmhup"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0as84")
+"texture": SubResource("AtlasTexture_qj1g6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vrdhx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3aaxc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j3i2x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3mq28")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkvkn")
 }],
+"loop": false,
+"name": &"Chicao",
+"speed": 15.0
+}, {
+"frames": [],
 "loop": true,
-"name": &"default",
+"name": &"Nino",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Pele",
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_owymf"]
-radius = 11.0
-
 [node name="Projectile" type="Node2D"]
 script = ExtResource("1_bsn35")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(5.25, 5.25)
-sprite_frames = SubResource("SpriteFrames_qmhup")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_owymf")
 debug_color = Color(0.788516, 0.415031, 0.314463, 0.42)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qmhup")
+animation = &"Chicao"

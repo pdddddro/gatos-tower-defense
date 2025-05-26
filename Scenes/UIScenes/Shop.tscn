@@ -1,0 +1,754 @@
+[gd_scene load_steps=23 format=3 uid="uid://d0y6aaiw6832f"]
+
+[ext_resource type="Script" uid="uid://dh2a0v6qsoipe" path="res://Scenes/UIScenes/Shop.gd" id="1_ba3kk"]
+[ext_resource type="Texture2D" uid="uid://ycbwxuewd3jo" path="res://Assets/Icons/Catt3.png" id="2_k8126"]
+[ext_resource type="Texture2D" uid="uid://clqf5htsi1rom" path="res://Assets/Icons/Cards2.png" id="3_3lir5"]
+[ext_resource type="Texture2D" uid="uid://bgba1jqqv4rpe" path="res://Assets/Icons/Close.png" id="4_ld2fe"]
+[ext_resource type="Texture2D" uid="uid://dv3g48f7hixr8" path="res://Assets/UI/ui_background.png" id="5_ahyw7"]
+[ext_resource type="Texture2D" uid="uid://baya31xk74k60" path="res://Assets/UI/card_background.png" id="6_y2hbt"]
+[ext_resource type="FontFile" uid="uid://bxh8oh1s7ap4j" path="res://Assets/Fonts/medodicaregular.otf" id="7_4na07"]
+[ext_resource type="Texture2D" uid="uid://dvhrsyngix8od" path="res://Assets/Cats/Sombra.png" id="8_uhyj3"]
+[ext_resource type="Texture2D" uid="uid://bkttfrcv1d5uu" path="res://Assets/Cats/Chicao/Chicao.png" id="9_0ya3t"]
+[ext_resource type="Texture2D" uid="uid://d0s1xis4xqbm6" path="res://Assets/Icons/Fish1.png" id="10_8gkmu"]
+[ext_resource type="Texture2D" uid="uid://c061d35ptj35w" path="res://Assets/Cats/Pele/Pele.png" id="11_qah3m"]
+[ext_resource type="Texture2D" uid="uid://cyly7nfosdk6" path="res://Assets/Cats/Nino/Nino.png" id="12_apai1"]
+[ext_resource type="Texture2D" uid="uid://ca7dcxojm22x4" path="res://Assets/Cats/Cartolina/Cartolina.png" id="13_v6pep"]
+[ext_resource type="Texture2D" uid="uid://chbpn8hrki162" path="res://Assets/Cats/Nut/Nut.png" id="14_rtmr6"]
+[ext_resource type="PackedScene" uid="uid://c2jcnp85arbqw" path="res://Scenes/UIScenes/Cards.tscn" id="15_k8126"]
+[ext_resource type="Texture2D" uid="uid://b2c5hntryctxw" path="res://Assets/UI/Comum.png" id="16_3lir5"]
+[ext_resource type="Texture2D" uid="uid://bgf688vhkxpce" path="res://Assets/UI/Comum3.png" id="17_ahyw7"]
+[ext_resource type="Texture2D" uid="uid://dc21kcug4pvjs" path="res://Assets/UI/Comum2.png" id="18_y2hbt"]
+[ext_resource type="Texture2D" uid="uid://dvxlrofjcm6wd" path="res://Assets/UI/testee.png" id="19_4na07"]
+[ext_resource type="Texture2D" uid="uid://1j1v5x36yw8t" path="res://Assets/UI/testeee.png" id="20_uhyj3"]
+
+[sub_resource type="Theme" id="Theme_y8xan"]
+
+[sub_resource type="Theme" id="Theme_hxsv2"]
+
+[node name="Control" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -160.0
+offset_right = 324.0
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+mouse_filter = 2
+script = ExtResource("1_ba3kk")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -160.0
+offset_right = 324.0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+mouse_filter = 2
+theme_override_constants/separation = 0
+alignment = 2
+
+[node name="ActionContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Shops" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ActionContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="CatShop" type="TextureButton" parent="MarginContainer/VBoxContainer/ActionContainer/Shops"]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+tooltip_text = "Gatos"
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("2_k8126")
+stretch_mode = 0
+
+[node name="Cards" type="TextureButton" parent="MarginContainer/VBoxContainer/ActionContainer/Shops"]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+tooltip_text = "Cartas"
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_3lir5")
+stretch_mode = 0
+
+[node name="Spacer" type="Control" parent="MarginContainer/VBoxContainer/ActionContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Close" type="TextureButton" parent="MarginContainer/VBoxContainer/ActionContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("4_ld2fe")
+
+[node name="ShopContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 2
+theme_override_constants/separation = 0
+alignment = 2
+
+[node name="Background" type="NinePatchRect" parent="MarginContainer/VBoxContainer/ShopContainer"]
+texture_filter = 1
+clip_contents = true
+custom_minimum_size = Vector2(324, 128)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+texture = ExtResource("5_ahyw7")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 128.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme = SubResource("Theme_y8xan")
+
+[node name="CatList" type="HFlowContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer"]
+custom_minimum_size = Vector2(148, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="Chicao" type="TextureButton" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList" groups=["build_buttons"]]
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("6_y2hbt")
+stretch_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Chicao"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -36.0
+offset_right = 32.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_hxsv2")
+
+[node name="CatName" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Chicao/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -4
+theme_override_fonts/font = ExtResource("7_4na07")
+theme_override_font_sizes/font_size = 16
+text = "Chicão"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Chicao/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.341176)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("8_uhyj3")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Chicao/VBoxContainer/TextureRect2"]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -18.0
+offset_right = 17.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("9_0ya3t")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Chicao/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="FishIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Chicao/VBoxContainer/HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("10_8gkmu")
+expand_mode = 1
+
+[node name="CatPrice" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Chicao/VBoxContainer/HBoxContainer"]
+texture_filter = 3
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_4na07")
+theme_override_font_sizes/font_size = 16
+text = "100"
+
+[node name="Pele" type="TextureButton" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList" groups=["build_buttons"]]
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("6_y2hbt")
+stretch_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Pele"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -36.0
+offset_right = 32.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_hxsv2")
+
+[node name="CatName" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Pele/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_4na07")
+theme_override_font_sizes/font_size = 16
+text = "Pelé"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Pele/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.341176)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("8_uhyj3")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Pele/VBoxContainer/TextureRect2"]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -18.0
+offset_right = 17.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("11_qah3m")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Pele/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="FishIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Pele/VBoxContainer/HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("10_8gkmu")
+expand_mode = 1
+
+[node name="CatPrice" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Pele/VBoxContainer/HBoxContainer"]
+texture_filter = 3
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_4na07")
+theme_override_font_sizes/font_size = 16
+text = "100"
+
+[node name="Nino" type="TextureButton" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList" groups=["build_buttons"]]
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("6_y2hbt")
+stretch_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Nino"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -36.0
+offset_right = 32.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_hxsv2")
+
+[node name="CatName" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Nino/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_4na07")
+theme_override_font_sizes/font_size = 16
+text = "Nino"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Nino/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.341176)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("8_uhyj3")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Nino/VBoxContainer/TextureRect2"]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -18.0
+offset_right = 17.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("12_apai1")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Nino/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="FishIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Nino/VBoxContainer/HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("10_8gkmu")
+expand_mode = 1
+
+[node name="CatPrice" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Nino/VBoxContainer/HBoxContainer"]
+texture_filter = 3
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_4na07")
+theme_override_font_sizes/font_size = 16
+text = "50"
+
+[node name="Cartolina" type="TextureButton" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList" groups=["build_buttons"]]
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("6_y2hbt")
+stretch_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Cartolina"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -36.0
+offset_right = 32.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_hxsv2")
+
+[node name="CatName" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Cartolina/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_4na07")
+theme_override_font_sizes/font_size = 16
+text = "Cartolina"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Cartolina/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.341176)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("8_uhyj3")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Cartolina/VBoxContainer/TextureRect2"]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -18.0
+offset_right = 17.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("13_v6pep")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Cartolina/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="FishIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Cartolina/VBoxContainer/HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("10_8gkmu")
+expand_mode = 1
+
+[node name="CatPrice" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Cartolina/VBoxContainer/HBoxContainer"]
+texture_filter = 3
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_4na07")
+theme_override_font_sizes/font_size = 16
+text = "100"
+
+[node name="Nut" type="TextureButton" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList" groups=["build_buttons"]]
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("6_y2hbt")
+stretch_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Nut"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -36.0
+offset_right = 32.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_hxsv2")
+
+[node name="CatName" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Nut/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_4na07")
+theme_override_font_sizes/font_size = 16
+text = "Nut"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Nut/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.341176)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("8_uhyj3")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Nut/VBoxContainer/TextureRect2"]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -18.0
+offset_right = 17.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("14_rtmr6")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Nut/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="FishIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Nut/VBoxContainer/HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("10_8gkmu")
+expand_mode = 1
+
+[node name="CatPrice" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Nut/VBoxContainer/HBoxContainer"]
+texture_filter = 3
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_4na07")
+theme_override_font_sizes/font_size = 16
+text = "100"
+
+[node name="Cards" type="HFlowContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="Carta" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/Cards" instance=ExtResource("15_k8126")]
+layout_mode = 2
+
+[node name="Carta2" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/Cards" instance=ExtResource("15_k8126")]
+layout_mode = 2
+
+[node name="Carta3" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/Cards" instance=ExtResource("15_k8126")]
+layout_mode = 2
+
+[node name="CardsControl" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Basica" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="ComumIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/HBoxContainer/Basica"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("16_3lir5")
+stretch_mode = 2
+
+[node name="ComumRarity" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/HBoxContainer/Basica"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.156863, 0.360784, 0.768627, 1)
+theme_override_fonts/font = ExtResource("7_4na07")
+text = "60%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Comum" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="ComumIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/HBoxContainer/Comum"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("17_ahyw7")
+stretch_mode = 2
+
+[node name="ComumRarity" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/HBoxContainer/Comum"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.443137, 0.0666667, 1)
+theme_override_fonts/font = ExtResource("7_4na07")
+text = "30%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Rara" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="ComumIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/HBoxContainer/Rara"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("18_y2hbt")
+stretch_mode = 2
+
+[node name="ComumRarity" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/HBoxContainer/Rara"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.631373, 0.0627451, 0.309804, 1)
+theme_override_fonts/font = ExtResource("7_4na07")
+text = "10%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buy" type="TextureButton" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+texture_normal = ExtResource("19_4na07")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/Buy"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.0784314, 0.0627451, 0.0745098, 1)
+theme_override_fonts/font = ExtResource("7_4na07")
+theme_override_font_sizes/font_size = 16
+text = "Comprar Pack"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Details" type="TextureButton" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+texture_normal = ExtResource("20_uhyj3")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/Details"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.0784314, 0.0627451, 0.0745098, 1)
+theme_override_fonts/font = ExtResource("7_4na07")
+theme_override_font_sizes/font_size = 16
+text = "Detalhes"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sell" type="TextureButton" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+texture_normal = ExtResource("20_uhyj3")
+stretch_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/Sell"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Vender" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/Sell/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0784314, 0.0627451, 0.0745098, 1)
+theme_override_fonts/font = ExtResource("7_4na07")
+theme_override_font_sizes/font_size = 16
+text = "Vender"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FishIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/Sell/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("10_8gkmu")
+
+[node name="SellPrice" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/Sell/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0784314, 0.0627451, 0.0745098, 1)
+theme_override_fonts/font = ExtResource("7_4na07")
+theme_override_font_sizes/font_size = 16
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ActionContainer/Shops/CatShop" to="." method="_on_cat_shop_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ActionContainer/Close" to="." method="_on_close_pressed"]

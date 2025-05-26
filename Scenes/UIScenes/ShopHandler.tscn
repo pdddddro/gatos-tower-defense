@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://1lj0jyreqtxi"]
 
-[ext_resource type="PackedScene" uid="uid://d0y6aaiw6832f" path="res://Scenes/UIScenes/CatShop.tscn" id="1_o02vu"]
+[ext_resource type="PackedScene" uid="uid://d0y6aaiw6832f" path="res://Scenes/UIScenes/Shop.tscn" id="1_o02vu"]
 
 [node name="ShopHandler" type="Control"]
 layout_mode = 3

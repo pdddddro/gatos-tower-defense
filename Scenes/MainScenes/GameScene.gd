@@ -8,7 +8,7 @@ var map_node
 # Controls
 var is_dragging = false
 var drag_start_pos = Vector2.ZERO
-var drag_threshold = 10 # pixels
+var drag_threshold = 30 # pixels
 
 var cat_preview = null
 
@@ -62,11 +62,13 @@ func update_build_buttons():
 	for button in get_tree().get_nodes_in_group("build_buttons"):
 		var cat_type = button.get_name()
 		var cat_cost = GameData.cat_data[cat_type]["cost"]
+		
 		button.disabled = fish_quantity < cat_cost
 		
 		if button.disabled:
-			button.self_modulate = Color("cdc1b4a3")
-			
+			button.modulate = Color("cdc1b4a3")
+			button.mouse_default_cursor_shape = Control.CURSOR_ARROW
+
 		else:
 			button.self_modulate = Color("FFFFFF")
 
@@ -216,8 +218,7 @@ func _on_play_pressed() -> void:
 		play_button.texture_normal = speed_up
 		fast_mode = true
 
-
-@onready var CatShopScene = preload("res://Scenes/UIScenes/CatShop.tscn")
+@onready var CatShopScene = preload("res://Scenes/UIScenes/Shop.tscn")
 
 var cat_shop_instance: Control = null
 
