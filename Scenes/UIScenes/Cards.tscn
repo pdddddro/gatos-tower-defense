@@ -34,6 +34,13 @@ theme = SubResource("Theme_hxsv2")
 theme_override_constants/separation = 2
 alignment = 1
 
+[node name="CardRarity" type="TextureRect" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("3_dcx3m")
+
 [node name="CardIcon" type="TextureRect" parent="VBoxContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(32, 32)
@@ -41,13 +48,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 texture = ExtResource("2_suxgi")
-
-[node name="CardRarity" type="TextureRect" parent="VBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-texture = ExtResource("3_dcx3m")
 
 [node name="CardName" type="Label" parent="VBoxContainer"]
 texture_filter = 1

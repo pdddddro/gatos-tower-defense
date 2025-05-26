@@ -81,8 +81,9 @@ func attack():
 		var projectile = projectile_scene.instantiate()
 		
 		projectile.enemy = enemy
-		projectile.global_position = global_position
 		projectile.type = type
+		var aim_position = $Aim.global_position
+		projectile.global_position = aim_position
 		
 		get_parent().add_child(projectile)
 		

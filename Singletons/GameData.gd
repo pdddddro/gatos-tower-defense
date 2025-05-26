@@ -1,5 +1,6 @@
 extends Node
 
+## Cats
 var cat_data = {
 	"Chicao": {
 		"damage": 20,
@@ -37,6 +38,7 @@ var cat_data = {
 	}
 }
 
+## Enemies
 var enemies_data = {
 	"Plastico": {
 		"damage": 1,
@@ -64,6 +66,7 @@ var enemies_data = {
 	}
 }
 
+## Waves
 var waves = {
 	"wave1": [
 		["Pilha", 1],
@@ -71,4 +74,59 @@ var waves = {
 		["Chiclete", 1],
 		["Metal", 1]
 	],
+}
+
+## Cards
+var card_data = {
+	"basic": [
+		{
+			"name": "Basica1",
+			"description": "Este gato tem um pé de coelho por isso produz 10% a mais de dinheiro... espera, isso não faz sentido - exclusivo para Odin",
+			"icon": "res://Assets/Icons/strength_basic.png",
+			"rarity_color": Color("808080"), # Cinza para básica
+			"effects": {"damage": 5}
+		},{
+			"name": "Basica2", 
+			"description": "Este gato tem um pé de coelho por isso produz 10% a mais de dinheiro... espera, isso não faz sentido - exclusivo para Odin",
+			"icon": "res://Assets/Icons/speed_basic.png",
+			"rarity_color": Color("808080"),
+			"effects": {"speed": 0.1}
+		}],
+		
+	"medium": [
+		{
+			"name": "Media1",
+			"description": "Aumenta o dano em 5 pontos",
+			"icon": "res://Assets/Icons/strength_basic.png",
+			"rarity_color": Color("808080"), # Cinza para básica
+			"effects": {"damage": 5}
+		},{
+			"name": "Media2", 
+			"description": "Aumenta a velocidade em 10%",
+			"icon": "res://Assets/Icons/speed_basic.png",
+			"rarity_color": Color("808080"),
+			"effects": {"speed": 0.1}
+		}],
+		
+	"rare": [
+		{
+			"name": "Rara1",
+			"description": "Aumenta o dano em 5 pontos",
+			"icon": "res://Assets/Icons/strength_basic.png",
+			"rarity_color": Color("808080"), # Cinza para básica
+			"effects": {"damage": 5}
+		},{
+			"name": "Rara2", 
+			"description": "Aumenta a velocidade em 10%",
+			"icon": "res://Assets/Icons/speed_basic.png",
+			"rarity_color": Color("808080"),
+			"effects": {"speed": 0.1}
+		}],
+}
+
+## Rarity
+var card_rarity_chances = {
+	"basic": 60,
+	"medium": 30, 
+	"rare": 10
 }

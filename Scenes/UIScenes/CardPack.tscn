@@ -1,0 +1,75 @@
+[gd_scene load_steps=6 format=3 uid="uid://kb0oa4sc3gnj"]
+
+[ext_resource type="Texture2D" uid="uid://baya31xk74k60" path="res://Assets/UI/card_background.png" id="1_8mogj"]
+[ext_resource type="Script" uid="uid://bdq4h1w0g5qgk" path="res://Scenes/UIScenes/card_pack.gd" id="2_has3m"]
+[ext_resource type="Texture2D" uid="uid://bbsd23rrcxjx8" path="res://Assets/UI/CardsTag.png" id="2_p52fo"]
+[ext_resource type="Texture2D" uid="uid://dwchgcpqg52pg" path="res://Assets/UI/Teste.png" id="3_has3m"]
+[ext_resource type="FontFile" uid="uid://bxh8oh1s7ap4j" path="res://Assets/Fonts/medodicaregular.otf" id="4_7yagg"]
+
+[node name="Card" type="TextureButton"]
+custom_minimum_size = Vector2(154, 232)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("1_8mogj")
+stretch_mode = 0
+script = ExtResource("2_has3m")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="CardRarity" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("2_p52fo")
+
+[node name="CardIcon" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("3_has3m")
+
+[node name="CardName" type="Label" parent="MarginContainer/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.0784314, 0.0627451, 0.0745098, 1)
+theme_override_constants/line_spacing = -4
+theme_override_fonts/font = ExtResource("4_7yagg")
+theme_override_font_sizes/font_size = 16
+text = "Nome da Carta"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="CardDescription" type="Label" parent="MarginContainer/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.5755, 0.471188, 0.240132, 1)
+theme_override_constants/line_spacing = -4
+theme_override_fonts/font = ExtResource("4_7yagg")
+theme_override_font_sizes/font_size = 16
+text = "Este gato tem um pé de coelho por isso produz 10% a mais de dinheiro... espera, isso não faz sentido - exclusivo para Odin"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

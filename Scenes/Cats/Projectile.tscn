@@ -53,7 +53,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Chicao",
-"speed": 15.0
+"speed": 30.0
 }, {
 "frames": [],
 "loop": true,

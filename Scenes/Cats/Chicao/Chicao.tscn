@@ -197,14 +197,14 @@ y_sort_enabled = true
 position = Vector2(-1, -2)
 texture = ExtResource("2_17dmv")
 
-[node name="Aim" type="Marker2D" parent="."]
-position = Vector2(8, -6)
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_edhuf")
 animation = &"IdleDownLeft"
+
+[node name="Aim" type="Marker2D" parent="."]
+position = Vector2(8, -8)
 
 [connection signal="body_entered" from="Range" to="." method="_on_range_body_entered"]
 [connection signal="body_exited" from="Range" to="." method="_on_range_body_exited"]

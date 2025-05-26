@@ -94,7 +94,6 @@ size_flags_horizontal = 3
 mouse_filter = 2
 
 [node name="Close" type="TextureButton" parent="MarginContainer/VBoxContainer/ActionContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
@@ -589,19 +588,19 @@ theme_override_fonts/font = ExtResource("7_4na07")
 theme_override_font_sizes/font_size = 16
 text = "100"
 
-[node name="Cards" type="HFlowContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer"]
+[node name="CardList" type="HFlowContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 mouse_filter = 2
 
-[node name="Carta" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/Cards" instance=ExtResource("15_k8126")]
+[node name="Carta" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CardList" instance=ExtResource("15_k8126")]
 layout_mode = 2
 
-[node name="Carta2" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/Cards" instance=ExtResource("15_k8126")]
+[node name="Carta2" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CardList" instance=ExtResource("15_k8126")]
 layout_mode = 2
 
-[node name="Carta3" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/Cards" instance=ExtResource("15_k8126")]
+[node name="Carta3" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CardList" instance=ExtResource("15_k8126")]
 layout_mode = 2
 
 [node name="CardsControl" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer"]
@@ -751,4 +750,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ActionContainer/Shops/CatShop" to="." method="_on_cat_shop_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ActionContainer/Shops/Cards" to="." method="_on_cards_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ActionContainer/Close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/Buy" to="." method="_on_buy_pressed"]
