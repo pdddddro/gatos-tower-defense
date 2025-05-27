@@ -1,10 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://d0y6aaiw6832f"]
+[gd_scene load_steps=25 format=3 uid="uid://d0y6aaiw6832f"]
 
 [ext_resource type="Script" uid="uid://dh2a0v6qsoipe" path="res://Scenes/UIScenes/Shop.gd" id="1_ba3kk"]
 [ext_resource type="Texture2D" uid="uid://ycbwxuewd3jo" path="res://Assets/Icons/Catt3.png" id="2_k8126"]
 [ext_resource type="Texture2D" uid="uid://clqf5htsi1rom" path="res://Assets/Icons/Cards2.png" id="3_3lir5"]
 [ext_resource type="Texture2D" uid="uid://bgba1jqqv4rpe" path="res://Assets/Icons/Close.png" id="4_ld2fe"]
 [ext_resource type="Texture2D" uid="uid://dv3g48f7hixr8" path="res://Assets/UI/ui_background.png" id="5_ahyw7"]
+[ext_resource type="Texture2D" uid="uid://dahq70rsnb1fi" path="res://Assets/UI/ScrollBackground.png" id="6_uhyj3"]
 [ext_resource type="Texture2D" uid="uid://baya31xk74k60" path="res://Assets/UI/card_background.png" id="6_y2hbt"]
 [ext_resource type="FontFile" uid="uid://bxh8oh1s7ap4j" path="res://Assets/Fonts/medodicaregular.otf" id="7_4na07"]
 [ext_resource type="Texture2D" uid="uid://dvhrsyngix8od" path="res://Assets/Cats/Sombra.png" id="8_uhyj3"]
@@ -18,8 +19,9 @@
 [ext_resource type="Texture2D" uid="uid://b2c5hntryctxw" path="res://Assets/UI/Comum.png" id="16_3lir5"]
 [ext_resource type="Texture2D" uid="uid://bgf688vhkxpce" path="res://Assets/UI/Comum3.png" id="17_ahyw7"]
 [ext_resource type="Texture2D" uid="uid://dc21kcug4pvjs" path="res://Assets/UI/Comum2.png" id="18_y2hbt"]
-[ext_resource type="Texture2D" uid="uid://dvxlrofjcm6wd" path="res://Assets/UI/testee.png" id="19_4na07"]
+[ext_resource type="Texture2D" uid="uid://baepjslnydqim" path="res://Assets/UI/botao_principal_padrao.png" id="20_0ya3t"]
 [ext_resource type="Texture2D" uid="uid://1j1v5x36yw8t" path="res://Assets/UI/testeee.png" id="20_uhyj3"]
+[ext_resource type="Texture2D" uid="uid://mx3dyc0tnke" path="res://Assets/UI/botao_principal_hover.png" id="21_8gkmu"]
 
 [sub_resource type="Theme" id="Theme_y8xan"]
 
@@ -32,7 +34,7 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_top = -160.0
-offset_right = 324.0
+offset_right = 336.0
 grow_vertical = 0
 size_flags_horizontal = 0
 size_flags_vertical = 8
@@ -41,17 +43,15 @@ script = ExtResource("1_ba3kk")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -160.0
-offset_right = 324.0
-grow_vertical = 0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
 size_flags_vertical = 8
 mouse_filter = 2
 theme_override_constants/separation = 0
@@ -110,9 +110,8 @@ alignment = 2
 [node name="Background" type="NinePatchRect" parent="MarginContainer/VBoxContainer/ShopContainer"]
 texture_filter = 1
 clip_contents = true
-custom_minimum_size = Vector2(324, 128)
+custom_minimum_size = Vector2(332, 128)
 layout_mode = 2
-size_flags_horizontal = 0
 size_flags_vertical = 8
 texture = ExtResource("5_ahyw7")
 region_rect = Rect2(0, 0, 48, 48)
@@ -124,34 +123,58 @@ patch_margin_bottom = 16
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background"]
 clip_contents = true
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = 15
 anchor_right = 1.0
-offset_bottom = 128.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 4
+theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer"]
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(160, 0)
+[node name="TextureRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(168, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("6_uhyj3")
+region_rect = Rect2(0, 0, 96, 96)
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 theme = SubResource("Theme_y8xan")
 
-[node name="CatList" type="HFlowContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer"]
+[node name="CatList" type="HFlowContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer"]
+visible = false
 custom_minimum_size = Vector2(148, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 mouse_filter = 2
 
-[node name="Chicao" type="TextureButton" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList" groups=["build_buttons"]]
+[node name="Chicao" type="TextureButton" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList" groups=["build_buttons"]]
 custom_minimum_size = Vector2(72, 0)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -160,7 +183,7 @@ mouse_default_cursor_shape = 2
 texture_normal = ExtResource("6_y2hbt")
 stretch_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Chicao"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Chicao"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -177,7 +200,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 theme = SubResource("Theme_hxsv2")
 
-[node name="CatName" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Chicao/VBoxContainer"]
+[node name="CatName" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Chicao/VBoxContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
@@ -191,14 +214,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Chicao/VBoxContainer"]
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Chicao/VBoxContainer"]
 self_modulate = Color(1, 1, 1, 0.341176)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("8_uhyj3")
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Chicao/VBoxContainer/TextureRect2"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Chicao/VBoxContainer/TextureRect2"]
 texture_filter = 1
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
@@ -217,12 +240,12 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 texture = ExtResource("9_0ya3t")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Chicao/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Chicao/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 alignment = 1
 
-[node name="FishIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Chicao/VBoxContainer/HBoxContainer"]
+[node name="FishIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Chicao/VBoxContainer/HBoxContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
@@ -231,7 +254,7 @@ size_flags_vertical = 4
 texture = ExtResource("10_8gkmu")
 expand_mode = 1
 
-[node name="CatPrice" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Chicao/VBoxContainer/HBoxContainer"]
+[node name="CatPrice" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Chicao/VBoxContainer/HBoxContainer"]
 texture_filter = 3
 layout_mode = 2
 size_flags_horizontal = 0
@@ -240,7 +263,7 @@ theme_override_fonts/font = ExtResource("7_4na07")
 theme_override_font_sizes/font_size = 16
 text = "100"
 
-[node name="Pele" type="TextureButton" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList" groups=["build_buttons"]]
+[node name="Pele" type="TextureButton" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList" groups=["build_buttons"]]
 custom_minimum_size = Vector2(72, 0)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -249,7 +272,7 @@ mouse_default_cursor_shape = 2
 texture_normal = ExtResource("6_y2hbt")
 stretch_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Pele"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Pele"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -266,7 +289,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 theme = SubResource("Theme_hxsv2")
 
-[node name="CatName" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Pele/VBoxContainer"]
+[node name="CatName" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Pele/VBoxContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
@@ -278,14 +301,14 @@ text = "Pelé"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Pele/VBoxContainer"]
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Pele/VBoxContainer"]
 self_modulate = Color(1, 1, 1, 0.341176)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("8_uhyj3")
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Pele/VBoxContainer/TextureRect2"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Pele/VBoxContainer/TextureRect2"]
 texture_filter = 1
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
@@ -304,12 +327,12 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 texture = ExtResource("11_qah3m")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Pele/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Pele/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 alignment = 1
 
-[node name="FishIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Pele/VBoxContainer/HBoxContainer"]
+[node name="FishIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Pele/VBoxContainer/HBoxContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
@@ -318,7 +341,7 @@ size_flags_vertical = 4
 texture = ExtResource("10_8gkmu")
 expand_mode = 1
 
-[node name="CatPrice" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Pele/VBoxContainer/HBoxContainer"]
+[node name="CatPrice" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Pele/VBoxContainer/HBoxContainer"]
 texture_filter = 3
 layout_mode = 2
 size_flags_horizontal = 0
@@ -327,7 +350,7 @@ theme_override_fonts/font = ExtResource("7_4na07")
 theme_override_font_sizes/font_size = 16
 text = "100"
 
-[node name="Nino" type="TextureButton" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList" groups=["build_buttons"]]
+[node name="Nino" type="TextureButton" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList" groups=["build_buttons"]]
 custom_minimum_size = Vector2(72, 0)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -336,7 +359,7 @@ mouse_default_cursor_shape = 2
 texture_normal = ExtResource("6_y2hbt")
 stretch_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Nino"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Nino"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -353,7 +376,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 theme = SubResource("Theme_hxsv2")
 
-[node name="CatName" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Nino/VBoxContainer"]
+[node name="CatName" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Nino/VBoxContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
@@ -365,14 +388,14 @@ text = "Nino"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Nino/VBoxContainer"]
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Nino/VBoxContainer"]
 self_modulate = Color(1, 1, 1, 0.341176)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("8_uhyj3")
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Nino/VBoxContainer/TextureRect2"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Nino/VBoxContainer/TextureRect2"]
 texture_filter = 1
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
@@ -391,12 +414,12 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 texture = ExtResource("12_apai1")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Nino/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Nino/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 alignment = 1
 
-[node name="FishIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Nino/VBoxContainer/HBoxContainer"]
+[node name="FishIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Nino/VBoxContainer/HBoxContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
@@ -405,7 +428,7 @@ size_flags_vertical = 4
 texture = ExtResource("10_8gkmu")
 expand_mode = 1
 
-[node name="CatPrice" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Nino/VBoxContainer/HBoxContainer"]
+[node name="CatPrice" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Nino/VBoxContainer/HBoxContainer"]
 texture_filter = 3
 layout_mode = 2
 size_flags_horizontal = 0
@@ -414,7 +437,7 @@ theme_override_fonts/font = ExtResource("7_4na07")
 theme_override_font_sizes/font_size = 16
 text = "50"
 
-[node name="Cartolina" type="TextureButton" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList" groups=["build_buttons"]]
+[node name="Cartolina" type="TextureButton" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList" groups=["build_buttons"]]
 custom_minimum_size = Vector2(72, 0)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -423,7 +446,7 @@ mouse_default_cursor_shape = 2
 texture_normal = ExtResource("6_y2hbt")
 stretch_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Cartolina"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Cartolina"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -440,7 +463,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 theme = SubResource("Theme_hxsv2")
 
-[node name="CatName" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Cartolina/VBoxContainer"]
+[node name="CatName" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Cartolina/VBoxContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
@@ -452,14 +475,14 @@ text = "Cartolina"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Cartolina/VBoxContainer"]
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Cartolina/VBoxContainer"]
 self_modulate = Color(1, 1, 1, 0.341176)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("8_uhyj3")
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Cartolina/VBoxContainer/TextureRect2"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Cartolina/VBoxContainer/TextureRect2"]
 texture_filter = 1
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
@@ -478,12 +501,12 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 texture = ExtResource("13_v6pep")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Cartolina/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Cartolina/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 alignment = 1
 
-[node name="FishIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Cartolina/VBoxContainer/HBoxContainer"]
+[node name="FishIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Cartolina/VBoxContainer/HBoxContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
@@ -492,7 +515,7 @@ size_flags_vertical = 4
 texture = ExtResource("10_8gkmu")
 expand_mode = 1
 
-[node name="CatPrice" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Cartolina/VBoxContainer/HBoxContainer"]
+[node name="CatPrice" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Cartolina/VBoxContainer/HBoxContainer"]
 texture_filter = 3
 layout_mode = 2
 size_flags_horizontal = 0
@@ -501,7 +524,7 @@ theme_override_fonts/font = ExtResource("7_4na07")
 theme_override_font_sizes/font_size = 16
 text = "100"
 
-[node name="Nut" type="TextureButton" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList" groups=["build_buttons"]]
+[node name="Nut" type="TextureButton" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList" groups=["build_buttons"]]
 custom_minimum_size = Vector2(72, 0)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -510,7 +533,7 @@ mouse_default_cursor_shape = 2
 texture_normal = ExtResource("6_y2hbt")
 stretch_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Nut"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Nut"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -527,7 +550,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 theme = SubResource("Theme_hxsv2")
 
-[node name="CatName" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Nut/VBoxContainer"]
+[node name="CatName" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Nut/VBoxContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
@@ -539,14 +562,14 @@ text = "Nut"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Nut/VBoxContainer"]
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Nut/VBoxContainer"]
 self_modulate = Color(1, 1, 1, 0.341176)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("8_uhyj3")
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Nut/VBoxContainer/TextureRect2"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Nut/VBoxContainer/TextureRect2"]
 texture_filter = 1
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
@@ -565,12 +588,12 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 texture = ExtResource("14_rtmr6")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Nut/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Nut/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 alignment = 1
 
-[node name="FishIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Nut/VBoxContainer/HBoxContainer"]
+[node name="FishIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Nut/VBoxContainer/HBoxContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
@@ -579,7 +602,7 @@ size_flags_vertical = 4
 texture = ExtResource("10_8gkmu")
 expand_mode = 1
 
-[node name="CatPrice" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList/Nut/VBoxContainer/HBoxContainer"]
+[node name="CatPrice" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Nut/VBoxContainer/HBoxContainer"]
 texture_filter = 3
 layout_mode = 2
 size_flags_horizontal = 0
@@ -588,43 +611,54 @@ theme_override_fonts/font = ExtResource("7_4na07")
 theme_override_font_sizes/font_size = 16
 text = "100"
 
-[node name="CardList" type="HFlowContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer"]
+[node name="CardList" type="HFlowContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 mouse_filter = 2
 
-[node name="Carta" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CardList" instance=ExtResource("15_k8126")]
+[node name="Carta" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CardList" instance=ExtResource("15_k8126")]
 layout_mode = 2
 
-[node name="Carta2" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CardList" instance=ExtResource("15_k8126")]
+[node name="Carta2" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CardList" instance=ExtResource("15_k8126")]
 layout_mode = 2
 
-[node name="Carta3" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CardList" instance=ExtResource("15_k8126")]
+[node name="Carta3" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CardList" instance=ExtResource("15_k8126")]
+layout_mode = 2
+
+[node name="Carta4" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CardList" instance=ExtResource("15_k8126")]
+layout_mode = 2
+
+[node name="Carta5" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CardList" instance=ExtResource("15_k8126")]
+layout_mode = 2
+
+[node name="Carta6" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CardList" instance=ExtResource("15_k8126")]
 layout_mode = 2
 
 [node name="CardsControl" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+alignment = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl"]
+[node name="CardRarity" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl"]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_constants/separation = 8
 alignment = 1
 
-[node name="Basica" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/HBoxContainer"]
+[node name="Basica" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity"]
 layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="ComumIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/HBoxContainer/Basica"]
+[node name="ComumIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity/Basica"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("16_3lir5")
 stretch_mode = 2
 
-[node name="ComumRarity" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/HBoxContainer/Basica"]
+[node name="ComumRarity" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity/Basica"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.156863, 0.360784, 0.768627, 1)
 theme_override_fonts/font = ExtResource("7_4na07")
@@ -632,18 +666,18 @@ text = "60%"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Comum" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/HBoxContainer"]
+[node name="Comum" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity"]
 layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="ComumIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/HBoxContainer/Comum"]
+[node name="ComumIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity/Comum"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("17_ahyw7")
 stretch_mode = 2
 
-[node name="ComumRarity" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/HBoxContainer/Comum"]
+[node name="ComumRarity" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity/Comum"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.443137, 0.0666667, 1)
 theme_override_fonts/font = ExtResource("7_4na07")
@@ -651,18 +685,18 @@ text = "30%"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Rara" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/HBoxContainer"]
+[node name="Rara" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity"]
 layout_mode = 2
 theme_override_constants/separation = 2
 
-[node name="ComumIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/HBoxContainer/Rara"]
+[node name="ComumIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity/Rara"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("18_y2hbt")
 stretch_mode = 2
 
-[node name="ComumRarity" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/HBoxContainer/Rara"]
+[node name="ComumRarity" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity/Rara"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.631373, 0.0627451, 0.309804, 1)
 theme_override_fonts/font = ExtResource("7_4na07")
@@ -673,7 +707,8 @@ vertical_alignment = 1
 [node name="Buy" type="TextureButton" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl"]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
-texture_normal = ExtResource("19_4na07")
+texture_normal = ExtResource("20_0ya3t")
+texture_hover = ExtResource("21_8gkmu")
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/Buy"]
@@ -683,7 +718,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.0784314, 0.0627451, 0.0745098, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 0.784314)
 theme_override_fonts/font = ExtResource("7_4na07")
 theme_override_font_sizes/font_size = 16
 text = "Comprar Pack"
@@ -703,7 +738,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.0784314, 0.0627451, 0.0745098, 1)
+theme_override_colors/font_color = Color(0.0784314, 0.0627451, 0.0745098, 0.392157)
 theme_override_fonts/font = ExtResource("7_4na07")
 theme_override_font_sizes/font_size = 16
 text = "Detalhes"
@@ -727,7 +762,7 @@ alignment = 1
 
 [node name="Vender" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/Sell/HBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.0784314, 0.0627451, 0.0745098, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 0.392157)
 theme_override_fonts/font = ExtResource("7_4na07")
 theme_override_font_sizes/font_size = 16
 text = "Vender"
@@ -735,6 +770,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="FishIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/Sell/HBoxContainer"]
+modulate = Color(1, 1, 1, 0.392157)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
@@ -742,7 +778,7 @@ texture = ExtResource("10_8gkmu")
 
 [node name="SellPrice" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/Sell/HBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.0784314, 0.0627451, 0.0745098, 1)
+theme_override_colors/font_color = Color(0.0784314, 0.0627451, 0.0745098, 0.392157)
 theme_override_fonts/font = ExtResource("7_4na07")
 theme_override_font_sizes/font_size = 16
 text = "100"

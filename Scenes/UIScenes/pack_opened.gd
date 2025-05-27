@@ -5,7 +5,7 @@ var container: Container
 
 func _ready():
 	# Pega o container onde as cartas serão adicionadas
-	container = $HBoxContainer  # Ajuste o caminho conforme sua estrutura
+	container = $VBoxContainer/HBoxContainer  # Ajuste o caminho conforme sua estrutura
 	
 	# Gera 3 cartas aleatórias
 	var random_cards = generate_3_random_cards()

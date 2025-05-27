@@ -10,8 +10,8 @@ var _target_anchor = _down_anchor
 
 @onready var shop_container = $MarginContainer/VBoxContainer/ShopContainer
 @onready var close_button = $MarginContainer/VBoxContainer/ActionContainer/Close
-@onready var cat_list = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CatList
-@onready var card_list = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/ScrollContainer/CardList
+@onready var cat_list = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList
+@onready var card_list = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CardList
 @onready var cards_control = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl
 
 var card_selection_scene = preload("res://Scenes/UIScenes/PackOpened.tscn")
