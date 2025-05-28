@@ -66,8 +66,8 @@ var enemies_data = {
 	}
 }
 
-## Waves
-var waves = {
+## round
+var wave = {
 	"wave1": [
 		["Pilha", 1],
 		["Plastico", 1],
@@ -124,13 +124,6 @@ var card_data = {
 		}],
 }
 
-## Rarity
-var card_rarity_chances = {
-	"basic": 60,
-	"medium": 30, 
-	"rare": 10
-}
-
 var card_collection = []
 
 signal card_added_to_inventory(card_data)
@@ -139,3 +132,27 @@ func add_card_to_collection(card_data: Dictionary):
 	card_collection.append(card_data.duplicate())
 	
 	card_added_to_inventory.emit(card_data)
+
+func _ready():
+	update_rarity_chances() ##Adicionar isso
+
+## Round Rarity
+var card_rarity_chances = {
+	"basic": 60,
+	"medium": 30, 
+	"rare": 10
+}
+
+## Rarity Table
+var rarity_table = {
+	1: {"basic": 60, "medium": 30, "rare": 10},
+	2: {"basic": 55, "medium": 32, "rare": 13},
+	3: {"basic": 50, "medium": 34, "rare": 16},
+	4: {"basic": 45, "medium": 35, "rare": 20},
+	5: {"basic": 40, "medium": 35, "rare": 25},
+	6: {"basic": 35, "medium": 35, "rare": 30},
+	7: {"basic": 30, "medium": 35, "rare": 35},
+	8: {"basic": 25, "medium": 35, "rare": 40},
+	9: {"basic": 20, "medium": 35, "rare": 45},
+	10: {"basic": 15, "medium": 35, "rare": 50}
+}

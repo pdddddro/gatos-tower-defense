@@ -39,6 +39,8 @@ func _ready() -> void:
 	
 	WaveCount.text = "Rodada " + str(current_wave) + "/50"
 	
+	GameData.next_round()
+	
 	update_fish_label()
 	
 	for i in get_tree().get_nodes_in_group("build_buttons"):
@@ -117,6 +119,8 @@ func check_wave_end():
 		print("Wave finalizada!")
 		current_wave += 1
 		WaveCount.text = "Rodada " + str(current_wave) + "/50"
+		
+		GameData.next_round()
 		
 		play_button.texture_normal = play
 		

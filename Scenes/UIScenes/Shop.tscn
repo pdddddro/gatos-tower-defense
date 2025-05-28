@@ -617,7 +617,7 @@ size_flags_vertical = 0
 mouse_filter = 2
 
 [node name="EmptyLabel" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CardList"]
-modulate = Color(1, 1, 1, 0.447059)
+modulate = Color(0, 0, 0, 0.392157)
 custom_minimum_size = Vector2(0, 104)
 layout_mode = 2
 size_flags_horizontal = 3
