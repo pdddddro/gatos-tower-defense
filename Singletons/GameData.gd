@@ -80,7 +80,7 @@ var waves = {
 var card_data = {
 	"basic": [
 		{
-			"name": "Basica1",
+			"name": "Agilidade Felina",
 			"description": "Este gato tem um pé de coelho por isso produz 10% a mais de dinheiro... espera, isso não faz sentido - exclusivo para Odin",
 			"icon": "res://Assets/Icons/strength_basic.png",
 			"rarity_color": Color("808080"), # Cinza para básica
@@ -130,3 +130,12 @@ var card_rarity_chances = {
 	"medium": 30, 
 	"rare": 10
 }
+
+var card_collection = []
+
+signal card_added_to_inventory(card_data)
+
+func add_card_to_collection(card_data: Dictionary):
+	card_collection.append(card_data.duplicate())
+	
+	card_added_to_inventory.emit(card_data)

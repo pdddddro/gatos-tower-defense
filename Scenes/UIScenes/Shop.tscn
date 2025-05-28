@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://d0y6aaiw6832f"]
+[gd_scene load_steps=24 format=3 uid="uid://d0y6aaiw6832f"]
 
 [ext_resource type="Script" uid="uid://dh2a0v6qsoipe" path="res://Scenes/UIScenes/Shop.gd" id="1_ba3kk"]
 [ext_resource type="Texture2D" uid="uid://ycbwxuewd3jo" path="res://Assets/Icons/Catt3.png" id="2_k8126"]
@@ -15,7 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://cyly7nfosdk6" path="res://Assets/Cats/Nino/Nino.png" id="12_apai1"]
 [ext_resource type="Texture2D" uid="uid://ca7dcxojm22x4" path="res://Assets/Cats/Cartolina/Cartolina.png" id="13_v6pep"]
 [ext_resource type="Texture2D" uid="uid://chbpn8hrki162" path="res://Assets/Cats/Nut/Nut.png" id="14_rtmr6"]
-[ext_resource type="PackedScene" uid="uid://c2jcnp85arbqw" path="res://Scenes/UIScenes/Cards.tscn" id="15_k8126"]
 [ext_resource type="Texture2D" uid="uid://b2c5hntryctxw" path="res://Assets/UI/Comum.png" id="16_3lir5"]
 [ext_resource type="Texture2D" uid="uid://bgf688vhkxpce" path="res://Assets/UI/Comum3.png" id="17_ahyw7"]
 [ext_resource type="Texture2D" uid="uid://dc21kcug4pvjs" path="res://Assets/UI/Comum2.png" id="18_y2hbt"]
@@ -617,23 +616,18 @@ size_flags_horizontal = 3
 size_flags_vertical = 0
 mouse_filter = 2
 
-[node name="Carta" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CardList" instance=ExtResource("15_k8126")]
+[node name="EmptyLabel" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CardList"]
+modulate = Color(1, 1, 1, 0.447059)
+custom_minimum_size = Vector2(0, 104)
 layout_mode = 2
-
-[node name="Carta2" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CardList" instance=ExtResource("15_k8126")]
-layout_mode = 2
-
-[node name="Carta3" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CardList" instance=ExtResource("15_k8126")]
-layout_mode = 2
-
-[node name="Carta4" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CardList" instance=ExtResource("15_k8126")]
-layout_mode = 2
-
-[node name="Carta5" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CardList" instance=ExtResource("15_k8126")]
-layout_mode = 2
-
-[node name="Carta6" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CardList" instance=ExtResource("15_k8126")]
-layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/line_spacing = -2
+theme_override_fonts/font = ExtResource("7_4na07")
+theme_override_font_sizes/font_size = 16
+text = "Você ainda não tem nenhuma carta, compre packs para melhorar os seus gatos!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="CardsControl" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer"]
 layout_mode = 2

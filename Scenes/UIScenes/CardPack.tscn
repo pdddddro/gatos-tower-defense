@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://bxh8oh1s7ap4j" path="res://Assets/Fonts/medodicaregular.otf" id="4_7yagg"]
 
 [node name="Card" type="TextureButton"]
+process_mode = 2
 custom_minimum_size = Vector2(154, 232)
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -75,3 +76,5 @@ text = "Este gato tem um pé de coelho por isso produz 10% a mais de dinheiro...
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

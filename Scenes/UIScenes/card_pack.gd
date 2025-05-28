@@ -1,11 +1,8 @@
 extends TextureButton
 
 var card_data: Dictionary
+signal card_selected(selected_card_data)
 
-func _ready():
-	connect("pressed", _on_card_selected)
-
-func _on_card_selected():
-	print("Carta selecionada: ", card_data.name)
-	# Aqui você pode adicionar a lógica para quando o jogador escolher esta carta
-	# Por exemplo: adicionar ao inventário, fechar o pack, etc.
+func _on_pressed() -> void:
+	card_selected.emit(card_data)
+	pass

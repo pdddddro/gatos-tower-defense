@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://c2jcnp85arbqw"]
+
+[ext_resource type="Texture2D" uid="uid://baya31xk74k60" path="res://Assets/UI/card_background.png" id="1_r7sdq"]
+[ext_resource type="Texture2D" uid="uid://bbsd23rrcxjx8" path="res://Assets/UI/CardsTag.png" id="2_a2uiu"]
+[ext_resource type="Texture2D" uid="uid://dwchgcpqg52pg" path="res://Assets/UI/Teste.png" id="3_42axt"]
+[ext_resource type="FontFile" uid="uid://bxh8oh1s7ap4j" path="res://Assets/Fonts/medodicaregular.otf" id="4_26xix"]
+
+[sub_resource type="Theme" id="Theme_hxsv2"]
+
+[node name="Carta" type="TextureButton"]
+custom_minimum_size = Vector2(72, 0)
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("1_r7sdq")
+stretch_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme = SubResource("Theme_hxsv2")
+theme_override_constants/separation = 2
+alignment = 1
+
+[node name="CardRarity" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("2_a2uiu")
+
+[node name="CardIcon" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("3_42axt")
+
+[node name="CardName" type="Label" parent="MarginContainer/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.0784314, 0.0627451, 0.0745098, 1)
+theme_override_constants/line_spacing = -4
+theme_override_fonts/font = ExtResource("4_26xix")
+theme_override_font_sizes/font_size = 16
+text = "Nome da Carta"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

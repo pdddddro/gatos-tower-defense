@@ -15,6 +15,8 @@ var _target_anchor = _down_anchor
 @onready var cards_control = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl
 
 var card_selection_scene = preload("res://Scenes/UIScenes/PackOpened.tscn")
+@export var card_scene: PackedScene = preload("res://Scenes/UIScenes/CardPack.tscn")
+@export var inventory_card_scene: PackedScene = preload("res://Scenes/UIScenes/InventoryCard.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,7 +31,9 @@ func _ready():
 	for child in cat_list.get_children():
 		if child is TextureButton:
 			child.pressed.connect(_on_close_pressed)
-			
+	
+	GameData.card_added_to_inventory.connect(_on_card_added_to_inventory)
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	anchor_top = lerp(anchor_top,_target_anchor.x,lerp_speed)
@@ -68,3 +72,32 @@ func _on_buy_pressed() -> void:
 	var card_selection = card_selection_scene.instantiate()
 	# Sobe 3 níveis: Control -> MarginContainer -> HUD -> UI (CanvasLayer)
 	get_parent().get_parent().get_parent().add_child(card_selection)
+	get_tree().paused = true
+
+func _on_card_added_to_inventory(card_data: Dictionary):
+	# Cria uma nova carta para o inventário visual
+	var inventory_card = inventory_card_scene.instantiate()
+	
+	# Configura apenas os elementos do modelo simplificado
+	setup_inventory_card(inventory_card, card_data)
+	
+	# Adiciona ao CardList
+	card_list.add_child(inventory_card)
+	
+	card_list.move_child(inventory_card, 0)
+	
+	print("Carta adicionada ao inventário: ", card_data.name)
+	
+	update_empty_inventory_label()
+	
+func setup_inventory_card(card_node, card_data):
+	card_node.get_node("MarginContainer/VBoxContainer/CardName").text = card_data.name
+
+@onready var empty_inventory_label = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CardList/EmptyLabel
+
+func update_empty_inventory_label():
+	# Se tem pelo menos 1 carta, esconde a label
+	if card_list.get_child_count() > 0:
+		empty_inventory_label.hide()
+	else:
+		empty_inventory_label.show()

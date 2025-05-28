@@ -23,6 +23,8 @@ func create_and_setup_card(card_data):
 	
 	# Configura os dados da carta
 	setup_card_data(card_instance, card_data)
+	
+	card_instance.card_selected.connect(_on_card_selected)
 
 func setup_card_data(card_node, card_data):
 	# Configura os elementos visuais da carta
@@ -62,3 +64,9 @@ func get_random_card():
 	var random_card = cards_of_rarity[randi() % cards_of_rarity.size()]
 	
 	return random_card
+
+func _on_card_selected(selected_card_data):
+	GameData.add_card_to_collection(selected_card_data)
+	get_tree().paused = false
+	print(GameData.card_collection)
+	queue_free()
