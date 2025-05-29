@@ -34,6 +34,9 @@ func _ready():
 	
 	GameData.card_added_to_inventory.connect(_on_card_added_to_inventory)
 	
+	GameData.rarity_chances_updated.connect(update_rarity_labels)
+	update_rarity_labels() # Atualiza ao abrir a loja também
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	anchor_top = lerp(anchor_top,_target_anchor.x,lerp_speed)
@@ -101,3 +104,9 @@ func update_empty_inventory_label():
 		empty_inventory_label.hide()
 	else:
 		empty_inventory_label.show()
+
+func update_rarity_labels():
+	# Acesse as labels pelo caminho mostrado na sua árvore
+	$MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity/Basic/BasicRarity.text = str(GameData.card_rarity_chances.basic) + "%"
+	$MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity/Common/ComumRarity.text = str(GameData.card_rarity_chances.medium) + "%"
+	$MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity/Rare/RareRarity.text = str(GameData.card_rarity_chances.rare) + "%"

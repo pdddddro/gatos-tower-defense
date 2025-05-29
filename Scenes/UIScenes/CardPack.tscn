@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://kb0oa4sc3gnj"]
+[gd_scene load_steps=8 format=3 uid="uid://kb0oa4sc3gnj"]
 
 [ext_resource type="Texture2D" uid="uid://baya31xk74k60" path="res://Assets/UI/card_background.png" id="1_8mogj"]
 [ext_resource type="Texture2D" uid="uid://dv3g48f7hixr8" path="res://Assets/UI/ui_background.png" id="2_7yagg"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bbsd23rrcxjx8" path="res://Assets/UI/CardsTag.png" id="2_p52fo"]
 [ext_resource type="Texture2D" uid="uid://dwchgcpqg52pg" path="res://Assets/UI/Teste.png" id="3_has3m"]
 [ext_resource type="FontFile" uid="uid://bxh8oh1s7ap4j" path="res://Assets/Fonts/medodicaregular.otf" id="4_7yagg"]
+[ext_resource type="FontFile" uid="uid://8qe2jqb87ubg" path="res://Assets/Fonts/press_start_2p/PressStart2P.ttf" id="6_7yagg"]
 
 [node name="Card" type="TextureButton"]
 process_mode = 2
@@ -54,10 +55,10 @@ texture_filter = 1
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 size_flags_vertical = 1
-theme_override_colors/font_color = Color(0.0784314, 0.0627451, 0.0745098, 1)
-theme_override_constants/line_spacing = -4
-theme_override_fonts/font = ExtResource("4_7yagg")
-theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(0.219593, 0.115211, 0.0156353, 0.85098)
+theme_override_constants/line_spacing = 4
+theme_override_fonts/font = ExtResource("6_7yagg")
+theme_override_font_sizes/font_size = 8
 text = "Nome da Carta"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -69,7 +70,7 @@ custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(0.5755, 0.471188, 0.240132, 1)
-theme_override_constants/line_spacing = -4
+theme_override_constants/line_spacing = -2
 theme_override_fonts/font = ExtResource("4_7yagg")
 theme_override_font_sizes/font_size = 16
 text = "Este gato tem um pé de coelho por isso produz 10% a mais de dinheiro... espera, isso não faz sentido - exclusivo para Odin"

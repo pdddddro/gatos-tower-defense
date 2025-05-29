@@ -67,13 +67,19 @@ var enemies_data = {
 }
 
 ## round
-var wave = {
+var waves = {
 	"wave1": [
 		["Pilha", 1],
 		["Plastico", 1],
 		["Chiclete", 1],
 		["Metal", 1]
 	],
+		"wave2": [
+		["Pilha", 1],
+		["Plastico", 1],
+		["Chiclete", 1],
+		["Metal", 1]
+	]
 }
 
 ## Cards
@@ -134,7 +140,7 @@ func add_card_to_collection(card_data: Dictionary):
 	card_added_to_inventory.emit(card_data)
 
 func _ready():
-	update_rarity_chances() ##Adicionar isso
+	update_rarity_chances()
 
 ## Round Rarity
 var card_rarity_chances = {
@@ -156,3 +162,15 @@ var rarity_table = {
 	9: {"basic": 20, "medium": 35, "rare": 45},
 	10: {"basic": 15, "medium": 35, "rare": 50}
 }
+
+var current_round: int = 1
+
+signal rarity_chances_updated
+
+func update_rarity_chances():
+	var max_round = rarity_table.keys().max()
+	var round_to_use = min(current_round, max_round)
+	card_rarity_chances = rarity_table[round_to_use].duplicate()
+	print("Round ", current_round, " - Chances de raridade: ", card_rarity_chances)
+	
+	emit_signal("rarity_chances_updated") # <-- emite o sinal

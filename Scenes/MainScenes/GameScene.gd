@@ -39,7 +39,7 @@ func _ready() -> void:
 	
 	WaveCount.text = "Rodada " + str(current_wave) + "/50"
 	
-	GameData.next_round()
+	#GameData.next_round()
 	
 	update_fish_label()
 	
@@ -120,7 +120,8 @@ func check_wave_end():
 		current_wave += 1
 		WaveCount.text = "Rodada " + str(current_wave) + "/50"
 		
-		GameData.next_round()
+		GameData.current_round = current_wave
+		GameData.update_rarity_chances()
 		
 		play_button.texture_normal = play
 		
