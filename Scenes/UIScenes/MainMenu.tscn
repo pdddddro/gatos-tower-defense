@@ -1,12 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://3n4enlhcgms4"]
+[gd_scene load_steps=12 format=3 uid="uid://3n4enlhcgms4"]
 
 [ext_resource type="Texture2D" uid="uid://0byb8mpdvpgy" path="res://Assets/UI/Art/Background.png" id="1_iyrik"]
-[ext_resource type="FontFile" uid="uid://bxh8oh1s7ap4j" path="res://Assets/Fonts/medodicaregular.otf" id="5_15g01"]
-
-[sub_resource type="FontVariation" id="FontVariation_15g01"]
-base_font = ExtResource("5_15g01")
-
-[sub_resource type="LabelSettings" id="LabelSettings_8atao"]
+[ext_resource type="Texture2D" uid="uid://df0udj0wr3vl6" path="res://Assets/UI/Art/NovoJogo1.png" id="2_1brix"]
+[ext_resource type="FontFile" uid="uid://8qe2jqb87ubg" path="res://Assets/Fonts/press_start_2p/PressStart2P.ttf" id="2_hpefh"]
+[ext_resource type="Texture2D" uid="uid://xf4ueuuk8f8m" path="res://Assets/UI/Art/NovoJogo.png" id="2_qc1fl"]
+[ext_resource type="Texture2D" uid="uid://dckg708wavodo" path="res://Assets/UI/Art/Logo.png" id="3_qc1fl"]
+[ext_resource type="Texture2D" uid="uid://mkxxyx2ya5vk" path="res://Assets/UI/Art/Ranking.png" id="4_2e4mf"]
+[ext_resource type="Texture2D" uid="uid://1suqrngm7iq6" path="res://Assets/UI/Art/Sobre.png" id="5_1brix"]
+[ext_resource type="Texture2D" uid="uid://dt0o401gek7i1" path="res://Assets/UI/Art/RankingPressed.png" id="5_hi0sg"]
+[ext_resource type="Texture2D" uid="uid://dvb8syxh2fhc0" path="res://Assets/UI/Art/Enviar Feedback.png" id="6_50puj"]
+[ext_resource type="Texture2D" uid="uid://b8bsdya0clg1j" path="res://Assets/UI/Art/SobrePressed.png" id="7_fdvul"]
+[ext_resource type="Texture2D" uid="uid://bkcmnhvp24rfw" path="res://Assets/UI/Art/Enviar FeedbackPressed.png" id="9_fuxq6"]
 
 [node name="MainMenu" type="Control"]
 custom_minimum_size = Vector2(640, 360)
@@ -45,87 +49,133 @@ size_flags_vertical = 8
 theme_override_constants/separation = 8
 
 [node name="NovoJogo" type="TextureButton" parent="Margin/VBox"]
-custom_minimum_size = Vector2(128, 32)
+custom_minimum_size = Vector2(112, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
+texture_pressed = ExtResource("2_1brix")
+texture_hover = ExtResource("2_qc1fl")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="Margin/VBox/NovoJogo"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -4.0
+offset_right = 36.0
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = SubResource("FontVariation_15g01")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_hpefh")
+theme_override_font_sizes/font_size = 8
 text = "Novo Jogo"
-label_settings = SubResource("LabelSettings_8atao")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NovoJogo2" type="TextureButton" parent="Margin/VBox"]
-custom_minimum_size = Vector2(128, 32)
+[node name="Ranking" type="TextureButton" parent="Margin/VBox"]
+custom_minimum_size = Vector2(96, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
+texture_pressed = ExtResource("5_hi0sg")
+texture_hover = ExtResource("4_2e4mf")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="Margin/VBox/NovoJogo2"]
+[node name="Label" type="Label" parent="Margin/VBox/Ranking"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -4.0
+offset_right = 28.0
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = SubResource("FontVariation_15g01")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_hpefh")
+theme_override_font_sizes/font_size = 8
 text = "Ranking"
-label_settings = SubResource("LabelSettings_8atao")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Sobre" type="TextureButton" parent="Margin/VBox"]
-custom_minimum_size = Vector2(128, 32)
+custom_minimum_size = Vector2(80, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+texture_pressed = ExtResource("7_fdvul")
+texture_hover = ExtResource("5_1brix")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="Margin/VBox/Sobre"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -4.0
+offset_right = 20.0
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = SubResource("FontVariation_15g01")
-text = "Sobre o Projeto"
-label_settings = SubResource("LabelSettings_8atao")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_hpefh")
+theme_override_font_sizes/font_size = 8
+text = "Sobre"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Enviar Feedback" type="TextureButton" parent="Margin/VBox"]
-custom_minimum_size = Vector2(128, 32)
+custom_minimum_size = Vector2(152, 32)
 layout_mode = 2
 size_flags_horizontal = 4
+texture_pressed = ExtResource("9_fuxq6")
+texture_hover = ExtResource("6_50puj")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="Margin/VBox/Enviar Feedback"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = -4.0
+offset_right = 56.0
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = SubResource("FontVariation_15g01")
-text = "Enviar Feedback"
-label_settings = SubResource("LabelSettings_8atao")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_hpefh")
+theme_override_font_sizes/font_size = 8
+text = "Enviar Feedack"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Logo" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -160.0
+offset_top = 35.0
+offset_right = 160.0
+offset_bottom = 107.0
+grow_horizontal = 2
+texture = ExtResource("3_qc1fl")
