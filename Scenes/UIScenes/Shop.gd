@@ -5,7 +5,7 @@ var lerp_speed = .3
 
 var open = false
 var _up_anchor = Vector2(1-menu_size,1)
-var _down_anchor = Vector2(1,1+.365)
+var _down_anchor = Vector2(1,1+.38)
 var _target_anchor = _down_anchor
 
 @onready var shop_container = $MarginContainer/VBoxContainer/ShopContainer
@@ -173,3 +173,30 @@ func update_rarity_labels():
 	$MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity/Basic/BasicRarity.text = str(GameData.card_rarity_chances.basic) + "%"
 	$MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity/Common/ComumRarity.text = str(GameData.card_rarity_chances.medium) + "%"
 	$MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity/Rare/RareRarity.text = str(GameData.card_rarity_chances.rare) + "%"
+
+
+func _on_sell_pressed() -> void:
+	if selected_inventory_card:
+		var card_data = selected_inventory_card.get_meta("card_data")
+		if card_data and "sell_value" in card_data:
+			var sell_value = card_data["sell_value"]
+			# Adiciona o valor de venda à moeda do jogador (ajuste conforme seu sistema de moeda)
+			GameData.fish_quantity += int(sell_value)  # Assumindo que GameData tem uma variável para moeda
+			print("Carta vendida por ", sell_value, " moedas. Moeda total agora: ", GameData.fish_quantity)
+			
+			# Remove a carta do inventário (da UI)
+			selected_inventory_card.queue_free()
+			
+			# Remove a carta da coleção do jogador (se necessário)
+			GameData.card_collection.erase(card_data)
+			
+			# Limpa a seleção
+			selected_inventory_card = null
+			
+			# Atualiza a UI (desativa botões e verifica se o inventário está vazio)
+			disable_sell_n_details_buttons()
+			update_empty_inventory_label()
+		else:
+			print("Erro: Valor de venda não encontrado nos dados da carta.")
+	else:
+		print("Erro: Nenhuma carta selecionada para vender.")

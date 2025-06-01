@@ -35,7 +35,7 @@ layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -160.0
+offset_top = -164.0
 offset_right = 336.0
 grow_vertical = 0
 size_flags_horizontal = 0
@@ -56,7 +56,7 @@ mouse_filter = 2
 layout_mode = 2
 size_flags_vertical = 8
 mouse_filter = 2
-theme_override_constants/separation = 0
+theme_override_constants/separation = 4
 alignment = 2
 
 [node name="ActionContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
@@ -172,6 +172,7 @@ mouse_filter = 2
 theme = SubResource("Theme_y8xan")
 
 [node name="CatList" type="HFlowContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer"]
+visible = false
 custom_minimum_size = Vector2(148, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -625,7 +626,6 @@ theme_override_font_sizes/font_size = 11
 text = "100"
 
 [node name="CardList" type="HFlowContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
@@ -645,7 +645,6 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="CardsControl" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2
@@ -832,3 +831,4 @@ vertical_alignment = 1
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ActionContainer/Close" to="." method="_on_close_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/Buy" to="." method="_on_buy_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/Details" to="." method="_on_details_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/Sell" to="." method="_on_sell_pressed"]

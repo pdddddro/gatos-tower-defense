@@ -93,12 +93,26 @@ theme_override_fonts/font = ExtResource("7_jem3k")
 theme_override_font_sizes/font_size = 8
 text = "Dinheiro"
 
-[node name="WaveCount" type="Label" parent="UI/HUD/MarginContainer"]
+[node name="WaveContainer" type="VBoxContainer" parent="UI/HUD/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_constants/separation = 4
+
+[node name="Rodada" type="Label" parent="UI/HUD/MarginContainer/WaveContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("7_jem3k")
 theme_override_font_sizes/font_size = 8
-text = "Rodada n/n"
+text = "Rodada"
+
+[node name="WaveCount" type="Label" parent="UI/HUD/MarginContainer/WaveContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("7_jem3k")
+theme_override_font_sizes/font_size = 16
+text = "01/50"
+vertical_alignment = 1
 
 [connection signal="pressed" from="UI/HUD/MarginContainer/GameControls/Play" to="." method="_on_play_pressed"]

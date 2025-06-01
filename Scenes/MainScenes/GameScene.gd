@@ -24,7 +24,7 @@ var build_tile
 # Wave
 var current_wave = 1
 var enemies_in_wave = 0
-@onready var WaveCount = get_node("UI/HUD/MarginContainer/WaveCount")
+@onready var WaveCount = get_node("UI/HUD/MarginContainer/WaveContainer/WaveCount")
 
 # Status
 var base_health = 100
@@ -37,7 +37,7 @@ func _ready() -> void:
 	map_node = get_node("Map1")
 	get_node("UI/HUD/MarginContainer/Status/HeartContainer/HeartLabel").text = str(base_health)
 	
-	WaveCount.text = "Rodada " + str(current_wave) + "/50"
+	WaveCount.text = str(current_wave) + "/50"
 	
 	#GameData.next_round()
 	
@@ -117,7 +117,7 @@ func check_wave_end():
 	if enemies_in_wave <= 0:
 		print("Wave finalizada!")
 		current_wave += 1
-		WaveCount.text = "Rodada " + str(current_wave) + "/50"
+		WaveCount.text = str(current_wave) + "/50"
 		
 		GameData.current_round = current_wave
 		GameData.update_rarity_chances()
