@@ -89,6 +89,7 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="Margin/VBox/Ranking"]
+modulate = Color(1, 1, 1, 0.470588)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -119,6 +120,7 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="Margin/VBox/Sobre"]
+modulate = Color(1, 1, 1, 0.470588)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -148,6 +150,7 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="Margin/VBox/Enviar Feedback"]
+modulate = Color(1, 1, 1, 0.470588)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

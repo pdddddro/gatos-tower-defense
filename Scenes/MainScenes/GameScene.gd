@@ -68,12 +68,11 @@ func update_build_buttons():
 		button.disabled = fish_quantity < cat_cost
 		
 		if button.disabled:
-			button.modulate = Color("cdc1b4a3")
-			button.mouse_default_cursor_shape = Control.CURSOR_ARROW
+			button.modulate = Color("d0ab89")
 
 		else:
-			button.self_modulate = Color("FFFFFF")
-
+			button.modulate = Color("FFFFFF")
+		
 ## Wave Functions
 func start_next_wave():
 	var wave_data = retrieve_wave_data()

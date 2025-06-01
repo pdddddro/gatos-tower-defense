@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://dvhrsyngix8od" path="res://Assets/Cats/Sombra.png" id="2_wfxnj"]
 [ext_resource type="Texture2D" uid="uid://crcplq7bkvij0" path="res://Assets/Cats/SpriteSheet.png" id="3_736gr"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_66lg1"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_hagm5"]
 atlas = ExtResource("2_rvm13")
 region = Rect2(0, 0, 32, 32)
@@ -230,8 +232,6 @@ animations = [{
 "speed": 3.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_66lg1"]
-
 [node name="Cat2" type="Node2D"]
 script = ExtResource("1_nhsbb")
 
@@ -243,8 +243,10 @@ y_sort_enabled = true
 position = Vector2(-1, -2)
 texture = ExtResource("2_wfxnj")
 
-[node name="Aim" type="Marker2D" parent="."]
-position = Vector2(8, -4)
+[node name="Range" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
+shape = SubResource("CircleShape2D_66lg1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -252,10 +254,8 @@ position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_qs2hh")
 animation = &"IdleDownRight"
 
-[node name="Range" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
-shape = SubResource("CircleShape2D_66lg1")
+[node name="Aim" type="Marker2D" parent="."]
+position = Vector2(0, -8)
 
 [connection signal="body_entered" from="Range" to="." method="_on_range_body_entered"]
 [connection signal="body_exited" from="Range" to="." method="_on_range_body_exited"]

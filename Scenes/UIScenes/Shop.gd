@@ -15,6 +15,7 @@ var _target_anchor = _down_anchor
 @onready var cards_control = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl
 
 var card_selection_scene = preload("res://Scenes/UIScenes/PackOpened.tscn")
+var card_detail_scene = preload("res://Scenes/UIScenes/CardDetail.tscn")
 @export var card_scene: PackedScene = preload("res://Scenes/UIScenes/CardPack.tscn")
 @export var inventory_card_scene: PackedScene = preload("res://Scenes/UIScenes/InventoryCard.tscn")
 
@@ -110,3 +111,10 @@ func update_rarity_labels():
 	$MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity/Basic/BasicRarity.text = str(GameData.card_rarity_chances.basic) + "%"
 	$MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity/Common/ComumRarity.text = str(GameData.card_rarity_chances.medium) + "%"
 	$MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity/Rare/RareRarity.text = str(GameData.card_rarity_chances.rare) + "%"
+
+func _on_details_pressed() -> void:
+	var card_detail = card_detail_scene.instantiate()
+	# Sobe 3 níveis: Control -> MarginContainer -> HUD -> UI (CanvasLayer)
+	get_parent().get_parent().get_parent().add_child(card_detail)
+	get_tree().paused = true
+	print("a")
