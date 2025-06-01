@@ -49,7 +49,7 @@ var last_flip_h = false
 func update_animation(direction):
 	var dir = ""
 	
-	if direction.y < 0:
+	if direction.y < -0.6:
 		dir += "Up"
 	else:
 		dir += "Down"

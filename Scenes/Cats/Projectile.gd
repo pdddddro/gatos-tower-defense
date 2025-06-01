@@ -18,7 +18,7 @@ func _process(delta: float) -> void: # tem que mudar a forma de detecção, o sl
 		
 		# Quando chegar perto do inimigo, some
 			
-		if global_position.distance_to(enemy.global_position) <= 2:
+		if global_position.distance_to(enemy.global_position) <= 5:
 			queue_free()
 	else:
 		queue_free()
