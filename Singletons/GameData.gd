@@ -38,6 +38,16 @@ var cat_data = {
 	}
 }
 
+var fish_quantity: int = 300  # Valor inicial de moedas
+
+# Função para atualizar a UI (opcional, se precisar de um sinal)
+signal fish_quantity_updated(new_amount)
+
+func update_fish_quantity(amount: int):
+	fish_quantity += amount
+	emit_signal("fish_quantity_updated", fish_quantity)
+	print("Moeda total agora: ", fish_quantity)
+
 ## Enemies
 var enemies_data = {
 	"Plastico": {

@@ -28,7 +28,6 @@ var enemies_in_wave = 0
 
 # Status
 var base_health = 100
-var fish_quantity = 100
 
 @onready var fish_label = get_node("UI/HUD/MarginContainer/Status/FishContainer/FishLabel")
 
@@ -40,12 +39,12 @@ func _ready() -> void:
 	WaveCount.text = str(current_wave) + "/50"
 	
 	#GameData.next_round()
-	
+	GameData.fish_quantity_updated.connect(_on_fish_quantity_updated)
 	update_fish_label()
 	
 	for i in get_tree().get_nodes_in_group("build_buttons"):
 		i.pressed.connect(Callable(self, "initiate_build_mode").bind(i.get_name()))
-			
+	
 func _process(delta):
 
 	if build_mode:
@@ -65,7 +64,7 @@ func update_build_buttons():
 		var cat_type = button.get_name()
 		var cat_cost = GameData.cat_data[cat_type]["cost"]
 		
-		button.disabled = fish_quantity < cat_cost
+		button.disabled = GameData.fish_quantity < cat_cost
 		
 		if button.disabled:
 			button.modulate = Color("d0ab89")
@@ -102,7 +101,8 @@ func spawn_enemies(wave_data):
 
 func _on_enemy_defeated(slime_type):
 	var fish_reward = GameData.enemies_data[slime_type]["fish_reward"]
-	fish_quantity += fish_reward
+	GameData.update_fish_quantity(fish_reward)
+
 	update_fish_label()
 	
 	enemies_in_wave -= 1
@@ -162,13 +162,10 @@ func cancel_build_mode():
 	get_node("UI/CatPreview").free()
 	
 func verify_and_build():
-	print("Antes de verificar")
 	if build_valid:
-		print("Berificou")
 		var cat_cost = GameData.cat_data[build_type]["cost"]
-		if fish_quantity >= cat_cost:
-			fish_quantity -= cat_cost
-			update_fish_label()
+		if GameData.fish_quantity >= cat_cost:
+			GameData.update_fish_quantity(-cat_cost)
 			
 			var new_cat = load("res://Scenes/Cats/" + build_type + "/" + build_type + ".tscn").instantiate()
 			new_cat.position = build_location
@@ -191,7 +188,11 @@ func on_base_damage(damage):
 
 ## Fish Control
 func update_fish_label():
-	fish_label.text = str(fish_quantity)
+	fish_label.text = str(GameData.fish_quantity)
+	update_build_buttons()
+	
+func _on_fish_quantity_updated(new_amount: int):
+	fish_label.text = str(new_amount)
 	update_build_buttons()
 
 ## Game Control Functions

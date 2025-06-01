@@ -19,6 +19,9 @@ var card_detail_scene = preload("res://Scenes/UIScenes/CardDetail.tscn")
 @export var card_scene: PackedScene = preload("res://Scenes/UIScenes/CardPack.tscn")
 @export var inventory_card_scene: PackedScene = preload("res://Scenes/UIScenes/InventoryCard.tscn")
 
+@onready var buy_button = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/Buy
+@onready var buy_label = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/Buy/HBoxContainer/Label
+@onready var sell_price_label = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/Buy/HBoxContainer/SellPrice
 @onready var details_button = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/Details
 @onready var details_label = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/Details/Label
 @onready var sell_button = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/Sell
@@ -64,7 +67,6 @@ func enable_sell_n_details_buttons():
 func _process(delta):
 	anchor_top = lerp(anchor_top,_target_anchor.x,lerp_speed)
 	anchor_bottom = lerp(anchor_bottom,_target_anchor.y,lerp_speed)
-
 	if abs(anchor_top - _target_anchor.x) < 0.02 and abs(anchor_bottom - _target_anchor.y) < 0.02:
 		if _target_anchor == _down_anchor and shop_container.visibility_layer:
 			shop_container.visibility_layer = false
@@ -95,10 +97,19 @@ func open_container():
 	_target_anchor = _up_anchor
 	
 func _on_buy_pressed() -> void:
-	var card_selection = card_selection_scene.instantiate()
-	# Sobe 3 níveis: Control -> MarginContainer -> HUD -> UI (CanvasLayer)
-	get_parent().get_parent().get_parent().add_child(card_selection)
-	get_tree().paused = true
+	var pack_cost = 300
+	if GameData.fish_quantity >= pack_cost:
+		var card_selection = card_selection_scene.instantiate()
+		# Sobe 3 níveis: Control -> MarginContainer -> HUD -> UI (CanvasLayer)
+		get_parent().get_parent().get_parent().add_child(card_selection)
+		get_tree().paused = true
+		buy_button.disabled = true
+		buy_label.self_modulate = Color("42272464")
+		sell_price_label.self_modulate = Color("42272464")
+		
+		GameData.update_fish_quantity(int(-pack_cost))
+		
+		
 
 func _on_details_pressed() -> void:
 	if selected_inventory_card:
@@ -149,10 +160,15 @@ func _on_inventory_card_selected(card_node):
 		selected_inventory_card = card_node
 		selected_inventory_card.texture_normal = selected_inventory_card.selected_texture  # Aplica textura de selecionado
 		
+		var card_data = card_node.get_meta("card_data")
+		if card_data and "sell_value" in card_data:
+			sell_price.text = str(card_data["sell_value"])
+		else:
+			sell_price.text = "0"  # Valor padrão se não houver sell_value
+			
 		enable_sell_n_details_buttons()
 		
 		print("Carta selecionada: ", selected_inventory_card.get_node("MarginContainer/VBoxContainer/CardName").text)
-
 
 func setup_inventory_card(card_node, card_data):
 	card_node.get_node("MarginContainer/VBoxContainer/CardName").text = card_data.name
@@ -161,9 +177,16 @@ func setup_inventory_card(card_node, card_data):
 
 @onready var empty_inventory_label = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CardList/EmptyLabel
 
+var card_count = 0
+
 func update_empty_inventory_label():
-	# Se tem pelo menos 1 carta, esconde a label
-	if card_list.get_child_count() > 0:
+	if card_list.get_children()[0] != empty_inventory_label:  # Exclui a label da contagem
+		card_count += 1
+	
+	if card_list.get_children()[0] == empty_inventory_label:  # Exclui a label da contagem
+		card_count -= 1
+	
+	if card_count > 0:
 		empty_inventory_label.hide()
 	else:
 		empty_inventory_label.show()
@@ -174,14 +197,13 @@ func update_rarity_labels():
 	$MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity/Common/ComumRarity.text = str(GameData.card_rarity_chances.medium) + "%"
 	$MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity/Rare/RareRarity.text = str(GameData.card_rarity_chances.rare) + "%"
 
-
 func _on_sell_pressed() -> void:
 	if selected_inventory_card:
 		var card_data = selected_inventory_card.get_meta("card_data")
 		if card_data and "sell_value" in card_data:
 			var sell_value = card_data["sell_value"]
-			# Adiciona o valor de venda à moeda do jogador (ajuste conforme seu sistema de moeda)
-			GameData.fish_quantity += int(sell_value)  # Assumindo que GameData tem uma variável para moeda
+			# Adiciona o valor de venda à moeda do jogador usando a função do GameData
+			GameData.update_fish_quantity(int(sell_value))
 			print("Carta vendida por ", sell_value, " moedas. Moeda total agora: ", GameData.fish_quantity)
 			
 			# Remove a carta do inventário (da UI)
@@ -193,9 +215,12 @@ func _on_sell_pressed() -> void:
 			# Limpa a seleção
 			selected_inventory_card = null
 			
+			await get_tree().process_frame
+			update_empty_inventory_label()
+			
 			# Atualiza a UI (desativa botões e verifica se o inventário está vazio)
 			disable_sell_n_details_buttons()
-			update_empty_inventory_label()
+			
 		else:
 			print("Erro: Valor de venda não encontrado nos dados da carta.")
 	else:
