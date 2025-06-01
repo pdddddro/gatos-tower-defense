@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c24rj5whejiqf"
-path="res://.godot/imported/Pressed.png-94327114497ffcfe6d82ad4f6e01b52e.ctex"
+uid="uid://baepjslnydqim"
+path="res://.godot/imported/botao_principal_padrao.png-c63346b3114b6c810e3d84be979c9002.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/Buttons/Pressed.png"
-dest_files=["res://.godot/imported/Pressed.png-94327114497ffcfe6d82ad4f6e01b52e.ctex"]
+source_file="res://Assets/UI/Buttons/botao_principal_padrao.png"
+dest_files=["res://.godot/imported/botao_principal_padrao.png-c63346b3114b6c810e3d84be979c9002.ctex"]
 
 [params]
 

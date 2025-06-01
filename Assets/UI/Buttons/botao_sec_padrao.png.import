@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1j1v5x36yw8t"
-path="res://.godot/imported/testeee.png-54b58ac1b842128e67442184cd893030.ctex"
+uid="uid://cgceauk46iquy"
+path="res://.godot/imported/botao_sec_padrao.png-ceb9568506bb3a371f2ccb0df6873bd3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/testeee.png"
-dest_files=["res://.godot/imported/testeee.png-54b58ac1b842128e67442184cd893030.ctex"]
+source_file="res://Assets/UI/Buttons/botao_sec_padrao.png"
+dest_files=["res://.godot/imported/botao_sec_padrao.png-ceb9568506bb3a371f2ccb0df6873bd3.ctex"]
 
 [params]
 

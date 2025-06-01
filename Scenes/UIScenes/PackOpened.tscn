@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://0byb8mpdvpgy" path="res://Assets/UI/Art/Background.png" id="1_rqax3"]
 [ext_resource type="Script" uid="uid://dbl7uqjmc4cct" path="res://Scenes/UIScenes/pack_opened.gd" id="1_wjsu3"]
 [ext_resource type="FontFile" uid="uid://bxh8oh1s7ap4j" path="res://Assets/Fonts/medodicaregular.otf" id="3_4r0oy"]
-[ext_resource type="FontFile" uid="uid://8qe2jqb87ubg" path="res://Assets/Fonts/press_start_2p/PressStart2P.ttf" id="3_rqax3"]
+[ext_resource type="FontFile" uid="uid://dypca4yn0mcqr" path="res://Assets/Fonts/retro_gaming/Retro Gaming.ttf" id="3_rqax3"]
 
 [node name="PackOpened" type="Control"]
 process_mode = 2
@@ -43,8 +43,8 @@ theme_override_constants/separation = 4
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_rqax3")
-theme_override_font_sizes/font_size = 16
-text = "Escolha uma das cartas!"
+theme_override_font_sizes/font_size = 22
+text = "Escolha uma das cartas"
 horizontal_alignment = 1
 vertical_alignment = 1
 

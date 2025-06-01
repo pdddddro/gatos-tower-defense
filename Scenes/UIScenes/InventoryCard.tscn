@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://c2jcnp85arbqw"]
+[gd_scene load_steps=9 format=3 uid="uid://c2jcnp85arbqw"]
 
 [ext_resource type="Texture2D" uid="uid://baya31xk74k60" path="res://Assets/UI/card_background.png" id="1_r7sdq"]
+[ext_resource type="Texture2D" uid="uid://dfka8j1jjfih7" path="res://Assets/UI/card_background_pressed.png" id="2_26xix"]
+[ext_resource type="Script" uid="uid://bw0i0dfgadxnl" path="res://Scenes/UIScenes/inventory_card.gd" id="2_42axt"]
 [ext_resource type="Texture2D" uid="uid://bbsd23rrcxjx8" path="res://Assets/UI/CardsTag.png" id="2_a2uiu"]
+[ext_resource type="Texture2D" uid="uid://c6au0wn47cs01" path="res://Assets/UI/card_background_hover.png" id="2_yaibm"]
 [ext_resource type="Texture2D" uid="uid://dwchgcpqg52pg" path="res://Assets/UI/Teste.png" id="3_42axt"]
-[ext_resource type="FontFile" uid="uid://8qe2jqb87ubg" path="res://Assets/Fonts/press_start_2p/PressStart2P.ttf" id="4_r7sdq"]
+[ext_resource type="FontFile" uid="uid://dypca4yn0mcqr" path="res://Assets/Fonts/retro_gaming/Retro Gaming.ttf" id="4_r7sdq"]
 
 [sub_resource type="Theme" id="Theme_hxsv2"]
 
@@ -13,7 +16,11 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("1_r7sdq")
+texture_hover = ExtResource("2_yaibm")
 stretch_mode = 0
+script = ExtResource("2_42axt")
+normal_texture = ExtResource("1_r7sdq")
+selected_texture = ExtResource("2_26xix")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -53,10 +60,10 @@ texture_filter = 1
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 size_flags_vertical = 1
-theme_override_colors/font_color = Color(0.219608, 0.113725, 0.0156863, 0.862745)
-theme_override_constants/line_spacing = 2
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_constants/line_spacing = -2
 theme_override_fonts/font = ExtResource("4_r7sdq")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 11
 text = "Título da Carta"
 horizontal_alignment = 1
 vertical_alignment = 1

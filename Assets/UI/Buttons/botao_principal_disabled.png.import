@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://diwbtlspro883"
-path="res://.godot/imported/Hover.png-cb30966a9ce8ebb2569f6e6541e00fc7.ctex"
+uid="uid://1j1v5x36yw8t"
+path="res://.godot/imported/botao_principal_disabled.png-00914a87f01ecea63041a920ab31bde1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/Buttons/Hover.png"
-dest_files=["res://.godot/imported/Hover.png-cb30966a9ce8ebb2569f6e6541e00fc7.ctex"]
+source_file="res://Assets/UI/Buttons/botao_principal_disabled.png"
+dest_files=["res://.godot/imported/botao_principal_disabled.png-00914a87f01ecea63041a920ab31bde1.ctex"]
 
 [params]
 
