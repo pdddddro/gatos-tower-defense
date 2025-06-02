@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://3n4enlhcgms4"]
 
 [ext_resource type="Texture2D" uid="uid://0byb8mpdvpgy" path="res://Assets/UI/Art/Background.png" id="1_iyrik"]
-[ext_resource type="Texture2D" uid="uid://df0udj0wr3vl6" path="res://Assets/UI/Art/NovoJogo1.png" id="2_1brix"]
+[ext_resource type="Texture2D" uid="uid://ct6ceupmhobky" path="res://Assets/UI/Art/NovoJogoPressed.png" id="2_1brix"]
 [ext_resource type="FontFile" uid="uid://8qe2jqb87ubg" path="res://Assets/Fonts/press_start_2p/PressStart2P.ttf" id="2_hpefh"]
 [ext_resource type="FontFile" uid="uid://dypca4yn0mcqr" path="res://Assets/Fonts/retro_gaming/Retro Gaming.ttf" id="2_nmscp"]
 [ext_resource type="Texture2D" uid="uid://xf4ueuuk8f8m" path="res://Assets/UI/Art/NovoJogo.png" id="2_qc1fl"]

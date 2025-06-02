@@ -1,5 +1,7 @@
 extends Node
 
+var fish_quantity: int = 300  # Valor inicial de moedas
+
 ## Cats
 var cat_data = {
 	"Chicao": {
@@ -37,8 +39,6 @@ var cat_data = {
 		"cost": 100
 	}
 }
-
-var fish_quantity: int = 300  # Valor inicial de moedas
 
 # Função para atualizar a UI (opcional, se precisar de um sinal)
 signal fish_quantity_updated(new_amount)
@@ -103,7 +103,7 @@ var card_data = {
 			"effects": {"damage": 5},
 			"sell_value": "50"
 		},{
-			"name": "Basica2", 
+			"name": "Fúria de Predador", 
 			"description": "Este gato tem um pé de coelho por isso produz 10% a mais de dinheiro... espera, isso não faz sentido - exclusivo para Odin",
 			"icon": "res://Assets/Icons/speed_basic.png",
 			"rarity_color": Color("808080"),

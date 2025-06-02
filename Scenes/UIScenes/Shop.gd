@@ -49,6 +49,10 @@ func _ready():
 	
 	disable_sell_n_details_buttons()
 
+func _on_cat_clicked(cat_node):
+	print("Gato clicado: ", cat_node.name)
+	# Aqui você pode abrir o inventário, mostrar detalhes, etc.abrir_inventario_gato(cat_node)
+
 func disable_sell_n_details_buttons():
 	details_button.disabled = true
 	sell_button.disabled = true

@@ -100,3 +100,7 @@ func _on_range_body_entered(body: Node2D) -> void:
 
 func _on_range_body_exited(body: Node2D) -> void:
 	enemy_array.erase(body.get_parent())
+
+func _on_clickable_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		print("Gato clicado!")
