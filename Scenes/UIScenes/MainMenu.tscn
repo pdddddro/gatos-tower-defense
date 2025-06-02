@@ -1,11 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://3n4enlhcgms4"]
+[gd_scene load_steps=15 format=3 uid="uid://3n4enlhcgms4"]
 
 [ext_resource type="Texture2D" uid="uid://0byb8mpdvpgy" path="res://Assets/UI/Art/Background.png" id="1_iyrik"]
 [ext_resource type="Texture2D" uid="uid://df0udj0wr3vl6" path="res://Assets/UI/Art/NovoJogo1.png" id="2_1brix"]
 [ext_resource type="FontFile" uid="uid://8qe2jqb87ubg" path="res://Assets/Fonts/press_start_2p/PressStart2P.ttf" id="2_hpefh"]
+[ext_resource type="FontFile" uid="uid://dypca4yn0mcqr" path="res://Assets/Fonts/retro_gaming/Retro Gaming.ttf" id="2_nmscp"]
 [ext_resource type="Texture2D" uid="uid://xf4ueuuk8f8m" path="res://Assets/UI/Art/NovoJogo.png" id="2_qc1fl"]
+[ext_resource type="Texture2D" uid="uid://csc6110lxqehn" path="res://Assets/UI/Link_pra_pagina_principal_da_Wikipedia-PT_em_codigo_QR_b.svg.png" id="3_0tan2"]
 [ext_resource type="Texture2D" uid="uid://dckg708wavodo" path="res://Assets/UI/Art/Logo.png" id="3_qc1fl"]
 [ext_resource type="Texture2D" uid="uid://mkxxyx2ya5vk" path="res://Assets/UI/Art/Ranking.png" id="4_2e4mf"]
+[ext_resource type="FontFile" uid="uid://bxh8oh1s7ap4j" path="res://Assets/Fonts/medodicaregular.otf" id="4_mfebp"]
 [ext_resource type="Texture2D" uid="uid://1suqrngm7iq6" path="res://Assets/UI/Art/Sobre.png" id="5_1brix"]
 [ext_resource type="Texture2D" uid="uid://dt0o401gek7i1" path="res://Assets/UI/Art/RankingPressed.png" id="5_hi0sg"]
 [ext_resource type="Texture2D" uid="uid://dvb8syxh2fhc0" path="res://Assets/UI/Art/Enviar Feedback.png" id="6_50puj"]
@@ -37,10 +40,54 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 32
-theme_override_constants/margin_top = 32
-theme_override_constants/margin_right = 32
-theme_override_constants/margin_bottom = 32
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="MarginContainer" type="MarginContainer" parent="Margin"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Margin/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="Label" type="Label" parent="Margin/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("2_nmscp")
+theme_override_font_sizes/font_size = 11
+text = "Doe para os gatos da EBA"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Margin/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_0tan2")
+expand_mode = 1
+
+[node name="Label2" type="Label" parent="Margin/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("4_mfebp")
+theme_override_font_sizes/font_size = 16
+text = "Chave PIX: 999.999.999-99"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="VBox" type="VBoxContainer" parent="Margin"]
 layout_mode = 2

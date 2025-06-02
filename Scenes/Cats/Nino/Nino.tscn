@@ -71,7 +71,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"AttackDownLeft",
-"speed": 6.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -88,7 +88,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"AttackDownRight",
-"speed": 6.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -102,7 +102,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"AttackUpLeft",
-"speed": 6.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -116,7 +116,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"AttackUpRight",
-"speed": 6.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -203,9 +203,7 @@ shape = SubResource("CircleShape2D_66lg1")
 texture_filter = 1
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_qs2hh")
-animation = &"AttackDownLeft"
-frame = 3
-frame_progress = 1.0
+animation = &"IdleDownLeft"
 
 [node name="Aim" type="Marker2D" parent="."]
 position = Vector2(0, -8)
