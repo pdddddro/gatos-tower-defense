@@ -72,6 +72,53 @@ func update_build_buttons():
 		else:
 			button.modulate = Color("FFFFFF")
 		
+## Building Functions
+func initiate_build_mode(cat_type):
+	print("Building Mode Iniciado")
+	if build_mode:
+		cancel_build_mode()
+		
+	build_type = cat_type
+	build_mode = true
+	get_node("UI").set_cat_preview(build_type, get_global_mouse_position())
+
+func update_cat_preview():
+	var mouse_position = get_global_mouse_position()
+	var exclusion_layer = map_node.get_node("Exclusion")
+	var current_tile = exclusion_layer.local_to_map(mouse_position)
+	var tile_position = exclusion_layer.map_to_local(current_tile)
+	
+	if exclusion_layer.get_cell_source_id(current_tile) == -1:
+		get_node("UI").update_cat_preview(tile_position, "00bcf4dd")
+		build_valid = true
+		build_location = tile_position
+		build_tile = current_tile
+
+	else:
+		get_node("UI").update_cat_preview(tile_position, "ff826fdd")
+		build_valid = false
+	
+func cancel_build_mode():
+	build_mode = false
+	build_valid = false
+	
+	get_node("UI/CatPreview").free()
+	
+func verify_and_build():
+	if build_valid:
+		var cat_cost = GameData.cat_data[build_type]["cost"]
+		if GameData.fish_quantity >= cat_cost:
+			GameData.update_fish_quantity(-cat_cost)
+			
+			var new_cat = load("res://Scenes/Cats/" + build_type + "/" + build_type + ".tscn").instantiate()
+			new_cat.position = build_location
+			new_cat.built = true
+			new_cat.type = build_type
+			map_node.get_node("Cats").add_child(new_cat, true)
+			
+			#Adicionar um tile de Exclusion para impedir 2 gatos no mesmo lugar
+			map_node.get_node("Exclusion").set_cell(build_tile, 5, Vector2i(0, 0))
+
 ## Wave Functions
 func start_next_wave():
 	var wave_data = retrieve_wave_data()
@@ -129,53 +176,7 @@ func check_wave_end():
 		else:
 			fast_mode = true
 
-## Building Functions
-func initiate_build_mode(cat_type):
-	print("Building Mode Iniciado")
-	if build_mode:
-		cancel_build_mode()
-		
-	build_type = cat_type
-	build_mode = true
-	get_node("UI").set_cat_preview(build_type, get_global_mouse_position())
 
-func update_cat_preview():
-	var mouse_position = get_global_mouse_position()
-	var exclusion_layer = map_node.get_node("Exclusion")
-	var current_tile = exclusion_layer.local_to_map(mouse_position)
-	var tile_position = exclusion_layer.map_to_local(current_tile)
-	
-	if exclusion_layer.get_cell_source_id(current_tile) == -1:
-		get_node("UI").update_cat_preview(tile_position, "00bcf4dd")
-		build_valid = true
-		build_location = tile_position
-		build_tile = current_tile
-
-	else:
-		get_node("UI").update_cat_preview(tile_position, "ff826fdd")
-		build_valid = false
-	
-func cancel_build_mode():
-	build_mode = false
-	build_valid = false
-	
-	get_node("UI/CatPreview").free()
-	
-func verify_and_build():
-	if build_valid:
-		var cat_cost = GameData.cat_data[build_type]["cost"]
-		if GameData.fish_quantity >= cat_cost:
-			GameData.update_fish_quantity(-cat_cost)
-			
-			var new_cat = load("res://Scenes/Cats/" + build_type + "/" + build_type + ".tscn").instantiate()
-			new_cat.position = build_location
-			new_cat.built = true
-			new_cat.type = build_type
-			map_node.get_node("Cats").add_child(new_cat, true)
-			
-			#Adicionar um tile de Exclusion para impedir 2 gatos no mesmo lugar
-			map_node.get_node("Exclusion").set_cell(build_tile, 5, Vector2i(0, 0))
-			
 ## Updates Health Bar
 func on_base_damage(damage):
 	base_health -= damage

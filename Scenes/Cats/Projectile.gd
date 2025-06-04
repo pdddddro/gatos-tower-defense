@@ -1,24 +1,29 @@
-extends Node2D
+extends Area2D
 
-var enemy = null
-var target_status = null
+var enemy: Node
+var type: String
 var speed = 400
-var type = null
+var damage: int
 
-func _ready() -> void:
-		if type != null:
-			$AnimatedSprite2D.play(type)
+func _ready():
+	body_entered.connect(_on_body_entered)
+	$AnimatedSprite2D.play(type)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void: # tem que mudar a forma de detecção, o slime fica dead antes de morrer mesmo
+func _process(delta):
 	if is_instance_valid(enemy) and enemy.collision_shape:
 		var direction = (enemy.global_position - global_position).normalized()
 		global_position += direction * speed * delta
+		
 		rotation = direction.angle()
 		
-		# Quando chegar perto do inimigo, some
-			
-		if global_position.distance_to(enemy.global_position) <= 5:
+		# Destrói se estiver muito perto do alvo
+		if global_position.distance_to(enemy.global_position) < 1:
 			queue_free()
 	else:
+		queue_free()
+		
+func _on_body_entered(body: Node):
+	var hit_enemy = body.get_parent()  # Acessa o PathFollow2D
+	if hit_enemy == enemy:
+		hit_enemy.on_hit(damage)
 		queue_free()

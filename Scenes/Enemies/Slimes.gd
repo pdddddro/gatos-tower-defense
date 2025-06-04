@@ -19,6 +19,7 @@ var previous_position = Vector2.ZERO
 func _ready() -> void:
 	previous_position = position
 	init_status()
+	add_to_group("enemies")
 
 func init_status():
 	speed = GameData.enemies_data[type]["speed"]
@@ -65,7 +66,7 @@ var collision_shape = true
 
 func on_hit(damage):
 	hp -= damage
-	
+
 	if hp <= 0 and dead == false:
 		
 		dead = true

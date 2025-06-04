@@ -165,7 +165,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Pilha" type="PathFollow2D"]
+[node name="Pilha" type="PathFollow2D" groups=["enemies"]]
 y_sort_enabled = true
 rotates = false
 loop = false

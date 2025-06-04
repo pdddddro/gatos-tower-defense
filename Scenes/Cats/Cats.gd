@@ -27,7 +27,6 @@ func _physics_process(delta: float) -> void:
 		enemy = null
 		update_animation(Vector2(-1 if last_flip_h else 1, 0))
 
-
 func select_enemy():
 	var enemy_progress_array = []
 	for i in enemy_array:
@@ -76,18 +75,19 @@ func attack():
 	attack_ready = false
 
 	if enemy_array.size() > 0:
-		print(attack_ready)
-		
 		var projectile = projectile_scene.instantiate()
+		
+		projectile.type = str(type)
 		
 		projectile.enemy = enemy
 		projectile.type = type
+		projectile.damage = GameData.cat_data[type]["damage"]  # Passe o dano para o projétil
+		
 		var aim_position = $Aim.global_position
 		projectile.global_position = aim_position
 		
 		get_parent().add_child(projectile)
 		
-		enemy.on_hit(GameData.cat_data[type]["damage"])
 		await get_tree().create_timer(GameData.cat_data[type]["atkcooldown"]).timeout
 		attack_ready = true
 		

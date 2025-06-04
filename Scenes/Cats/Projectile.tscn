@@ -80,12 +80,10 @@ animations = [{
 "speed": 1.0
 }]
 
-[node name="Projectile" type="Node2D"]
+[node name="Projectile" type="Area2D"]
 script = ExtResource("1_bsn35")
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_owymf")
 debug_color = Color(0.788516, 0.415031, 0.314463, 0.42)
 
@@ -94,3 +92,5 @@ sprite_frames = SubResource("SpriteFrames_qmhup")
 animation = &"Chicao"
 frame = 5
 frame_progress = 1.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

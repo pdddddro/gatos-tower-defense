@@ -181,7 +181,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Chiclete" type="PathFollow2D"]
+[node name="Chiclete" type="PathFollow2D" groups=["enemies"]]
 y_sort_enabled = true
 rotates = false
 loop = false
