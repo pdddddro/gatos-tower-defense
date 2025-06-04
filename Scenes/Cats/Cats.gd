@@ -7,7 +7,7 @@ var enemy
 var attack_ready = true
 var status = "Idle"
 var direction = Vector2.ZERO 
-
+	
 func _ready():
 	if built:
 		get_node("Range/CollisionShape2D").get_shape().radius = 0.5 * GameData.cat_data[type]["range"]

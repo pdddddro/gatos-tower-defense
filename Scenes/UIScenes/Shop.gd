@@ -80,17 +80,22 @@ func _on_close_pressed():
 	_target_anchor = _down_anchor
 
 func _on_cat_shop_pressed() -> void:
-	cat_list.show()
-	card_list.hide()
-	cards_control.hide()
+	cat_list.visible = true
+	card_list.visible = false
+	cards_control.visible = false
 	
 	if open == false:
 		open_container()
 
 func _on_cards_pressed() -> void:
-	cat_list.hide()
-	card_list.show()
-	cards_control.show()
+	cat_list.visible = false
+
+	for child in cat_list.get_children():
+		if child is TextureButton and child.is_in_group("build_buttons"):
+			child.remove_from_group("build_buttons")
+			
+	card_list.visible = true
+	cards_control.visible = true
 	
 	if open == false:
 		open_container()
@@ -112,8 +117,6 @@ func _on_buy_pressed() -> void:
 		sell_price_label.self_modulate = Color("42272464")
 		
 		GameData.update_fish_quantity(int(-pack_cost))
-		
-		
 
 func _on_details_pressed() -> void:
 	if selected_inventory_card:
@@ -191,9 +194,9 @@ func update_empty_inventory_label():
 		card_count -= 1
 	
 	if card_count > 0:
-		empty_inventory_label.hide()
+		empty_inventory_label.visible = false
 	else:
-		empty_inventory_label.show()
+		empty_inventory_label.visible = true
 
 func update_rarity_labels():
 	# Acesse as labels pelo caminho mostrado na sua árvore
