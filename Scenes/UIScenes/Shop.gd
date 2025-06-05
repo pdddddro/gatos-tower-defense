@@ -34,7 +34,7 @@ func _ready():
 	anchor_bottom = _down_anchor.y
 	_target_anchor = _down_anchor
 	open = false
-	
+
 	shop_container.visibility_layer = false
 	close_button.visibility_layer = false
 
@@ -43,7 +43,7 @@ func _ready():
 			child.pressed.connect(_on_close_pressed)
 	
 	GameData.card_added_to_inventory.connect(_on_card_added_to_inventory)
-	
+	GameData.fish_quantity_updated.connect(_on_fish_quantity_updated)
 	GameData.rarity_chances_updated.connect(update_rarity_labels)
 	update_rarity_labels() # Atualiza ao abrir a loja também
 	
@@ -53,21 +53,6 @@ func _on_cat_clicked(cat_node):
 	print("Gato clicado: ", cat_node.name)
 	# Aqui você pode abrir o inventário, mostrar detalhes, etc.abrir_inventario_gato(cat_node)
 
-func disable_sell_n_details_buttons():
-	details_button.disabled = true
-	sell_button.disabled = true
-	details_label.self_modulate = Color("42272464")
-	sell_label.self_modulate = Color("42272464")
-	sell_price.self_modulate = Color("42272464")
-
-func enable_sell_n_details_buttons():
-	details_button.disabled = false
-	sell_button.disabled = false
-	details_label.self_modulate = Color.WHITE
-	sell_label.self_modulate = Color.WHITE
-	sell_price.self_modulate = Color.WHITE
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	anchor_top = lerp(anchor_top,_target_anchor.x,lerp_speed)
 	anchor_bottom = lerp(anchor_bottom,_target_anchor.y,lerp_speed)
@@ -83,6 +68,9 @@ func _on_cat_shop_pressed() -> void:
 	cat_list.visible = true
 	card_list.visible = false
 	cards_control.visible = false
+	for child in cat_list.get_children():
+		if child is TextureButton and not child.is_in_group("build_buttons"):
+			child.add_to_group("build_buttons")
 	
 	if open == false:
 		open_container()
@@ -104,19 +92,40 @@ func open_container():
 	shop_container.visibility_layer = true
 	close_button.visibility_layer = true
 	_target_anchor = _up_anchor
-	
+
+### Inventory and Pack
+
+var pack_cost = 300
+
+@onready var empty_inventory_label = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CardList/EmptyLabel
+var card_count = 0
+
 func _on_buy_pressed() -> void:
-	var pack_cost = 300
+	print("a")
 	if GameData.fish_quantity >= pack_cost:
 		var card_selection = card_selection_scene.instantiate()
 		# Sobe 3 níveis: Control -> MarginContainer -> HUD -> UI (CanvasLayer)
 		get_parent().get_parent().get_parent().add_child(card_selection)
 		get_tree().paused = true
+		
+		GameData.update_fish_quantity(int(-pack_cost))
+		update_buy_button()
+
+func _on_fish_quantity_updated(new_amount: int):
+	update_buy_button()
+
+func update_buy_button():
+	if GameData.fish_quantity >= pack_cost:
+		print("A")
+		buy_button.disabled = false
+		buy_label.self_modulate = Color("WHITE")
+		sell_price_label.self_modulate = Color("WHITE")
+		
+	else:
+		print("B")
 		buy_button.disabled = true
 		buy_label.self_modulate = Color("42272464")
 		sell_price_label.self_modulate = Color("42272464")
-		
-		GameData.update_fish_quantity(int(-pack_cost))
 
 func _on_details_pressed() -> void:
 	if selected_inventory_card:
@@ -126,6 +135,20 @@ func _on_details_pressed() -> void:
 			get_parent().get_parent().get_parent().add_child(card_detail)
 			card_detail.setup_card_detail(card_data)
 			get_tree().paused = true
+
+func disable_sell_n_details_buttons():
+	details_button.disabled = true
+	sell_button.disabled = true
+	details_label.self_modulate = Color("42272464")
+	sell_label.self_modulate = Color("42272464")
+	sell_price.self_modulate = Color("42272464")
+
+func enable_sell_n_details_buttons():
+	details_button.disabled = false
+	sell_button.disabled = false
+	details_label.self_modulate = Color.WHITE
+	sell_label.self_modulate = Color.WHITE
+	sell_price.self_modulate = Color.WHITE
 
 func _on_card_added_to_inventory(card_data: Dictionary):
 	# Cria uma nova carta para o inventário visual
@@ -181,10 +204,6 @@ func setup_inventory_card(card_node, card_data):
 	card_node.get_node("MarginContainer/VBoxContainer/CardName").text = card_data.name
 	card_node.get_node("MarginContainer/VBoxContainer/CardIcon").texture = load(card_data.icon)
 	card_node.set_meta("card_data", card_data) # GUARDA TUDO
-
-@onready var empty_inventory_label = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CardList/EmptyLabel
-
-var card_count = 0
 
 func update_empty_inventory_label():
 	if card_list.get_children()[0] != empty_inventory_label:  # Exclui a label da contagem
