@@ -16,6 +16,11 @@ var build_location
 var build_type
 var build_tile
 
+## Building Functions
+var drag_mode = false
+var drag_start_pos = Vector2.ZERO
+var drag_threshold = 5  # pixels para considerar arrasto
+
 # Wave
 var current_wave = 1
 var enemies_in_wave = 0
@@ -25,6 +30,8 @@ var enemies_in_wave = 0
 var base_health = 100
 
 @onready var fish_label = get_node("UI/HUD/MarginContainer/Status/FishContainer/FishLabel")
+
+@onready var shop = get_node("UI/HUD/MarginContainer/Control/Control")
 
 func _ready() -> void:
 	
@@ -43,6 +50,8 @@ func _ready() -> void:
 func _process(delta):
 	if build_mode:
 		update_cat_preview()
+		
+	print(shop)
 
 func update_build_buttons():
 	for button in get_tree().get_nodes_in_group("build_buttons"):
@@ -56,11 +65,6 @@ func update_build_buttons():
 
 		else:
 			button.modulate = Color("FFFFFF")
-
-## Building Functions
-var drag_mode = false
-var drag_start_pos = Vector2.ZERO
-var drag_threshold = 10  # pixels para considerar arrasto
 
 func _input(event):
 	# Sistema combinado (clique + drag-and-drop)
@@ -77,6 +81,7 @@ func _input(event):
 			else:
 				if drag_mode:  # Só constrói se houve arrasto
 					verify_and_build()
+
 				if build_mode:
 					cancel_build_mode()
 
@@ -106,7 +111,6 @@ func initiate_build_mode(cat_type):
 	build_mode = true
 	get_node("UI").set_cat_preview(build_type, get_global_mouse_position())
 	
-	var shop = get_node("GameScene/UI/HUD/MarginContainer/Control")
 	if shop:
 		shop._on_close_pressed()
 
