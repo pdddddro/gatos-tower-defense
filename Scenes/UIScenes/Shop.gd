@@ -28,7 +28,6 @@ var card_detail_scene = preload("res://Scenes/UIScenes/CardDetail.tscn")
 @onready var sell_label = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/Sell/HBoxContainer/Vender
 @onready var sell_price = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/Sell/HBoxContainer/SellPrice
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	anchor_top = _down_anchor.x
 	anchor_bottom = _down_anchor.y
@@ -64,6 +63,8 @@ func _on_close_pressed():
 	close_button.visibility_layer = false
 	_target_anchor = _down_anchor
 
+signal cat_shop_opened
+
 func _on_cat_shop_pressed() -> void:
 	cat_list.visible = true
 	card_list.visible = false
@@ -71,6 +72,8 @@ func _on_cat_shop_pressed() -> void:
 	for child in cat_list.get_children():
 		if child is TextureButton and not child.is_in_group("build_buttons"):
 			child.add_to_group("build_buttons")
+			
+	cat_shop_opened.emit()
 	
 	if open == false:
 		open_container()
@@ -101,7 +104,6 @@ var pack_cost = 300
 var card_count = 0
 
 func _on_buy_pressed() -> void:
-	print("a")
 	if GameData.fish_quantity >= pack_cost:
 		var card_selection = card_selection_scene.instantiate()
 		# Sobe 3 níveis: Control -> MarginContainer -> HUD -> UI (CanvasLayer)
@@ -116,13 +118,11 @@ func _on_fish_quantity_updated(new_amount: int):
 
 func update_buy_button():
 	if GameData.fish_quantity >= pack_cost:
-		print("A")
 		buy_button.disabled = false
 		buy_label.self_modulate = Color("WHITE")
 		sell_price_label.self_modulate = Color("WHITE")
 		
 	else:
-		print("B")
 		buy_button.disabled = true
 		buy_label.self_modulate = Color("42272464")
 		sell_price_label.self_modulate = Color("42272464")
@@ -164,8 +164,6 @@ func _on_card_added_to_inventory(card_data: Dictionary):
 	
 	update_empty_inventory_label()
 	
-	inventory_card.card_selected.connect(_on_inventory_card_selected)
-
 	# Conecta o sinal de seleção
 	inventory_card.card_selected.connect(_on_inventory_card_selected)
 	print("Carta adicionada ao inventário: ", card_data.name)
@@ -223,6 +221,7 @@ func update_rarity_labels():
 	$MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity/Common/ComumRarity.text = str(GameData.card_rarity_chances.medium) + "%"
 	$MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity/Rare/RareRarity.text = str(GameData.card_rarity_chances.rare) + "%"
 
+# Sell Card
 func _on_sell_pressed() -> void:
 	if selected_inventory_card:
 		var card_data = selected_inventory_card.get_meta("card_data")
@@ -232,8 +231,12 @@ func _on_sell_pressed() -> void:
 			GameData.update_fish_quantity(int(sell_value))
 			print("Carta vendida por ", sell_value, " moedas. Moeda total agora: ", GameData.fish_quantity)
 			
+			#game_scene.update_build_buttons
+			
 			# Remove a carta do inventário (da UI)
 			selected_inventory_card.queue_free()
+			
+			#GameScene.update_build_buttons()
 			
 			# Remove a carta da coleção do jogador (se necessário)
 			GameData.card_collection.erase(card_data)

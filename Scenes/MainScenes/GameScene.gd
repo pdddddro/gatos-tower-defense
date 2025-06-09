@@ -50,13 +50,13 @@ func _ready() -> void:
 func _process(delta):
 	if build_mode:
 		update_cat_preview()
-		
-	print(shop)
+
+var cat_cost
 
 func update_build_buttons():
 	for button in get_tree().get_nodes_in_group("build_buttons"):
 		var cat_type = button.get_name()
-		var cat_cost = GameData.cat_data[cat_type]["cost"]
+		cat_cost = GameData.cat_data[cat_type]["cost"]
 		
 		button.disabled = GameData.fish_quantity < cat_cost
 		
@@ -83,7 +83,8 @@ func _input(event):
 					verify_and_build()
 
 				if build_mode:
-					cancel_build_mode()
+					pass
+					#cancel_build_mode()
 
 	elif event is InputEventMouseMotion and build_mode:
 		# Atualiza preview durante arrasto
@@ -121,7 +122,7 @@ func update_cat_preview():
 	var current_tile = exclusion_layer.local_to_map(mouse_position)
 	var tile_position = exclusion_layer.map_to_local(current_tile)
 	
-	if exclusion_layer.get_cell_source_id(current_tile) == -1:
+	if exclusion_layer.get_cell_source_id(current_tile) == -1 and GameData.fish_quantity >= cat_cost:
 		get_node("UI").update_cat_preview(tile_position, "00bcf4dd")
 		build_valid = true
 		build_location = tile_position
@@ -155,7 +156,9 @@ func verify_and_build():
 			new_cat.type = build_type
 			map_node.get_node("Cats").add_child(new_cat)
 			map_node.get_node("Exclusion").set_cell(build_tile, 5, Vector2i(0, 0))
-
+		
+		cancel_build_mode()
+		
 ## Wave Functions
 func start_next_wave():
 	var wave_data = retrieve_wave_data()

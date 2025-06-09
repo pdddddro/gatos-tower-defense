@@ -13,7 +13,7 @@ var cat_data = {
 	
 	"Pele": {
 		"damage": 20,
-		"atkcooldown": 1,
+		"atkcooldown": 0.5,
 		"range": 128,
 		"cost": 100
 	},
@@ -28,7 +28,7 @@ var cat_data = {
 	"Cartolina": {
 		"damage": 20,
 		"atkcooldown": 1,
-		"range": 160,
+		"range": 96,
 		"cost": 100
 	},
 	
