@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dvb8syxh2fhc0" path="res://Assets/UI/Art/Enviar Feedback.png" id="6_50puj"]
 [ext_resource type="Texture2D" uid="uid://b8bsdya0clg1j" path="res://Assets/UI/Art/SobrePressed.png" id="7_fdvul"]
 [ext_resource type="Texture2D" uid="uid://bkcmnhvp24rfw" path="res://Assets/UI/Art/Enviar FeedbackPressed.png" id="9_fuxq6"]
-[ext_resource type="Texture2D" uid="uid://pwbldrvyocwc" path="res://Assets/UI/Art/Logov2.png" id="14_nmscp"]
+[ext_resource type="Texture2D" uid="uid://dckg708wavodo" path="res://Assets/UI/Art/Logo.png" id="14_nmscp"]
 
 [node name="MainMenu" type="Control"]
 custom_minimum_size = Vector2(640, 360)
@@ -60,7 +60,7 @@ size_flags_horizontal = 8
 size_flags_vertical = 8
 
 [node name="Label" type="Label" parent="Margin/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(96, 0)
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 theme_override_constants/line_spacing = 0
 theme_override_fonts/font = ExtResource("2_nmscp")
