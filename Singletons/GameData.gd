@@ -79,16 +79,28 @@ var enemies_data = {
 ## round
 var waves = {
 	"wave1": [
-		["Pilha", 1],
 		["Plastico", 1],
-		["Chiclete", 1],
+		["Plastico", 1],
+		["Plastico", 1],
+		["Plastico", 1],
+	],
+	"wave2": [
+		["Metal", 1],
+		["Metal", 1],
+		["Metal", 1],
 		["Metal", 1]
 	],
-		"wave2": [
-		["Pilha", 1],
-		["Plastico", 1],
+	"wave3": [
 		["Chiclete", 1],
-		["Metal", 1]
+		["Chiclete", 1],
+		["Chiclete", 1],
+		["Chiclete", 1]
+	],
+	"wave4": [
+		["Pilha", 1],
+		["Pilha", 1],
+		["Pilha", 1],
+		["Pilha", 1],
 	]
 }
 
