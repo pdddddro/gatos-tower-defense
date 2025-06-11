@@ -14,7 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dvb8syxh2fhc0" path="res://Assets/UI/Art/Enviar Feedback.png" id="6_50puj"]
 [ext_resource type="Texture2D" uid="uid://b8bsdya0clg1j" path="res://Assets/UI/Art/SobrePressed.png" id="7_fdvul"]
 [ext_resource type="Texture2D" uid="uid://bkcmnhvp24rfw" path="res://Assets/UI/Art/Enviar FeedbackPressed.png" id="9_fuxq6"]
-[ext_resource type="Texture2D" uid="uid://dckg708wavodo" path="res://Assets/UI/Art/Logo.png" id="14_nmscp"]
+[ext_resource type="Texture2D" uid="uid://n20rclfqrjrx" path="res://Assets/IDV/Logo.png" id="14_nmscp"]
 
 [node name="MainMenu" type="Control"]
 custom_minimum_size = Vector2(640, 360)
