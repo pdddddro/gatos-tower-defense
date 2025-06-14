@@ -48,16 +48,16 @@ func _ready():
 	
 	disable_sell_n_details_buttons()
 
-func _on_cat_clicked(cat_node):
-	print("Gato clicado: ", cat_node.name)
-	# Aqui você pode abrir o inventário, mostrar detalhes, etc.abrir_inventario_gato(cat_node)
-
 func _process(delta):
 	anchor_top = lerp(anchor_top,_target_anchor.x,lerp_speed)
 	anchor_bottom = lerp(anchor_bottom,_target_anchor.y,lerp_speed)
 	if abs(anchor_top - _target_anchor.x) < 0.02 and abs(anchor_bottom - _target_anchor.y) < 0.02:
 		if _target_anchor == _down_anchor and shop_container.visibility_layer:
 			shop_container.visibility_layer = false
+
+func _on_cat_clicked(cat_node):
+	print("Gato clicado: ", cat_node.name)
+	# Aqui você pode abrir o inventário, mostrar detalhes, etc.abrir_inventario_gato(cat_node)
 
 func _on_close_pressed():
 	close_button.visibility_layer = false

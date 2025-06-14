@@ -73,6 +73,10 @@ texture = ExtResource("12_wb53i")
 
 [node name="HeartLabel" type="Label" parent="UI/HUD/MarginContainer/Status/HeartContainer"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.431373)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 0
 theme_override_fonts/font = ExtResource("7_jem3k")
 theme_override_font_sizes/font_size = 8
 text = "Vida"
@@ -89,6 +93,10 @@ texture = ExtResource("10_h0y4r")
 
 [node name="FishLabel" type="Label" parent="UI/HUD/MarginContainer/Status/FishContainer"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.431373)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 0
 theme_override_fonts/font = ExtResource("7_jem3k")
 theme_override_font_sizes/font_size = 8
 text = "Dinheiro"
@@ -103,6 +111,10 @@ theme_override_constants/separation = 4
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.431373)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 0
 theme_override_fonts/font = ExtResource("7_jem3k")
 theme_override_font_sizes/font_size = 8
 text = "Rodada"
@@ -112,6 +124,10 @@ vertical_alignment = 1
 [node name="WaveCount" type="Label" parent="UI/HUD/MarginContainer/WaveContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.431373)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 0
 theme_override_fonts/font = ExtResource("7_jem3k")
 theme_override_font_sizes/font_size = 16
 text = "01/50"
