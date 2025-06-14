@@ -28,7 +28,7 @@ func create_and_setup_card(card_data):
 
 func setup_card_data(card_node, card_data):
 	# Configura os elementos visuais da carta
-	#card_node.get_node("VBoxContainer/CardIcon").texture = load(card_data.icon)
+	card_node.get_node("MarginContainer/VBoxContainer/CardIcon").texture = load(card_data.icon)
 	card_node.get_node("MarginContainer/VBoxContainer/CardName").text = card_data.name
 	card_node.get_node("MarginContainer/VBoxContainer/CardDescription").text = card_data.description
 	

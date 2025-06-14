@@ -129,7 +129,7 @@ var card_data = {
 		{
 			"name": "Predador Completo",
 			"description": "Aumenta dano em 100",
-			"icon": "res://Assets/Icons/Hearts.png",
+			"icon": "res://Assets/Icons/Heart.png",
 			"rarity_color": Color("808080"), # Cinza para básica
 			"effects": [
 				{"type": "damage_boost", "power": 100}
