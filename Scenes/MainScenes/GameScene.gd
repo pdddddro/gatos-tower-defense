@@ -21,6 +21,14 @@ var drag_mode = false
 var drag_start_pos = Vector2.ZERO
 var drag_threshold = 5  # pixels para considerar arrasto
 
+## Card Drag and Drop
+var card_drag_mode = false
+var card_drag_valid = false
+var card_drag_location
+var card_drag_type
+var card_preview = null
+var dragged_card = null
+
 # Wave
 var current_wave = 1
 var enemies_in_wave = 0
@@ -34,7 +42,7 @@ var base_health = 100
 @onready var shop = get_node("UI/HUD/MarginContainer/Control/Control")
 
 func _ready() -> void:
-	
+	add_to_group("game_scene")
 	map_node = get_node("Map1")
 	get_node("UI/HUD/MarginContainer/Status/HeartContainer/HeartLabel").text = str(base_health)
 	
@@ -47,27 +55,127 @@ func _ready() -> void:
 	for i in get_tree().get_nodes_in_group("build_buttons"):
 		i.pressed.connect(Callable(self, "initiate_build_mode").bind(i.get_name()))
 	
+	connect_card_signals()
+
+func connect_card_signals():
+	# Esta função deve ser chamada quando novas cartas são adicionadas ao inventário
+	for card in get_tree().get_nodes_in_group("inventory_cards"):
+		if not card.card_drag_started.is_connected(_on_card_drag_started):
+			card.card_drag_started.connect(_on_card_drag_started)
+			card.card_dropped.connect(_on_card_dropped)
+
+func _on_card_drag_started(card_node):
+	print("Drag iniciado para carta: ", card_node.get_node("MarginContainer/VBoxContainer/CardName").text)
+	
+	if card_drag_mode:
+		cancel_card_drag_mode()
+	
+	dragged_card = card_node
+	card_drag_mode = true
+	card_drag_type = card_node.get_meta("card_data")
+	
+	# Cria preview da carta usando o ícone
+	create_card_preview()
+	
+	if shop:
+		shop._on_close_pressed()
+
+func create_card_preview():
+	if card_preview:
+		card_preview.queue_free()
+	
+	card_preview = TextureRect.new()
+	card_preview.texture = load(card_drag_type.icon)
+	card_preview.size = Vector2(32, 32)  # Tamanho do preview
+	card_preview.modulate = Color(1, 1, 1, 0.7)  # Semi-transparente
+	
+	get_node("UI").add_child(card_preview)
+	card_preview.z_index = 100  # Fica na frente de tudo
+
 func _process(delta):
 	if build_mode:
 		update_cat_preview()
+	
+	if card_drag_mode:
+		update_card_preview()
 
-var cat_cost
-
-func update_build_buttons():
-	for button in get_tree().get_nodes_in_group("build_buttons"):
-		var cat_type = button.get_name()
-		cat_cost = GameData.cat_data[cat_type]["cost"]
+func update_card_preview():
+	if not card_preview:
+		return
 		
-		button.disabled = GameData.fish_quantity < cat_cost
-		
-		if button.disabled:
-			button.modulate = Color("d0ab89")
+	var mouse_position = get_global_mouse_position()
+	card_preview.global_position = mouse_position - card_preview.size / 2
+	
+	# Verifica se pode aplicar a carta em um gato
+	var target_cat = get_cat_at_position(mouse_position)
+	
+	if target_cat and can_apply_card_to_cat(target_cat):
+		card_preview.modulate = Color(0, 1, 0, 0.7)  # Verde se válido
+		card_drag_valid = true
+		card_drag_location = target_cat
+	else:
+		card_preview.modulate = Color(1, 0, 0, 0.7)  # Vermelho se inválido
+		card_drag_valid = false
+		card_drag_location = null
 
-		else:
-			button.modulate = Color("FFFFFF")
+func get_cat_at_position(position: Vector2):
+	var space_state = get_world_2d().direct_space_state
+	if not space_state:
+		return null
+	
+	var query = PhysicsPointQueryParameters2D.new()
+	query.position = position
+	query.collision_mask = 1
+	query.collide_with_areas = true
+	query.collide_with_bodies = false
+	
+	var result = space_state.intersect_point(query)
+	
+	for collision in result:
+		var collider = collision.collider
+		
+		if collider.name == "ClickableArea":
+			var parent = collider.get_parent()
+			if parent.has_method("apply_card_effect"):
+				print("Gato encontrado para aplicar carta: ", parent.type if "type" in parent else "gato")
+				return parent
+	
+	return null
+
+func can_apply_card_to_cat(cat_node) -> bool:
+	# Verifica se a carta pode ser aplicada ao gato
+	# Você pode adicionar lógica específica aqui
+	return cat_node != null and cat_node.built
+
+func _on_card_dropped(card_node, target_position):
+	if card_drag_valid and card_drag_location:
+		apply_card_to_cat(card_node, card_drag_location)
+	
+	cancel_card_drag_mode()
+
+func apply_card_to_cat(card_node, target_cat):
+	var card_data = card_node.get_meta("card_data")
+	
+	# Aplica os efeitos da carta ao gato
+	for effect in card_data.effects:
+		target_cat.apply_card_effect(effect.type, effect.power)
+	
+	print("Carta aplicada: ", card_data.name, " no gato em ", target_cat.position)
+	
+	# Remove a carta do inventário
+	card_node.queue_free()
+	GameData.card_collection.erase(card_data)
+
+func cancel_card_drag_mode():
+	card_drag_mode = false
+	card_drag_valid = false
+	dragged_card = null
+	
+	if card_preview:
+		card_preview.queue_free()
+		card_preview = null
 
 func _input(event):
-	# Sistema combinado (clique + drag-and-drop)
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
@@ -83,8 +191,7 @@ func _input(event):
 					verify_and_build()
 
 				if build_mode:
-					pass
-					#cancel_build_mode()
+					cancel_build_mode()
 
 	elif event is InputEventMouseMotion and build_mode:
 		# Atualiza preview durante arrasto
@@ -101,6 +208,26 @@ func _input(event):
 		# Ativa modo drag se mover além do threshold
 		if event.position.distance_to(drag_start_pos) > drag_threshold:
 			drag_mode = true
+	
+	# Cancela drag de carta com clique direito
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
+		if card_drag_mode:
+			cancel_card_drag_mode()
+
+var cat_cost
+
+func update_build_buttons():
+	for button in get_tree().get_nodes_in_group("build_buttons"):
+		var cat_type = button.get_name()
+		cat_cost = GameData.cat_data[cat_type]["cost"]
+		
+		button.disabled = GameData.fish_quantity < cat_cost
+		
+		if button.disabled:
+			button.modulate = Color("d0ab89")
+
+		else:
+			button.modulate = Color("FFFFFF")
 
 func initiate_build_mode(cat_type):
 	# Função original mantida
@@ -122,11 +249,14 @@ func update_cat_preview():
 	var current_tile = exclusion_layer.local_to_map(mouse_position)
 	var tile_position = exclusion_layer.map_to_local(current_tile)
 	
-	if exclusion_layer.get_cell_source_id(current_tile) == -1 and GameData.fish_quantity >= cat_cost:
+	var current_cat_cost = GameData.cat_data[build_type]["cost"]
+	
+	if exclusion_layer.get_cell_source_id(current_tile) == -1 and GameData.fish_quantity >= current_cat_cost:
 		get_node("UI").update_cat_preview(tile_position, "00bcf4dd")
 		build_valid = true
 		build_location = tile_position
 		build_tile = current_tile
+		
 	else:
 		get_node("UI").update_cat_preview(tile_position, "ff826fdd")
 		build_valid = false

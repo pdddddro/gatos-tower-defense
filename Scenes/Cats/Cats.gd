@@ -7,10 +7,18 @@ var enemy
 var attack_ready = true
 var status = "Idle"
 var direction = Vector2.ZERO 
-	
+
 func _ready():
 	if built:
 		get_node("Range/CollisionShape2D").get_shape().radius = 0.5 * GameData.cat_data[type]["range"]
+
+	if has_node("ClickableArea"):
+		var clickable = get_node("ClickableArea")
+		clickable.collision_layer = 1  # Layer 1 para gatos
+		clickable.collision_mask = 0   # Não precisa detectar nada
+		clickable.monitoring = false   # Não monitora outros objetos
+		clickable.monitorable = true   # Pode ser detectado por outros
+		print("ClickableArea configurado para gato: ", type)
 
 func _physics_process(delta: float) -> void:
 	if enemy_array.size() != 0 and built:
@@ -38,6 +46,27 @@ func select_enemy():
 	# Seleciona o inimigo que estiver mais perto do final
 	enemy = enemy_array[enemy_index]
 	
+func apply_card_effect(effect_type: String, power: float):
+	match effect_type:
+		"damage_boost":
+			# Aumenta o dano base do gato
+			GameData.cat_data[type]["damage"] += power
+			print("Dano aumentado em ", power, ". Novo dano: ", GameData.cat_data[type]["damage"])
+			
+		"speed_boost":
+			# Reduz o cooldown de ataque
+			GameData.cat_data[type]["atkcooldown"] = max(0.1, GameData.cat_data[type]["atkcooldown"] - power)
+			print("Velocidade aumentada. Novo cooldown: ", GameData.cat_data[type]["atkcooldown"])
+			
+		"range_boost":
+			# Aumenta o alcance
+			GameData.cat_data[type]["range"] += power
+			# Atualiza o range visual
+			if built:
+				get_node("Range/CollisionShape2D").get_shape().radius = 0.5 * GameData.cat_data[type]["range"]
+				print("Alcance aumentado em ", power, ". Novo alcance: ", GameData.cat_data[type]["range"])
+		_:
+			print("Efeito desconhecido: ", effect_type)
 
 func turn():
 	var direction = (enemy.position - self.position).normalized()

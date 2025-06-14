@@ -166,6 +166,12 @@ func _on_card_added_to_inventory(card_data: Dictionary):
 	
 	# Conecta o sinal de seleção
 	inventory_card.card_selected.connect(_on_inventory_card_selected)
+	
+	var game_scene = get_tree().get_first_node_in_group("game_scene")
+
+	inventory_card.card_drag_started.connect(game_scene._on_card_drag_started)
+	inventory_card.card_dropped.connect(game_scene._on_card_dropped)
+		
 	print("Carta adicionada ao inventário: ", card_data.name)
 
 var selected_inventory_card: TextureButton = null

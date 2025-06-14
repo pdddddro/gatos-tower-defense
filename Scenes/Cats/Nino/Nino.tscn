@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cbuier5l3bp7m"]
+[gd_scene load_steps=19 format=3 uid="uid://cbuier5l3bp7m"]
 
 [ext_resource type="Script" uid="uid://drtnf6143pkfe" path="res://Scenes/Cats/Pele/Pele.gd" id="1_nhsbb"]
 [ext_resource type="Texture2D" uid="uid://dvhrsyngix8od" path="res://Assets/Cats/Sombra.png" id="2_wfxnj"]
@@ -183,6 +183,10 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0vk2m"]
+radius = 14.0
+height = 28.0
+
 [node name="Cat2" type="Node2D"]
 script = ExtResource("1_nhsbb")
 
@@ -207,6 +211,11 @@ animation = &"IdleDownLeft"
 
 [node name="Aim" type="Marker2D" parent="."]
 position = Vector2(0, -8)
+
+[node name="ClickableArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickableArea"]
+shape = SubResource("CapsuleShape2D_0vk2m")
 
 [connection signal="body_entered" from="Range" to="." method="_on_range_body_entered"]
 [connection signal="body_exited" from="Range" to="." method="_on_range_body_exited"]

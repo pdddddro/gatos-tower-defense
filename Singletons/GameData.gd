@@ -104,57 +104,49 @@ var waves = {
 	]
 }
 
+## Efeitos
+## damage_boost
+## speed_boost
+## range_boost
+## critic_boost
+## money_boost
+
 ## Cards
 var card_data = {
 	"basic": [
 		{
 			"name": "Agilidade Felina",
-			"description": "Este gato tem um pé de coelho por isso produz 10% a mais de dinheiro... espera, isso não faz sentido - exclusivo para Odin",
-			"icon": "res://Assets/Icons/strength_basic.png",
+			"description": "Aumenta a velocidade de ataque em 0.2s",
+			"icon": "res://Assets/Icons/Fish1.png",
 			"rarity_color": Color("808080"), # Cinza para básica
-			"effects": {"damage": 5},
-			"sell_value": "50"
-		},{
-			"name": "Fúria de Predador", 
-			"description": "Este gato tem um pé de coelho por isso produz 10% a mais de dinheiro... espera, isso não faz sentido - exclusivo para Odin",
-			"icon": "res://Assets/Icons/speed_basic.png",
-			"rarity_color": Color("808080"),
-			"effects": {"speed": 0.1},
-			"sell_value": "50"
+			"effects": [
+				{"type": "speed_boost", "power": 0.2}
+			],
+			"sell_value": "25"
 		}],
 		
 	"medium": [
 		{
-			"name": "Media1",
-			"description": "Aumenta o dano em 5 pontos",
-			"icon": "res://Assets/Icons/strength_basic.png",
+			"name": "Predador Completo",
+			"description": "Aumenta dano em 100",
+			"icon": "res://Assets/Icons/Hearts.png",
 			"rarity_color": Color("808080"), # Cinza para básica
-			"effects": {"damage": 5},
-			"sell_value": "100"
-		},{
-			"name": "Media2", 
-			"description": "Aumenta a velocidade em 10%",
-			"icon": "res://Assets/Icons/speed_basic.png",
-			"rarity_color": Color("808080"),
-			"effects": {"speed": 0.1},
-			"sell_value": "100"
+			"effects": [
+				{"type": "damage_boost", "power": 100}
+			],
+			"sell_value": "50"
 		}],
 		
 	"rare": [
 		{
-			"name": "Rara1",
-			"description": "Aumenta o dano em 5 pontos",
-			"icon": "res://Assets/Icons/strength_basic.png",
+			"name": "Olhos de Leão",
+			"description": "Aumenta range em 128",
+			"icon": "res://Assets/Icons/Cards2.png",
 			"rarity_color": Color("808080"), # Cinza para básica
-			"effects": {"damage": 5},
-			"sell_value": "150"
-		},{
-			"name": "Rara2", 
-			"description": "Aumenta a velocidade em 10%",
-			"icon": "res://Assets/Icons/speed_basic.png",
-			"rarity_color": Color("808080"),
-			"effects": {"speed": 0.1},
-			"sell_value": "150"
+			"effects": [
+				{"type": "range_boost", "power": 128}
+			],
+			"sell_value": "100"
 		}],
 }
 
