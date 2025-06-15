@@ -27,6 +27,8 @@ var card_detail_scene = preload("res://Scenes/UIScenes/CardDetail.tscn")
 @onready var sell_button = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/Sell
 @onready var sell_label = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/Sell/HBoxContainer/Vender
 @onready var sell_price = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/Sell/HBoxContainer/SellPrice
+@onready var cat_info = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo
+@onready var texture_rect = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect
 
 func _ready():
 	anchor_top = _down_anchor.x
@@ -69,6 +71,12 @@ func _on_cat_shop_pressed() -> void:
 	cat_list.visible = true
 	card_list.visible = false
 	cards_control.visible = false
+	cat_info.visible = false
+	texture_rect.visible = true
+	
+	if !texture_rect:
+		texture_rect.visible = true
+	
 	for child in cat_list.get_children():
 		if child is TextureButton and not child.is_in_group("build_buttons"):
 			child.add_to_group("build_buttons")
@@ -80,7 +88,9 @@ func _on_cat_shop_pressed() -> void:
 
 func _on_cards_pressed() -> void:
 	cat_list.visible = false
-
+	cat_info.visible = false
+	texture_rect.visible = true
+	
 	for child in cat_list.get_children():
 		if child is TextureButton and child.is_in_group("build_buttons"):
 			child.remove_from_group("build_buttons")
@@ -96,6 +106,51 @@ func open_container():
 	close_button.visibility_layer = true
 	_target_anchor = _up_anchor
 
+func open_cat_info():
+	cat_list.visible = false
+	card_list.visible = false
+	cards_control.visible = false
+	texture_rect.visible = false
+	cat_info.visible = true
+	open_container()
+	#update_cat_info()
+	
+## card_data
+@onready var cat_name = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/Cat/TextureRect/CatSprite/CatName
+@onready var cat_sprite = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/Cat/TextureRect/CatSprite/Shadow/CatSprite
+@onready var cat_damage = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row1/Damage/Number
+@onready var cat_range = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row1/Range/Number
+@onready var cat_attack_speed = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row1/AttackSpeed/Number
+@onready var cat_critical_chance = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row2/CriticalChance/Number
+@onready var cat_enemies_defeated = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row2/EnemiesDefeated/Number
+@onready var cat_fish_collected = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row2/FishsCollected/Number
+
+## Falta adicionar o enemies_defeated e fish_collected
+func update_cat_info(cat_type):
+	print("Informações Atualizadas")
+	if cat_type:
+		cat_name.text = GameData.cat_data[cat_type]["name"]
+		cat_sprite.texture = load(GameData.cat_data[cat_type]["sprite"])
+		
+		cat_damage.text = format_number_k(GameData.cat_data[cat_type]["damage"])
+		cat_range.text = format_number_k(GameData.cat_data[cat_type]["range"])
+		
+		var cooldown = GameData.cat_data[cat_type]["atkcooldown"]
+		var attacks_per_second = 1.0 / cooldown
+		cat_attack_speed.text = "%.1f/s" % attacks_per_second
+		
+		cat_critical_chance.text = str(int(GameData.cat_data[cat_type]["critical_chance"])) + "%"
+		
+		#cat_enemies_defeated.text = format_number_k(GameData.cat_data[cat_type]["enemies_defeated"])
+		#cat_fish_collected.text = format_number_k(GameData.cat_data[cat_type]["fish_collected"])
+		
+func format_number_k(value: float) -> String:
+	if value >= 1000:
+		var k_value = value / 1000.0
+		return ("%.1fk" % k_value).replace(".0k", "k")
+	else:
+		return str(int(value))
+		
 ### Inventory and Pack
 
 var pack_cost = 300

@@ -72,7 +72,7 @@ func on_hit(damage):
 		dead = true
 		emit_signal("enemy_defeated", type)
 		
-		$CharacterBody2D/CollisionShape2D.disabled = true
+		$CharacterBody2D/CollisionShape2D.call_deferred("set_disabled", true)
 		
 		sprite.play("Dead")
 		

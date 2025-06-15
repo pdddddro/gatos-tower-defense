@@ -199,7 +199,6 @@ sprite_frames = SubResource("SpriteFrames_qs2hh")
 animation = &"IdleDownRight"
 
 [node name="Range" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
 shape = SubResource("CircleShape2D_66lg1")

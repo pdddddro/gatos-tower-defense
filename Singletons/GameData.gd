@@ -1,42 +1,57 @@
 extends Node
 
-var fish_quantity: int = 300  # Valor inicial de moedas
+var fish_quantity: int = 10000  # Valor inicial de moedas
 
 ## Cats
 var cat_data = {
 	"Chicao": {
+		"name": "Chicao",
+		"sprite": "res://Assets/Cats/Chicao/Chicao.png",
 		"damage": 20,
 		"atkcooldown": 1,
 		"range": 800,
-		"cost": 100
+		"cost": 100,
+		"critical_chance": 10
 	},
 	
 	"Pele": {
+		"name": "Pele",
+		"sprite": "res://Assets/Cats/Pele/Pele.png",
 		"damage": 20,
 		"atkcooldown": 0.5,
 		"range": 128,
-		"cost": 100
+		"cost": 100,
+		"critical_chance": 10
 	},
 	
 	"Nino": {
+		"name": "Nino",
+		"sprite": "res://Assets/Cats/Nino/Nino.png",
 		"damage": 20,
 		"atkcooldown": 1,
 		"range": 160,
-		"cost": 50
+		"cost": 50,
+		"critical_chance": 10
 	},
 	
 	"Cartolina": {
+		"name": "Cartolina",
+		"sprite": "res://Assets/Cats/Cartolina/Cartolina.png",
 		"damage": 20,
 		"atkcooldown": 1,
 		"range": 96,
-		"cost": 100
+		"cost": 100,
+		"critical_chance": 10
 	},
 	
 	"Nut": {
+		"name": "Nut",
+		"sprite": "res://Assets/Cats/Nut/Nut.png",
 		"damage": 20,
 		"atkcooldown": 1,
 		"range": 160,
-		"cost": 100
+		"cost": 100,
+		"critical_chance": 10
 	}
 }
 

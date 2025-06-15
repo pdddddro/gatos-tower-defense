@@ -217,3 +217,4 @@ shape = SubResource("CapsuleShape2D_ah5gc")
 
 [connection signal="body_entered" from="Range" to="." method="_on_range_body_entered"]
 [connection signal="body_exited" from="Range" to="." method="_on_range_body_exited"]
+[connection signal="input_event" from="ClickableArea" to="." method="_on_clickable_area_input_event"]
