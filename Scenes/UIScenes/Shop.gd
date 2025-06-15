@@ -30,6 +30,8 @@ var card_detail_scene = preload("res://Scenes/UIScenes/CardDetail.tscn")
 @onready var cat_info = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo
 @onready var texture_rect = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect
 
+@onready var sell_cat_button = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/Cat/Sell
+
 func _ready():
 	anchor_top = _down_anchor.x
 	anchor_bottom = _down_anchor.y
@@ -46,9 +48,11 @@ func _ready():
 	GameData.card_added_to_inventory.connect(_on_card_added_to_inventory)
 	GameData.fish_quantity_updated.connect(_on_fish_quantity_updated)
 	GameData.rarity_chances_updated.connect(update_rarity_labels)
-	update_rarity_labels() # Atualiza ao abrir a loja também
+	update_rarity_labels()
 	
 	disable_sell_n_details_buttons()
+	
+	sell_cat_button.pressed.connect(_on_sell_cat_button_pressed)
 
 func _process(delta):
 	anchor_top = lerp(anchor_top,_target_anchor.x,lerp_speed)
@@ -59,7 +63,6 @@ func _process(delta):
 
 func _on_cat_clicked(cat_node):
 	print("Gato clicado: ", cat_node.name)
-	# Aqui você pode abrir o inventário, mostrar detalhes, etc.abrir_inventario_gato(cat_node)
 
 func _on_close_pressed():
 	close_button.visibility_layer = false
@@ -113,9 +116,8 @@ func open_cat_info():
 	texture_rect.visible = false
 	cat_info.visible = true
 	open_container()
-	#update_cat_info()
 	
-## card_data
+## cat_data
 @onready var cat_name = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/Cat/TextureRect/CatSprite/CatName
 @onready var cat_sprite = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/Cat/TextureRect/CatSprite/Shadow/CatSprite
 @onready var cat_damage = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row1/Damage/Number
@@ -124,6 +126,8 @@ func open_cat_info():
 @onready var cat_critical_chance = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row2/CriticalChance/Number
 @onready var cat_enemies_defeated = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row2/EnemiesDefeated/Number
 @onready var cat_fish_collected = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row2/FishsCollected/Number
+
+@onready var cat_sell_price = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/Cat/Sell/HBoxContainer/SellPrice
 
 ## Falta adicionar o enemies_defeated e fish_collected
 func update_cat_info(cat_type):
@@ -144,6 +148,10 @@ func update_cat_info(cat_type):
 		#cat_enemies_defeated.text = format_number_k(GameData.cat_data[cat_type]["enemies_defeated"])
 		#cat_fish_collected.text = format_number_k(GameData.cat_data[cat_type]["fish_collected"])
 		
+		var cat_cost = GameData.cat_data[cat_type]["cost"]
+		var sell_value = int(cat_cost * 0.5)
+		cat_sell_price.text = str(sell_value)
+		
 		update_equipped_cards_ui([])
 		
 func format_number_k(value: float) -> String:
@@ -162,33 +170,26 @@ func format_number_k(value: float) -> String:
 var current_cat_reference = null
 
 func set_current_cat(cat_node):
-	print("=== DEFININDO GATO ATUAL ===")
 	print("Gato recebido: ", cat_node)
 	print("Gato tem cartas equipadas? ", cat_node.equipped_cards.size() if cat_node else "Gato é null")
 	
 	current_cat_reference = cat_node
-	if cat_node:
-		print("Atualizando UI com ", cat_node.equipped_cards.size(), " cartas")
-		update_equipped_cards_ui(cat_node.equipped_cards)
-	else:
-		print("ERRO: Gato é null!")
+
+	print("Atualizando UI com ", cat_node.equipped_cards.size(), " cartas")
+	update_equipped_cards_ui(cat_node.equipped_cards)
+
+	if sell_cat_button:
+		sell_cat_button.disabled = false
 
 func update_equipped_cards_ui(equipped_cards: Array):
-	print("=== ATUALIZANDO UI DAS CARTAS ===")
 	print("Número de cartas para mostrar: ", equipped_cards.size())
 	
 	var card_slots = [card_slot_1, card_slot_2, card_slot_3, card_slot_4]
 	
-	# Verifica se os slots existem
-	for i in range(4):
-		print("Slot ", i+1, " existe? ", card_slots[i] != null)
-	
-	# Limpa todos os slots primeiro
 	for i in range(4):
 		if card_slots[i]:
 			clear_card_slot(card_slots[i])
-	
-	# Preenche os slots com as cartas equipadas
+
 	for i in range(min(equipped_cards.size(), 4)):
 		if card_slots[i]:
 			print("Configurando slot ", i+1, " com carta: ", equipped_cards[i].name)
@@ -199,7 +200,6 @@ func setup_card_slot(slot_node, card_data: Dictionary):
 	print("Slot node: ", slot_node)
 	print("Card data: ", card_data)
 	
-	# Verifica se o CardIcon existe
 	var card_icon = slot_node.get_node("CardIcon")
 	print("CardIcon encontrado? ", card_icon != null)
 	
@@ -210,7 +210,6 @@ func setup_card_slot(slot_node, card_data: Dictionary):
 		if ResourceLoader.exists(card_data.icon):
 			card_icon.texture = load(card_data.icon)
 			card_icon.visible = true
-			print("Textura carregada e visibilidade definida")
 		else:
 			print("ERRO: Arquivo de ícone não encontrado: ", card_data.icon)
 	else:
@@ -224,14 +223,44 @@ func clear_card_slot(slot_node):
 	
 	slot_node.tooltip_text = ""
 
-func _on_card_slot_clicked(event: InputEvent, slot_index: int):
-	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
-		# Clique direito remove a carta
-		if current_cat_reference and current_cat_reference.has_method("remove_card"):
-			current_cat_reference.remove_card(slot_index)
+func _on_sell_cat_button_pressed():
+	sell_cat(current_cat_reference)
+
+func sell_cat(cat_node):
+	var cat_cost = GameData.cat_data[cat_node.type]["cost"]
+	var sell_value = int(cat_cost * 0.5)
+	
+	GameData.update_fish_quantity(sell_value)
+	print("Gato vendido por ", sell_value, " peixes")
+	
+	remove_cat_from_exclusion(cat_node)
+	
+	cat_node.queue_free()
+	
+	close_cat_info() 
+	_on_close_pressed()
+	
+	print("Gato vendido")
+
+func remove_cat_from_exclusion(cat_node):
+	var game_scene = get_tree().get_first_node_in_group("game_scene")
+	if game_scene:
+		var map_node = game_scene.get_node("Map1")
+		var exclusion_layer = map_node.get_node("Exclusion")
+		
+		var tile_pos = exclusion_layer.local_to_map(cat_node.position)
+		
+		exclusion_layer.set_cell(tile_pos, -1)
+
+func close_cat_info():
+	cat_info.visible = false
+	texture_rect.visible = true
+	current_cat_reference = null
+	
+	if sell_cat_button:
+		sell_cat_button.disabled = true
 
 ### Inventory and Pack
-
 var pack_cost = 300
 
 @onready var empty_inventory_label = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CardList/EmptyLabel
@@ -373,21 +402,17 @@ func _on_sell_pressed() -> void:
 			
 			#game_scene.update_build_buttons
 			
-			# Remove a carta do inventário (da UI)
 			selected_inventory_card.queue_free()
 			
 			#GameScene.update_build_buttons()
 			
-			# Remove a carta da coleção do jogador (se necessário)
 			GameData.card_collection.erase(card_data)
 			
-			# Limpa a seleção
 			selected_inventory_card = null
 			
 			await get_tree().process_frame
 			update_empty_inventory_label()
 			
-			# Atualiza a UI (desativa botões e verifica se o inventário está vazio)
 			disable_sell_n_details_buttons()
 			
 		else:

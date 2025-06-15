@@ -11,9 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://c6au0wn47cs01" path="res://Assets/UI/card_background_hover.png" id="8_qah3m"]
 [ext_resource type="Texture2D" uid="uid://dvhrsyngix8od" path="res://Assets/Cats/Sombra.png" id="8_uhyj3"]
 [ext_resource type="Texture2D" uid="uid://bkttfrcv1d5uu" path="res://Assets/Cats/Chicao/Chicao.png" id="9_0ya3t"]
-[ext_resource type="Texture2D" uid="uid://bxk3lqi1ao4iu" path="res://Assets/UI/Buttons/botao_sec_padrao_120x.png" id="9_ogkrh"]
-[ext_resource type="Texture2D" uid="uid://dmq6ggqeskgw3" path="res://Assets/UI/Buttons/botao_sec_hover_120x.png" id="10_4cqio"]
+[ext_resource type="Texture2D" uid="uid://eym1v5rb5qmv" path="res://Assets/UI/Buttons/botao_sec_padrao_small.png" id="9_bymxr"]
 [ext_resource type="Texture2D" uid="uid://d0s1xis4xqbm6" path="res://Assets/Icons/Fish1.png" id="10_8gkmu"]
+[ext_resource type="Texture2D" uid="uid://ded80qbnyb2sf" path="res://Assets/UI/Buttons/botao_sec_hover_small.png" id="10_qh346"]
 [ext_resource type="Texture2D" uid="uid://c061d35ptj35w" path="res://Assets/Cats/Pele/Pele.png" id="11_qah3m"]
 [ext_resource type="Texture2D" uid="uid://cyly7nfosdk6" path="res://Assets/Cats/Nino/Nino.png" id="12_apai1"]
 [ext_resource type="Texture2D" uid="uid://ca7dcxojm22x4" path="res://Assets/Cats/Cartolina/Cartolina.png" id="13_v6pep"]
@@ -220,8 +220,8 @@ custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 size_flags_horizontal = 0
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource("9_ogkrh")
-texture_hover = ExtResource("10_4cqio")
+texture_normal = ExtResource("9_bymxr")
+texture_hover = ExtResource("10_qh346")
 texture_disabled = ExtResource("22_0ya3t")
 stretch_mode = 0
 
@@ -254,7 +254,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
 theme_override_fonts/font = ExtResource("8_0ya3t")
 theme_override_font_sizes/font_size = 11
-text = "0"
+text = "300"
 horizontal_alignment = 1
 vertical_alignment = 1
 
