@@ -147,25 +147,14 @@ func can_apply_card_to_cat(cat_node) -> bool:
 	# Você pode adicionar lógica específica aqui
 	return cat_node != null and cat_node.built
 
-func _on_card_dropped(card_node, target_position):
-	if card_drag_valid and card_drag_location:
-		apply_card_to_cat(card_node, card_drag_location)
-	
-	cancel_card_drag_mode()
-
 func apply_card_to_cat(card_node, target_cat):
 	var card_data = card_node.get_meta("card_data")
 	
-	# Aplica os efeitos da carta ao gato
-	for effect in card_data.effects:
-		target_cat.apply_card_effect(effect.type, effect.power)
-	
-	print("Carta aplicada: ", card_data.name, " no gato em ", target_cat.position)
-	
-	# Remove a carta do inventário
+	var success = target_cat.equip_card(card_data)
 	card_node.queue_free()
 	GameData.card_collection.erase(card_data)
-
+	print("Carta removida do inventário")
+		
 func cancel_card_drag_mode():
 	card_drag_mode = false
 	card_drag_valid = false
@@ -403,4 +392,18 @@ func _on_cat_shop_pressed() -> void:
 		cat_shop_instance = CatShopScene.instantiate()
 		$UI/HUD/MarginContainer.add_child(cat_shop_instance)
 		cat_shop_instance.visible = true
+		
+func _on_card_dropped(card_node, target_position):
+	if card_drag_valid and card_drag_location:
+		# Verifica se o gato pode receber mais cartas
+		if card_drag_location.has_method("can_equip_card") and card_drag_location.can_equip_card():
+			apply_card_to_cat(card_node, card_drag_location)
+		else:
+			print("Este gato já tem o máximo de cartas equipadas!")
+			show_max_cards_message()
 	
+	cancel_card_drag_mode()
+			
+func show_max_cards_message():
+	# Implementar uma mensagem visual para o jogador
+	print("Máximo de 4 cartas por gato!")

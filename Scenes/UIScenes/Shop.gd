@@ -144,13 +144,92 @@ func update_cat_info(cat_type):
 		#cat_enemies_defeated.text = format_number_k(GameData.cat_data[cat_type]["enemies_defeated"])
 		#cat_fish_collected.text = format_number_k(GameData.cat_data[cat_type]["fish_collected"])
 		
+		update_equipped_cards_ui([])
+		
 func format_number_k(value: float) -> String:
 	if value >= 1000:
 		var k_value = value / 1000.0
 		return ("%.1fk" % k_value).replace(".0k", "k")
 	else:
 		return str(int(value))
+
+### Cat Cards
+@onready var card_slot_1 = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/EquippedCards/Cards/Card1
+@onready var card_slot_2 = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/EquippedCards/Cards/Card2
+@onready var card_slot_3 = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/EquippedCards/Cards/Card3
+@onready var card_slot_4 = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/EquippedCards/Cards/Card4
+
+var current_cat_reference = null
+
+func set_current_cat(cat_node):
+	print("=== DEFININDO GATO ATUAL ===")
+	print("Gato recebido: ", cat_node)
+	print("Gato tem cartas equipadas? ", cat_node.equipped_cards.size() if cat_node else "Gato é null")
+	
+	current_cat_reference = cat_node
+	if cat_node:
+		print("Atualizando UI com ", cat_node.equipped_cards.size(), " cartas")
+		update_equipped_cards_ui(cat_node.equipped_cards)
+	else:
+		print("ERRO: Gato é null!")
+
+func update_equipped_cards_ui(equipped_cards: Array):
+	print("=== ATUALIZANDO UI DAS CARTAS ===")
+	print("Número de cartas para mostrar: ", equipped_cards.size())
+	
+	var card_slots = [card_slot_1, card_slot_2, card_slot_3, card_slot_4]
+	
+	# Verifica se os slots existem
+	for i in range(4):
+		print("Slot ", i+1, " existe? ", card_slots[i] != null)
+	
+	# Limpa todos os slots primeiro
+	for i in range(4):
+		if card_slots[i]:
+			clear_card_slot(card_slots[i])
+	
+	# Preenche os slots com as cartas equipadas
+	for i in range(min(equipped_cards.size(), 4)):
+		if card_slots[i]:
+			print("Configurando slot ", i+1, " com carta: ", equipped_cards[i].name)
+			setup_card_slot(card_slots[i], equipped_cards[i])
+
+func setup_card_slot(slot_node, card_data: Dictionary):
+	print("=== CONFIGURANDO SLOT ===")
+	print("Slot node: ", slot_node)
+	print("Card data: ", card_data)
+	
+	# Verifica se o CardIcon existe
+	var card_icon = slot_node.get_node("CardIcon")
+	print("CardIcon encontrado? ", card_icon != null)
+	
+	if card_icon:
+		print("Caminho do ícone: ", card_data.icon)
 		
+		# Verifica se o arquivo existe
+		if ResourceLoader.exists(card_data.icon):
+			card_icon.texture = load(card_data.icon)
+			card_icon.visible = true
+			print("Textura carregada e visibilidade definida")
+		else:
+			print("ERRO: Arquivo de ícone não encontrado: ", card_data.icon)
+	else:
+		print("ERRO: CardIcon não encontrado no slot")
+
+func clear_card_slot(slot_node):
+	var card_icon = slot_node.get_node("CardIcon")
+	if card_icon:
+		card_icon.texture = null
+		card_icon.visible = false
+	
+	slot_node.tooltip_text = ""
+
+func _on_card_slot_clicked(event: InputEvent, slot_index: int):
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_RIGHT:
+		# Clique direito remove a carta
+		if current_cat_reference and current_cat_reference.has_method("remove_card"):
+			current_cat_reference.remove_card(slot_index)
+
 ### Inventory and Pack
 
 var pack_cost = 300

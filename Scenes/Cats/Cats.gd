@@ -139,3 +139,30 @@ func _on_clickable_area_input_event(viewport: Node, event: InputEvent, shape_idx
 		if shop and built:
 			shop.open_cat_info()
 			shop.update_cat_info(type)
+			shop.set_current_cat(self) 
+
+## Gato salvar cartas equipadas
+var equipped_cards = []
+var max_cards = 4
+
+func can_equip_card() -> bool:
+	return equipped_cards.size() < max_cards
+
+func equip_card(card_data: Dictionary) -> bool:
+	print("Pode equipar? ", can_equip_card())
+	print("Cartas atuais: ", equipped_cards.size(), "/", max_cards)
+	
+	if can_equip_card():
+		equipped_cards.append(card_data)
+		print("Carta equipada com sucesso: ", card_data.name)
+		print("Total de cartas agora: ", equipped_cards.size())
+		
+		apply_card_effect(card_data.effects[0].type, card_data.effects[0].power)
+		
+		# Debug da loja
+		if shop:
+			shop.update_equipped_cards_ui(equipped_cards)
+		
+		return true
+	else:
+		return false
