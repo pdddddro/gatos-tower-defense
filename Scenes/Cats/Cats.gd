@@ -35,6 +35,25 @@ func _physics_process(delta: float) -> void:
 		enemy = null
 		update_animation(Vector2(-1 if last_flip_h else 1, 0))
 
+var showing_range = false
+
+### Desenhar Range, depois preciso modificar o preview de colocar o gato
+func _draw():
+	# Desenha o range apenas se deve mostrar e o gato está construído
+	if showing_range and built:
+		var radius = GameData.cat_data[type]["range"]
+		draw_circle(Vector2.ZERO, radius, Color(0, 0.7, 1, 0.3))  # Círculo preenchido azul semi-transparente
+		draw_arc(Vector2.ZERO, radius, 0, TAU, 64, Color(0, 0.7, 1, 0.8), 1)  # Borda azul
+
+func show_range():
+	showing_range = true
+	queue_redraw()
+	print("Mostrando range do gato: ", GameData.cat_data[type]["range"])
+
+func hide_range():
+	showing_range = false
+	queue_redraw()
+
 func select_enemy():
 	var enemy_progress_array = []
 	for i in enemy_array:
@@ -140,6 +159,15 @@ func _on_clickable_area_input_event(viewport: Node, event: InputEvent, shape_idx
 			shop.open_cat_info()
 			shop.update_cat_info(type)
 			shop.set_current_cat(self) 
+			
+			hide_all_cat_ranges()
+			show_range()
+
+func hide_all_cat_ranges():
+	var cats_node = get_parent()
+	for cat in cats_node.get_children():
+		if cat.has_method("hide_range"):
+			cat.hide_range()
 
 ## Gato salvar cartas equipadas
 var equipped_cards = []

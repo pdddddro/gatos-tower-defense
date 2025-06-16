@@ -87,10 +87,10 @@ func create_card_preview():
 	card_preview = TextureRect.new()
 	card_preview.texture = load(card_drag_type.icon)
 	card_preview.size = Vector2(32, 32)  # Tamanho do preview
-	card_preview.modulate = Color(1, 1, 1, 0.7)  # Semi-transparente
+	card_preview.modulate = Color(1, 1, 1, .9)  # Semi-transparente
 	
 	get_node("UI").add_child(card_preview)
-	card_preview.z_index = 100  # Fica na frente de tudo
+	card_preview.z_index = 100
 
 func _process(delta):
 	if build_mode:
@@ -110,11 +110,11 @@ func update_card_preview():
 	var target_cat = get_cat_at_position(mouse_position)
 	
 	if target_cat and can_apply_card_to_cat(target_cat):
-		card_preview.modulate = Color(0, 1, 0, 0.7)  # Verde se válido
+		card_preview.modulate = Color(0, 1, 0, 1)
 		card_drag_valid = true
 		card_drag_location = target_cat
 	else:
-		card_preview.modulate = Color(1, 0, 0, 0.7)  # Vermelho se inválido
+		card_preview.modulate = Color(1, 0, 0, 1)
 		card_drag_valid = false
 		card_drag_location = null
 

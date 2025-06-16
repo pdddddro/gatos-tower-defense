@@ -67,6 +67,8 @@ func _on_cat_clicked(cat_node):
 func _on_close_pressed():
 	close_button.visibility_layer = false
 	_target_anchor = _down_anchor
+	close_cat_info()
+	
 
 signal cat_shop_opened
 
@@ -77,6 +79,9 @@ func _on_cat_shop_pressed() -> void:
 	cat_info.visible = false
 	texture_rect.visible = true
 	
+	if current_cat_reference:
+		current_cat_reference.hide_range()
+		
 	if !texture_rect:
 		texture_rect.visible = true
 	
@@ -93,6 +98,9 @@ func _on_cards_pressed() -> void:
 	cat_list.visible = false
 	cat_info.visible = false
 	texture_rect.visible = true
+	
+	if current_cat_reference:
+		current_cat_reference.hide_range()
 	
 	for child in cat_list.get_children():
 		if child is TextureButton and child.is_in_group("build_buttons"):
@@ -255,7 +263,12 @@ func remove_cat_from_exclusion(cat_node):
 func close_cat_info():
 	cat_info.visible = false
 	texture_rect.visible = true
+	
+	if current_cat_reference:
+		current_cat_reference.hide_range()
+		
 	current_cat_reference = null
+	
 	
 	if sell_cat_button:
 		sell_cat_button.disabled = true

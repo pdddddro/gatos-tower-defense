@@ -88,16 +88,21 @@ var enemies_data = {
 		"speed": 60,
 		"hp": 40,
 		"fish_reward": 50
+	},
+	"BossRadioativo": {
+		"damage": 1,
+		"speed": 20,
+		"hp": 400,
+		"fish_reward": 400
 	}
 }
 
 ## round
 var waves = {
 	"wave1": [
-		["Plastico", 1],
-		["Plastico", 1],
-		["Plastico", 1],
-		["Plastico", 1],
+		["BossRadioativo", 1],
+		["Metal", 1],
+		["Metal", 1],
 	],
 	"wave2": [
 		["Metal", 1],
