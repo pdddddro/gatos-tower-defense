@@ -1,12 +1,61 @@
-[gd_scene load_steps=7 format=3 uid="uid://dea44diijn1cy"]
+[gd_scene load_steps=20 format=3 uid="uid://dea44diijn1cy"]
 
 [ext_resource type="Script" uid="uid://c5cilqwnocbk1" path="res://Scenes/Enemies/Plastico/Plastico.gd" id="1_ede18"]
 [ext_resource type="Texture2D" uid="uid://dndr80yhpj34c" path="res://Assets/Enemies/boss_radioativo.png" id="2_20e71"]
-[ext_resource type="Texture2D" uid="uid://oowv72istub4" path="res://Assets/Enemies/shadow_normal_slime.png" id="3_xq5dr"]
+[ext_resource type="Texture2D" uid="uid://05q1du6n8co5" path="res://Assets/Enemies/boss_sprite_sheet.png" id="3_7yq0h"]
+[ext_resource type="Texture2D" uid="uid://c2nqf5iif1o6u" path="res://Assets/Enemies/shadow_boss_slime.png" id="4_7yq0h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7yq0h"]
 atlas = ExtResource("2_20e71")
 region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0s2e5"]
+atlas = ExtResource("3_7yq0h")
+region = Rect2(96, 32, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_332t1"]
+atlas = ExtResource("3_7yq0h")
+region = Rect2(96, 80, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4yw00"]
+atlas = ExtResource("3_7yq0h")
+region = Rect2(96, 128, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kmpc3"]
+atlas = ExtResource("3_7yq0h")
+region = Rect2(96, 176, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_752qp"]
+atlas = ExtResource("3_7yq0h")
+region = Rect2(0, 32, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_27ji8"]
+atlas = ExtResource("3_7yq0h")
+region = Rect2(0, 80, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ueae"]
+atlas = ExtResource("3_7yq0h")
+region = Rect2(0, 128, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jf4aj"]
+atlas = ExtResource("3_7yq0h")
+region = Rect2(0, 176, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2wuj"]
+atlas = ExtResource("3_7yq0h")
+region = Rect2(48, 32, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3og5"]
+atlas = ExtResource("3_7yq0h")
+region = Rect2(48, 80, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10sfs"]
+atlas = ExtResource("3_7yq0h")
+region = Rect2(48, 128, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_luthf"]
+atlas = ExtResource("3_7yq0h")
+region = Rect2(48, 176, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nlrk2"]
 animations = [{
@@ -20,7 +69,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7yq0h")
+"texture": SubResource("AtlasTexture_0s2e5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_332t1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4yw00")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kmpc3")
 }],
 "loop": true,
 "name": &"WalkDown",
@@ -28,7 +86,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7yq0h")
+"texture": SubResource("AtlasTexture_752qp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_27ji8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ueae")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jf4aj")
 }],
 "loop": true,
 "name": &"WalkLeft",
@@ -36,7 +103,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7yq0h")
+"texture": SubResource("AtlasTexture_752qp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_27ji8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ueae")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jf4aj")
 }],
 "loop": true,
 "name": &"WalkRight",
@@ -44,7 +120,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7yq0h")
+"texture": SubResource("AtlasTexture_s2wuj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3og5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10sfs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_luthf")
 }],
 "loop": true,
 "name": &"WalkUp",
@@ -67,7 +152,7 @@ script = ExtResource("1_ede18")
 y_sort_enabled = true
 position = Vector2(0, -20)
 sprite_frames = SubResource("SpriteFrames_nlrk2")
-animation = &"WalkDown"
+animation = &"Dead"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(0, 2)
@@ -77,5 +162,5 @@ shape = SubResource("CapsuleShape2D_qq56m")
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.341176)
 y_sort_enabled = true
-position = Vector2(0, -11)
-texture = ExtResource("3_xq5dr")
+position = Vector2(0, -17)
+texture = ExtResource("4_7yq0h")

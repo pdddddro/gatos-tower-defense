@@ -198,7 +198,7 @@ shape = SubResource("CapsuleShape2D_qq56m")
 y_sort_enabled = true
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_nlrk2")
-animation = &"Dead"
+animation = &"WalkRight"
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.341176)
