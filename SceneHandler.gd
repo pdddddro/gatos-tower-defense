@@ -1,6 +1,7 @@
 extends Node
 
 func _ready():
+	pass
 	load_main_menu()
 
 func load_main_menu():
@@ -16,8 +17,9 @@ func on_new_game_pressed():
 #func on_quit_pressed():
 	#get_tree().quit()
 
+## Vitória
 func unload_game(result):
 	get_node("GameScene").queue_free()
-	var main_menu = load("res://Scenes/UIScenes/MainMenu.tscn").instantiate()
-	add_child(main_menu)
-	load_main_menu()
+	var result_scene = load("res://Scenes/UIScenes/Result/Result.tscn").instantiate()
+	result_scene.set_result(result)
+	add_child(result_scene)

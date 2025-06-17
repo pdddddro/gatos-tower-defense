@@ -200,24 +200,17 @@ func update_equipped_cards_ui(equipped_cards: Array):
 
 	for i in range(min(equipped_cards.size(), 4)):
 		if card_slots[i]:
-			print("Configurando slot ", i+1, " com carta: ", equipped_cards[i].name)
 			setup_card_slot(card_slots[i], equipped_cards[i])
 
 func setup_card_slot(slot_node, card_data: Dictionary):
-	print("=== CONFIGURANDO SLOT ===")
-	print("Slot node: ", slot_node)
-	print("Card data: ", card_data)
 	
 	var card_icon = slot_node.get_node("CardIcon")
-	print("CardIcon encontrado? ", card_icon != null)
 	
 	if card_icon:
-		print("Caminho do ícone: ", card_data.icon)
-		
-		# Verifica se o arquivo existe
 		if ResourceLoader.exists(card_data.icon):
 			card_icon.texture = load(card_data.icon)
 			card_icon.visible = true
+			slot_node.tooltip_text = card_data.description
 		else:
 			print("ERRO: Arquivo de ícone não encontrado: ", card_data.icon)
 	else:
@@ -268,7 +261,6 @@ func close_cat_info():
 		current_cat_reference.hide_range()
 		
 	current_cat_reference = null
-	
 	
 	if sell_cat_button:
 		sell_cat_button.disabled = true

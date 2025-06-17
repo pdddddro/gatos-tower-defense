@@ -57,6 +57,13 @@ func _ready() -> void:
 	
 	connect_card_signals()
 
+func _process(delta):
+	if build_mode:
+		update_cat_preview()
+	
+	if card_drag_mode:
+		update_card_preview()
+
 func connect_card_signals():
 	# Esta função deve ser chamada quando novas cartas são adicionadas ao inventário
 	for card in get_tree().get_nodes_in_group("inventory_cards"):
@@ -91,13 +98,6 @@ func create_card_preview():
 	
 	get_node("UI").add_child(card_preview)
 	card_preview.z_index = 100
-
-func _process(delta):
-	if build_mode:
-		update_cat_preview()
-	
-	if card_drag_mode:
-		update_card_preview()
 
 func update_card_preview():
 	if not card_preview:
@@ -325,6 +325,11 @@ func check_wave_end():
 		current_wave += 1
 		WaveCount.text = str(current_wave) + "/50"
 		
+		## Vitória
+		if current_wave > 2:
+			emit_signal("game_finished", true)
+			return
+		
 		GameData.current_round = current_wave
 		GameData.update_rarity_chances()
 		
@@ -335,11 +340,11 @@ func check_wave_end():
 		else:
 			fast_mode = true
 
-
 ## Updates Health Bar
 func on_base_damage(damage):
 	base_health -= damage
 	
+	## Derrota
 	if base_health <= 0:
 		emit_signal("game_finished", false)
 		
