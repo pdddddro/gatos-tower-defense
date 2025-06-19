@@ -1,9 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://3n4enlhcgms4"]
+[gd_scene load_steps=15 format=3 uid="uid://3n4enlhcgms4"]
 
 [ext_resource type="Script" uid="uid://gjhy6gu7wr75" path="res://Scenes/UIScenes/main_menu.gd" id="1_0tan2"]
 [ext_resource type="Texture2D" uid="uid://0byb8mpdvpgy" path="res://Assets/UI/Art/Background.png" id="1_iyrik"]
 [ext_resource type="Texture2D" uid="uid://ct6ceupmhobky" path="res://Assets/UI/Art/NovoJogoPressed.png" id="2_1brix"]
-[ext_resource type="FontFile" uid="uid://8qe2jqb87ubg" path="res://Assets/Fonts/press_start_2p/PressStart2P.ttf" id="2_hpefh"]
 [ext_resource type="FontFile" uid="uid://dypca4yn0mcqr" path="res://Assets/Fonts/retro_gaming/Retro Gaming.ttf" id="2_nmscp"]
 [ext_resource type="Texture2D" uid="uid://xf4ueuuk8f8m" path="res://Assets/UI/Art/NovoJogo.png" id="2_qc1fl"]
 [ext_resource type="Texture2D" uid="uid://csc6110lxqehn" path="res://Assets/UI/Link_pra_pagina_principal_da_Wikipedia-PT_em_codigo_QR_b.svg.png" id="3_0tan2"]
@@ -125,8 +124,8 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.431373)
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 1
 theme_override_constants/shadow_outline_size = 0
-theme_override_fonts/font = ExtResource("2_hpefh")
-theme_override_font_sizes/font_size = 8
+theme_override_fonts/font = ExtResource("2_nmscp")
+theme_override_font_sizes/font_size = 11
 text = "Novo Jogo"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -160,8 +159,8 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.431373)
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 1
 theme_override_constants/shadow_outline_size = 0
-theme_override_fonts/font = ExtResource("2_hpefh")
-theme_override_font_sizes/font_size = 8
+theme_override_fonts/font = ExtResource("2_nmscp")
+theme_override_font_sizes/font_size = 11
 text = "Ranking"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -195,8 +194,8 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.431373)
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 1
 theme_override_constants/shadow_outline_size = 0
-theme_override_fonts/font = ExtResource("2_hpefh")
-theme_override_font_sizes/font_size = 8
+theme_override_fonts/font = ExtResource("2_nmscp")
+theme_override_font_sizes/font_size = 11
 text = "Sobre"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -229,8 +228,8 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.431373)
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 1
 theme_override_constants/shadow_outline_size = 0
-theme_override_fonts/font = ExtResource("2_hpefh")
-theme_override_font_sizes/font_size = 8
+theme_override_fonts/font = ExtResource("2_nmscp")
+theme_override_font_sizes/font_size = 11
 text = "Enviar Feedack"
 horizontal_alignment = 1
 vertical_alignment = 1

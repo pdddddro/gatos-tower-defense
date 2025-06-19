@@ -1,11 +1,11 @@
 extends Node
 
 func _ready():
-	load_main_menu()
+	#load_main_menu() ## Desativei isso pra parar de dar um erro no console, mas ele nao tava afetando em nada, qualquer coisa ativa dnv
+	pass
 
 func load_main_menu():
 	get_node("MainMenu/Margin/VBox/NovoJogo").pressed.connect(on_new_game_pressed)
-	
 #	get_node("MainMenu/Margin/VBox/Sair").pressed.connect(on_quit_pressed)
 
 func on_new_game_pressed():

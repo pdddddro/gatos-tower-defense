@@ -41,7 +41,7 @@ var showing_range = false
 func _draw():
 	# Desenha o range apenas se deve mostrar e o gato está construído
 	if showing_range and built:
-		var radius = GameData.cat_data[type]["range"]
+		var radius = GameData.cat_data[type]["range"]/2
 		draw_circle(Vector2.ZERO, radius, Color(0, 0.7, 1, 0.3))  # Círculo preenchido azul semi-transparente
 		draw_arc(Vector2.ZERO, radius, 0, TAU, 64, Color(0, 0.7, 1, 0.8), 1)  # Borda azul
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=24 format=3 uid="uid://c3eo4k3gsmtd0"]
+[gd_scene load_steps=22 format=3 uid="uid://c3eo4k3gsmtd0"]
 
 [ext_resource type="Script" uid="uid://c4terrj7gjgx0" path="res://Scenes/UIScenes/Result/result.gd" id="1_adago"]
 [ext_resource type="Texture2D" uid="uid://0byb8mpdvpgy" path="res://Assets/UI/Art/Background.png" id="2_3orr4"]
+[ext_resource type="Texture2D" uid="uid://t8dwftxpr4dh" path="res://Assets/UI/Results/vitoria.png" id="3_35ack"]
 [ext_resource type="Texture2D" uid="uid://dv3g48f7hixr8" path="res://Assets/UI/ui_background.png" id="3_fy2yk"]
 [ext_resource type="FontFile" uid="uid://dypca4yn0mcqr" path="res://Assets/Fonts/retro_gaming/Retro Gaming.ttf" id="3_nh3lf"]
 [ext_resource type="FontFile" uid="uid://bxh8oh1s7ap4j" path="res://Assets/Fonts/medodicaregular.otf" id="4_t7d4k"]
@@ -12,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://dahq70rsnb1fi" path="res://Assets/UI/ScrollBackground.png" id="11_l47wd"]
 [ext_resource type="Texture2D" uid="uid://bja4m423dmu6i" path="res://Assets/Icons/Attack.png" id="13_ef081"]
 [ext_resource type="FontFile" uid="uid://8qe2jqb87ubg" path="res://Assets/Fonts/press_start_2p/PressStart2P.ttf" id="14_j4aux"]
-[ext_resource type="Texture2D" uid="uid://cad3xncagluhe" path="res://Assets/Icons/Range.png" id="15_gty5d"]
 [ext_resource type="Texture2D" uid="uid://l3qb28hgmuhn" path="res://Assets/UI/Equipped_card_background.png" id="16_d55iw"]
 [ext_resource type="Texture2D" uid="uid://be042goflct38" path="res://Assets/UI/Equipped_card_background_pressed.png" id="17_syasu"]
 [ext_resource type="Texture2D" uid="uid://bfwtkfw56eu2j" path="res://Assets/UI/Equipped_card_background_hover.png" id="18_bcbo1"]
@@ -21,9 +21,6 @@
 [ext_resource type="Texture2D" uid="uid://cgceauk46iquy" path="res://Assets/UI/Buttons/botao_sec_padrao.png" id="30_7plpr"]
 [ext_resource type="Texture2D" uid="uid://cat5x4hm2pqvj" path="res://Assets/UI/Buttons/botao_sec_hover.png" id="31_h07x6"]
 [ext_resource type="Texture2D" uid="uid://8adf7fkny4qr" path="res://Assets/Icons/Play.png" id="31_wispx"]
-[ext_resource type="Texture2D" uid="uid://wloqelhk6a02" path="res://Assets/UI/Results/derrota.png" id="32_uke3q"]
-
-[sub_resource type="Theme" id="Theme_gub5g"]
 
 [node name="Result" type="Control"]
 process_mode = 2
@@ -58,28 +55,30 @@ offset_right = 166.0
 offset_bottom = 111.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 16
+theme_override_constants/separation = 8
 alignment = 1
 
 [node name="Result" type="TextureRect" parent="VBoxContainer"]
 custom_minimum_size = Vector2(122, 38)
 layout_mode = 2
 size_flags_horizontal = 4
-texture = ExtResource("32_uke3q")
+texture = ExtResource("3_35ack")
 
-[node name="ShopContainer" type="VBoxContainer" parent="VBoxContainer"]
+[node name="Statistics" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 6
 size_flags_vertical = 8
 mouse_filter = 2
 theme_override_constants/separation = 0
 alignment = 2
 
-[node name="Background" type="NinePatchRect" parent="VBoxContainer/ShopContainer"]
+[node name="Background" type="NinePatchRect" parent="VBoxContainer/Statistics"]
 texture_filter = 1
 clip_contents = true
-custom_minimum_size = Vector2(332, 216)
+custom_minimum_size = Vector2(292, 134)
 layout_mode = 2
-size_flags_vertical = 8
+size_flags_horizontal = 4
+size_flags_vertical = 3
 texture = ExtResource("3_fy2yk")
 region_rect = Rect2(0, 0, 48, 48)
 patch_margin_left = 16
@@ -87,7 +86,223 @@ patch_margin_top = 16
 patch_margin_right = 16
 patch_margin_bottom = 16
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/ShopContainer/Background"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Statistics/Background"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="VBoxContainer" parent="VBoxContainer/Statistics/Background/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 8
+
+[node name="EstatisticasTexto" type="Label" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("3_nh3lf")
+theme_override_font_sizes/font_size = 11
+text = "Estatísticas"
+horizontal_alignment = 1
+
+[node name="Statistics" type="VBoxContainer" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="EnemiesDefeated" type="HBoxContainer" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics"]
+layout_mode = 2
+size_flags_vertical = 2
+tooltip_text = "Dano de Ataque"
+theme_override_constants/separation = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics/EnemiesDefeated"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics/EnemiesDefeated/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("13_ef081")
+
+[node name="Label" type="Label" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics/EnemiesDefeated/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
+theme_override_fonts/font = ExtResource("4_t7d4k")
+theme_override_font_sizes/font_size = 16
+text = "Inimigos Derrotados"
+vertical_alignment = 1
+
+[node name="Number" type="Label" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics/EnemiesDefeated"]
+custom_minimum_size = Vector2(40, 16)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("14_j4aux")
+theme_override_font_sizes/font_size = 8
+text = "00000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Damage" type="HBoxContainer" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics"]
+layout_mode = 2
+size_flags_vertical = 2
+tooltip_text = "Dano de Ataque"
+theme_override_constants/separation = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics/Damage"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics/Damage/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("13_ef081")
+
+[node name="Label" type="Label" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics/Damage/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
+theme_override_fonts/font = ExtResource("4_t7d4k")
+theme_override_font_sizes/font_size = 16
+text = "Dano Causado"
+vertical_alignment = 1
+
+[node name="Number" type="Label" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics/Damage"]
+custom_minimum_size = Vector2(40, 16)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("14_j4aux")
+theme_override_font_sizes/font_size = 8
+text = "00000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FishsCollected" type="HBoxContainer" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics"]
+layout_mode = 2
+size_flags_vertical = 2
+tooltip_text = "Dano de Ataque"
+theme_override_constants/separation = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics/FishsCollected"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics/FishsCollected/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("13_ef081")
+
+[node name="Label" type="Label" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics/FishsCollected/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
+theme_override_fonts/font = ExtResource("4_t7d4k")
+theme_override_font_sizes/font_size = 16
+text = "Peixes Coletados"
+vertical_alignment = 1
+
+[node name="Number" type="Label" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics/FishsCollected"]
+custom_minimum_size = Vector2(40, 16)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("14_j4aux")
+theme_override_font_sizes/font_size = 8
+text = "00000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimeInGame" type="HBoxContainer" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics"]
+layout_mode = 2
+size_flags_vertical = 2
+tooltip_text = "Dano de Ataque"
+theme_override_constants/separation = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics/TimeInGame"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics/TimeInGame/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("13_ef081")
+
+[node name="Label" type="Label" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics/TimeInGame/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
+theme_override_fonts/font = ExtResource("4_t7d4k")
+theme_override_font_sizes/font_size = 16
+text = "Tempo em Jogo"
+vertical_alignment = 1
+
+[node name="Number" type="Label" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics/TimeInGame"]
+custom_minimum_size = Vector2(40, 16)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("14_j4aux")
+theme_override_font_sizes/font_size = 8
+text = "00000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MoneySpent" type="HBoxContainer" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics"]
+layout_mode = 2
+size_flags_vertical = 2
+tooltip_text = "Dano de Ataque"
+theme_override_constants/separation = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics/MoneySpent"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics/MoneySpent/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("13_ef081")
+
+[node name="Label" type="Label" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics/MoneySpent/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
+theme_override_fonts/font = ExtResource("4_t7d4k")
+theme_override_font_sizes/font_size = 16
+text = "Dinheiro Gasto"
+vertical_alignment = 1
+
+[node name="Number" type="Label" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics/MoneySpent"]
+custom_minimum_size = Vector2(40, 16)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("14_j4aux")
+theme_override_font_sizes/font_size = 8
+text = "00000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BestCat" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/separation = 0
+alignment = 2
+
+[node name="Background" type="NinePatchRect" parent="VBoxContainer/BestCat"]
+texture_filter = 1
+clip_contents = true
+custom_minimum_size = Vector2(292, 90)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+texture = ExtResource("3_fy2yk")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/BestCat/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -101,337 +316,101 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="HBoxContainer" type="VBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer"]
+[node name="HBoxContainer" type="VBoxContainer" parent="VBoxContainer/BestCat/Background/MarginContainer"]
 layout_mode = 2
+size_flags_vertical = 0
 theme_override_constants/separation = 8
 
-[node name="EnemiesDefeated" type="HBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer"]
+[node name="EstatisticasTexto" type="Label" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-tooltip_text = "Dano de Ataque"
-theme_override_constants/separation = 4
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/EnemiesDefeated"]
-layout_mode = 2
-texture = ExtResource("13_ef081")
-
-[node name="Number" type="Label" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/EnemiesDefeated"]
-custom_minimum_size = Vector2(40, 16)
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
-theme_override_fonts/font = ExtResource("14_j4aux")
-theme_override_font_sizes/font_size = 8
-text = "00000"
-vertical_alignment = 1
-
-[node name="Damage" type="HBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-tooltip_text = "Dano de Ataque"
-theme_override_constants/separation = 4
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/Damage"]
-layout_mode = 2
-texture = ExtResource("13_ef081")
-
-[node name="Number" type="Label" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/Damage"]
-custom_minimum_size = Vector2(24, 16)
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
-theme_override_fonts/font = ExtResource("14_j4aux")
-theme_override_font_sizes/font_size = 8
-text = "50"
-vertical_alignment = 1
-
-[node name="FishsCollected" type="HBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-tooltip_text = "Dano de Ataque"
-theme_override_constants/separation = 4
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/FishsCollected"]
-layout_mode = 2
-texture = ExtResource("13_ef081")
-
-[node name="Number" type="Label" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/FishsCollected"]
-custom_minimum_size = Vector2(40, 16)
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
-theme_override_fonts/font = ExtResource("14_j4aux")
-theme_override_font_sizes/font_size = 8
-text = "50"
-vertical_alignment = 1
-
-[node name="TimeInGame" type="HBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-tooltip_text = "Dano de Ataque"
-theme_override_constants/separation = 4
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TimeInGame"]
-layout_mode = 2
-texture = ExtResource("13_ef081")
-
-[node name="Number" type="Label" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TimeInGame"]
-custom_minimum_size = Vector2(40, 16)
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
-theme_override_fonts/font = ExtResource("14_j4aux")
-theme_override_font_sizes/font_size = 8
-text = "50"
-vertical_alignment = 1
-
-[node name="MoneySpent" type="HBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-tooltip_text = "Dano de Ataque"
-theme_override_constants/separation = 4
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/MoneySpent"]
-layout_mode = 2
-texture = ExtResource("13_ef081")
-
-[node name="Number" type="Label" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/MoneySpent"]
-custom_minimum_size = Vector2(40, 16)
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
-theme_override_fonts/font = ExtResource("14_j4aux")
-theme_override_font_sizes/font_size = 8
-text = "50"
-vertical_alignment = 1
-
-[node name="CatName" type="Label" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer"]
-texture_filter = 1
-custom_minimum_size = Vector2(64, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
 theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
 theme_override_fonts/font = ExtResource("3_nh3lf")
 theme_override_font_sizes/font_size = 11
-text = "Melhor Gato"
+text = "Gato Destaque"
 horizontal_alignment = 1
-vertical_alignment = 1
 
-[node name="CatInfo" type="HBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(0, 112)
+[node name="Cat" type="HBoxContainer" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
 theme_override_constants/separation = 8
-
-[node name="Cat" type="VBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo"]
-layout_mode = 2
-size_flags_horizontal = 0
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/Cat"]
-custom_minimum_size = Vector2(96, 64)
-layout_mode = 2
-size_flags_vertical = 3
-expand_mode = 1
-
-[node name="CatSprite" type="VBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/Cat/TextureRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme = SubResource("Theme_gub5g")
-theme_override_constants/separation = 4
 alignment = 1
 
-[node name="CatName" type="Label" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/Cat/TextureRect/CatSprite"]
+[node name="CatSprite" type="VBoxContainer" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cat"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="CatName" type="Label" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cat/CatSprite"]
 texture_filter = 1
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
-theme_override_fonts/font = ExtResource("3_nh3lf")
-theme_override_font_sizes/font_size = 11
+theme_override_fonts/font = ExtResource("4_t7d4k")
+theme_override_font_sizes/font_size = 16
 text = "Cartolina"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Shadow" type="TextureRect" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/Cat/TextureRect/CatSprite"]
+[node name="Shadow" type="TextureRect" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cat/CatSprite"]
 self_modulate = Color(1, 1, 1, 0.341176)
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("5_5f336")
 
-[node name="CatSprite" type="TextureRect" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/Cat/TextureRect/CatSprite/Shadow"]
+[node name="CatSprite" type="TextureRect" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cat/CatSprite/Shadow"]
 texture_filter = 1
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-offset_left = 2.0
-offset_top = -2.0
-offset_right = 66.0
-offset_bottom = 62.0
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -17.0
+offset_right = 17.0
+offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 texture = ExtResource("6_jdcbu")
 
-[node name="Divisor" type="TextureRect" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo"]
+[node name="Divisor" type="TextureRect" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cat"]
 modulate = Color(1, 1, 1, 0.470588)
 custom_minimum_size = Vector2(1, 0)
 layout_mode = 2
 texture = ExtResource("11_l47wd")
 expand_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo"]
+[node name="Info" type="VBoxContainer" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cat"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cat/Info"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 4
+alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 0
-
-[node name="Info" type="VBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer"]
+[node name="EnemiesDefeated" type="HBoxContainer" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cat/Info/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-
-[node name="Status" type="VBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info"]
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="EquippedCards" type="Label" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
-theme_override_fonts/font = ExtResource("4_t7d4k")
-theme_override_font_sizes/font_size = 16
-text = "Atributos"
-
-[node name="Rows" type="VBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status"]
-layout_mode = 2
-theme_override_constants/separation = 4
-
-[node name="Row1" type="HBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows"]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="Damage" type="HBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row1"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-tooltip_text = "Dano de Ataque"
-theme_override_constants/separation = 4
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row1/Damage"]
-layout_mode = 2
-texture = ExtResource("13_ef081")
-
-[node name="Number" type="Label" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row1/Damage"]
-custom_minimum_size = Vector2(24, 16)
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
-theme_override_fonts/font = ExtResource("14_j4aux")
-theme_override_font_sizes/font_size = 8
-text = "50"
-vertical_alignment = 1
-
-[node name="Range" type="HBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row1"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-tooltip_text = "Alcance"
-theme_override_constants/separation = 4
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row1/Range"]
-layout_mode = 2
-texture = ExtResource("15_gty5d")
-
-[node name="Number" type="Label" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row1/Range"]
-custom_minimum_size = Vector2(24, 16)
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
-theme_override_fonts/font = ExtResource("14_j4aux")
-theme_override_font_sizes/font_size = 8
-text = "16"
-vertical_alignment = 1
-
-[node name="AttackSpeed" type="HBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row1"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-tooltip_text = "Velocidade de Ataque"
-theme_override_constants/separation = 4
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row1/AttackSpeed"]
-layout_mode = 2
-texture = ExtResource("10_2vrhn")
-
-[node name="Number" type="Label" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row1/AttackSpeed"]
-custom_minimum_size = Vector2(24, 16)
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
-theme_override_fonts/font = ExtResource("14_j4aux")
-theme_override_font_sizes/font_size = 8
-text = "16"
-vertical_alignment = 1
-
-[node name="Row2" type="HBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows"]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="CriticalChance" type="HBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row2"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-tooltip_text = "Chance de Crítico"
-theme_override_constants/separation = 4
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row2/CriticalChance"]
-layout_mode = 2
-texture = ExtResource("10_2vrhn")
-
-[node name="Number" type="Label" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row2/CriticalChance"]
-custom_minimum_size = Vector2(24, 16)
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
-theme_override_fonts/font = ExtResource("14_j4aux")
-theme_override_font_sizes/font_size = 8
-text = "50"
-vertical_alignment = 1
-
-[node name="EnemiesDefeated" type="HBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row2"]
-layout_mode = 2
-size_flags_horizontal = 0
 size_flags_vertical = 0
 tooltip_text = "Inimigos Derrotados"
 theme_override_constants/separation = 4
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row2/EnemiesDefeated"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cat/Info/HBoxContainer/EnemiesDefeated"]
 layout_mode = 2
 texture = ExtResource("10_2vrhn")
 
-[node name="Number" type="Label" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row2/EnemiesDefeated"]
+[node name="Number" type="Label" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cat/Info/HBoxContainer/EnemiesDefeated"]
 custom_minimum_size = Vector2(24, 16)
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
 theme_override_fonts/font = ExtResource("14_j4aux")
@@ -439,45 +418,34 @@ theme_override_font_sizes/font_size = 8
 text = "16"
 vertical_alignment = 1
 
-[node name="FishsCollected" type="HBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row2"]
+[node name="FishsCollected" type="HBoxContainer" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cat/Info/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 3
 size_flags_vertical = 0
 tooltip_text = "Peixes Coletados"
 theme_override_constants/separation = 4
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row2/FishsCollected"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cat/Info/HBoxContainer/FishsCollected"]
 layout_mode = 2
 texture = ExtResource("10_2vrhn")
 
-[node name="Number" type="Label" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row2/FishsCollected"]
+[node name="Number" type="Label" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cat/Info/HBoxContainer/FishsCollected"]
 custom_minimum_size = Vector2(24, 16)
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
 theme_override_fonts/font = ExtResource("14_j4aux")
 theme_override_font_sizes/font_size = 8
-text = "50"
+text = "16"
 vertical_alignment = 1
 clip_text = true
 
-[node name="EquippedCards" type="VBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info"]
+[node name="Cards" type="HBoxContainer" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cat/Info"]
 layout_mode = 2
-size_flags_vertical = 10
-theme_override_constants/separation = 0
+theme_override_constants/separation = 4
 
-[node name="EquippedCards" type="Label" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/EquippedCards"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
-theme_override_fonts/font = ExtResource("4_t7d4k")
-theme_override_font_sizes/font_size = 16
-text = "Cartas Equipadas"
-
-[node name="Cards" type="HBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/EquippedCards"]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="Card1" type="TextureButton" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/EquippedCards/Cards"]
+[node name="Card1" type="TextureButton" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cat/Info/Cards"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -485,23 +453,25 @@ size_flags_vertical = 0
 texture_normal = ExtResource("16_d55iw")
 texture_pressed = ExtResource("17_syasu")
 texture_hover = ExtResource("18_bcbo1")
+ignore_texture_size = true
 stretch_mode = 0
 
-[node name="CardIcon" type="TextureRect" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/EquippedCards/Cards/Card1"]
+[node name="CardIcon" type="TextureRect" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cat/Info/Cards/Card1"]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Card2" type="TextureButton" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/EquippedCards/Cards"]
+[node name="Card2" type="TextureButton" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cat/Info/Cards"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -509,23 +479,25 @@ size_flags_vertical = 0
 texture_normal = ExtResource("16_d55iw")
 texture_pressed = ExtResource("17_syasu")
 texture_hover = ExtResource("18_bcbo1")
+ignore_texture_size = true
 stretch_mode = 0
 
-[node name="CardIcon" type="TextureRect" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/EquippedCards/Cards/Card2"]
+[node name="CardIcon" type="TextureRect" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cat/Info/Cards/Card2"]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Card3" type="TextureButton" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/EquippedCards/Cards"]
+[node name="Card3" type="TextureButton" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cat/Info/Cards"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -533,23 +505,25 @@ size_flags_vertical = 0
 texture_normal = ExtResource("16_d55iw")
 texture_pressed = ExtResource("17_syasu")
 texture_hover = ExtResource("18_bcbo1")
+ignore_texture_size = true
 stretch_mode = 0
 
-[node name="CardIcon" type="TextureRect" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/EquippedCards/Cards/Card3"]
+[node name="CardIcon" type="TextureRect" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cat/Info/Cards/Card3"]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Card4" type="TextureButton" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/EquippedCards/Cards"]
+[node name="Card4" type="TextureButton" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cat/Info/Cards"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -557,19 +531,21 @@ size_flags_vertical = 0
 texture_normal = ExtResource("16_d55iw")
 texture_pressed = ExtResource("17_syasu")
 texture_hover = ExtResource("18_bcbo1")
+ignore_texture_size = true
 stretch_mode = 0
 
-[node name="CardIcon" type="TextureRect" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/EquippedCards/Cards/Card4"]
+[node name="CardIcon" type="TextureRect" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cat/Info/Cards/Card4"]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 

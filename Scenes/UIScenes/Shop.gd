@@ -118,6 +118,9 @@ func open_container():
 	_target_anchor = _up_anchor
 
 func open_cat_info():
+	for child in cat_list.get_children():
+		if child is TextureButton and child.is_in_group("build_buttons"):
+			child.remove_from_group("build_buttons")
 	cat_list.visible = false
 	card_list.visible = false
 	cards_control.visible = false
