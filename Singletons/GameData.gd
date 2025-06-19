@@ -1,6 +1,11 @@
 extends Node
 
-var fish_quantity: int = 10000  # Valor inicial de moedas
+var default_fish_quantity = 100000
+var fish_quantity: int = default_fish_quantity  # Valor inicial de moedas
+
+## Fish
+func reset_fish_quantity():
+	fish_quantity = 100000
 
 ## Cats
 var cat_data = {

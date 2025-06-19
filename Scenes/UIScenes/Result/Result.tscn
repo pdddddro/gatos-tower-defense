@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://c3eo4k3gsmtd0"]
+[gd_scene load_steps=24 format=3 uid="uid://c3eo4k3gsmtd0"]
 
 [ext_resource type="Script" uid="uid://c4terrj7gjgx0" path="res://Scenes/UIScenes/Result/result.gd" id="1_adago"]
 [ext_resource type="Texture2D" uid="uid://0byb8mpdvpgy" path="res://Assets/UI/Art/Background.png" id="2_3orr4"]
@@ -16,15 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://l3qb28hgmuhn" path="res://Assets/UI/Equipped_card_background.png" id="16_d55iw"]
 [ext_resource type="Texture2D" uid="uid://be042goflct38" path="res://Assets/UI/Equipped_card_background_pressed.png" id="17_syasu"]
 [ext_resource type="Texture2D" uid="uid://bfwtkfw56eu2j" path="res://Assets/UI/Equipped_card_background_hover.png" id="18_bcbo1"]
-[ext_resource type="Texture2D" uid="uid://baya31xk74k60" path="res://Assets/UI/card_background.png" id="19_j7gmh"]
-[ext_resource type="Texture2D" uid="uid://c6au0wn47cs01" path="res://Assets/UI/card_background_hover.png" id="20_2ibb7"]
-[ext_resource type="Texture2D" uid="uid://bkttfrcv1d5uu" path="res://Assets/Cats/Chicao/Chicao.png" id="21_j85ql"]
-[ext_resource type="Texture2D" uid="uid://cyly7nfosdk6" path="res://Assets/Cats/Nino/Nino.png" id="22_g6y1e"]
-[ext_resource type="Texture2D" uid="uid://ca7dcxojm22x4" path="res://Assets/Cats/Cartolina/Cartolina.png" id="23_s5afo"]
-[ext_resource type="Texture2D" uid="uid://chbpn8hrki162" path="res://Assets/Cats/Nut/Nut.png" id="24_mxu4u"]
-[ext_resource type="Texture2D" uid="uid://b2c5hntryctxw" path="res://Assets/UI/Comum.png" id="25_wwjsf"]
-[ext_resource type="Texture2D" uid="uid://bgf688vhkxpce" path="res://Assets/UI/Comum3.png" id="26_fkm1y"]
-[ext_resource type="Texture2D" uid="uid://dc21kcug4pvjs" path="res://Assets/UI/Comum2.png" id="27_jyv0c"]
 [ext_resource type="Texture2D" uid="uid://baepjslnydqim" path="res://Assets/UI/Buttons/botao_principal_padrao.png" id="28_l3m27"]
 [ext_resource type="Texture2D" uid="uid://mx3dyc0tnke" path="res://Assets/UI/Buttons/botao_principal_hover.png" id="29_evi2c"]
 [ext_resource type="Texture2D" uid="uid://cgceauk46iquy" path="res://Assets/UI/Buttons/botao_sec_padrao.png" id="30_7plpr"]
@@ -33,8 +24,6 @@
 [ext_resource type="Texture2D" uid="uid://wloqelhk6a02" path="res://Assets/UI/Results/derrota.png" id="32_uke3q"]
 
 [sub_resource type="Theme" id="Theme_gub5g"]
-
-[sub_resource type="Theme" id="Theme_t34kd"]
 
 [node name="Result" type="Control"]
 process_mode = 2
@@ -47,7 +36,7 @@ grow_vertical = 2
 script = ExtResource("1_adago")
 
 [node name="Background" type="TextureRect" parent="."]
-modulate = Color(0, 0, 0, 0.72549)
+modulate = Color(0, 0, 0, 0.431373)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -58,18 +47,25 @@ texture = ExtResource("2_3orr4")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -166.0
+offset_top = -111.0
+offset_right = 166.0
+offset_bottom = 111.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 16
 alignment = 1
 
 [node name="Result" type="TextureRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(122, 38)
 layout_mode = 2
+size_flags_horizontal = 4
 texture = ExtResource("32_uke3q")
-stretch_mode = 2
 
 [node name="ShopContainer" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -81,7 +77,7 @@ alignment = 2
 [node name="Background" type="NinePatchRect" parent="VBoxContainer/ShopContainer"]
 texture_filter = 1
 clip_contents = true
-custom_minimum_size = Vector2(332, 128)
+custom_minimum_size = Vector2(332, 216)
 layout_mode = 2
 size_flags_vertical = 8
 texture = ExtResource("3_fy2yk")
@@ -105,11 +101,130 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer"]
+[node name="HBoxContainer" type="VBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 8
 
+[node name="EnemiesDefeated" type="HBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+tooltip_text = "Dano de Ataque"
+theme_override_constants/separation = 4
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/EnemiesDefeated"]
+layout_mode = 2
+texture = ExtResource("13_ef081")
+
+[node name="Number" type="Label" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/EnemiesDefeated"]
+custom_minimum_size = Vector2(40, 16)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("14_j4aux")
+theme_override_font_sizes/font_size = 8
+text = "00000"
+vertical_alignment = 1
+
+[node name="Damage" type="HBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+tooltip_text = "Dano de Ataque"
+theme_override_constants/separation = 4
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/Damage"]
+layout_mode = 2
+texture = ExtResource("13_ef081")
+
+[node name="Number" type="Label" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/Damage"]
+custom_minimum_size = Vector2(24, 16)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("14_j4aux")
+theme_override_font_sizes/font_size = 8
+text = "50"
+vertical_alignment = 1
+
+[node name="FishsCollected" type="HBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+tooltip_text = "Dano de Ataque"
+theme_override_constants/separation = 4
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/FishsCollected"]
+layout_mode = 2
+texture = ExtResource("13_ef081")
+
+[node name="Number" type="Label" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/FishsCollected"]
+custom_minimum_size = Vector2(40, 16)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("14_j4aux")
+theme_override_font_sizes/font_size = 8
+text = "50"
+vertical_alignment = 1
+
+[node name="TimeInGame" type="HBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+tooltip_text = "Dano de Ataque"
+theme_override_constants/separation = 4
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TimeInGame"]
+layout_mode = 2
+texture = ExtResource("13_ef081")
+
+[node name="Number" type="Label" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TimeInGame"]
+custom_minimum_size = Vector2(40, 16)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("14_j4aux")
+theme_override_font_sizes/font_size = 8
+text = "50"
+vertical_alignment = 1
+
+[node name="MoneySpent" type="HBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+tooltip_text = "Dano de Ataque"
+theme_override_constants/separation = 4
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/MoneySpent"]
+layout_mode = 2
+texture = ExtResource("13_ef081")
+
+[node name="Number" type="Label" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/MoneySpent"]
+custom_minimum_size = Vector2(40, 16)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("14_j4aux")
+theme_override_font_sizes/font_size = 8
+text = "50"
+vertical_alignment = 1
+
+[node name="CatName" type="Label" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("3_nh3lf")
+theme_override_font_sizes/font_size = 11
+text = "Melhor Gato"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="CatInfo" type="HBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 112)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 8
@@ -458,627 +573,11 @@ offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="NinePatchRect" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer"]
-visible = false
-custom_minimum_size = Vector2(168, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("11_l47wd")
-region_rect = Rect2(0, 0, 96, 96)
-patch_margin_left = 32
-patch_margin_top = 32
-patch_margin_right = 32
-patch_margin_bottom = 32
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 4
-
-[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-theme = SubResource("Theme_t34kd")
-
-[node name="CatList" type="HFlowContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer"]
-custom_minimum_size = Vector2(148, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-mouse_filter = 2
-
-[node name="Pele" type="TextureButton" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList" groups=["build_buttons"]]
-custom_minimum_size = Vector2(72, 0)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-mouse_default_cursor_shape = 2
-texture_normal = ExtResource("19_j7gmh")
-texture_hover = ExtResource("20_2ibb7")
-stretch_mode = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Pele"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -32.0
-offset_top = -36.0
-offset_right = 32.0
-offset_bottom = 36.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme = SubResource("Theme_gub5g")
-alignment = 1
-
-[node name="CatName" type="Label" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Pele/VBoxContainer"]
-texture_filter = 1
-custom_minimum_size = Vector2(64, 0)
-layout_mode = 2
-size_flags_vertical = 1
-theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
-theme_override_fonts/font = ExtResource("3_nh3lf")
-theme_override_font_sizes/font_size = 11
-text = "Pelé"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Pele/VBoxContainer"]
-self_modulate = Color(1, 1, 1, 0.341176)
+[node name="ActionButtons" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("5_5f336")
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Pele/VBoxContainer/TextureRect2"]
-texture_filter = 1
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -15.0
-offset_top = -18.0
-offset_right = 17.0
-offset_bottom = 14.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-texture = ExtResource("6_jdcbu")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Pele/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-alignment = 1
-
-[node name="FishIcon" type="TextureRect" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Pele/VBoxContainer/HBoxContainer"]
-texture_filter = 1
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture = ExtResource("10_2vrhn")
-expand_mode = 1
-
-[node name="CatPrice" type="Label" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Pele/VBoxContainer/HBoxContainer"]
-texture_filter = 3
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
-theme_override_fonts/font = ExtResource("3_nh3lf")
-theme_override_font_sizes/font_size = 11
-text = "100"
-
-[node name="Chicao" type="TextureButton" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList" groups=["build_buttons"]]
-custom_minimum_size = Vector2(72, 0)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-mouse_default_cursor_shape = 2
-texture_normal = ExtResource("19_j7gmh")
-texture_hover = ExtResource("20_2ibb7")
-stretch_mode = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Chicao"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -32.0
-offset_top = -36.0
-offset_right = 32.0
-offset_bottom = 36.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme = SubResource("Theme_gub5g")
-alignment = 1
-
-[node name="CatName" type="Label" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Chicao/VBoxContainer"]
-texture_filter = 1
-custom_minimum_size = Vector2(64, 0)
-layout_mode = 2
-size_flags_vertical = 1
-theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
-theme_override_constants/line_spacing = -4
-theme_override_fonts/font = ExtResource("3_nh3lf")
-theme_override_font_sizes/font_size = 11
-text = "Chicão"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Chicao/VBoxContainer"]
-self_modulate = Color(1, 1, 1, 0.341176)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("5_5f336")
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Chicao/VBoxContainer/TextureRect2"]
-texture_filter = 1
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -15.0
-offset_top = -18.0
-offset_right = 17.0
-offset_bottom = 14.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-texture = ExtResource("21_j85ql")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Chicao/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-alignment = 1
-
-[node name="FishIcon" type="TextureRect" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Chicao/VBoxContainer/HBoxContainer"]
-texture_filter = 1
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture = ExtResource("10_2vrhn")
-expand_mode = 1
-
-[node name="CatPrice" type="Label" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Chicao/VBoxContainer/HBoxContainer"]
-texture_filter = 3
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
-theme_override_fonts/font = ExtResource("3_nh3lf")
-theme_override_font_sizes/font_size = 11
-text = "100"
-
-[node name="Nino" type="TextureButton" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList" groups=["build_buttons"]]
-custom_minimum_size = Vector2(72, 0)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-mouse_default_cursor_shape = 2
-texture_normal = ExtResource("19_j7gmh")
-texture_hover = ExtResource("20_2ibb7")
-stretch_mode = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Nino"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -32.0
-offset_top = -36.0
-offset_right = 32.0
-offset_bottom = 36.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme = SubResource("Theme_gub5g")
-alignment = 1
-
-[node name="CatName" type="Label" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Nino/VBoxContainer"]
-texture_filter = 1
-custom_minimum_size = Vector2(64, 0)
-layout_mode = 2
-size_flags_vertical = 1
-theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
-theme_override_fonts/font = ExtResource("3_nh3lf")
-theme_override_font_sizes/font_size = 11
-text = "Nino"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Nino/VBoxContainer"]
-self_modulate = Color(1, 1, 1, 0.341176)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("5_5f336")
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Nino/VBoxContainer/TextureRect2"]
-texture_filter = 1
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -15.0
-offset_top = -18.0
-offset_right = 17.0
-offset_bottom = 14.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-texture = ExtResource("22_g6y1e")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Nino/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-alignment = 1
-
-[node name="FishIcon" type="TextureRect" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Nino/VBoxContainer/HBoxContainer"]
-texture_filter = 1
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture = ExtResource("10_2vrhn")
-expand_mode = 1
-
-[node name="CatPrice" type="Label" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Nino/VBoxContainer/HBoxContainer"]
-texture_filter = 3
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
-theme_override_fonts/font = ExtResource("3_nh3lf")
-theme_override_font_sizes/font_size = 11
-text = "50"
-
-[node name="Cartolina" type="TextureButton" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList" groups=["build_buttons"]]
-custom_minimum_size = Vector2(72, 0)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-mouse_default_cursor_shape = 2
-texture_normal = ExtResource("19_j7gmh")
-texture_hover = ExtResource("20_2ibb7")
-stretch_mode = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Cartolina"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -32.0
-offset_top = -36.0
-offset_right = 32.0
-offset_bottom = 36.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme = SubResource("Theme_gub5g")
-
-[node name="CatName" type="Label" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Cartolina/VBoxContainer"]
-texture_filter = 1
-custom_minimum_size = Vector2(64, 0)
-layout_mode = 2
-size_flags_vertical = 1
-theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
-theme_override_fonts/font = ExtResource("3_nh3lf")
-theme_override_font_sizes/font_size = 11
-text = "Cartolina"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Cartolina/VBoxContainer"]
-self_modulate = Color(1, 1, 1, 0.341176)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("5_5f336")
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Cartolina/VBoxContainer/TextureRect2"]
-texture_filter = 1
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -15.0
-offset_top = -18.0
-offset_right = 17.0
-offset_bottom = 14.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-texture = ExtResource("23_s5afo")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Cartolina/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-alignment = 1
-
-[node name="FishIcon" type="TextureRect" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Cartolina/VBoxContainer/HBoxContainer"]
-texture_filter = 1
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture = ExtResource("10_2vrhn")
-expand_mode = 1
-
-[node name="CatPrice" type="Label" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Cartolina/VBoxContainer/HBoxContainer"]
-texture_filter = 3
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
-theme_override_fonts/font = ExtResource("3_nh3lf")
-theme_override_font_sizes/font_size = 11
-text = "100"
-
-[node name="Nut" type="TextureButton" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList" groups=["build_buttons"]]
-custom_minimum_size = Vector2(72, 0)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-mouse_default_cursor_shape = 2
-texture_normal = ExtResource("19_j7gmh")
-texture_hover = ExtResource("20_2ibb7")
-stretch_mode = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Nut"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -32.0
-offset_top = -36.0
-offset_right = 32.0
-offset_bottom = 36.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme = SubResource("Theme_gub5g")
-alignment = 1
-
-[node name="CatName" type="Label" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Nut/VBoxContainer"]
-texture_filter = 1
-custom_minimum_size = Vector2(64, 0)
-layout_mode = 2
-size_flags_vertical = 1
-theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
-theme_override_fonts/font = ExtResource("3_nh3lf")
-theme_override_font_sizes/font_size = 11
-text = "Nut"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Nut/VBoxContainer"]
-self_modulate = Color(1, 1, 1, 0.341176)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("5_5f336")
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Nut/VBoxContainer/TextureRect2"]
-texture_filter = 1
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -15.0
-offset_top = -18.0
-offset_right = 17.0
-offset_bottom = 14.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-texture = ExtResource("24_mxu4u")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Nut/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-alignment = 1
-
-[node name="FishIcon" type="TextureRect" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Nut/VBoxContainer/HBoxContainer"]
-texture_filter = 1
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture = ExtResource("10_2vrhn")
-expand_mode = 1
-
-[node name="CatPrice" type="Label" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Nut/VBoxContainer/HBoxContainer"]
-texture_filter = 3
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
-theme_override_fonts/font = ExtResource("3_nh3lf")
-theme_override_font_sizes/font_size = 11
-text = "100"
-
-[node name="CardList" type="HFlowContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-mouse_filter = 2
-
-[node name="EmptyLabel" type="Label" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CardList"]
-modulate = Color(0, 0, 0, 0.392157)
-custom_minimum_size = Vector2(0, 104)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/line_spacing = 0
-theme_override_fonts/font = ExtResource("3_nh3lf")
-theme_override_font_sizes/font_size = 11
-text = "Você ainda não tem nenhuma carta, compre packs para melhorar os seus gatos!"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="CardsControl" type="VBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-alignment = 2
-
-[node name="CardRarity" type="HBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl"]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 8
-alignment = 1
-
-[node name="Basic" type="HBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity"]
-layout_mode = 2
-theme_override_constants/separation = 2
-
-[node name="BasicIcon" type="TextureRect" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity/Basic"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("25_wwjsf")
-stretch_mode = 2
-
-[node name="BasicRarity" type="Label" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity/Basic"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.156863, 0.360784, 0.768627, 1)
-theme_override_fonts/font = ExtResource("3_nh3lf")
-theme_override_font_sizes/font_size = 11
-text = "60%"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Common" type="HBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity"]
-layout_mode = 2
-theme_override_constants/separation = 2
-
-[node name="CommonIcon" type="TextureRect" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity/Common"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("26_fkm1y")
-stretch_mode = 2
-
-[node name="ComumRarity" type="Label" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity/Common"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.443137, 0.0666667, 1)
-theme_override_fonts/font = ExtResource("3_nh3lf")
-theme_override_font_sizes/font_size = 11
-text = "30%"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Rare" type="HBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity"]
-layout_mode = 2
-theme_override_constants/separation = 2
-
-[node name="RareIcon" type="TextureRect" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity/Rare"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource("27_jyv0c")
-stretch_mode = 2
-
-[node name="RareRarity" type="Label" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity/Rare"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.631373, 0.0627451, 0.309804, 1)
-theme_override_fonts/font = ExtResource("3_nh3lf")
-theme_override_font_sizes/font_size = 11
-text = "10%"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Buy" type="TextureButton" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl"]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
-size_flags_horizontal = 0
-mouse_default_cursor_shape = 2
-texture_normal = ExtResource("28_l3m27")
-texture_hover = ExtResource("29_evi2c")
-texture_disabled = ExtResource("9_2hg7p")
-stretch_mode = 0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/Buy"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="Label" type="Label" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/Buy/HBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-theme_override_colors/font_color = Color(0.0138108, 0.2322, 0.0459039, 1)
-theme_override_fonts/font = ExtResource("3_nh3lf")
-theme_override_font_sizes/font_size = 11
-text = "Abrir Pack"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="FishIcon" type="TextureRect" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/Buy/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture = ExtResource("10_2vrhn")
-
-[node name="SellPrice" type="Label" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/Buy/HBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.0156863, 0.231373, 0.0470588, 1)
-theme_override_fonts/font = ExtResource("3_nh3lf")
-theme_override_font_sizes/font_size = 11
-text = "300"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Details" type="TextureButton" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl"]
+[node name="Menu" type="TextureButton" parent="VBoxContainer/ActionButtons"]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -1088,109 +587,7 @@ texture_hover = ExtResource("31_h07x6")
 texture_disabled = ExtResource("9_2hg7p")
 stretch_mode = 0
 
-[node name="Label" type="Label" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/Details"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
-theme_override_fonts/font = ExtResource("3_nh3lf")
-theme_override_font_sizes/font_size = 11
-text = "Detalhes"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Sell" type="TextureButton" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl"]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
-size_flags_horizontal = 0
-mouse_default_cursor_shape = 2
-texture_normal = ExtResource("30_7plpr")
-texture_hover = ExtResource("31_h07x6")
-texture_disabled = ExtResource("9_2hg7p")
-stretch_mode = 0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/Sell"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="Vender" type="Label" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/Sell/HBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
-theme_override_fonts/font = ExtResource("3_nh3lf")
-theme_override_font_sizes/font_size = 11
-text = "Vender"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="FishIcon" type="TextureRect" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/Sell/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture = ExtResource("10_2vrhn")
-
-[node name="SellPrice" type="Label" parent="VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/Sell/HBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
-theme_override_fonts/font = ExtResource("3_nh3lf")
-theme_override_font_sizes/font_size = 11
-text = "0"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="NewGame" type="TextureButton" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
-size_flags_horizontal = 0
-mouse_default_cursor_shape = 2
-texture_normal = ExtResource("28_l3m27")
-texture_hover = ExtResource("29_evi2c")
-texture_disabled = ExtResource("9_2hg7p")
-stretch_mode = 0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/NewGame"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="PlayIcon" type="TextureRect" parent="VBoxContainer/NewGame/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-texture = ExtResource("31_wispx")
-
-[node name="Label" type="Label" parent="VBoxContainer/NewGame/HBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-theme_override_colors/font_color = Color(0.0138108, 0.2322, 0.0459039, 1)
-theme_override_fonts/font = ExtResource("3_nh3lf")
-theme_override_font_sizes/font_size = 11
-text = "Novo Jogo"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Menu" type="TextureButton" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
-size_flags_horizontal = 0
-mouse_default_cursor_shape = 2
-texture_normal = ExtResource("30_7plpr")
-texture_hover = ExtResource("31_h07x6")
-texture_disabled = ExtResource("9_2hg7p")
-stretch_mode = 0
-
-[node name="Label" type="Label" parent="VBoxContainer/Menu"]
+[node name="Label" type="Label" parent="VBoxContainer/ActionButtons/Menu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1204,4 +601,40 @@ text = "Voltar ao Menu"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="VBoxContainer/Menu" to="." method="_on_menu_pressed"]
+[node name="NewGame" type="TextureButton" parent="VBoxContainer/ActionButtons"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("28_l3m27")
+texture_hover = ExtResource("29_evi2c")
+texture_disabled = ExtResource("9_2hg7p")
+stretch_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ActionButtons/NewGame"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="PlayIcon" type="TextureRect" parent="VBoxContainer/ActionButtons/NewGame/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("31_wispx")
+
+[node name="Label" type="Label" parent="VBoxContainer/ActionButtons/NewGame/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0138108, 0.2322, 0.0459039, 1)
+theme_override_fonts/font = ExtResource("3_nh3lf")
+theme_override_font_sizes/font_size = 11
+text = "Novo Jogo"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/ActionButtons/Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="VBoxContainer/ActionButtons/NewGame" to="." method="_on_new_game_pressed"]

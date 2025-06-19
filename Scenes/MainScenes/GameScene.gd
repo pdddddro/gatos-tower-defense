@@ -19,7 +19,7 @@ var build_tile
 ## Building Functions
 var drag_mode = false
 var drag_start_pos = Vector2.ZERO
-var drag_threshold = 5  # pixels para considerar arrasto
+var drag_threshold = 20  # pixels para considerar arrasto
 
 ## Card Drag and Drop
 var card_drag_mode = false
@@ -109,7 +109,7 @@ func update_card_preview():
 	# Verifica se pode aplicar a carta em um gato
 	var target_cat = get_cat_at_position(mouse_position)
 	
-	if target_cat and can_apply_card_to_cat(target_cat):
+	if target_cat and can_apply_card_to_cat(target_cat) and target_cat.can_equip_card():
 		card_preview.modulate = Color(0, 1, 0, 1)
 		card_drag_valid = true
 		card_drag_location = target_cat
@@ -145,6 +145,7 @@ func get_cat_at_position(position: Vector2):
 func can_apply_card_to_cat(cat_node) -> bool:
 	# Verifica se a carta pode ser aplicada ao gato
 	# Você pode adicionar lógica específica aqui
+	#if cat_node
 	return cat_node != null and cat_node.built
 
 func apply_card_to_cat(card_node, target_cat):
