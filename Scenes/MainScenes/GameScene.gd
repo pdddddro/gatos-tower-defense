@@ -143,9 +143,6 @@ func get_cat_at_position(position: Vector2):
 	return null
 
 func can_apply_card_to_cat(cat_node) -> bool:
-	# Verifica se a carta pode ser aplicada ao gato
-	# Você pode adicionar lógica específica aqui
-	#if cat_node
 	return cat_node != null and cat_node.built
 
 func apply_card_to_cat(card_node, target_cat):

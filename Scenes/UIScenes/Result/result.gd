@@ -9,15 +9,10 @@ func _ready() -> void:
 	setup_result_ui()
 
 func setup_result_ui():
-	# Configure a interface baseada em vitória ou derrota
 	if victory_result:
-		result_text_sprite.texture = load("res://Assets/UI/Results/vitoria.png")
-		print("Configurando tela de VITÓRIA")
-		# Configure elementos de vitória (textos, cores, etc.)
-	else:
-		result_text_sprite.texture = load("res://Assets/UI/Results/derrota.png")
-		print("Configurando tela de DERROTA")
-		# Configure elementos de derrota
+		$VBoxContainer/Result.play("win")
+	else: ## mudar annimaçãop 2d
+		$VBoxContainer/Result.play("lose")
 
 @onready var scene_handler = get_node("/root/SceneHandler")
 

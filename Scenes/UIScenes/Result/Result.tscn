@@ -1,9 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://c3eo4k3gsmtd0"]
+[gd_scene load_steps=41 format=3 uid="uid://c3eo4k3gsmtd0"]
 
 [ext_resource type="Script" uid="uid://c4terrj7gjgx0" path="res://Scenes/UIScenes/Result/result.gd" id="1_adago"]
 [ext_resource type="Texture2D" uid="uid://0byb8mpdvpgy" path="res://Assets/UI/Art/Background.png" id="2_3orr4"]
-[ext_resource type="Texture2D" uid="uid://t8dwftxpr4dh" path="res://Assets/UI/Results/vitoria.png" id="3_35ack"]
+[ext_resource type="Texture2D" uid="uid://cuetosl1ro7qh" path="res://Assets/UI/Results/vitoria_sheet.png" id="3_35ack"]
 [ext_resource type="Texture2D" uid="uid://dv3g48f7hixr8" path="res://Assets/UI/ui_background.png" id="3_fy2yk"]
+[ext_resource type="Texture2D" uid="uid://wloqelhk6a02" path="res://Assets/UI/Results/derrota.png" id="3_lah5h"]
 [ext_resource type="FontFile" uid="uid://dypca4yn0mcqr" path="res://Assets/Fonts/retro_gaming/Retro Gaming.ttf" id="3_nh3lf"]
 [ext_resource type="FontFile" uid="uid://bxh8oh1s7ap4j" path="res://Assets/Fonts/medodicaregular.otf" id="4_t7d4k"]
 [ext_resource type="Texture2D" uid="uid://dvhrsyngix8od" path="res://Assets/Cats/Sombra.png" id="5_5f336"]
@@ -21,6 +22,138 @@
 [ext_resource type="Texture2D" uid="uid://cgceauk46iquy" path="res://Assets/UI/Buttons/botao_sec_padrao.png" id="30_7plpr"]
 [ext_resource type="Texture2D" uid="uid://cat5x4hm2pqvj" path="res://Assets/UI/Buttons/botao_sec_hover.png" id="31_h07x6"]
 [ext_resource type="Texture2D" uid="uid://8adf7fkny4qr" path="res://Assets/Icons/Play.png" id="31_wispx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vrhn"]
+atlas = ExtResource("3_lah5h")
+region = Rect2(0, 0, 61, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lah5h"]
+atlas = ExtResource("3_35ack")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_phvpm"]
+atlas = ExtResource("3_35ack")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6gqkt"]
+atlas = ExtResource("3_35ack")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omryk"]
+atlas = ExtResource("3_35ack")
+region = Rect2(192, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_flsdf"]
+atlas = ExtResource("3_35ack")
+region = Rect2(256, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vw8t1"]
+atlas = ExtResource("3_35ack")
+region = Rect2(320, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0fubg"]
+atlas = ExtResource("3_35ack")
+region = Rect2(384, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pa0w0"]
+atlas = ExtResource("3_35ack")
+region = Rect2(448, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_adago"]
+atlas = ExtResource("3_35ack")
+region = Rect2(512, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wispx"]
+atlas = ExtResource("3_35ack")
+region = Rect2(576, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fy2yk"]
+atlas = ExtResource("3_35ack")
+region = Rect2(640, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5f336"]
+atlas = ExtResource("3_35ack")
+region = Rect2(704, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdcbu"]
+atlas = ExtResource("3_35ack")
+region = Rect2(768, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sui2m"]
+atlas = ExtResource("3_35ack")
+region = Rect2(832, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ndu0"]
+atlas = ExtResource("3_35ack")
+region = Rect2(896, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hg7p"]
+atlas = ExtResource("3_35ack")
+region = Rect2(960, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y4wf0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2vrhn")
+}],
+"loop": true,
+"name": &"lose",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lah5h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_phvpm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6gqkt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omryk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_flsdf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vw8t1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0fubg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pa0w0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_adago")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wispx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fy2yk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5f336")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jdcbu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sui2m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ndu0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hg7p")
+}],
+"loop": true,
+"name": &"win",
+"speed": 6.0
+}]
 
 [node name="Result" type="Control"]
 process_mode = 2
@@ -58,11 +191,16 @@ grow_vertical = 2
 theme_override_constants/separation = 8
 alignment = 1
 
-[node name="Result" type="TextureRect" parent="VBoxContainer"]
-custom_minimum_size = Vector2(122, 38)
+[node name="Result" type="AnimatedSprite2D" parent="VBoxContainer"]
+position = Vector2(163, 8)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_y4wf0")
+animation = &"lose"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(64, 32)
 layout_mode = 2
 size_flags_horizontal = 4
-texture = ExtResource("3_35ack")
 
 [node name="Statistics" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -119,7 +257,6 @@ layout_mode = 2
 [node name="EnemiesDefeated" type="HBoxContainer" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics"]
 layout_mode = 2
 size_flags_vertical = 2
-tooltip_text = "Dano de Ataque"
 theme_override_constants/separation = 4
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics/EnemiesDefeated"]
@@ -152,7 +289,6 @@ vertical_alignment = 1
 [node name="Damage" type="HBoxContainer" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics"]
 layout_mode = 2
 size_flags_vertical = 2
-tooltip_text = "Dano de Ataque"
 theme_override_constants/separation = 4
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics/Damage"]
@@ -185,7 +321,6 @@ vertical_alignment = 1
 [node name="FishsCollected" type="HBoxContainer" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics"]
 layout_mode = 2
 size_flags_vertical = 2
-tooltip_text = "Dano de Ataque"
 theme_override_constants/separation = 4
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics/FishsCollected"]
@@ -218,7 +353,6 @@ vertical_alignment = 1
 [node name="TimeInGame" type="HBoxContainer" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics"]
 layout_mode = 2
 size_flags_vertical = 2
-tooltip_text = "Dano de Ataque"
 theme_override_constants/separation = 4
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics/TimeInGame"]
@@ -251,7 +385,6 @@ vertical_alignment = 1
 [node name="MoneySpent" type="HBoxContainer" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics"]
 layout_mode = 2
 size_flags_vertical = 2
-tooltip_text = "Dano de Ataque"
 theme_override_constants/separation = 4
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics/MoneySpent"]
