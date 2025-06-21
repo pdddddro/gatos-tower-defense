@@ -8,6 +8,16 @@ var attack_ready = true
 var status = "Idle"
 var direction = Vector2.ZERO 
 
+## Coletar as estatísticas do gato
+var total_damage_dealt: int = 0
+var total_fish_earned: int = 0
+var enemies_defeated: int = 0
+
+func add_damage(amount: int):
+	total_damage_dealt += amount
+	
+
+
 func _ready():
 	if built:
 		get_node("Range/CollisionShape2D").get_shape().radius = 0.5 * GameData.cat_data[type]["range"]
@@ -19,6 +29,8 @@ func _ready():
 		clickable.monitoring = false   # Não monitora outros objetos
 		clickable.monitorable = true   # Pode ser detectado por outros
 		print("ClickableArea configurado para gato: ", type)
+		
+	add_to_group("active_cats")
 
 func _physics_process(delta: float) -> void:
 	if enemy_array.size() != 0 and built:
@@ -130,6 +142,7 @@ func attack():
 		projectile.enemy = enemy
 		projectile.type = type
 		projectile.damage = GameData.cat_data[type]["damage"]  # Passe o dano para o projétil
+		projectile.source_cat = self
 		
 		var aim_position = $Aim.global_position
 		projectile.global_position = aim_position

@@ -21,9 +21,15 @@ func _process(delta):
 			queue_free()
 	else:
 		queue_free()
-		
+
+var source_cat: Node = null
+
 func _on_body_entered(body: Node):
 	var hit_enemy = body.get_parent()  # Acessa o PathFollow2D
 	if hit_enemy == enemy:
 		hit_enemy.on_hit(damage)
+		
+		if source_cat and source_cat.has_method("add_damage"):
+			source_cat.add_damage(damage)
+		
 		queue_free()

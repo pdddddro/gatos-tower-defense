@@ -60,7 +60,10 @@ var cat_data = {
 	}
 }
 
-# Função para atualizar a UI (opcional, se precisar de um sinal)
+## Cat Damage
+var cat_damage_by_type := {} 
+
+# Função para atualizar a UI
 signal fish_quantity_updated(new_amount)
 
 func update_fish_quantity(amount: int):

@@ -45,6 +45,19 @@ func _on_main_action_pressed() -> void:
 			screen_step += 1  # (opcional, se quiser evitar múltiplos cliques)
 			return
 
+## Melhor Gato
+func get_best_cat():
+	var best_cat = null
+	var best_damage = -1
+	var cats = get_tree().get_nodes_in_group("active_cats")
+	for cat in cats:
+		if cat.total_damage_dealt > best_damage:
+			best_damage = cat.total_damage_dealt
+			best_cat = cat
+	
+	return [best_cat, best_damage]
+
+## Estatísticas
 func update_stats_ui():
 	var enemies_defeated_label = $VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics/EnemiesDefeated/Number
 	var total_damage_label = $VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics/TotalDamage/Number
@@ -59,7 +72,16 @@ func update_stats_ui():
 	time_in_game_label.text = format_time(GameData.time_in_game)
 	money_spent_label.text = format_number(GameData.money_spent)
 	number_of_cats.text = format_number(GameData.number_of_cats)
-
+	
+	var best_data = get_best_cat()
+	var best_cat = best_data[0]    # CORREÇÃO AQUI
+	var best_damage = best_data[1]  # CORREÇÃO AQUI
+	
+	if best_cat:
+		$VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/CatSprite/CatName.text = best_cat.type
+		$VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/TotalDamage/Number.text = format_number(best_damage)
+		$VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/TotalDamage/HBoxContainer/TextureRect.texture = best_cat.sprite
+		
 func format_time(seconds: float) -> String:
 	var mins = int(seconds) / 60
 	var secs = int(seconds) % 60
