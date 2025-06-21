@@ -50,12 +50,32 @@ func get_best_cat():
 	var best_cat = null
 	var best_damage = -1
 	var cats = get_tree().get_nodes_in_group("active_cats")
+	
 	for cat in cats:
 		if cat.total_damage_dealt > best_damage:
 			best_damage = cat.total_damage_dealt
 			best_cat = cat
 	
 	return [best_cat, best_damage]
+
+func get_best_cat_stats():
+	var best_cat = null
+	var best_damage = -1
+	var cats = get_tree().get_nodes_in_group("active_cats")
+	
+	for cat in cats:
+		if cat.total_damage_dealt > best_damage:
+			best_damage = cat.total_damage_dealt
+			best_cat = cat
+	
+	if best_cat:
+		return {
+			"cat": best_cat,
+			"damage": best_damage,
+			"fish_earned": best_cat.total_fish_earned,
+			"enemies_defeated": best_cat.enemies_defeated
+		}
+	return null
 
 ## Estatísticas
 func update_stats_ui():
@@ -73,15 +93,15 @@ func update_stats_ui():
 	money_spent_label.text = format_number(GameData.money_spent)
 	number_of_cats.text = format_number(GameData.number_of_cats)
 	
-	var best_data = get_best_cat()
-	var best_cat = best_data[0]    # CORREÇÃO AQUI
-	var best_damage = best_data[1]  # CORREÇÃO AQUI
+	var best_stats = get_best_cat_stats()
 	
-	if best_cat:
-		$VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/CatSprite/CatName.text = best_cat.type
-		$VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/TotalDamage/Number.text = format_number(best_damage)
-		$VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/TotalDamage/HBoxContainer/TextureRect.texture = best_cat.sprite
-		
+	if best_stats:
+		$VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/CatSprite/CatName.text = best_stats.cat.type
+		$VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/TotalDamage/Number.text = format_number(best_stats.damage)
+		$VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/CatSprite/Shadow/CatSprite.texture = load(GameData.cat_data[best_stats.cat.type]["sprite"])
+		$VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/EnemiesDefeated/Number.text = format_number(best_stats.enemies_defeated)
+		$VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/FishsCollected/Number.text = format_number(best_stats.fish_earned)
+
 func format_time(seconds: float) -> String:
 	var mins = int(seconds) / 60
 	var secs = int(seconds) % 60

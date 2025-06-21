@@ -83,5 +83,7 @@ func on_hit(damage):
 		emit_signal("isdead")
 		
 		queue_free()
+		return true
 		
+	return false
 		

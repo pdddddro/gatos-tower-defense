@@ -15,8 +15,12 @@ var enemies_defeated: int = 0
 
 func add_damage(amount: int):
 	total_damage_dealt += amount
-	
 
+func add_fish_earned(fish_amount):
+	total_fish_earned += fish_amount
+
+func add_enemy_defeated():
+	enemies_defeated += 1
 
 func _ready():
 	if built:

@@ -86,7 +86,7 @@ var enemies_data = {
 		"fish_reward": 50
 	},
 	"Metal": {
-		"damage": 1,
+		"damage": 600,
 		"speed": 60,
 		"hp": 40,
 		"fish_reward": 50

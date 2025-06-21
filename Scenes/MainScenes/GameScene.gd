@@ -310,13 +310,11 @@ func spawn_enemies(wave_data):
 func _on_enemy_defeated(slime_type):
 	var fish_reward = GameData.enemies_data[slime_type]["fish_reward"]
 	GameData.update_fish_quantity(fish_reward)
-	
-	GameData.fishs_collected += fish_reward
+	#GameData.fishs_collected += fish_reward
 	
 	update_fish_label()
 	
 	enemies_in_wave -= 1
-	
 	check_wave_end()
 
 func _on_enemy_escaped(type):
@@ -330,7 +328,9 @@ func check_wave_end():
 		WaveCount.text = str(current_wave) + "/50"
 		
 		## Vitória
-		if current_wave > 2:
+		if current_wave > 2 and base_health > 0:
+			await get_tree().create_timer(1.0).timeout
+			
 			emit_signal("game_finished", true)
 			return
 		
@@ -348,12 +348,13 @@ func check_wave_end():
 func on_base_damage(damage):
 	base_health -= damage
 	
+	get_node("UI/HUD/MarginContainer/Status/HeartContainer/HeartLabel").text = str(base_health)
+	
 	## Derrota
 	if base_health <= 0:
+		await get_tree().create_timer(1.0).timeout
 		emit_signal("game_finished", false)
 		
-	else:
-		get_node("UI/HUD/MarginContainer/Status/HeartContainer/HeartLabel").text = str(base_health)
 
 ## Fish Control
 func update_fish_label():

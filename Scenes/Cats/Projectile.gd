@@ -6,7 +6,7 @@ var speed = 400
 var damage: int
 
 func _ready():
-	body_entered.connect(_on_body_entered) ## Desativei isso pra parar de dar um erro no console, mas ele nao tava afetando em nada, qualquer coisa ativa dnv
+	body_entered.connect(_on_body_entered)
 	$AnimatedSprite2D.play(type)
 
 func _process(delta):
@@ -27,9 +27,14 @@ var source_cat: Node = null
 func _on_body_entered(body: Node):
 	var hit_enemy = body.get_parent()  # Acessa o PathFollow2D
 	if hit_enemy == enemy:
-		hit_enemy.on_hit(damage)
+		var enemy_defeated = await hit_enemy.on_hit(damage)
 		
 		if source_cat and source_cat.has_method("add_damage"):
 			source_cat.add_damage(damage)
+			
+			if enemy_defeated:
+				var fish_reward = GameData.enemies_data[hit_enemy.type]["fish_reward"]
+				source_cat.add_fish_earned(fish_reward)
+				source_cat.add_enemy_defeated()
 		
 		queue_free()
