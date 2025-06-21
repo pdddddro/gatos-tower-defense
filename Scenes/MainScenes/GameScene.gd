@@ -280,12 +280,48 @@ func verify_and_build():
 		
 		cancel_build_mode()
 		
-## Wave Functions
+## Wave Functions e TextBox
+@onready var textbox_scene = preload("res://Scenes/UIScenes/TextBox/text_box.tscn")
+var current_textbox = null
+
 func start_next_wave():
 	var wave_data = retrieve_wave_data()
-	await get_tree().create_timer(0.2).timeout ## Delay entre uma wave e outra
-	spawn_enemies(wave_data)
 	
+	# Verifica se a wave tem textbox
+	var wave_key = "wave" + str(current_wave)
+	var full_wave_data = GameData.waves.get(wave_key, {})
+	
+	if full_wave_data.has("text_box") and full_wave_data.text_box.show:
+		show_wave_textbox(full_wave_data.text_box)
+		return  # Não inicia a wave ainda
+	
+	# Se não tem textbox, inicia a wave normalmente
+	await get_tree().create_timer(0.2).timeout
+	spawn_enemies(wave_data)
+
+func show_wave_textbox(text_data: Dictionary):
+	# Remove textbox anterior se existir
+	if current_textbox:
+		current_textbox.queue_free()
+	
+	# Instancia nova textbox
+	current_textbox = textbox_scene.instantiate()
+	get_node("UI").add_child(current_textbox)
+	
+	# Conecta sinal de fechamento
+	current_textbox.textbox_closed.connect(_on_textbox_closed)
+	
+	# Mostra a textbox com os dados
+	current_textbox.show_textbox(text_data)
+
+func _on_textbox_closed():
+	current_textbox = null
+	
+	# Agora inicia a wave após fechar o textbox
+	var wave_data = retrieve_wave_data()
+	await get_tree().create_timer(0.2).timeout
+	spawn_enemies(wave_data)
+
 func retrieve_wave_data():
 	var wave_key = "wave" + str(current_wave)
 	var wave_data = GameData.waves.get(wave_key, {
@@ -380,6 +416,9 @@ func _on_play_pressed() -> void:
 	if build_mode:
 		cancel_build_mode()
 
+	if current_textbox:
+		return
+		
 	# Inicia a wave se nenhuma estiver ativa
 	if enemies_in_wave <= 0:
 		print("Iniciando wave " + str(current_wave))

@@ -106,6 +106,13 @@ var enemies_data = {
 }
 
 ## round
+## Rich Text Label
+## [b][font_size=11]Texto[/font_size][/b]  - Font Retro Gaming 
+## [shake] Texto Tremendo [/shake]
+## [rainbow]Texto arco-íris[/rainbow]
+## [pulse]Texto pulsante[/pulse]
+## [wave]Texto ondulado[/wave]
+
 var waves = {
 	"wave1": {
 		"enemies": [
@@ -115,7 +122,7 @@ var waves = {
 			"show": true,
 			"size": "small",
 			"title": "Primeira Onda!",
-			"message": "Os primeiros inimigos estão chegando."
+			"message": "Os [shake]primeiros[/shake] [rainbow]Texto arco-íris[/rainbow] [pulse]Texto pulsante[/pulse] [wave]Texto ondulado[/wave]"
 		}
 	},
 	
@@ -125,8 +132,8 @@ var waves = {
 		],
 		"text_box": {
 			"show": true,
-			"size": "large",
-			"title": "Primeira Onda!",
+			"size": "small",
+			"title": "Segunda Onda!",
 			"message": "Os primeiros inimigos estão chegando."
 		}
 	}
