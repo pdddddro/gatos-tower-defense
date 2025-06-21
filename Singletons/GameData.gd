@@ -105,28 +105,11 @@ var enemies_data = {
 ## round
 var waves = {
 	"wave1": [
-		["BossRadioativo", 1],
-		["Metal", 1],
-		["Metal", 1],
-	],
-	"wave2": [
-		["Metal", 1],
-		["Metal", 1],
-		["Metal", 1],
 		["Metal", 1]
 	],
-	"wave3": [
-		["Chiclete", 1],
-		["Chiclete", 1],
-		["Chiclete", 1],
-		["Chiclete", 1]
+	"wave2": [
+		["Metal", 1]
 	],
-	"wave4": [
-		["Pilha", 1],
-		["Pilha", 1],
-		["Pilha", 1],
-		["Pilha", 1],
-	]
 }
 
 ## Efeitos
@@ -175,6 +158,7 @@ var card_data = {
 		}],
 }
 
+## Cards
 var card_collection = []
 
 signal card_added_to_inventory(card_data)
@@ -212,6 +196,7 @@ var current_round: int = 1
 
 signal rarity_chances_updated
 
+## Rarity
 func update_rarity_chances():
 	var max_round = rarity_table.keys().max()
 	var round_to_use = min(current_round, max_round)
@@ -219,3 +204,19 @@ func update_rarity_chances():
 	print("Round ", current_round, " - Chances de raridade: ", card_rarity_chances)
 	
 	emit_signal("rarity_chances_updated") # <-- emite o sinal
+
+## Statistics
+var enemies_defeated: int = 0
+var total_damage: int = 0
+var fishs_collected: int = 0
+var time_in_game: float = 0.0  # Em segundos
+var money_spent: int = 0
+var number_of_cats: int = 0
+
+func reset_statistics():
+	enemies_defeated = 0
+	total_damage = 0
+	fishs_collected = 0
+	time_in_game = 0.0  # Em segundos
+	money_spent = 0
+	number_of_cats = 0

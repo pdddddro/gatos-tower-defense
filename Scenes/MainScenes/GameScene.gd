@@ -63,6 +63,7 @@ func _process(delta):
 	
 	if card_drag_mode:
 		update_card_preview()
+	GameData.time_in_game += delta
 
 func connect_card_signals():
 	# Esta função deve ser chamada quando novas cartas são adicionadas ao inventário
@@ -273,6 +274,9 @@ func verify_and_build():
 			new_cat.type = build_type
 			map_node.get_node("Cats").add_child(new_cat)
 			map_node.get_node("Exclusion").set_cell(build_tile, 5, Vector2i(0, 0))
+			
+			GameData.money_spent += cat_cost
+			GameData.number_of_cats += 1
 		
 		cancel_build_mode()
 		
@@ -306,7 +310,9 @@ func spawn_enemies(wave_data):
 func _on_enemy_defeated(slime_type):
 	var fish_reward = GameData.enemies_data[slime_type]["fish_reward"]
 	GameData.update_fish_quantity(fish_reward)
-
+	
+	GameData.fishs_collected += fish_reward
+	
 	update_fish_label()
 	
 	enemies_in_wave -= 1

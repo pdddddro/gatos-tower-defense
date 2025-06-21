@@ -6,7 +6,7 @@ var speed = 400
 var damage: int
 
 func _ready():
-	#body_entered.connect(_on_body_entered) ## Desativei isso pra parar de dar um erro no console, mas ele nao tava afetando em nada, qualquer coisa ativa dnv
+	body_entered.connect(_on_body_entered) ## Desativei isso pra parar de dar um erro no console, mas ele nao tava afetando em nada, qualquer coisa ativa dnv
 	$AnimatedSprite2D.play(type)
 
 func _process(delta):

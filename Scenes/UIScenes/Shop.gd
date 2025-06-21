@@ -281,7 +281,9 @@ func _on_buy_pressed() -> void:
 		get_parent().get_parent().get_parent().add_child(card_selection)
 		get_tree().paused = true
 		
+		GameData.money_spent += pack_cost
 		GameData.update_fish_quantity(int(-pack_cost))
+		
 		update_buy_button()
 
 func _on_fish_quantity_updated(new_amount: int):

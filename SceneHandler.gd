@@ -10,10 +10,12 @@ func load_main_menu():
 
 func on_new_game_pressed():
 	GameData.reset_fish_quantity()
+	GameData.reset_statistics()
 	
 	# Remove a cena do jogo anterior se existir
 	if has_node("GameScene"):
 		get_node("GameScene").queue_free()
+		await get_tree().process_frame
 	
 	# Remove o menu principal se estiver presente
 	if has_node("MainMenu"):
@@ -24,7 +26,9 @@ func on_new_game_pressed():
 		get_node("Result").queue_free()
 	
 	# Cria a nova cena do jogo
+	
 	var game_scene = load("res://Scenes/MainScenes/GameScene.tscn").instantiate()
+	game_scene.name = "GameScene"
 	add_child(game_scene)
 	
 	get_tree().paused = false

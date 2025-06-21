@@ -66,8 +66,10 @@ var collision_shape = true
 
 func on_hit(damage):
 	hp -= damage
-
+	GameData.total_damage += damage
+	
 	if hp <= 0 and dead == false:
+		GameData.enemies_defeated += 1
 		
 		dead = true
 		emit_signal("enemy_defeated", type)
@@ -81,4 +83,5 @@ func on_hit(damage):
 		emit_signal("isdead")
 		
 		queue_free()
+		
 		
