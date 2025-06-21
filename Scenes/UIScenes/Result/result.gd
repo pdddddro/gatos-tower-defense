@@ -73,7 +73,8 @@ func get_best_cat_stats():
 			"cat": best_cat,
 			"damage": best_damage,
 			"fish_earned": best_cat.total_fish_earned,
-			"enemies_defeated": best_cat.enemies_defeated
+			"enemies_defeated": best_cat.enemies_defeated,
+			"equipped_cards": best_cat.get_equipped_cards()
 		}
 	return null
 
@@ -101,7 +102,8 @@ func update_stats_ui():
 		$VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/CatSprite/Shadow/CatSprite.texture = load(GameData.cat_data[best_stats.cat.type]["sprite"])
 		$VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/EnemiesDefeated/Number.text = format_number(best_stats.enemies_defeated)
 		$VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/FishsCollected/Number.text = format_number(best_stats.fish_earned)
-
+		display_equipped_cards(best_stats.equipped_cards)
+		
 func format_time(seconds: float) -> String:
 	var mins = int(seconds) / 60
 	var secs = int(seconds) % 60
@@ -115,3 +117,24 @@ func format_number(value: int) -> String:
 	else:
 		# Para valores >= 10000, remove a casa decimal
 		return "%dk" % int(round(value / 1000.0))
+
+func display_equipped_cards(cards_data):
+	# Referências para os 4 TextureRect já existentes
+	var card_slots = [
+		$VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cards/Card1/CardIcon,
+		$VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cards/Card2/CardIcon,
+		$VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cards/Card3/CardIcon,
+		$VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cards/Card4/CardIcon
+	]
+	
+	# Preencher com as cartas equipadas
+	for i in range(min(cards_data.size(), card_slots.size())):
+		var card_data = cards_data[i]
+		card_slots[i].texture = load(card_data["icon"])
+		
+		var tooltip = card_data.get("name", "Carta Desconhecida")
+		
+		if card_data.has("description"):
+			tooltip += "\n" + card_data["description"]
+		
+		card_slots[i].tooltip_text = tooltip

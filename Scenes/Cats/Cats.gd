@@ -21,6 +21,9 @@ func add_fish_earned(fish_amount):
 
 func add_enemy_defeated():
 	enemies_defeated += 1
+	
+func get_equipped_cards():
+	return equipped_cards
 
 func _ready():
 	if built:

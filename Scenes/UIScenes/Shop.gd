@@ -213,7 +213,15 @@ func setup_card_slot(slot_node, card_data: Dictionary):
 		if ResourceLoader.exists(card_data.icon):
 			card_icon.texture = load(card_data.icon)
 			card_icon.visible = true
-			slot_node.tooltip_text = card_data.description
+			#slot_node.tooltip_text = card_data.description
+			
+			
+			var tooltip_text = card_data.get("name", "Carta Desconhecida")
+			if card_data.has("description"):
+				tooltip_text += "\n" + card_data["description"]
+	
+			slot_node.tooltip_text = tooltip_text
+			
 		else:
 			print("ERRO: Arquivo de ícone não encontrado: ", card_data.icon)
 	else:
