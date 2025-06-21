@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bnwtcb3cixuh0"]
+[gd_scene load_steps=19 format=3 uid="uid://bnwtcb3cixuh0"]
 
 [ext_resource type="Script" uid="uid://dub7lrxxduh83" path="res://Scenes/Cats/Projectile.gd" id="1_bsn35"]
 [ext_resource type="Texture2D" uid="uid://crcplq7bkvij0" path="res://Assets/Cats/SpriteSheet.png" id="2_qj1g6"]
@@ -38,6 +38,22 @@ region = Rect2(80, 32, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_snxof"]
 atlas = ExtResource("3_qj1g6")
 region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14xns"]
+atlas = ExtResource("3_qj1g6")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x16c4"]
+atlas = ExtResource("3_qj1g6")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ixe2"]
+atlas = ExtResource("3_qj1g6")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wwk4"]
+atlas = ExtResource("3_qj1g6")
+region = Rect2(48, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_37qw1"]
 atlas = ExtResource("3_qj1g6")
@@ -86,6 +102,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_14xns")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x16c4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ixe2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4wwk4")
+}],
+"loop": true,
+"name": &"Nut",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_37qw1")
 }],
 "loop": false,
@@ -102,6 +135,7 @@ debug_color = Color(0.788516, 0.415031, 0.314463, 0.42)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qmhup")
-animation = &"Cartolina"
+animation = &"Nut"
+frame_progress = 0.508561
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

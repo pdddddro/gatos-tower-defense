@@ -1,19 +1,40 @@
-[gd_scene load_steps=6 format=3 uid="uid://lhinuy75rcjw"]
+[gd_scene load_steps=7 format=3 uid="uid://lhinuy75rcjw"]
 
 [ext_resource type="Texture2D" uid="uid://cb11eet122olt" path="res://Assets/UI/TextBox/TextBoxBackground.png" id="1_hvwag"]
 [ext_resource type="Script" uid="uid://2o4s5huofeat" path="res://Scenes/UIScenes/TextBox/text_box.gd" id="1_iuwvp"]
 [ext_resource type="FontFile" uid="uid://bxh8oh1s7ap4j" path="res://Assets/Fonts/medodicaregular.otf" id="2_8fpss"]
 [ext_resource type="Texture2D" uid="uid://bg637rpji52wu" path="res://Assets/UI/TextBox/pinguelo.png" id="2_xft1d"]
+[ext_resource type="Texture2D" uid="uid://bgba1jqqv4rpe" path="res://Assets/Icons/Close.png" id="2_y10mh"]
 [ext_resource type="Texture2D" uid="uid://d0r1ny1eiup5u" path="res://Assets/IDV/CatLogo.png" id="4_g70id"]
 
 [node name="TextBox" type="Control"]
+custom_minimum_size = Vector2(280, 0)
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
+offset_left = -140.0
+offset_top = -92.0
+offset_right = 140.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 16
 script = ExtResource("1_iuwvp")
+
+[node name="Close" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+offset_left = 264.0
+offset_top = -19.0
+offset_right = 280.0
+offset_bottom = -3.0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("2_y10mh")
+stretch_mode = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -30,29 +51,77 @@ grow_vertical = 0
 theme_override_constants/separation = -2
 alignment = 2
 
-[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer"]
+[node name="BigTextBox" type="NinePatchRect" parent="VBoxContainer"]
 custom_minimum_size = Vector2(280, 64)
 layout_mode = 2
+size_flags_vertical = 0
 texture = ExtResource("1_hvwag")
 patch_margin_left = 16
 patch_margin_top = 16
 patch_margin_right = 16
 patch_margin_bottom = 16
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/NinePatchRect"]
-layout_mode = 0
-offset_right = 280.0
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/BigTextBox"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
 offset_bottom = 64.0
+grow_horizontal = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/NinePatchRect/MarginContainer"]
+[node name="Text" type="RichTextLabel" parent="VBoxContainer/BigTextBox/MarginContainer"]
+texture_filter = 1
 layout_mode = 2
+size_flags_vertical = 4
 theme_override_colors/default_color = Color(0.258824, 0.152941, 0.141176, 1)
 theme_override_fonts/normal_font = ExtResource("2_8fpss")
 text = "G.A.T.I.N.H.O.S. significa Grupo Acadêmico de Táticas Inteligentes para Neutralizar Horríveis Objetos Sujos, legal né?"
+fit_content = true
+autowrap_mode = 2
+shortcut_keys_enabled = false
+horizontal_alignment = 3
+vertical_alignment = 3
+justification_flags = 161
+
+[node name="SmallTextBox" type="NinePatchRect" parent="VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(220, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("1_hvwag")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/SmallTextBox"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.786
+anchor_bottom = 1.0
+offset_right = 47.08
+grow_horizontal = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Text" type="RichTextLabel" parent="VBoxContainer/SmallTextBox/MarginContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/default_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/normal_font = ExtResource("2_8fpss")
+text = "Slimes de Chiclete são muito perigosos, cuidado!!@!"
+fit_content = true
+shortcut_keys_enabled = false
+horizontal_alignment = 3
+vertical_alignment = 3
+justification_flags = 161
 
 [node name="Tail" type="TextureRect" parent="VBoxContainer"]
 layout_mode = 2
