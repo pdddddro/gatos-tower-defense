@@ -9,11 +9,11 @@
 [ext_resource type="FontFile" uid="uid://bxh8oh1s7ap4j" path="res://Assets/Fonts/medodicaregular.otf" id="4_t7d4k"]
 [ext_resource type="Texture2D" uid="uid://dvhrsyngix8od" path="res://Assets/Cats/Sombra.png" id="5_5f336"]
 [ext_resource type="Texture2D" uid="uid://c061d35ptj35w" path="res://Assets/Cats/Pele/Pele.png" id="6_jdcbu"]
+[ext_resource type="Texture2D" uid="uid://cqvuhooeqjbyd" path="res://Assets/Icons/Relogio-Icone.png" id="7_y4wf0"]
 [ext_resource type="Texture2D" uid="uid://cdunclj7frjlu" path="res://Assets/UI/Buttons/botao_disabled.png" id="9_2hg7p"]
 [ext_resource type="Texture2D" uid="uid://bja4m423dmu6i" path="res://Assets/Icons/Attack.png" id="13_ef081"]
 [ext_resource type="FontFile" uid="uid://8qe2jqb87ubg" path="res://Assets/Fonts/press_start_2p/PressStart2P.ttf" id="14_j4aux"]
 [ext_resource type="Texture2D" uid="uid://l3qb28hgmuhn" path="res://Assets/UI/Equipped_card_background.png" id="16_d55iw"]
-[ext_resource type="Texture2D" uid="uid://be042goflct38" path="res://Assets/UI/Equipped_card_background_pressed.png" id="17_syasu"]
 [ext_resource type="Texture2D" uid="uid://bfwtkfw56eu2j" path="res://Assets/UI/Equipped_card_background_hover.png" id="18_bcbo1"]
 [ext_resource type="Texture2D" uid="uid://baepjslnydqim" path="res://Assets/UI/Buttons/botao_principal_padrao.png" id="28_l3m27"]
 [ext_resource type="Texture2D" uid="uid://mx3dyc0tnke" path="res://Assets/UI/Buttons/botao_principal_hover.png" id="29_evi2c"]
@@ -265,7 +265,7 @@ size_flags_horizontal = 3
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics/TimeInGame/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("13_ef081")
+texture = ExtResource("7_y4wf0")
 
 [node name="Label" type="Label" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics/TimeInGame/HBoxContainer"]
 layout_mode = 2
@@ -550,7 +550,6 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 texture_normal = ExtResource("16_d55iw")
-texture_pressed = ExtResource("17_syasu")
 texture_hover = ExtResource("18_bcbo1")
 ignore_texture_size = true
 stretch_mode = 0
@@ -576,7 +575,6 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 texture_normal = ExtResource("16_d55iw")
-texture_pressed = ExtResource("17_syasu")
 texture_hover = ExtResource("18_bcbo1")
 ignore_texture_size = true
 stretch_mode = 0
@@ -602,7 +600,6 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 texture_normal = ExtResource("16_d55iw")
-texture_pressed = ExtResource("17_syasu")
 texture_hover = ExtResource("18_bcbo1")
 ignore_texture_size = true
 stretch_mode = 0
@@ -628,7 +625,6 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 texture_normal = ExtResource("16_d55iw")
-texture_pressed = ExtResource("17_syasu")
 texture_hover = ExtResource("18_bcbo1")
 ignore_texture_size = true
 stretch_mode = 0
