@@ -287,13 +287,16 @@ func start_next_wave():
 	spawn_enemies(wave_data)
 	
 func retrieve_wave_data():
-	#current_wave += 1 #Isso tava aqui, movi para _on_pause_play_pressed()
-	var wave_data = GameData.waves["wave" + str(current_wave)]
-	enemies_in_wave = wave_data.size()
+	var wave_key = "wave" + str(current_wave)
+	var wave_data = GameData.waves.get(wave_key, {
+		"enemies": [["Metal", 1]], ## Se nao tiver wave, ele bota isso pra substitutir
+	})
+	
+	enemies_in_wave = wave_data["enemies"].size()
 	return wave_data
 
 func spawn_enemies(wave_data):
-	for i in wave_data:
+	for i in wave_data["enemies"]:
 		
 		var new_enemy = load("res://Scenes/Enemies/" + i[0] + "/" + i[0] + ".tscn").instantiate()
 		
@@ -417,3 +420,5 @@ func _on_card_dropped(card_node, target_position):
 func show_max_cards_message():
 	# Implementar uma mensagem visual para o jogador
 	print("Máximo de 4 cartas por gato!")
+
+## Text Box

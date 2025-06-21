@@ -107,12 +107,29 @@ var enemies_data = {
 
 ## round
 var waves = {
-	"wave1": [
-		["Metal", 1]
-	],
-	"wave2": [
-		["Metal", 1]
-	],
+	"wave1": {
+		"enemies": [
+			["Metal", 1]
+		],
+		"text_box": {
+			"show": true,
+			"size": "small",
+			"title": "Primeira Onda!",
+			"message": "Os primeiros inimigos estão chegando."
+		}
+	},
+	
+	"wave2": {
+		"enemies": [
+			["Metal", 1]
+		],
+		"text_box": {
+			"show": true,
+			"size": "large",
+			"title": "Primeira Onda!",
+			"message": "Os primeiros inimigos estão chegando."
+		}
+	}
 }
 
 ## Efeitos
