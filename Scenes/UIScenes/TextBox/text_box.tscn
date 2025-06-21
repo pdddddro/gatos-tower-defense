@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://lhinuy75rcjw"]
+
+[ext_resource type="Texture2D" uid="uid://cb11eet122olt" path="res://Assets/UI/TextBox/TextBoxBackground.png" id="1_hvwag"]
+[ext_resource type="Script" uid="uid://2o4s5huofeat" path="res://Scenes/UIScenes/TextBox/text_box.gd" id="1_iuwvp"]
+[ext_resource type="FontFile" uid="uid://bxh8oh1s7ap4j" path="res://Assets/Fonts/medodicaregular.otf" id="2_8fpss"]
+[ext_resource type="Texture2D" uid="uid://bg637rpji52wu" path="res://Assets/UI/TextBox/pinguelo.png" id="2_xft1d"]
+[ext_resource type="Texture2D" uid="uid://d0r1ny1eiup5u" path="res://Assets/IDV/CatLogo.png" id="4_g70id"]
+
+[node name="TextBox" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iuwvp")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -140.0
+offset_top = -69.0
+offset_right = 140.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = -2
+alignment = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(280, 64)
+layout_mode = 2
+texture = ExtResource("1_hvwag")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/NinePatchRect"]
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 64.0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/NinePatchRect/MarginContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/normal_font = ExtResource("2_8fpss")
+text = "G.A.T.I.N.H.O.S. significa Grupo Acadêmico de Táticas Inteligentes para Neutralizar Horríveis Objetos Sujos, legal né?"
+
+[node name="Tail" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_xft1d")
+stretch_mode = 2
+
+[node name="Cat" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("4_g70id")
+stretch_mode = 2
