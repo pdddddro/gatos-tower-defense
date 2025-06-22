@@ -4,10 +4,8 @@ extends Control
 @onready var small_textbox = $VBoxContainer/VBoxContainer/SmallTextBox
 @onready var close_button = $VBoxContainer/VBoxContainer/Close
 
-@onready var big_title = $VBoxContainer/VBoxContainer/BigTextBox/MarginContainer/VBoxContainer/Title
-@onready var big_content = $VBoxContainer/VBoxContainer/BigTextBox/MarginContainer/VBoxContainer/Content
-@onready var small_title = $VBoxContainer/VBoxContainer/SmallTextBox/MarginContainer/VBoxContainer/Title
-@onready var small_content = $VBoxContainer/VBoxContainer/SmallTextBox/MarginContainer/VBoxContainer/Content
+@onready var title = $VBoxContainer/VBoxContainer/TextBox/MarginContainer/VBoxContainer/Title
+@onready var content = $VBoxContainer/VBoxContainer/TextBox/MarginContainer/VBoxContainer/Content
 
 var tween: Tween
 
@@ -17,10 +15,6 @@ func _ready():
 	# Conecta o botão de fechar
 	close_button.pressed.connect(_on_close_pressed)
 	
-	# Esconde ambos os containers inicialmente
-	big_textbox.visible = false
-	small_textbox.visible = false
-	
 	# Aguarda um frame para garantir que o viewport esteja configurado
 	await get_tree().process_frame
 	
@@ -29,17 +23,8 @@ func _ready():
 	position.y = screen_height
 
 func show_textbox(text_data: Dictionary):
-	# Determina qual container usar baseado no tamanho
-	if text_data.size == "large":
-		big_textbox.visible = true
-		small_textbox.visible = false
-		big_title.text = text_data.title
-		big_content.text = text_data.message
-	else:
-		big_textbox.visible = false
-		small_textbox.visible = true
-		small_title.text = text_data.title
-		small_content.text = text_data.message
+	title.text = text_data.title
+	content.text = text_data.message
 	
 	# Anima entrada de baixo para cima sem bounce
 	animate_in()

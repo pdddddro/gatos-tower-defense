@@ -122,7 +122,6 @@ var waves = {
 		],
 		"text_box": {
 			"show": true,
-			"size": "small",
 			"title": "Primeira Onda!",
 			"message": "Cuidado em boy"
 		}
@@ -134,7 +133,6 @@ var waves = {
 		],
 		"text_box": {
 			"show": true,
-			"size": "small",
 			"title": "Segunda Onda!",
 			"message": "Os primeiros inimigos estão chegando."
 		}
