@@ -108,10 +108,11 @@ var enemies_data = {
 ## round
 ## Rich Text Label
 ## [b][font_size=11]Texto[/font_size][/b]  - Font Retro Gaming 
-## [shake] Texto Tremendo [/shake]
+## [shake rate=5 level=10] Texto Tremendo [/shake]
 ## [rainbow]Texto arco-íris[/rainbow]
-## [pulse]Texto pulsante[/pulse]
-## [wave]Texto ondulado[/wave]
+## [pulse freq=1.0 color=#ffffff40 ease=-2.0]Texto pulsante[/pulse]
+## [wave amp=50 freq=2]Texto ondulado[/wave]
+## [tornado radius=5 freq=10]Texto ondulado[/tornado]
 
 var waves = {
 	"wave1": {
@@ -122,7 +123,7 @@ var waves = {
 			"show": true,
 			"size": "small",
 			"title": "Primeira Onda!",
-			"message": "Os [shake]primeiros[/shake] [rainbow]Texto arco-íris[/rainbow] [pulse]Texto pulsante[/pulse] [wave]Texto ondulado[/wave]"
+			"message": "Cuidado em boy"
 		}
 	},
 	
@@ -153,7 +154,6 @@ var card_data = {
 			"name": "Agilidade Felina",
 			"description": "Aumenta a velocidade de ataque em 0.2s",
 			"icon": "res://Assets/Icons/Fish1.png",
-			"rarity_color": Color("808080"), # Cinza para básica
 			"effects": [
 				{"type": "speed_boost", "power": 0.2}
 			],
@@ -165,7 +165,6 @@ var card_data = {
 			"name": "Predador Completo",
 			"description": "Aumenta dano em 100",
 			"icon": "res://Assets/Icons/Heart.png",
-			"rarity_color": Color("808080"), # Cinza para básica
 			"effects": [
 				{"type": "damage_boost", "power": 100}
 			],
@@ -177,7 +176,6 @@ var card_data = {
 			"name": "Olhos de Leão",
 			"description": "Aumenta range em 128",
 			"icon": "res://Assets/Icons/Cards2.png",
-			"rarity_color": Color("808080"), # Cinza para básica
 			"effects": [
 				{"type": "range_boost", "power": 128}
 			],
