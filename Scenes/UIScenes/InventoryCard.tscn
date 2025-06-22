@@ -1,12 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://c2jcnp85arbqw"]
+[gd_scene load_steps=10 format=3 uid="uid://c2jcnp85arbqw"]
 
 [ext_resource type="Texture2D" uid="uid://baya31xk74k60" path="res://Assets/UI/card_background.png" id="1_r7sdq"]
-[ext_resource type="Texture2D" uid="uid://dfka8j1jjfih7" path="res://Assets/UI/card_background_pressed.png" id="2_26xix"]
 [ext_resource type="Script" uid="uid://bw0i0dfgadxnl" path="res://Scenes/UIScenes/inventory_card.gd" id="2_42axt"]
 [ext_resource type="Texture2D" uid="uid://c6au0wn47cs01" path="res://Assets/UI/card_background_hover.png" id="2_yaibm"]
 [ext_resource type="Texture2D" uid="uid://dwchgcpqg52pg" path="res://Assets/UI/Teste.png" id="3_42axt"]
 [ext_resource type="FontFile" uid="uid://dypca4yn0mcqr" path="res://Assets/Fonts/retro_gaming/Retro Gaming.ttf" id="4_r7sdq"]
+[ext_resource type="Script" uid="uid://ber1tq1cvvvc3" path="res://Scenes/UIScenes/TextBox/tooltip_Interact.gd" id="4_yaibm"]
 [ext_resource type="Texture2D" uid="uid://b5msph4pswwgu" path="res://Assets/UI/Rarity/Rara.png" id="5_26xix"]
+[ext_resource type="PackedScene" uid="uid://cto02ur6a2nje" path="res://Scenes/UIScenes/TextBox/tooltip.tscn" id="5_o8oco"]
 
 [sub_resource type="Theme" id="Theme_hxsv2"]
 
@@ -16,11 +17,10 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("1_r7sdq")
+texture_pressed = ExtResource("2_yaibm")
 texture_hover = ExtResource("2_yaibm")
 stretch_mode = 0
 script = ExtResource("2_42axt")
-normal_texture = ExtResource("1_r7sdq")
-selected_texture = ExtResource("2_26xix")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -33,6 +33,11 @@ theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 4
+script = ExtResource("4_yaibm")
+
+[node name="Tooltip" parent="MarginContainer" instance=ExtResource("5_o8oco")]
+layout_mode = 2
+show_title = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
