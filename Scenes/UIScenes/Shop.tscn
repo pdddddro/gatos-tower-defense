@@ -85,10 +85,14 @@ custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-tooltip_text = "Gatos"
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("2_k8126")
 stretch_mode = 0
+script = ExtResource("16_vsduq")
+
+[node name="Tooltip" parent="MarginContainer/VBoxContainer/ActionContainer/Shops/CatShop" instance=ExtResource("18_ywieb")]
+tooltip_content = "Loja de Gatos"
+show_title = false
 
 [node name="Cards" type="TextureButton" parent="MarginContainer/VBoxContainer/ActionContainer/Shops"]
 texture_filter = 1
@@ -96,10 +100,14 @@ custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-tooltip_text = "Cartas"
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("3_3lir5")
 stretch_mode = 0
+script = ExtResource("16_vsduq")
+
+[node name="Tooltip" parent="MarginContainer/VBoxContainer/ActionContainer/Shops/Cards" instance=ExtResource("18_ywieb")]
+tooltip_content = "Cartas"
+show_title = false
 
 [node name="Spacer" type="Control" parent="MarginContainer/VBoxContainer/ActionContainer"]
 layout_mode = 2
@@ -154,6 +162,7 @@ layout_mode = 2
 theme_override_constants/separation = 8
 
 [node name="CatInfo" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 8
@@ -308,13 +317,15 @@ theme_override_constants/separation = 8
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-tooltip_text = "Dano de Ataque"
 theme_override_constants/separation = 4
 script = ExtResource("16_vsduq")
 
 [node name="Tooltip" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row1/Damage" instance=ExtResource("18_ywieb")]
 layout_mode = 2
 size_flags_horizontal = 0
+tooltip_title = ""
+tooltip_content = "Dano de Ataque"
+show_title = false
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row1/Damage"]
 layout_mode = 2
@@ -334,11 +345,14 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-tooltip_text = "Alcance"
 theme_override_constants/separation = 4
+script = ExtResource("16_vsduq")
 
 [node name="Tooltip" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row1/Range" instance=ExtResource("18_ywieb")]
 layout_mode = 2
+tooltip_title = ""
+tooltip_content = "Alcance"
+show_title = false
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row1/Range"]
 layout_mode = 2
@@ -358,8 +372,14 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-tooltip_text = "Velocidade de Ataque"
 theme_override_constants/separation = 4
+script = ExtResource("16_vsduq")
+
+[node name="Tooltip" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row1/AttackSpeed" instance=ExtResource("18_ywieb")]
+layout_mode = 2
+tooltip_title = ""
+tooltip_content = "Ataques por Segundo"
+show_title = false
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row1/AttackSpeed"]
 layout_mode = 2
@@ -384,8 +404,14 @@ theme_override_constants/separation = 8
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-tooltip_text = "Chance de Crítico"
 theme_override_constants/separation = 4
+script = ExtResource("16_vsduq")
+
+[node name="Tooltip" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row2/CriticalChance" instance=ExtResource("18_ywieb")]
+layout_mode = 2
+tooltip_title = ""
+tooltip_content = "Chance de Ataque Crítico"
+show_title = false
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row2/CriticalChance"]
 layout_mode = 2
@@ -405,8 +431,14 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-tooltip_text = "Inimigos Derrotados"
 theme_override_constants/separation = 4
+script = ExtResource("16_vsduq")
+
+[node name="Tooltip" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row2/EnemiesDefeated" instance=ExtResource("18_ywieb")]
+layout_mode = 2
+tooltip_title = ""
+tooltip_content = "Inimigos Mortos"
+show_title = false
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row2/EnemiesDefeated"]
 layout_mode = 2
@@ -426,8 +458,14 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-tooltip_text = "Peixes Coletados"
 theme_override_constants/separation = 4
+script = ExtResource("16_vsduq")
+
+[node name="Tooltip" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row2/FishsCollected" instance=ExtResource("18_ywieb")]
+layout_mode = 2
+tooltip_title = ""
+tooltip_content = "Peixes Coletados"
+show_title = false
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row2/FishsCollected"]
 layout_mode = 2
@@ -1131,7 +1169,6 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="CardsControl" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2
@@ -1145,8 +1182,13 @@ alignment = 1
 
 [node name="Basic" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity"]
 layout_mode = 2
-tooltip_text = "Chance de carta Comum no pack"
 theme_override_constants/separation = 2
+script = ExtResource("16_vsduq")
+
+[node name="Tooltip" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity/Basic" instance=ExtResource("18_ywieb")]
+layout_mode = 2
+tooltip_content = "Chance de carta [b][font_size=11][color=#4f3a29]Comum[/color][/font_size][/b] no Pack"
+show_title = false
 
 [node name="BasicIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity/Basic"]
 custom_minimum_size = Vector2(8, 8)
@@ -1166,8 +1208,8 @@ vertical_alignment = 1
 
 [node name="Common" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity"]
 layout_mode = 2
-tooltip_text = "Chance de carta Incomum no pack"
 theme_override_constants/separation = 2
+script = ExtResource("16_vsduq")
 
 [node name="CommonIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity/Common"]
 custom_minimum_size = Vector2(8, 8)
@@ -1178,17 +1220,22 @@ texture = ExtResource("28_qh346")
 
 [node name="ComumRarity" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity/Common"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.141176, 0.321569, 0.231373, 1)
+theme_override_colors/font_color = Color(0.0784314, 0.627451, 0.180392, 1)
 theme_override_fonts/font = ExtResource("15_v6pep")
 theme_override_font_sizes/font_size = 8
 text = "30%"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Tooltip" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity/Common" instance=ExtResource("18_ywieb")]
+layout_mode = 2
+tooltip_content = "Chance de carta [b][font_size=11][color=#14a02e]Incomum[/color][/font_size][/b] no Pack"
+show_title = false
+
 [node name="Rare" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity"]
 layout_mode = 2
-tooltip_text = "Chance de carta Rara no pack"
 theme_override_constants/separation = 2
+script = ExtResource("16_vsduq")
 
 [node name="RareIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity/Rare"]
 custom_minimum_size = Vector2(8, 8)
@@ -1199,12 +1246,17 @@ texture = ExtResource("29_vsduq")
 
 [node name="RareRarity" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity/Rare"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.0784314, 0.203922, 0.392157, 1)
+theme_override_colors/font_color = Color(0.156863, 0.360784, 0.768627, 1)
 theme_override_fonts/font = ExtResource("15_v6pep")
 theme_override_font_sizes/font_size = 8
 text = "10%"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Tooltip" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity/Rare" instance=ExtResource("18_ywieb")]
+layout_mode = 2
+tooltip_content = "Chance de carta [b][font_size=11][color=#285cc4]Rara[/color][/font_size][/b] no Pack "
+show_title = false
 
 [node name="Buy" type="TextureButton" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl"]
 custom_minimum_size = Vector2(0, 24)

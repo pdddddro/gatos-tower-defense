@@ -113,6 +113,7 @@ var enemies_data = {
 ## [pulse freq=1.0 color=#ffffff40 ease=-2.0]Texto pulsante[/pulse]
 ## [wave amp=50 freq=2]Texto ondulado[/wave]
 ## [tornado radius=5 freq=10]Texto ondulado[/tornado]
+## [color=#hex]trocar a cor[/color]
 
 var waves = {
 	"wave1": {

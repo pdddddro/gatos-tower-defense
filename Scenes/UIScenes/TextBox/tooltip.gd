@@ -1,5 +1,14 @@
 extends Control
 
+## Rich Text Label
+## [b][font_size=11]Texto[/font_size][/b]  - Font Retro Gaming 
+## [shake rate=5 level=10] Texto Tremendo [/shake]
+## [rainbow]Texto arco-íris[/rainbow]
+## [pulse freq=1.0 color=#ffffff40 ease=-2.0]Texto pulsante[/pulse]
+## [wave amp=50 freq=2]Texto ondulado[/wave]
+## [tornado radius=5 freq=10]Texto ondulado[/tornado]
+## [color=#hex]trocar a cor[/color]
+
 const OFFSET: Vector2 = Vector2.ONE * 4
 var opacity_tween: Tween = null
 
@@ -9,30 +18,57 @@ var opacity_tween: Tween = null
 @onready var title = $MarginContainer/VBoxContainer/Title
 @onready var content = $MarginContainer/VBoxContainer/Content
 
+@export_multiline var tooltip_title: String = "Título"
+@export_multiline var tooltip_content: String = "Conteúdo"
+@export var auto_setup: bool = true
+@export var show_title: bool = true
+
 func _ready() -> void:
+	if auto_setup:
+		setup_content()
+
 	hide()
 
 func _input(event: InputEvent) -> void:
 	if visible and event is InputEventMouseMotion:
 		global_position = get_global_mouse_position() + OFFSET
 
+func setup_content():
+	if title:
+		if show_title and tooltip_title != "":
+			title.text = tooltip_title
+			title.visible = true
+		else:
+			title.visible = false
+			
+	if content and content is RichTextLabel:
+		content.text = tooltip_content
+		content.fit_content = true
+		
+		var plain_text = content.get_parsed_text()
+		if plain_text.length() > 25:
+			content.custom_minimum_size = Vector2(192, 0)
+		elif plain_text.length() > 20 and plain_text.length() < 25:
+			content.custom_minimum_size = Vector2(120, 0)
+		elif plain_text.length() > 12 and plain_text.length() < 20:
+			content.custom_minimum_size = Vector2(96, 0)
+		else:
+			content.custom_minimum_size = Vector2(64, 0)
+
 func tween_opacity(to: float):
 	if opacity_tween: opacity_tween.kill()
 	opacity_tween = get_tree().create_tween()
-	opacity_tween.tween_property(self, "modulate:a", to, 0.3)
+	opacity_tween.tween_property(self, "modulate:a", to, 0.1)
 	return opacity_tween
 	
 func toggle(on: bool):
 	if on:
-		show()  # Mostra primeiro para forçar o cálculo do layout
-		modulate.a = 0.0
-		
-		# Aguarda múltiplos frames para garantir que o layout seja calculado
-		await get_tree().process_frame
-		await get_tree().process_frame
+		show()
 		
 		adjust_tooltip_size()
+		modulate.a = 0.0
 		tween_opacity(1.0)
+		
 	else:
 		modulate.a = 1.0
 		await tween_opacity(0.0).finished

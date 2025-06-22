@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cto02ur6a2nje"]
 
 [ext_resource type="Script" uid="uid://d0idqnt7wchnr" path="res://Scenes/UIScenes/TextBox/tooltip.gd" id="1_57pgk"]
-[ext_resource type="Texture2D" uid="uid://cb11eet122olt" path="res://Assets/UI/TextBox/TextBoxBackground.png" id="2_ein42"]
+[ext_resource type="Texture2D" uid="uid://d2fym0hontdjr" path="res://Assets/UI/TextBox/tooltip.png" id="2_57pgk"]
 [ext_resource type="FontFile" uid="uid://dypca4yn0mcqr" path="res://Assets/Fonts/retro_gaming/Retro Gaming.ttf" id="3_om40j"]
 [ext_resource type="FontFile" uid="uid://bxh8oh1s7ap4j" path="res://Assets/Fonts/medodicaregular.otf" id="4_t6h7r"]
 
@@ -14,28 +14,29 @@ offset_right = -172.0
 size_flags_horizontal = 3
 size_flags_vertical = 2
 mouse_filter = 2
+mouse_default_cursor_shape = 16
 script = ExtResource("1_57pgk")
 
 [node name="Background" type="NinePatchRect" parent="."]
 layout_mode = 2
-offset_right = 32.0
-offset_bottom = 32.0
+offset_right = 16.0
+offset_bottom = 16.0
 size_flags_vertical = 0
-texture = ExtResource("2_ein42")
-patch_margin_left = 16
-patch_margin_top = 16
-patch_margin_right = 16
-patch_margin_bottom = 16
+texture = ExtResource("2_57pgk")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
-offset_right = 172.0
-offset_bottom = 48.0
+offset_right = 112.0
+offset_bottom = 24.0
 mouse_filter = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -49,6 +50,9 @@ layout_mode = 2
 size_flags_vertical = 4
 mouse_filter = 2
 theme_override_colors/default_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 0
 theme_override_fonts/normal_font = ExtResource("3_om40j")
 theme_override_font_sizes/normal_font_size = 11
 text = "Título"
@@ -59,17 +63,21 @@ justification_flags = 161
 
 [node name="Content" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
 texture_filter = 1
-custom_minimum_size = Vector2(156, 0)
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 size_flags_vertical = 0
 mouse_filter = 2
 theme_override_colors/default_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_outline_size = 0
 theme_override_constants/line_separation = -1
 theme_override_fonts/normal_font = ExtResource("4_t6h7r")
+theme_override_fonts/bold_font = ExtResource("3_om40j")
 theme_override_font_sizes/normal_font_size = 16
 bbcode_enabled = true
 text = "Descrição"
 fit_content = true
 shortcut_keys_enabled = false
-vertical_alignment = 3
+vertical_alignment = 1
 justification_flags = 161
