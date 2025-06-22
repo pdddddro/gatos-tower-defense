@@ -17,11 +17,14 @@ var opacity_tween: Tween = null
 @onready var vbox = $MarginContainer/VBoxContainer
 @onready var title = $MarginContainer/VBoxContainer/Title
 @onready var content = $MarginContainer/VBoxContainer/Content
+@onready var rarity = $MarginContainer/VBoxContainer/CardRarity
 
 @export_multiline var tooltip_title: String = "Título"
 @export_multiline var tooltip_content: String = "Conteúdo"
 @export var auto_setup: bool = true
 @export var show_title: bool = true
+@export var tooltip_rarity_texture: String = ""
+@export var show_rarity: bool = true
 
 func _ready() -> void:
 	if auto_setup:
@@ -54,6 +57,15 @@ func setup_content():
 			content.custom_minimum_size = Vector2(96, 0)
 		else:
 			content.custom_minimum_size = Vector2(64, 0)
+			
+	if  rarity and show_rarity and tooltip_rarity_texture != "":
+		if ResourceLoader.exists(tooltip_rarity_texture):
+			rarity.texture = load(tooltip_rarity_texture)
+			rarity.visible = true
+		else:
+			rarity.visible = false
+	elif  rarity:
+		rarity.visible = false
 
 func tween_opacity(to: float):
 	if opacity_tween: opacity_tween.kill()

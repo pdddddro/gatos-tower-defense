@@ -17,7 +17,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("1_r7sdq")
-texture_pressed = ExtResource("2_yaibm")
+texture_pressed = ExtResource("1_r7sdq")
 texture_hover = ExtResource("2_yaibm")
 stretch_mode = 0
 script = ExtResource("2_42axt")
@@ -38,6 +38,7 @@ script = ExtResource("4_yaibm")
 [node name="Tooltip" parent="MarginContainer" instance=ExtResource("5_o8oco")]
 layout_mode = 2
 show_title = false
+show_rarity = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2

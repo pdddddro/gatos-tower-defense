@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cto02ur6a2nje"]
+[gd_scene load_steps=6 format=3 uid="uid://cto02ur6a2nje"]
 
 [ext_resource type="Script" uid="uid://d0idqnt7wchnr" path="res://Scenes/UIScenes/TextBox/tooltip.gd" id="1_57pgk"]
 [ext_resource type="Texture2D" uid="uid://d2fym0hontdjr" path="res://Assets/UI/TextBox/tooltip.png" id="2_57pgk"]
+[ext_resource type="Texture2D" uid="uid://b5msph4pswwgu" path="res://Assets/UI/Rarity/Rara.png" id="3_ein42"]
 [ext_resource type="FontFile" uid="uid://dypca4yn0mcqr" path="res://Assets/Fonts/retro_gaming/Retro Gaming.ttf" id="3_om40j"]
 [ext_resource type="FontFile" uid="uid://bxh8oh1s7ap4j" path="res://Assets/Fonts/medodicaregular.otf" id="4_t6h7r"]
 
@@ -31,7 +32,7 @@ patch_margin_bottom = 8
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
 offset_right = 112.0
-offset_bottom = 24.0
+offset_bottom = 50.0
 mouse_filter = 2
 theme_override_constants/margin_left = 4
 theme_override_constants/margin_top = 4
@@ -43,6 +44,15 @@ layout_mode = 2
 size_flags_vertical = 0
 mouse_filter = 2
 theme_override_constants/separation = 2
+
+[node name="CardRarity" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("3_ein42")
+stretch_mode = 2
 
 [node name="Title" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
 texture_filter = 1

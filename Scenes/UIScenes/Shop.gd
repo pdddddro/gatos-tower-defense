@@ -206,9 +206,7 @@ func update_equipped_cards_ui(equipped_cards: Array):
 			setup_card_slot(card_slots[i], equipped_cards[i])
 
 func setup_card_slot(slot_node, card_data: Dictionary):
-	
 	var card_icon = slot_node.get_node("CardIcon")
-	
 	if card_icon:
 		if ResourceLoader.exists(card_data.icon):
 			card_icon.texture = load(card_data.icon)
@@ -220,7 +218,7 @@ func setup_card_slot(slot_node, card_data: Dictionary):
 			print("ERRO: Arquivo de ícone não encontrado: ", card_data.icon)
 	else:
 		print("ERRO: CardIcon não encontrado no slot")
-	
+
 func clear_card_slot(slot_node):
 	var card_icon = slot_node.get_node("CardIcon")
 	if card_icon:

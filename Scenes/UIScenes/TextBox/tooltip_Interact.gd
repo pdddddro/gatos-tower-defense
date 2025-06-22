@@ -8,18 +8,18 @@ func _ready() -> void:
 
 func on_mouse_entered():
 	var parent_card = get_parent()
-	var current_node_name = parent_card.name if parent_card else name
+	var current_node_name = name
 	
-	# Verifica se é um card slot e se tem dados de carta
-	if parent_card and parent_card.has_meta("card_data"):
+	if parent_card and parent_card.has_meta("card_data") or (current_node_name in ["Card1", "Card2", "Card3", "Card4"]):
 		var data = parent_card.get_meta("card_data")
 		
-		# Só mostra tooltip se houver dados da carta
-		if data and "name" in data and "description" in data:
-			tooltip.tooltip_content = data["description"]
-			tooltip.tooltip_title = data["name"]
-			tooltip.setup_content()
-			
+		tooltip.tooltip_content = data["description"]
+		tooltip.tooltip_title = data["name"]
+		var rarity_type = GameData.get_card_rarity_type(data["name"])
+		
+		tooltip.tooltip_rarity_texture = GameData.get_rarity_texture_path(rarity_type)
+		
+		tooltip.setup_content()
 	tooltip.toggle(true)
 	
 func on_mouse_exited():
