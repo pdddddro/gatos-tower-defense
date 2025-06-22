@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://d0y6aaiw6832f"]
+[gd_scene load_steps=38 format=3 uid="uid://d0y6aaiw6832f"]
 
 [ext_resource type="Script" uid="uid://dh2a0v6qsoipe" path="res://Scenes/UIScenes/Shop.gd" id="1_ba3kk"]
 [ext_resource type="Texture2D" uid="uid://ycbwxuewd3jo" path="res://Assets/Icons/Catt3.png" id="2_k8126"]
@@ -22,9 +22,11 @@
 [ext_resource type="Texture2D" uid="uid://bja4m423dmu6i" path="res://Assets/Icons/Attack.png" id="15_bymxr"]
 [ext_resource type="FontFile" uid="uid://8qe2jqb87ubg" path="res://Assets/Fonts/press_start_2p/PressStart2P.ttf" id="15_v6pep"]
 [ext_resource type="Texture2D" uid="uid://l3qb28hgmuhn" path="res://Assets/UI/Equipped_card_background.png" id="16_rtmr6"]
+[ext_resource type="Script" uid="uid://ber1tq1cvvvc3" path="res://Scenes/UIScenes/TextBox/tooltip_Interact.gd" id="16_vsduq"]
 [ext_resource type="Texture2D" uid="uid://cad3xncagluhe" path="res://Assets/Icons/Range.png" id="17_qh346"]
 [ext_resource type="Texture2D" uid="uid://be042goflct38" path="res://Assets/UI/Equipped_card_background_pressed.png" id="17_t7lsd"]
 [ext_resource type="Texture2D" uid="uid://bfwtkfw56eu2j" path="res://Assets/UI/Equipped_card_background_hover.png" id="18_i04e1"]
+[ext_resource type="PackedScene" uid="uid://cto02ur6a2nje" path="res://Scenes/UIScenes/TextBox/tooltip.tscn" id="18_ywieb"]
 [ext_resource type="Texture2D" uid="uid://baepjslnydqim" path="res://Assets/UI/Buttons/botao_principal_padrao.png" id="20_0ya3t"]
 [ext_resource type="Texture2D" uid="uid://cgceauk46iquy" path="res://Assets/UI/Buttons/botao_sec_padrao.png" id="21_0ya3t"]
 [ext_resource type="Texture2D" uid="uid://mx3dyc0tnke" path="res://Assets/UI/Buttons/botao_principal_hover.png" id="21_8gkmu"]
@@ -299,6 +301,7 @@ theme_override_constants/separation = 4
 
 [node name="Row1" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows"]
 layout_mode = 2
+size_flags_vertical = 0
 theme_override_constants/separation = 8
 
 [node name="Damage" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row1"]
@@ -307,6 +310,11 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 tooltip_text = "Dano de Ataque"
 theme_override_constants/separation = 4
+script = ExtResource("16_vsduq")
+
+[node name="Tooltip" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row1/Damage" instance=ExtResource("18_ywieb")]
+layout_mode = 2
+size_flags_horizontal = 0
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row1/Damage"]
 layout_mode = 2
@@ -328,6 +336,9 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 tooltip_text = "Alcance"
 theme_override_constants/separation = 4
+
+[node name="Tooltip" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row1/Range" instance=ExtResource("18_ywieb")]
+layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row1/Range"]
 layout_mode = 2
@@ -366,6 +377,7 @@ vertical_alignment = 1
 
 [node name="Row2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows"]
 layout_mode = 2
+size_flags_vertical = 0
 theme_override_constants/separation = 8
 
 [node name="CriticalChance" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row2"]
