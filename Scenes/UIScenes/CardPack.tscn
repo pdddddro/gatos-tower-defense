@@ -3,9 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://baya31xk74k60" path="res://Assets/UI/card_background.png" id="1_8mogj"]
 [ext_resource type="Texture2D" uid="uid://c6au0wn47cs01" path="res://Assets/UI/card_background_hover.png" id="2_7yagg"]
 [ext_resource type="Script" uid="uid://bdq4h1w0g5qgk" path="res://Scenes/UIScenes/card_pack.gd" id="2_has3m"]
-[ext_resource type="Texture2D" uid="uid://bbsd23rrcxjx8" path="res://Assets/UI/CardsTag.png" id="2_p52fo"]
 [ext_resource type="Texture2D" uid="uid://dwchgcpqg52pg" path="res://Assets/UI/Teste.png" id="3_has3m"]
 [ext_resource type="FontFile" uid="uid://bxh8oh1s7ap4j" path="res://Assets/Fonts/medodicaregular.otf" id="4_7yagg"]
+[ext_resource type="Texture2D" uid="uid://c8vgditm7ww36" path="res://Assets/UI/Rarity/Comum.png" id="4_urywh"]
 [ext_resource type="FontFile" uid="uid://8qe2jqb87ubg" path="res://Assets/Fonts/press_start_2p/PressStart2P.ttf" id="6_7yagg"]
 
 [node name="Card" type="TextureButton"]
@@ -39,8 +39,9 @@ texture_filter = 1
 custom_minimum_size = Vector2(64, 16)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 0
-texture = ExtResource("2_p52fo")
+size_flags_vertical = 4
+texture = ExtResource("4_urywh")
+expand_mode = 3
 
 [node name="CardIcon" type="TextureRect" parent="MarginContainer/VBoxContainer"]
 texture_filter = 1

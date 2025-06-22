@@ -388,6 +388,9 @@ func _on_inventory_card_selected(card_node):
 func setup_inventory_card(card_node, card_data):
 	card_node.get_node("MarginContainer/VBoxContainer/CardName").text = card_data.name
 	card_node.get_node("MarginContainer/VBoxContainer/CardIcon").texture = load(card_data.icon)
+	
+	GameData.apply_card_rarity_texture(card_node, card_data.name)
+	
 	card_node.set_meta("card_data", card_data) # GUARDA TUDO
 
 func update_empty_inventory_label():

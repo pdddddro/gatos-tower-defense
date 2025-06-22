@@ -32,6 +32,8 @@ func setup_card_data(card_node, card_data):
 	card_node.get_node("MarginContainer/VBoxContainer/CardName").text = card_data.name
 	card_node.get_node("MarginContainer/VBoxContainer/CardDescription").text = card_data.description
 	
+	GameData.apply_card_rarity_texture(card_node, card_data.name)
+	
 	# Armazena os dados para uso posterior (quando o jogador clicar)
 	card_node.card_data = card_data
 

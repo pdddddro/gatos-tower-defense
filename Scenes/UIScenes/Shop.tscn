@@ -21,18 +21,18 @@
 [ext_resource type="Texture2D" uid="uid://chbpn8hrki162" path="res://Assets/Cats/Nut/Nut.png" id="14_rtmr6"]
 [ext_resource type="Texture2D" uid="uid://bja4m423dmu6i" path="res://Assets/Icons/Attack.png" id="15_bymxr"]
 [ext_resource type="FontFile" uid="uid://8qe2jqb87ubg" path="res://Assets/Fonts/press_start_2p/PressStart2P.ttf" id="15_v6pep"]
-[ext_resource type="Texture2D" uid="uid://b2c5hntryctxw" path="res://Assets/UI/Comum.png" id="16_3lir5"]
 [ext_resource type="Texture2D" uid="uid://l3qb28hgmuhn" path="res://Assets/UI/Equipped_card_background.png" id="16_rtmr6"]
-[ext_resource type="Texture2D" uid="uid://bgf688vhkxpce" path="res://Assets/UI/Comum3.png" id="17_ahyw7"]
 [ext_resource type="Texture2D" uid="uid://cad3xncagluhe" path="res://Assets/Icons/Range.png" id="17_qh346"]
 [ext_resource type="Texture2D" uid="uid://be042goflct38" path="res://Assets/UI/Equipped_card_background_pressed.png" id="17_t7lsd"]
 [ext_resource type="Texture2D" uid="uid://bfwtkfw56eu2j" path="res://Assets/UI/Equipped_card_background_hover.png" id="18_i04e1"]
-[ext_resource type="Texture2D" uid="uid://dc21kcug4pvjs" path="res://Assets/UI/Comum2.png" id="18_y2hbt"]
 [ext_resource type="Texture2D" uid="uid://baepjslnydqim" path="res://Assets/UI/Buttons/botao_principal_padrao.png" id="20_0ya3t"]
 [ext_resource type="Texture2D" uid="uid://cgceauk46iquy" path="res://Assets/UI/Buttons/botao_sec_padrao.png" id="21_0ya3t"]
 [ext_resource type="Texture2D" uid="uid://mx3dyc0tnke" path="res://Assets/UI/Buttons/botao_principal_hover.png" id="21_8gkmu"]
 [ext_resource type="Texture2D" uid="uid://cdunclj7frjlu" path="res://Assets/UI/Buttons/botao_disabled.png" id="22_0ya3t"]
 [ext_resource type="Texture2D" uid="uid://cat5x4hm2pqvj" path="res://Assets/UI/Buttons/botao_sec_hover.png" id="22_8gkmu"]
+[ext_resource type="Texture2D" uid="uid://d0v5okl1qyk2p" path="res://Assets/Icons/Rarity/Comum.png" id="27_bymxr"]
+[ext_resource type="Texture2D" uid="uid://bpu3geeqpnail" path="res://Assets/Icons/Rarity/Incomum.png" id="28_qh346"]
+[ext_resource type="Texture2D" uid="uid://dcbuhbtk2btfc" path="res://Assets/Icons/Rarity/Rara.png" id="29_vsduq"]
 
 [sub_resource type="Theme" id="Theme_hxsv2"]
 
@@ -252,8 +252,8 @@ texture = ExtResource("10_8gkmu")
 [node name="SellPrice" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/Cat/Sell/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
-theme_override_fonts/font = ExtResource("8_0ya3t")
-theme_override_font_sizes/font_size = 11
+theme_override_fonts/font = ExtResource("15_v6pep")
+theme_override_font_sizes/font_size = 8
 text = "300"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -472,6 +472,22 @@ offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="CardRarity" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/EquippedCards/Cards/Card1"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -9.0
+offset_right = 4.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("27_bymxr")
+stretch_mode = 2
+
 [node name="Card2" type="TextureButton" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/EquippedCards/Cards"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -495,6 +511,22 @@ offset_right = 16.0
 offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="CardRarity" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/EquippedCards/Cards/Card2"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -9.0
+offset_right = 4.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("27_bymxr")
+stretch_mode = 2
 
 [node name="Card3" type="TextureButton" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/EquippedCards/Cards"]
 custom_minimum_size = Vector2(32, 32)
@@ -520,6 +552,22 @@ offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="CardRarity" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/EquippedCards/Cards/Card3"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -9.0
+offset_right = 4.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("27_bymxr")
+stretch_mode = 2
+
 [node name="Card4" type="TextureButton" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/EquippedCards/Cards"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -543,6 +591,22 @@ offset_right = 16.0
 offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="CardRarity" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/EquippedCards/Cards/Card4"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -9.0
+offset_right = 4.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("27_bymxr")
+stretch_mode = 2
 
 [node name="TextureRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer"]
 visible = false
@@ -1061,10 +1125,10 @@ size_flags_horizontal = 3
 alignment = 2
 
 [node name="CardRarity" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl"]
-custom_minimum_size = Vector2(0, 24)
+custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/separation = 8
+theme_override_constants/separation = 16
 alignment = 1
 
 [node name="Basic" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity"]
@@ -1072,17 +1136,17 @@ layout_mode = 2
 theme_override_constants/separation = 2
 
 [node name="BasicIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity/Basic"]
+custom_minimum_size = Vector2(8, 8)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("16_3lir5")
-stretch_mode = 2
+texture = ExtResource("27_bymxr")
 
 [node name="BasicRarity" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity/Basic"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.156863, 0.360784, 0.768627, 1)
-theme_override_fonts/font = ExtResource("8_0ya3t")
-theme_override_font_sizes/font_size = 11
+theme_override_colors/font_color = Color(0.309804, 0.227451, 0.160784, 1)
+theme_override_fonts/font = ExtResource("15_v6pep")
+theme_override_font_sizes/font_size = 8
 text = "60%"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1092,17 +1156,17 @@ layout_mode = 2
 theme_override_constants/separation = 2
 
 [node name="CommonIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity/Common"]
+custom_minimum_size = Vector2(8, 8)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("17_ahyw7")
-stretch_mode = 2
+texture = ExtResource("28_qh346")
 
 [node name="ComumRarity" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity/Common"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.443137, 0.0666667, 1)
-theme_override_fonts/font = ExtResource("8_0ya3t")
-theme_override_font_sizes/font_size = 11
+theme_override_colors/font_color = Color(0.141176, 0.321569, 0.231373, 1)
+theme_override_fonts/font = ExtResource("15_v6pep")
+theme_override_font_sizes/font_size = 8
 text = "30%"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1112,17 +1176,17 @@ layout_mode = 2
 theme_override_constants/separation = 2
 
 [node name="RareIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity/Rare"]
+custom_minimum_size = Vector2(8, 8)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("18_y2hbt")
-stretch_mode = 2
+texture = ExtResource("29_vsduq")
 
 [node name="RareRarity" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity/Rare"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.631373, 0.0627451, 0.309804, 1)
-theme_override_fonts/font = ExtResource("8_0ya3t")
-theme_override_font_sizes/font_size = 11
+theme_override_colors/font_color = Color(0.0784314, 0.203922, 0.392157, 1)
+theme_override_fonts/font = ExtResource("15_v6pep")
+theme_override_font_sizes/font_size = 8
 text = "10%"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1165,8 +1229,8 @@ texture = ExtResource("10_8gkmu")
 [node name="SellPrice" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/Buy/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.0156863, 0.231373, 0.0470588, 1)
-theme_override_fonts/font = ExtResource("8_0ya3t")
-theme_override_font_sizes/font_size = 11
+theme_override_fonts/font = ExtResource("15_v6pep")
+theme_override_font_sizes/font_size = 8
 text = "300"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1232,8 +1296,8 @@ texture = ExtResource("10_8gkmu")
 [node name="SellPrice" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/Sell/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
-theme_override_fonts/font = ExtResource("8_0ya3t")
-theme_override_font_sizes/font_size = 11
+theme_override_fonts/font = ExtResource("15_v6pep")
+theme_override_font_sizes/font_size = 8
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1

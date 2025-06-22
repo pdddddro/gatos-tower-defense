@@ -10,6 +10,8 @@ func setup_card_detail(card_data: Dictionary):
 	vbox.get_node("CardIcon").texture = load(card_data["icon"])
 	vbox.get_node("CardDescription").text = card_data["description"]
 
+	GameData.apply_card_rarity_texture(card_instance, card_data["name"])
+
 	# Adiciona a carta ao HBoxContainer correto
 	var hbox = $VBoxContainer/HBoxContainer
 	hbox.add_child(card_instance)

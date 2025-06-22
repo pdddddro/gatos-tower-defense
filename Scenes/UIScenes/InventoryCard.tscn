@@ -46,6 +46,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 texture = ExtResource("5_26xix")
+stretch_mode = 2
 
 [node name="CardIcon" type="TextureRect" parent="MarginContainer/VBoxContainer"]
 texture_filter = 1

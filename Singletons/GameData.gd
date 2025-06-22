@@ -230,6 +230,34 @@ func update_rarity_chances():
 	
 	emit_signal("rarity_chances_updated") # <-- emite o sinal
 
+## Rariry Logic
+func get_card_rarity_type(card_name: String) -> String:
+	for rarity_type in card_data:
+		for card in card_data[rarity_type]:
+			if card["name"] == card_name:
+				return rarity_type
+	return "basic"
+
+func apply_card_rarity_texture(card_node: Node, card_name: String):
+	var rarity = get_card_rarity_type(card_name)
+	var rarity_node = card_node.get_node("MarginContainer/VBoxContainer/CardRarity")
+	
+	if rarity_node:
+		var texture_path = get_rarity_texture_path(rarity)
+		if texture_path != "":
+			rarity_node.texture = load(texture_path)
+
+func get_rarity_texture_path(rarity: String) -> String:
+	match rarity:
+		"basic":
+			return "res://Assets/UI/Rarity/Comum.png"
+		"medium":
+			return "res://Assets/UI/Rarity/Incomum.png"
+		"rare":
+			return "res://Assets/UI/Rarity/Rara.png"
+		_:
+			return ""
+
 ## Statistics
 var enemies_defeated: int = 0
 var total_damage: int = 0
