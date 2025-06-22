@@ -34,7 +34,8 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if visible and event is InputEventMouseMotion:
-		global_position = get_global_mouse_position() + OFFSET
+		adjust_tooltip_size()
+		_adjust_position_to_viewport()
 
 func setup_content():
 	if title:
@@ -73,19 +74,45 @@ func tween_opacity(to: float):
 	opacity_tween.tween_property(self, "modulate:a", to, 0.1)
 	return opacity_tween
 	
-func toggle(on: bool):
-	if on:
-		show()
-		
-		adjust_tooltip_size()
-		modulate.a = 0.0
+func toggle(show_tooltip: bool):
+	if show_tooltip:
+		visible = true
+		# Mantém o tween de animação existente
 		tween_opacity(1.0)
-		
+		# Ajusta a posição para evitar corte na tela
+		call_deferred("_adjust_position_to_viewport")
 	else:
-		modulate.a = 1.0
-		await tween_opacity(0.0).finished
-		hide()
+		# Mantém o tween de animação para ocultar
+		var fade_tween = tween_opacity(0.0)
+		fade_tween.tween_callback(func(): visible = false)
+		
+func _adjust_position_to_viewport():
+	var viewport_size = get_viewport().get_visible_rect().size
+	var tooltip_size = size
+	var mouse_pos = get_global_mouse_position()
 
+	# Usa o OFFSET existente como posição padrão
+	var new_position = mouse_pos + OFFSET
+
+	# Verifica se a tooltip vai sair da tela na parte inferior
+	if new_position.y + tooltip_size.y > viewport_size.y:
+		# Posiciona acima do mouse ao invés de abaixo
+		new_position.y = mouse_pos.y - tooltip_size.y - OFFSET.y
+
+	# Verifica se vai sair da tela na direita
+	if new_position.x + tooltip_size.x > viewport_size.x:
+		new_position.x = viewport_size.x - tooltip_size.x - OFFSET.x
+
+	# Verifica se vai sair da tela na esquerda
+	if new_position.x < 0:
+		new_position.x = OFFSET.x
+
+	# Verifica se vai sair da tela no topo (caso tenha movido para cima)
+	if new_position.y < 0:
+		new_position.y = mouse_pos.y + OFFSET.y
+
+	global_position = new_position
+	
 func adjust_tooltip_size():
 	# Força o recálculo do layout múltiplas vezes
 	margin_container.reset_size()
