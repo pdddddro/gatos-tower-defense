@@ -8,9 +8,9 @@
 [ext_resource type="FontFile" uid="uid://dypca4yn0mcqr" path="res://Assets/Fonts/retro_gaming/Retro Gaming.ttf" id="3_nh3lf"]
 [ext_resource type="FontFile" uid="uid://bxh8oh1s7ap4j" path="res://Assets/Fonts/medodicaregular.otf" id="4_t7d4k"]
 [ext_resource type="Texture2D" uid="uid://dvhrsyngix8od" path="res://Assets/Cats/Sombra.png" id="5_5f336"]
-[ext_resource type="Texture2D" uid="uid://c061d35ptj35w" path="res://Assets/Cats/Pele/Pele.png" id="6_jdcbu"]
 [ext_resource type="Texture2D" uid="uid://cqvuhooeqjbyd" path="res://Assets/Icons/Relogio-Icone.png" id="7_y4wf0"]
 [ext_resource type="Texture2D" uid="uid://cdunclj7frjlu" path="res://Assets/UI/Buttons/botao_disabled.png" id="9_2hg7p"]
+[ext_resource type="Texture2D" uid="uid://c75b523rfmig3" path="res://Assets/Cats/Empty.png" id="11_2xwxd"]
 [ext_resource type="Texture2D" uid="uid://bja4m423dmu6i" path="res://Assets/Icons/Attack.png" id="13_ef081"]
 [ext_resource type="FontFile" uid="uid://8qe2jqb87ubg" path="res://Assets/Fonts/press_start_2p/PressStart2P.ttf" id="14_j4aux"]
 [ext_resource type="Texture2D" uid="uid://l3qb28hgmuhn" path="res://Assets/UI/Equipped_card_background.png" id="16_d55iw"]
@@ -201,7 +201,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 
 [node name="Statistics" type="VBoxContainer" parent="VBoxContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 8
@@ -508,7 +507,7 @@ size_flags_vertical = 1
 theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
 theme_override_fonts/font = ExtResource("4_t7d4k")
 theme_override_font_sizes/font_size = 16
-text = "Cartolina"
+text = "Nenhum Gato Encontrado"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -537,7 +536,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-texture = ExtResource("6_jdcbu")
+texture = ExtResource("11_2xwxd")
 
 [node name="Cards" type="HBoxContainer" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer"]
 layout_mode = 2

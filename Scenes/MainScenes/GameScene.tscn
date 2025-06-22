@@ -67,6 +67,7 @@ theme_override_constants/separation = 16
 [node name="HeartContainer" type="HBoxContainer" parent="UI/HUD/MarginContainer/Status"]
 layout_mode = 2
 size_flags_vertical = 0
+tooltip_text = "Vida Atual"
 theme_override_constants/separation = 4
 
 [node name="HeartIcon" type="TextureRect" parent="UI/HUD/MarginContainer/Status/HeartContainer"]
@@ -87,6 +88,7 @@ text = "Vida"
 [node name="FishContainer" type="HBoxContainer" parent="UI/HUD/MarginContainer/Status"]
 layout_mode = 2
 size_flags_vertical = 0
+tooltip_text = "Dinheiro Atual"
 theme_override_constants/separation = 4
 
 [node name="FishIcon" type="TextureRect" parent="UI/HUD/MarginContainer/Status/FishContainer"]

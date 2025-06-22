@@ -86,7 +86,7 @@ var enemies_data = {
 		"fish_reward": 50
 	},
 	"Metal": {
-		"damage": 600,
+		"damage": 1,
 		"speed": 60,
 		"hp": 40,
 		"fish_reward": 50
@@ -117,7 +117,8 @@ var enemies_data = {
 var waves = {
 	"wave1": {
 		"enemies": [
-			["Metal", 1]
+			["Metal", 1],
+			["BossRadioativo", 1]
 		],
 		"text_box": {
 			"show": true,

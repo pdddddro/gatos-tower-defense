@@ -1,13 +1,32 @@
-[gd_scene load_steps=20 format=3 uid="uid://dea44diijn1cy"]
+[gd_scene load_steps=24 format=3 uid="uid://dea44diijn1cy"]
 
 [ext_resource type="Script" uid="uid://c5cilqwnocbk1" path="res://Scenes/Enemies/Plastico/Plastico.gd" id="1_ede18"]
-[ext_resource type="Texture2D" uid="uid://dndr80yhpj34c" path="res://Assets/Enemies/boss_radioativo.png" id="2_20e71"]
 [ext_resource type="Texture2D" uid="uid://05q1du6n8co5" path="res://Assets/Enemies/boss_sprite_sheet.png" id="3_7yq0h"]
 [ext_resource type="Texture2D" uid="uid://c2nqf5iif1o6u" path="res://Assets/Enemies/shadow_boss_slime.png" id="4_7yq0h"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_20e71"]
+atlas = ExtResource("3_7yq0h")
+region = Rect2(144, 32, 48, 48)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_7yq0h"]
-atlas = ExtResource("2_20e71")
-region = Rect2(0, 0, 48, 48)
+atlas = ExtResource("3_7yq0h")
+region = Rect2(144, 80, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_miktr"]
+atlas = ExtResource("3_7yq0h")
+region = Rect2(144, 128, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcmhp"]
+atlas = ExtResource("3_7yq0h")
+region = Rect2(144, 176, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqks8"]
+atlas = ExtResource("3_7yq0h")
+region = Rect2(144, 224, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xat2"]
+atlas = ExtResource("3_7yq0h")
+region = Rect2(144, 272, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0s2e5"]
 atlas = ExtResource("3_7yq0h")
@@ -61,11 +80,26 @@ region = Rect2(48, 176, 48, 48)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_20e71")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_7yq0h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_miktr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bcmhp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mqks8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xat2")
 }],
 "loop": false,
 "name": &"Dead",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -152,7 +186,7 @@ script = ExtResource("1_ede18")
 y_sort_enabled = true
 position = Vector2(0, -20)
 sprite_frames = SubResource("SpriteFrames_nlrk2")
-animation = &"Dead"
+animation = &"WalkRight"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(0, 2)

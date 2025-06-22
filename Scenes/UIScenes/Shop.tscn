@@ -152,6 +152,7 @@ layout_mode = 2
 theme_override_constants/separation = 8
 
 [node name="CatInfo" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 8
@@ -1119,7 +1120,6 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="CardsControl" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2
@@ -1133,6 +1133,7 @@ alignment = 1
 
 [node name="Basic" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity"]
 layout_mode = 2
+tooltip_text = "Chance de carta Comum no pack"
 theme_override_constants/separation = 2
 
 [node name="BasicIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity/Basic"]
@@ -1153,6 +1154,7 @@ vertical_alignment = 1
 
 [node name="Common" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity"]
 layout_mode = 2
+tooltip_text = "Chance de carta Incomum no pack"
 theme_override_constants/separation = 2
 
 [node name="CommonIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity/Common"]
@@ -1173,6 +1175,7 @@ vertical_alignment = 1
 
 [node name="Rare" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity"]
 layout_mode = 2
+tooltip_text = "Chance de carta Rara no pack"
 theme_override_constants/separation = 2
 
 [node name="RareIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CardsControl/CardRarity/Rare"]
