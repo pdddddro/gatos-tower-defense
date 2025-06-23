@@ -1,0 +1,158 @@
+[gd_scene load_steps=11 format=3 uid="uid://bqgryvp00o5tn"]
+
+[ext_resource type="Script" uid="uid://o17y5t7odt15" path="res://Scenes/UIScenes/Pause/pause.gd" id="1_gyyt8"]
+[ext_resource type="Texture2D" uid="uid://0byb8mpdvpgy" path="res://Assets/UI/Art/Background.png" id="1_vf8ia"]
+[ext_resource type="Texture2D" uid="uid://n20rclfqrjrx" path="res://Assets/IDV/Logo.png" id="2_gyyt8"]
+[ext_resource type="FontFile" uid="uid://dypca4yn0mcqr" path="res://Assets/Fonts/retro_gaming/Retro Gaming.ttf" id="3_i3i3m"]
+[ext_resource type="Texture2D" uid="uid://baepjslnydqim" path="res://Assets/UI/Buttons/botao_principal_padrao.png" id="4_07md7"]
+[ext_resource type="Texture2D" uid="uid://mx3dyc0tnke" path="res://Assets/UI/Buttons/botao_principal_hover.png" id="5_i24kg"]
+[ext_resource type="Texture2D" uid="uid://cdunclj7frjlu" path="res://Assets/UI/Buttons/botao_disabled.png" id="6_5bar8"]
+[ext_resource type="Texture2D" uid="uid://8adf7fkny4qr" path="res://Assets/Icons/Play.png" id="7_k6jkc"]
+[ext_resource type="Texture2D" uid="uid://cgceauk46iquy" path="res://Assets/UI/Buttons/botao_sec_padrao.png" id="8_jralj"]
+[ext_resource type="Texture2D" uid="uid://cat5x4hm2pqvj" path="res://Assets/UI/Buttons/botao_sec_hover.png" id="9_k7vye"]
+
+[node name="Pause" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gyyt8")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0, 0, 0, 0.72549)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_vf8ia")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -55.0
+offset_right = 72.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_gyyt8")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_i3i3m")
+theme_override_font_sizes/font_size = 22
+text = "Jogo Pausado"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ActionButtons" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+
+[node name="MainAction" type="TextureButton" parent="VBoxContainer/ActionButtons"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("4_07md7")
+texture_hover = ExtResource("5_i24kg")
+texture_disabled = ExtResource("6_5bar8")
+stretch_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ActionButtons/MainAction"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="PlayIcon" type="TextureRect" parent="VBoxContainer/ActionButtons/MainAction/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("7_k6jkc")
+
+[node name="Label" type="Label" parent="VBoxContainer/ActionButtons/MainAction/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0138108, 0.2322, 0.0459039, 1)
+theme_override_fonts/font = ExtResource("3_i3i3m")
+theme_override_font_sizes/font_size = 11
+text = "Continuar"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Reset" type="TextureButton" parent="VBoxContainer/ActionButtons"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("8_jralj")
+texture_hover = ExtResource("9_k7vye")
+texture_disabled = ExtResource("6_5bar8")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/ActionButtons/Reset"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("3_i3i3m")
+theme_override_font_sizes/font_size = 11
+text = "Reiniciar Nível"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Menu" type="TextureButton" parent="VBoxContainer/ActionButtons"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("8_jralj")
+texture_hover = ExtResource("9_k7vye")
+texture_disabled = ExtResource("6_5bar8")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/ActionButtons/Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("3_i3i3m")
+theme_override_font_sizes/font_size = 11
+text = "Voltar ao Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/ActionButtons/MainAction" to="." method="_on_main_action_pressed"]
+[connection signal="pressed" from="VBoxContainer/ActionButtons/Reset" to="." method="_on_reset_pressed"]
+[connection signal="pressed" from="VBoxContainer/ActionButtons/Menu" to="." method="_on_menu_pressed"]

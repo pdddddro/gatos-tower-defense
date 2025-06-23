@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://c3eo4k3gsmtd0"]
+[gd_scene load_steps=43 format=3 uid="uid://c3eo4k3gsmtd0"]
 
 [ext_resource type="Script" uid="uid://c4terrj7gjgx0" path="res://Scenes/UIScenes/Result/result.gd" id="1_adago"]
 [ext_resource type="Texture2D" uid="uid://0byb8mpdvpgy" path="res://Assets/UI/Art/Background.png" id="2_3orr4"]
@@ -10,8 +10,12 @@
 [ext_resource type="Texture2D" uid="uid://dvhrsyngix8od" path="res://Assets/Cats/Sombra.png" id="5_5f336"]
 [ext_resource type="Texture2D" uid="uid://cqvuhooeqjbyd" path="res://Assets/Icons/Relogio-Icone.png" id="7_y4wf0"]
 [ext_resource type="Texture2D" uid="uid://cdunclj7frjlu" path="res://Assets/UI/Buttons/botao_disabled.png" id="9_2hg7p"]
+[ext_resource type="Texture2D" uid="uid://m1uvhny1k7xm" path="res://Assets/Icons/Dano-Causado-ICon.png" id="10_6gqkt"]
 [ext_resource type="Texture2D" uid="uid://c75b523rfmig3" path="res://Assets/Cats/Empty.png" id="11_2xwxd"]
-[ext_resource type="Texture2D" uid="uid://bja4m423dmu6i" path="res://Assets/Icons/Attack.png" id="13_ef081"]
+[ext_resource type="Texture2D" uid="uid://d0s1xis4xqbm6" path="res://Assets/Icons/Fish1.png" id="11_omryk"]
+[ext_resource type="Texture2D" uid="uid://ctuv2rvyv1x6j" path="res://Assets/Icons/FishDead.png" id="12_flsdf"]
+[ext_resource type="Texture2D" uid="uid://ycbwxuewd3jo" path="res://Assets/Icons/Catt3.png" id="13_vw8t1"]
+[ext_resource type="Texture2D" uid="uid://bc60e3ombl6k6" path="res://Assets/Icons/Inimogos-Derrotados-Icon.png" id="14_0fubg"]
 [ext_resource type="FontFile" uid="uid://8qe2jqb87ubg" path="res://Assets/Fonts/press_start_2p/PressStart2P.ttf" id="14_j4aux"]
 [ext_resource type="Texture2D" uid="uid://l3qb28hgmuhn" path="res://Assets/UI/Equipped_card_background.png" id="16_d55iw"]
 [ext_resource type="Texture2D" uid="uid://bfwtkfw56eu2j" path="res://Assets/UI/Equipped_card_background_hover.png" id="18_bcbo1"]
@@ -296,7 +300,7 @@ size_flags_horizontal = 3
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics/TotalDamage/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("13_ef081")
+texture = ExtResource("10_6gqkt")
 
 [node name="Label" type="Label" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics/TotalDamage/HBoxContainer"]
 layout_mode = 2
@@ -328,7 +332,7 @@ size_flags_horizontal = 3
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics/FishsCollected/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("13_ef081")
+texture = ExtResource("11_omryk")
 
 [node name="Label" type="Label" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics/FishsCollected/HBoxContainer"]
 layout_mode = 2
@@ -360,7 +364,7 @@ size_flags_horizontal = 3
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics/MoneySpent/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("13_ef081")
+texture = ExtResource("12_flsdf")
 
 [node name="Label" type="Label" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics/MoneySpent/HBoxContainer"]
 layout_mode = 2
@@ -392,7 +396,7 @@ size_flags_horizontal = 3
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics/NumberOfCats/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("13_ef081")
+texture = ExtResource("13_vw8t1")
 
 [node name="Label" type="Label" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics/NumberOfCats/HBoxContainer"]
 layout_mode = 2
@@ -424,7 +428,7 @@ size_flags_horizontal = 3
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics/EnemiesDefeated/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("13_ef081")
+texture = ExtResource("14_0fubg")
 
 [node name="Label" type="Label" parent="VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics/EnemiesDefeated/HBoxContainer"]
 layout_mode = 2
@@ -654,7 +658,7 @@ size_flags_horizontal = 3
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/TotalDamage/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("13_ef081")
+texture = ExtResource("10_6gqkt")
 
 [node name="Label" type="Label" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/TotalDamage/HBoxContainer"]
 layout_mode = 2
@@ -686,7 +690,7 @@ size_flags_horizontal = 3
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/EnemiesDefeated/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("13_ef081")
+texture = ExtResource("14_0fubg")
 
 [node name="Label" type="Label" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/EnemiesDefeated/HBoxContainer"]
 layout_mode = 2
@@ -718,7 +722,7 @@ size_flags_horizontal = 3
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/FishsCollected/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("13_ef081")
+texture = ExtResource("11_omryk")
 
 [node name="Label" type="Label" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/FishsCollected/HBoxContainer"]
 layout_mode = 2

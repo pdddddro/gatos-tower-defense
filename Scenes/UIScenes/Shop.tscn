@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://d0y6aaiw6832f"]
+[gd_scene load_steps=41 format=3 uid="uid://d0y6aaiw6832f"]
 
 [ext_resource type="Script" uid="uid://dh2a0v6qsoipe" path="res://Scenes/UIScenes/Shop.gd" id="1_ba3kk"]
 [ext_resource type="Texture2D" uid="uid://ycbwxuewd3jo" path="res://Assets/Icons/Catt3.png" id="2_k8126"]
@@ -23,13 +23,16 @@
 [ext_resource type="FontFile" uid="uid://8qe2jqb87ubg" path="res://Assets/Fonts/press_start_2p/PressStart2P.ttf" id="15_v6pep"]
 [ext_resource type="Texture2D" uid="uid://l3qb28hgmuhn" path="res://Assets/UI/Equipped_card_background.png" id="16_rtmr6"]
 [ext_resource type="Script" uid="uid://ber1tq1cvvvc3" path="res://Scenes/UIScenes/TextBox/tooltip_Interact.gd" id="16_vsduq"]
-[ext_resource type="Texture2D" uid="uid://cad3xncagluhe" path="res://Assets/Icons/Range.png" id="17_qh346"]
 [ext_resource type="Texture2D" uid="uid://be042goflct38" path="res://Assets/UI/Equipped_card_background_pressed.png" id="17_t7lsd"]
 [ext_resource type="Texture2D" uid="uid://bfwtkfw56eu2j" path="res://Assets/UI/Equipped_card_background_hover.png" id="18_i04e1"]
 [ext_resource type="PackedScene" uid="uid://cto02ur6a2nje" path="res://Scenes/UIScenes/TextBox/tooltip.tscn" id="18_ywieb"]
+[ext_resource type="Texture2D" uid="uid://60efpom832f2" path="res://Assets/Icons/Range-ICON.png" id="19_mig1s"]
 [ext_resource type="Texture2D" uid="uid://baepjslnydqim" path="res://Assets/UI/Buttons/botao_principal_padrao.png" id="20_0ya3t"]
+[ext_resource type="Texture2D" uid="uid://da2dt4pmnwtgf" path="res://Assets/Icons/AttackSpeed-Icon.png" id="20_78vis"]
+[ext_resource type="Texture2D" uid="uid://bcpnmf7txluqt" path="res://Assets/Icons/AcertoCrit-Icon.png" id="20_ujcbl"]
 [ext_resource type="Texture2D" uid="uid://cgceauk46iquy" path="res://Assets/UI/Buttons/botao_sec_padrao.png" id="21_0ya3t"]
 [ext_resource type="Texture2D" uid="uid://mx3dyc0tnke" path="res://Assets/UI/Buttons/botao_principal_hover.png" id="21_8gkmu"]
+[ext_resource type="Texture2D" uid="uid://bc60e3ombl6k6" path="res://Assets/Icons/Inimogos-Derrotados-Icon.png" id="21_mig1s"]
 [ext_resource type="Texture2D" uid="uid://cdunclj7frjlu" path="res://Assets/UI/Buttons/botao_disabled.png" id="22_0ya3t"]
 [ext_resource type="Texture2D" uid="uid://cat5x4hm2pqvj" path="res://Assets/UI/Buttons/botao_sec_hover.png" id="22_8gkmu"]
 [ext_resource type="Texture2D" uid="uid://d0v5okl1qyk2p" path="res://Assets/Icons/Rarity/Comum.png" id="27_bymxr"]
@@ -355,7 +358,7 @@ show_title = false
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row1/Range"]
 layout_mode = 2
-texture = ExtResource("17_qh346")
+texture = ExtResource("19_mig1s")
 
 [node name="Number" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row1/Range"]
 custom_minimum_size = Vector2(24, 16)
@@ -382,7 +385,7 @@ show_title = false
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row1/AttackSpeed"]
 layout_mode = 2
-texture = ExtResource("10_8gkmu")
+texture = ExtResource("20_78vis")
 
 [node name="Number" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row1/AttackSpeed"]
 custom_minimum_size = Vector2(24, 16)
@@ -414,7 +417,7 @@ show_title = false
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row2/CriticalChance"]
 layout_mode = 2
-texture = ExtResource("10_8gkmu")
+texture = ExtResource("20_ujcbl")
 
 [node name="Number" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row2/CriticalChance"]
 custom_minimum_size = Vector2(24, 16)
@@ -441,7 +444,7 @@ show_title = false
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row2/EnemiesDefeated"]
 layout_mode = 2
-texture = ExtResource("10_8gkmu")
+texture = ExtResource("21_mig1s")
 
 [node name="Number" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row2/EnemiesDefeated"]
 custom_minimum_size = Vector2(24, 16)
@@ -524,22 +527,6 @@ script = ExtResource("16_vsduq")
 
 [node name="Tooltip" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/EquippedCards/Cards/Card1/CardIcon" instance=ExtResource("18_ywieb")]
 
-[node name="CardRarity" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/EquippedCards/Cards/Card1"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -4.0
-offset_top = -9.0
-offset_right = 4.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 0
-texture = ExtResource("27_bymxr")
-stretch_mode = 2
-
 [node name="Card2" type="TextureButton" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/EquippedCards/Cards"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -566,22 +553,6 @@ grow_vertical = 2
 script = ExtResource("16_vsduq")
 
 [node name="Tooltip" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/EquippedCards/Cards/Card2/CardIcon" instance=ExtResource("18_ywieb")]
-
-[node name="CardRarity" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/EquippedCards/Cards/Card2"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -4.0
-offset_top = -9.0
-offset_right = 4.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 0
-texture = ExtResource("27_bymxr")
-stretch_mode = 2
 
 [node name="Card3" type="TextureButton" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/EquippedCards/Cards"]
 custom_minimum_size = Vector2(32, 32)
@@ -610,22 +581,6 @@ script = ExtResource("16_vsduq")
 
 [node name="Tooltip" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/EquippedCards/Cards/Card3/CardIcon" instance=ExtResource("18_ywieb")]
 
-[node name="CardRarity" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/EquippedCards/Cards/Card3"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -4.0
-offset_top = -9.0
-offset_right = 4.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 0
-texture = ExtResource("27_bymxr")
-stretch_mode = 2
-
 [node name="Card4" type="TextureButton" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/EquippedCards/Cards"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -652,22 +607,6 @@ grow_vertical = 2
 script = ExtResource("16_vsduq")
 
 [node name="Tooltip" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/EquippedCards/Cards/Card4/CardIcon" instance=ExtResource("18_ywieb")]
-
-[node name="CardRarity" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/EquippedCards/Cards/Card4"]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -4.0
-offset_top = -9.0
-offset_right = 4.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 0
-texture = ExtResource("27_bymxr")
-stretch_mode = 2
 
 [node name="TextureRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer"]
 visible = false

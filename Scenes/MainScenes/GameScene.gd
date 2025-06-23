@@ -460,4 +460,12 @@ func show_max_cards_message():
 	# Implementar uma mensagem visual para o jogador
 	print("Máximo de 4 cartas por gato!")
 
-## Text Box
+## Pause Menu
+func _on_pause_pressed() -> void:
+	var pause_scene = preload("res://Scenes/UIScenes/Pause/pause.tscn")
+	var pause_instance = pause_scene.instantiate()
+	var ui_node = get_node("UI")
+	ui_node.add_child(pause_instance)
+	
+	pause_instance.z_index = 1000
+	get_tree().paused = true
