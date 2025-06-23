@@ -1,8 +1,45 @@
-[gd_scene load_steps=24 format=3 uid="uid://dea44diijn1cy"]
+[gd_scene load_steps=30 format=3 uid="uid://dea44diijn1cy"]
 
 [ext_resource type="Script" uid="uid://c5cilqwnocbk1" path="res://Scenes/Enemies/Plastico/Plastico.gd" id="1_ede18"]
+[ext_resource type="Script" uid="uid://csmlelc0nw0aj" path="res://Scenes/Enemies/BossRadioativo/radiation.gd" id="3_0s2e5"]
 [ext_resource type="Texture2D" uid="uid://05q1du6n8co5" path="res://Assets/Enemies/boss_sprite_sheet.png" id="3_7yq0h"]
 [ext_resource type="Texture2D" uid="uid://c2nqf5iif1o6u" path="res://Assets/Enemies/shadow_boss_slime.png" id="4_7yq0h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5ya2"]
+atlas = ExtResource("3_7yq0h")
+region = Rect2(192, 32, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_peiay"]
+atlas = ExtResource("3_7yq0h")
+region = Rect2(192, 96, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pnjn"]
+atlas = ExtResource("3_7yq0h")
+region = Rect2(192, 160, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urqfk"]
+atlas = ExtResource("3_7yq0h")
+region = Rect2(192, 224, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_peiay"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r5ya2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_peiay")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0pnjn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urqfk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_20e71"]
 atlas = ExtResource("3_7yq0h")
@@ -180,7 +217,22 @@ rotates = false
 loop = false
 script = ExtResource("1_ede18")
 
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.341176)
+y_sort_enabled = true
+position = Vector2(0, -17)
+texture = ExtResource("4_7yq0h")
+
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="Radiation" type="AnimatedSprite2D" parent="CharacterBody2D"]
+modulate = Color(1, 1, 1, 0.517647)
+position = Vector2(0, -6)
+sprite_frames = SubResource("SpriteFrames_peiay")
+autoplay = "default"
+frame = 3
+frame_progress = 1.0
+script = ExtResource("3_0s2e5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 y_sort_enabled = true
@@ -192,9 +244,3 @@ animation = &"WalkRight"
 position = Vector2(0, 2)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_qq56m")
-
-[node name="Shadow" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.341176)
-y_sort_enabled = true
-position = Vector2(0, -17)
-texture = ExtResource("4_7yq0h")

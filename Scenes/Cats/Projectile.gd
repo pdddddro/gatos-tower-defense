@@ -6,7 +6,7 @@ var speed = 400
 var damage: int
 
 func _ready():
-	body_entered.connect(_on_body_entered)
+	#body_entered.connect(_on_body_entered)
 	$AnimatedSprite2D.play(type)
 
 func _process(delta):
@@ -17,7 +17,7 @@ func _process(delta):
 		rotation = direction.angle()
 		
 		# Destrói se estiver muito perto do alvo
-		if global_position.distance_to(enemy.global_position) < 1:
+		if global_position.distance_to(enemy.global_position) < 5:
 			queue_free()
 	else:
 		queue_free()
