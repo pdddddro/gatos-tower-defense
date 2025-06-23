@@ -8,8 +8,8 @@ func reset_fish_quantity():
 	fish_quantity = 100000
 
 ## Cats
-var cat_data = {
-	"Chicao": {
+var cat_data = { ## "Plástico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
+	"Chicao": { ## Chicão não ataca slimes pilha pra não dar ainda mais energia pra eles
 		"name": "Chicao",
 		"sprite": "res://Assets/Cats/Chicao/Chicao.png",
 		"damage": 20,
@@ -17,47 +17,51 @@ var cat_data = {
 		"range": 800,
 		"cost": 100,
 		"critical_chance": 10,
-		"target_types": ["BossRadioativo"]
+		"target_types": ["Plástico", "Metal", "Chiclete", "BossRadioativo"]
 	},
 	
-	"Pele": {
+	"Pele": { ## Apesar de afiada, as garras de Pelé não conseguem destruir o Slime Metal
 		"name": "Pele",
 		"sprite": "res://Assets/Cats/Pele/Pele.png",
 		"damage": 20,
 		"atkcooldown": 0.5,
 		"range": 128,
 		"cost": 100,
-		"critical_chance": 10
+		"critical_chance": 10,
+		"target_types": ["Plástico", "Pilha", "Chiclete", "BossRadioativo"]
 	},
 	
-	"Nino": {
+	"Nino": { ## Nino não consegue ver o slime de plástico com um olho só por conta da sua trasparência
 		"name": "Nino",
 		"sprite": "res://Assets/Cats/Nino/Nino.png",
 		"damage": 20,
 		"atkcooldown": 1,
 		"range": 160,
 		"cost": 50,
-		"critical_chance": 10
+		"critical_chance": 10,
+		"target_types": ["Metal", "Chiclete", "Pilha", "BossRadioativo"]
 	},
 	
-	"Cartolina": {
+	"Cartolina": { ## Cartolina não bate no slime de chiclete, seria horrivel ter chiclete em seus pelos
 		"name": "Cartolina",
 		"sprite": "res://Assets/Cats/Cartolina/Cartolina.png",
 		"damage": 20,
 		"atkcooldown": 1,
 		"range": 96,
 		"cost": 100,
-		"critical_chance": 10
+		"critical_chance": 10,
+		"target_types": ["Plástico", "Metal", "Pilha", "BossRadioativo"]
 	},
 	
-	"Nut": {
+	"Nut": { ## Os novelos de lã de nut não passam de carinhos no slime metal, então ele nem gasta sua lã com ele
 		"name": "Nut",
 		"sprite": "res://Assets/Cats/Nut/Nut.png",
 		"damage": 20,
 		"atkcooldown": 1,
 		"range": 160,
 		"cost": 100,
-		"critical_chance": 10
+		"critical_chance": 10,
+		"target_types": ["Plástico", "Pilha", "Chiclete", "BossRadioativo"]
 	}
 }
 
@@ -155,61 +159,213 @@ var waves = {
 var card_data = {
 	"basic": [
 		{
-			"name": "Destruidor de Plástico",
-			"description": "Este gato desenvolveu alergia a materiais sintéticos e agora os odeia profundamente, causa 40 a mais dano contra os slimes de Plástico",
+			"name": "Pelas tartarugas!",
+			"description": "Este gato desenvolveu alergia a materiais sintéticos, 15% mais dano contra os slimes de Plástico",
 			"icon": "res://Assets/Icons/Fish1.png",
 			"effects": [
-				{"type": "damage_vs_type", "target_type": "Metal", "power": 500, "power_type": "absolute"}
+				{"type": "damage_vs_type", "target_type": "Plastico", "power": 15, "power_type": "percentage"}
 			],
 			"sell_value": "25"
-		},{
+		}
+		,{
 			"name": "Garras Venenosas",
-			"description": "Lambe as garras antes de atacar. Ninguém sabe por quê ataques causam 20 de dano a mais nos inimigos",
+			"description": "Lambe as garras antes de atacar. Ninguém sabe por quê, mas seus ataques causam 8% de dano a mais nos inimigos",
 			"icon": "res://Assets/Icons/Fish1.png",
 			"effects": [
-				{"type": "damage_boost", "power": 20}
+				{"type": "damage_boost", "power": 8, "power_type": "percentage"}
 			],
 			"sell_value": "25"
-		},{
-			"name": "Fúria do Predador",
-			"description": "Lambe as garras antes de atacar. Ninguém sabe por quê ataques causam 1000% de dano a mais nos inimigos",
+		}
+		,{
+			"name": "Sou do Rock",
+			"description": "Ouviu muito Heavy Metal e agora consegue matar slimes de Metal e Pilha, ainda da 15% de dano bônus",
 			"icon": "res://Assets/Icons/Fish1.png",
 			"effects": [
-				{"type": "damage_boost", "power": 1000, "power_type": "percentage"}
+				{"type": "target_expansion", "target_types": ["Metal", "Pilha"]},
+				{"type": "damage_vs_type", "target_type": "Metal", "power": 15, "power_type": "percentage"},
+				{"type": "damage_vs_type", "target_type": "Pilha", "power": 15, "power_type": "percentage"}
 			],
 			"sell_value": "25"
-		},{
-			"name": "METAAAAAAAAAAAL",
-			"description": "Lambe as garras antes de atacar. Ninguém sabe por quê ataques causam 1000% de dano a mais nos inimigos",
+		}
+		,{
+			"name": "Petisco sabor Whey l",
+			"description": "Este gato descobriu os petiscos proteicos do dono - Cada ataque da 20 de dano adicional",
 			"icon": "res://Assets/Icons/Fish1.png",
 			"effects": [
-				{"type": "target_expansion", "target_types": ["Metal"]}
+				{"type": "damage_boost", "power": 20, "power_type": "absolute"}
 			],
 			"sell_value": "25"
+		}
+		,{
+			"name": "Treinamento Básico",
+			"description": "Assistiu 'Como ser um Gato Guerreiro' no YouTube, aumenta todos os atributos em 5%",
+			"icon": "res://Assets/Icons/Fish1.png",
+			"effects": [
+				{"type": "damage_boost", "power": 5, "power_type": "percentage"},
+				{"type": "speed_boost", "power": 5, "power_type": "percentage"},
+				{"type": "range_boost", "power": 5, "power_type": "percentage"},
+				{"type": "critic_boost", "power": 5, "power_type": "percentage"}
+			],
+			"sell_value": "100"
+		}
+		,{
+			"name": "Gato Míope",
+			"description": "Não enxerga longe mas compensa com ataques rápidos - Ataca 20% mais rápido porém perde 15% de Alcance",
+			"icon": "res://Assets/Icons/Fish1.png",
+			"effects": [
+				{"type": "speed_boost", "power": 20, "power_type": "percentage"},
+				{"type": "range_boost", "power": -15, "power_type": "percentage"}
+			],
+			"sell_value": "100"
+		}
+		,{
+			"name": "Ritmo do Ronronar",
+			"description": "Quanto mais ronrona, mais rápido bate! Ganha +12% de velocidade de ataque",
+			"icon": "res://Assets/Icons/Fish1.png",
+			"effects": [
+				{"type": "speed_boost", "power": 12, "power_type": "percentage"},
+			],
+			"sell_value": "100"
+		}
+		,{
+			"name": "Hora do sachê l",
+			"description": "Esse gato está ficando com fome, quer acabar com isso logo - Ganha 10% de Range",
+			"icon": "res://Assets/Icons/Fish1.png",
+			"effects": [
+				{"type": "range_boost", "power": 10, "power_type": "percentage"},
+			],
+			"sell_value": "100"
 		}
 		],
 		
 	"medium": [
 		{
-			"name": "Predador Completo",
-			"description": "Aumenta dano em 100",
+			"name": "Mestrado no RU",
+			"description": "Sobreviveu 4 anos comendo no restaurante universitário, agora tem estômago de ferro - 15% de dano no Slime Metal",
 			"icon": "res://Assets/Icons/Heart.png",
 			"effects": [
-				{"type": "damage_boost", "power": 100}
+				{"type": "damage_vs_type", "target_type": "Metal", "power": 15, "power_type": "percentage"},
 			],
 			"sell_value": "50"
-		}],
-		
-	"rare": [
-		{
-			"name": "Olhos de Leão",
-			"description": "Aumenta range em 128",
-			"icon": "res://Assets/Icons/Cards2.png",
+		}
+		,{
+			"name": "Hora do sachê ll",
+			"description": "EEsse gato está com tanta fome que vai fazer de tudo para acabar a partida mais rápido, ganha 20% de alcance",
+			"icon": "res://Assets/Icons/Fish1.png",
 			"effects": [
-				{"type": "range_boost", "power": 128}
+				{"type": "range_boost", "power": 20, "power_type": "percentage"},
 			],
 			"sell_value": "100"
-		}],
+		}
+		,{
+			"name": "Miau Cast",
+			"description": "Ouve o melhor podcast sobre vida felina, absorveu dicas valiosas - aumenta todos os atributos em 10%",
+			"icon": "res://Assets/Icons/Fish1.png",
+			"effects": [
+				{"type": "damage_boost", "power": 10, "power_type": "percentage"},
+				{"type": "speed_boost", "power": 10, "power_type": "percentage"},
+				{"type": "range_boost", "power": 10, "power_type": "percentage"},
+				{"type": "critic_boost", "power": 10, "power_type": "percentage"}
+			],
+			"sell_value": "100"
+		}
+		,{
+			"name": "Pré-treino Radioativo",
+			"description": "Tomou uma substância verde esquisita que encontrou, agora ataca 10% mais rápido e tem 50% de chance de crítico",
+			"icon": "res://Assets/Icons/Fish1.png",
+			"effects": [
+				{"type": "speed_boost", "power": 10, "power_type": "percentage"},
+				{"type": "critic_boost", "power": 50, "power_type": "percentage"}
+			],
+			"sell_value": "100"
+		}
+		,{
+			"name": "Pelos Anti-Colates",
+			"description": "Nasceu com pelos tão macios que nada consegue grudar nele - Consegue atacar o Slime Chiclete e da 15% de dano a mais neles",
+			"icon": "res://Assets/Icons/Fish1.png",
+			"effects": [
+				{"type": "target_expansion", "target_types": ["Chiclete"]},
+				{"type": "damage_vs_type", "target_type": "Chiclete", "power": 15, "power_type": "percentage"}
+			],
+			"sell_value": "25"
+		}
+		,{
+			"name": "Petisco sabor Whey",
+			"description": "Este gato descobriu os petiscos proteicos do dono - Cada ataque da 50 de dano adicional",
+			"icon": "res://Assets/Icons/Fish1.png",
+			"effects": [
+				{"type": "damage_boost", "power": 50, "power_type": "absolute"}
+			],
+			"sell_value": "25"
+		}
+		],
+
+	"rare": [
+		{
+			"name": "ASMR de Elevação Quântica",
+			"description": "Este gato transcendeu as limitações físicas, aumenta todos os atributos em +25%",
+			"icon": "res://Assets/Icons/Fish1.png",
+			"effects": [
+				{"type": "target_expansion", "target_types": ["all"]},
+				{"type": "damage_boost", "power": 25, "power_type": "percentage"},
+				{"type": "speed_boost", "power": 25, "power_type": "percentage"},
+				{"type": "range_boost", "power": 25, "power_type": "percentage"},
+				{"type": "critic_boost", "power": 25, "power_type": "percentage"}
+			],
+			"sell_value": "100"
+		}
+		,{
+			"name": "Hora do sachê lll",
+			"description": "Esse gato está quer devorar tudo que vê pela frente, +40% de alcance",
+			"icon": "res://Assets/Icons/Fish1.png",
+			"effects": [
+				{"type": "range_boost", "power": 40, "power_type": "percentage"},
+			],
+			"sell_value": "100"
+		}
+		,{
+			"name": "O gato mais forte de todosl",
+			"description": "EU SOU O MAIS FORTE DE TODOS!! (Pelo menos na minha cabeça) Aumenta a chance de crítico em 99% mas perde 30% do range",
+			"icon": "res://Assets/Icons/Fish1.png",
+			"effects": [
+				{"type": "range_boost", "power": -30, "power_type": "percentage"},
+				{"type": "critic_boost", "power": 99, "power_type": "percentage"}
+			],
+			"sell_value": "100"
+		}
+		#,{	
+			#"name": "Trid lll",
+			#"description": "Este gato teve aula com Paulo Sustentável, agora odeia plástico profundamente - 40% mais dano contra os slimes de Plástico",
+			#"icon": "res://Assets/Icons/Fish1.png",
+			#"effects": [
+				#{"type": "damage_vs_type", "target_type": "Plastico", "power": 40, "power_type": "percentage"}
+			#],
+			#"sell_value": "25"
+		#}
+		,{
+			"name": "Veterano de Guerra",
+			"description": "Você não quer saber o que esse gato ja viveu... - 40% mais dano contra todos os slimes comuns",
+			"icon": "res://Assets/Icons/Fish1.png",
+			"effects": [
+				{"type": "damage_vs_type", "target_type": "Plastico", "power": 20, "power_type": "percentage"},
+				{"type": "damage_vs_type", "target_type": "Metal", "power": 20, "power_type": "percentage"},
+				{"type": "damage_vs_type", "target_type": "Pilha", "power": 20, "power_type": "percentage"},
+				{"type": "damage_vs_type", "target_type": "Chiclete", "power": 20, "power_type": "percentage"},
+				{"type": "damage_vs_type", "target_type": "BossRadioativo", "power": 20, "power_type": "percentage"},
+				{"type": "damage_vs_type", "target_type": "BossPlastico", "power": 20, "power_type": "percentage"}
+		],
+			"sell_value": "25"
+		}
+		,{
+			"name": "Sem Paciência",
+			"description": "Não aguenta mais, só quer que isso acabe logo, bate 40% mais rápido",
+			"icon": "res://Assets/Icons/Fish1.png",
+			"effects": [
+				{"type": "speed_boost", "power": 40, "power_type": "percentage"}
+		],
+			"sell_value": "25"
+		}
+		],
 }
 
 ## Cards
