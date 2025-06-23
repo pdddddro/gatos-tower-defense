@@ -84,25 +84,43 @@ func select_enemy():
 	# Seleciona o inimigo que estiver mais perto do final
 	enemy = enemy_array[enemy_index]
 	
-func apply_card_effect(effect_type: String, power: float):
+func apply_card_effect(effect_data: Dictionary):
+	var effect_type = effect_data["type"]
+	var power = effect_data["power"]
+	var power_type = effect_data.get("power_type", "absolute")
+	
 	match effect_type:
 		"damage_boost":
-			# Aumenta o dano base do gato
-			GameData.cat_data[type]["damage"] += power
-			print("Dano aumentado em ", power, ". Novo dano: ", GameData.cat_data[type]["damage"])
-			
+			if power_type == "percentage":
+				var damage_increase = GameData.cat_data[type]["damage"] * (power / 100.0)
+				GameData.cat_data[type]["damage"] += damage_increase
+				print("Dano aumentado em ", power, "% (", damage_increase, "). Novo dano: ", GameData.cat_data[type]["damage"])
+			else:
+				GameData.cat_data[type]["damage"] += power
+				print("Dano aumentado em ", power, ". Novo dano: ", GameData.cat_data[type]["damage"])
+		
 		"speed_boost":
-			# Reduz o cooldown de ataque
-			GameData.cat_data[type]["atkcooldown"] = max(0.1, GameData.cat_data[type]["atkcooldown"] - power)
-			print("Velocidade aumentada. Novo cooldown: ", GameData.cat_data[type]["atkcooldown"])
-			
+			if power_type == "percentage":
+				var cooldown_reduction = GameData.cat_data[type]["atkcooldown"] * (power / 100.0)
+				GameData.cat_data[type]["atkcooldown"] = max(0.1, GameData.cat_data[type]["atkcooldown"] - cooldown_reduction)
+				print("Velocidade aumentada em ", power, "% (", cooldown_reduction, "s). Novo cooldown: ", GameData.cat_data[type]["atkcooldown"])
+			else:
+				GameData.cat_data[type]["atkcooldown"] = max(0.1, GameData.cat_data[type]["atkcooldown"] - power)
+				print("Velocidade aumentada em ", power, "s. Novo cooldown: ", GameData.cat_data[type]["atkcooldown"])
+		
 		"range_boost":
-			# Aumenta o alcance
-			GameData.cat_data[type]["range"] += power
+			if power_type == "percentage":
+				var range_increase = GameData.cat_data[type]["range"] * (power / 100.0)
+				GameData.cat_data[type]["range"] += range_increase
+				print("Alcance aumentado em ", power, "% (", range_increase, "). Novo alcance: ", GameData.cat_data[type]["range"])
+			else:
+				GameData.cat_data[type]["range"] += power
+				print("Alcance aumentado em ", power, ". Novo alcance: ", GameData.cat_data[type]["range"])
+			
 			# Atualiza o range visual
 			if built:
 				get_node("Range/CollisionShape2D").get_shape().radius = 0.5 * GameData.cat_data[type]["range"]
-				print("Alcance aumentado em ", power, ". Novo alcance: ", GameData.cat_data[type]["range"])
+		
 		_:
 			print("Efeito desconhecido: ", effect_type)
 
@@ -205,7 +223,7 @@ func equip_card(card_data: Dictionary) -> bool:
 		print("Carta equipada com sucesso: ", card_data.name)
 		print("Total de cartas agora: ", equipped_cards.size())
 		
-		apply_card_effect(card_data.effects[0].type, card_data.effects[0].power)
+		apply_card_effect(card_data.effects[0])
 		
 		# Debug da loja
 		if shop:

@@ -151,14 +151,31 @@ var waves = {
 var card_data = {
 	"basic": [
 		{
-			"name": "Agilidade Felina",
-			"description": "Aumenta a velocidade de ataque em 0.2s",
+			"name": "Destruidor de Plástico",
+			"description": "Este gato desenvolveu alergia a materiais sintéticos e agora os odeia profundamente, causa 40 a mais dano contra os slimes de Plástico",
 			"icon": "res://Assets/Icons/Fish1.png",
 			"effects": [
-				{"type": "speed_boost", "power": 0.2}
+				{"type": "damage_boost", "power": 40}
 			],
 			"sell_value": "25"
-		}],
+		},{
+			"name": "Garras Venenosas",
+			"description": "Lambe as garras antes de atacar. Ninguém sabe por quê ataques causam 20 de dano a mais nos inimigos",
+			"icon": "res://Assets/Icons/Fish1.png",
+			"effects": [
+				{"type": "damage_boost", "power": 20}
+			],
+			"sell_value": "25"
+		},{
+			"name": "Fúria do Predador",
+			"description": "Lambe as garras antes de atacar. Ninguém sabe por quê ataques causam 1000% de dano a mais nos inimigos",
+			"icon": "res://Assets/Icons/Fish1.png",
+			"effects": [
+				{"type": "damage_boost", "power": 1000, "power_type": "percentage"}
+			],
+			"sell_value": "25"
+		}
+		],
 		
 	"medium": [
 		{
