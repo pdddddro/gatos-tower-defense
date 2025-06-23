@@ -13,7 +13,7 @@ signal textbox_closed
 
 func _ready():
 	# Conecta o botão de fechar
-	close_button.pressed.connect(_on_close_pressed)
+	#close_button.pressed.connect(_on_close_pressed)
 	
 	# Aguarda um frame para garantir que o viewport esteja configurado
 	await get_tree().process_frame

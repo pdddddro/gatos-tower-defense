@@ -99,13 +99,27 @@ func can_target_enemy(target_enemy) -> bool:
 	
 	# Verifica se o tipo do inimigo está na lista permitida
 	return target_enemy.type in allowed_targets
-	
+
+var damage_bonuses_vs_type = {}  # {"Plastico": 25, "Metal": 10}
+
 func apply_card_effect(effect_data: Dictionary):
 	var effect_type = effect_data["type"]
 	var power = effect_data.get("power", 0)
 	var power_type = effect_data.get("power_type", "absolute")
 	
 	match effect_type:
+		"damage_vs_type":
+			var target_type = effect_data.get("target_type", "")
+			if target_type != "":
+				var current_bonus = damage_bonuses_vs_type.get(target_type, 0)
+				if power_type == "percentage":
+					var base_damage = GameData.cat_data[type]["damage"]
+					var bonus_damage = base_damage * (power / 100.0)
+					damage_bonuses_vs_type[target_type] = current_bonus + bonus_damage
+				else:
+					damage_bonuses_vs_type[target_type] = current_bonus + power
+				print("Bônus de dano contra ", target_type, ": +", damage_bonuses_vs_type[target_type])
+				
 		"damage_boost":
 			if power_type == "percentage":
 				var damage_increase = GameData.cat_data[type]["damage"] * (power / 100.0)
@@ -153,13 +167,24 @@ func apply_card_effect(effect_data: Dictionary):
 		_:
 			print("Efeito desconhecido: ", effect_type)
 
+func calculate_damage_against_enemy(enemy_type: String) -> int:
+	var base_damage = GameData.cat_data[type]["damage"]
+	var total_damage = base_damage
+	
+	# Verifica bônus específico contra o tipo
+	if damage_bonuses_vs_type.has(enemy_type):
+		total_damage += damage_bonuses_vs_type[enemy_type]
+		print("Aplicando bônus vs ", enemy_type, ": +", damage_bonuses_vs_type[enemy_type])
+		
+	return int(total_damage)
+
 func turn():
 	if enemy != null and is_instance_valid(enemy):
 		var direction = (enemy.position - self.position).normalized()
 		update_animation(direction)
 	else:
 		# Comportamento quando não há inimigo válido
-		update_animation(Vector2.ZERO)  # ou uma direção padrão
+		update_animation(Vector2(1, 0))
 
 var last_flip_h = false
 

@@ -35,10 +35,16 @@ func _on_body_entered(body: Node):
 				queue_free()
 				return
 		
-		var enemy_defeated = await hit_enemy.on_hit(damage)
+		# Calcula dano específico contra este tipo de inimigo
+		var final_damage = damage
+		if source_cat and source_cat.has_method("calculate_damage_against_enemy"):
+			final_damage = source_cat.calculate_damage_against_enemy(hit_enemy.type)
+			print("Dano calculado contra ", hit_enemy.type, ": ", final_damage)
+		
+		var enemy_defeated = await hit_enemy.on_hit(final_damage)
 		
 		if source_cat and source_cat.has_method("add_damage"):
-			source_cat.add_damage(damage)
+			source_cat.add_damage(final_damage)
 			
 			if enemy_defeated:
 				var fish_reward = GameData.enemies_data[hit_enemy.type]["fish_reward"]

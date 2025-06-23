@@ -142,12 +142,14 @@ var waves = {
 }
 
 ## Efeitos
-## damage_boost {"type": "damage_boost", "power": 40, "power_type": "percentage" (Opcional)}
-## speed_boost {"type": "speed_boost", "power": 0.2, "power_type": "percentage" (Opcional)}
+## damage_boost {"type": "damage_boost", "power": 40, "power_type": "percentage/absolute"}
+## speed_boost {"type": "speed_boost", "power": 0.2, "power_type": "percentage/absolute"}
 ## range_boost
 ## critic_boost
 ## money_boost
-## {"type": "target_expansion", "target_types": ["all"]}
+## can_attack_target {"type": "target_expansion", "target_types": ["all", "Metal", Plastico, etc]}
+## damage_vs_type {"type": "damage_vs_type", "target_type": "Metal", "power": 25, "power_type": "percentage/absolute"}
+
 
 ## Cards
 var card_data = {
@@ -157,7 +159,7 @@ var card_data = {
 			"description": "Este gato desenvolveu alergia a materiais sintéticos e agora os odeia profundamente, causa 40 a mais dano contra os slimes de Plástico",
 			"icon": "res://Assets/Icons/Fish1.png",
 			"effects": [
-				{"type": "damage_boost", "power": 40}
+				{"type": "damage_vs_type", "target_type": "Metal", "power": 500, "power_type": "absolute"}
 			],
 			"sell_value": "25"
 		},{
