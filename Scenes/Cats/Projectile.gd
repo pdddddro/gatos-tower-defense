@@ -25,8 +25,16 @@ func _process(delta):
 var source_cat: Node = null
 
 func _on_body_entered(body: Node):
-	var hit_enemy = body.get_parent()  # Acessa o PathFollow2D
+	var hit_enemy = body.get_parent()
+	
 	if hit_enemy == enemy:
+		# Verifica se o gato de origem pode atacar este tipo de inimigo
+		if source_cat and source_cat.has_method("can_target_enemy"):
+			if not source_cat.can_target_enemy(hit_enemy):
+				print("Gato ", source_cat.type, " não pode atacar ", hit_enemy.type)
+				queue_free()
+				return
+		
 		var enemy_defeated = await hit_enemy.on_hit(damage)
 		
 		if source_cat and source_cat.has_method("add_damage"):

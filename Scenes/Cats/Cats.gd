@@ -74,19 +74,35 @@ func hide_range():
 	queue_redraw()
 
 func select_enemy():
-	var enemy_progress_array = []
-	for i in enemy_array:
-		enemy_progress_array.append(i.progress)
-		
-	var max_offset = enemy_progress_array.max()
-	var enemy_index = enemy_progress_array.find(max_offset)
+	var valid_enemies = []
+	var valid_progress_array = []
 	
-	# Seleciona o inimigo que estiver mais perto do final
-	enemy = enemy_array[enemy_index]
+	# Filtra apenas inimigos que este gato pode atacar
+	for enemy in enemy_array:
+		if can_target_enemy(enemy):
+			valid_enemies.append(enemy)
+			valid_progress_array.append(enemy.progress)
+	
+	if valid_enemies.size() == 0:
+		enemy = null
+		return
+	
+	var max_offset = valid_progress_array.max()
+	var enemy_index = valid_progress_array.find(max_offset)
+	enemy = valid_enemies[enemy_index]
+
+func can_target_enemy(target_enemy) -> bool:
+	var allowed_targets = GameData.cat_data[type].get("target_types", [])
+	
+	if allowed_targets.size() == 0:
+		return true
+	
+	# Verifica se o tipo do inimigo está na lista permitida
+	return target_enemy.type in allowed_targets
 	
 func apply_card_effect(effect_data: Dictionary):
 	var effect_type = effect_data["type"]
-	var power = effect_data["power"]
+	var power = effect_data.get("power", 0)
 	var power_type = effect_data.get("power_type", "absolute")
 	
 	match effect_type:
@@ -121,12 +137,29 @@ func apply_card_effect(effect_data: Dictionary):
 			if built:
 				get_node("Range/CollisionShape2D").get_shape().radius = 0.5 * GameData.cat_data[type]["range"]
 		
+		"target_expansion":
+			var new_targets = effect_data.get("target_types", [])
+			if "all" in new_targets:
+				# Remove restrições, pode atacar qualquer tipo
+				GameData.cat_data[type]["target_types"] = []
+			else:
+				# Adiciona novos tipos à lista existente
+				var current_targets = GameData.cat_data[type].get("target_types", [])
+				for target_type in new_targets:
+					if target_type not in current_targets:
+						current_targets.append(target_type)
+						GameData.cat_data[type]["target_types"] = current_targets
+			print("Tipos de alvo atualizados para ", type, ": ", GameData.cat_data[type]["target_types"])
 		_:
 			print("Efeito desconhecido: ", effect_type)
 
 func turn():
-	var direction = (enemy.position - self.position).normalized()
-	update_animation(direction)
+	if enemy != null and is_instance_valid(enemy):
+		var direction = (enemy.position - self.position).normalized()
+		update_animation(direction)
+	else:
+		# Comportamento quando não há inimigo válido
+		update_animation(Vector2.ZERO)  # ou uma direção padrão
 
 var last_flip_h = false
 
@@ -156,27 +189,21 @@ func update_animation(direction):
 var projectile_scene = preload("res://Scenes/Cats/Projectile.tscn")
 
 func attack():
-		
 	attack_ready = false
-
-	if enemy_array.size() > 0:
+	
+	if enemy_array.size() > 0 and enemy != null and can_target_enemy(enemy):
 		var projectile = projectile_scene.instantiate()
-		
 		projectile.type = str(type)
-		
 		projectile.enemy = enemy
-		projectile.type = type
-		projectile.damage = GameData.cat_data[type]["damage"]  # Passe o dano para o projétil
+		projectile.damage = GameData.cat_data[type]["damage"]
 		projectile.source_cat = self
 		
 		var aim_position = $Aim.global_position
 		projectile.global_position = aim_position
-		
 		get_parent().add_child(projectile)
 		
 		await get_tree().create_timer(GameData.cat_data[type]["atkcooldown"]).timeout
 		attack_ready = true
-		
 	else:
 		status = "Idle"
 		attack_ready = true

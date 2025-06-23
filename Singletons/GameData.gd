@@ -16,7 +16,8 @@ var cat_data = {
 		"atkcooldown": 1,
 		"range": 800,
 		"cost": 100,
-		"critical_chance": 10
+		"critical_chance": 10,
+		"target_types": ["BossRadioativo"]
 	},
 	
 	"Pele": {
@@ -141,11 +142,12 @@ var waves = {
 }
 
 ## Efeitos
-## damage_boost
-## speed_boost
+## damage_boost {"type": "damage_boost", "power": 40, "power_type": "percentage" (Opcional)}
+## speed_boost {"type": "speed_boost", "power": 0.2, "power_type": "percentage" (Opcional)}
 ## range_boost
 ## critic_boost
 ## money_boost
+## {"type": "target_expansion", "target_types": ["all"]}
 
 ## Cards
 var card_data = {
@@ -172,6 +174,14 @@ var card_data = {
 			"icon": "res://Assets/Icons/Fish1.png",
 			"effects": [
 				{"type": "damage_boost", "power": 1000, "power_type": "percentage"}
+			],
+			"sell_value": "25"
+		},{
+			"name": "METAAAAAAAAAAAL",
+			"description": "Lambe as garras antes de atacar. Ninguém sabe por quê ataques causam 1000% de dano a mais nos inimigos",
+			"icon": "res://Assets/Icons/Fish1.png",
+			"effects": [
+				{"type": "target_expansion", "target_types": ["Metal"]}
 			],
 			"sell_value": "25"
 		}
