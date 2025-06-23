@@ -6,10 +6,8 @@ func _on_main_action_pressed() -> void:
 	queue_free()
 	get_tree().paused = false
 
-
 func _on_reset_pressed() -> void:
 	scene_handler.on_new_game_pressed()
-
 
 func _on_menu_pressed() -> void:
 	if scene_handler:
