@@ -139,22 +139,41 @@ func format_number(value: int) -> String:
 		return "%dk" % int(round(value / 1000.0))
 
 func display_equipped_cards(cards_data):
-	# Referências para os 4 TextureRect já existentes
+	# Referências para os 4 slots de carta já existentes
 	var card_slots = [
-		$VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cards/Card1/CardIcon,
-		$VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cards/Card2/CardIcon,
-		$VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cards/Card3/CardIcon,
-		$VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cards/Card4/CardIcon
+		$VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cards/Card1,
+		$VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cards/Card2,
+		$VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cards/Card3,
+		$VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cards/Card4
 	]
+	
+	# Limpar todos os slots primeiro
+	for slot in card_slots:
+		clear_card_slot(slot)
 	
 	# Preencher com as cartas equipadas
 	for i in range(min(cards_data.size(), card_slots.size())):
 		var card_data = cards_data[i]
-		card_slots[i].texture = load(card_data["icon"])
+		setup_card_slot(card_slots[i], card_data)
+
+func setup_card_slot(slot_node, card_data: Dictionary):
+	var card_icon = slot_node.get_node("CardIcon")
+	if card_icon:
+		if ResourceLoader.exists(card_data["icon"]):
+			card_icon.texture = load(card_data["icon"])
+			card_icon.visible = true
 		
-		var tooltip = card_data.get("name", "Carta Desconhecida")
-		
-		if card_data.has("description"):
-			tooltip += "\n" + card_data["description"]
-		
-		card_slots[i].tooltip_text = tooltip
+		# Configura os meta dados para a tooltip - IGUAL NA LOJA
+		slot_node.set_meta("card_data", card_data)
+	else:
+		print("ERRO: CardIcon não encontrado no slot")
+
+func clear_card_slot(slot_node):
+	var card_icon = slot_node.get_node("CardIcon")
+	if card_icon:
+		card_icon.texture = null
+		card_icon.visible = false
+	
+	# Remove os meta dados
+	if slot_node.has_meta("card_data"):
+		slot_node.remove_meta("card_data")

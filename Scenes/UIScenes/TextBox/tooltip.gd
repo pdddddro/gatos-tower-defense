@@ -9,7 +9,7 @@ extends Control
 ## [tornado radius=5 freq=10]Texto ondulado[/tornado]
 ## [color=#hex]trocar a cor[/color]
 
-const OFFSET: Vector2 = Vector2.ONE * 4
+const OFFSET: Vector2 = Vector2.ONE * 8
 var opacity_tween: Tween = null
 
 @onready var background = $Background
