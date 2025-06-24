@@ -481,3 +481,7 @@ func show_tutorial_help():
 		scene_handler.show_tutorial_from_game()
 	else:
 		print("SceneHandler não encontrado")
+
+
+func _on_question_mark_pressed() -> void:
+	show_tutorial_help()

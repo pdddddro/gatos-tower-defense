@@ -56,7 +56,7 @@ size_flags_horizontal = 8
 size_flags_vertical = 8
 theme_override_constants/separation = 0
 
-[node name="Pause2" type="TextureButton" parent="UI/HUD/MarginContainer/GameControls"]
+[node name="QuestionMark" type="TextureButton" parent="UI/HUD/MarginContainer/GameControls"]
 process_mode = 3
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
@@ -138,9 +138,6 @@ theme_override_fonts/font = ExtResource("7_jem3k")
 theme_override_font_sizes/font_size = 8
 text = "Dinheiro"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/HUD/MarginContainer"]
-layout_mode = 2
-
 [node name="WaveContainer" type="VBoxContainer" parent="UI/HUD/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
@@ -174,6 +171,6 @@ text = "01/50"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[connection signal="pressed" from="UI/HUD/MarginContainer/GameControls/Pause2" to="." method="_on_pause_pressed"]
+[connection signal="pressed" from="UI/HUD/MarginContainer/GameControls/QuestionMark" to="." method="_on_question_mark_pressed"]
 [connection signal="pressed" from="UI/HUD/MarginContainer/GameControls/Pause" to="." method="_on_pause_pressed"]
 [connection signal="pressed" from="UI/HUD/MarginContainer/GameControls/Play" to="." method="_on_play_pressed"]
