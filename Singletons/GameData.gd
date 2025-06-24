@@ -14,7 +14,7 @@ var cat_data = { ## "Plástico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 		"sprite": "res://Assets/Cats/Chicao/Chicao.png",
 		"damage": 20,
 		"atkcooldown": 1,
-		"range": 800,
+		"range": 256,
 		"cost": 100,
 		"critical_chance": 100,
 		"target_types": ["Plástico", "Metal", "Chiclete", "BossRadioativo"]

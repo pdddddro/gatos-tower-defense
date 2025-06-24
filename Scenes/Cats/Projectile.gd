@@ -19,7 +19,7 @@ func _process(delta):
 		rotation = direction.angle()
 		
 		# Destrói se estiver muito perto do alvo
-		if global_position.distance_to(enemy.global_position) < 2:
+		if global_position.distance_to(enemy.global_position) < 1:
 			queue_free()
 	else:
 		queue_free()

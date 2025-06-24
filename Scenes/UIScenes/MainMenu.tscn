@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://3n4enlhcgms4"]
+[gd_scene load_steps=14 format=3 uid="uid://3n4enlhcgms4"]
 
 [ext_resource type="Script" uid="uid://gjhy6gu7wr75" path="res://Scenes/UIScenes/main_menu.gd" id="1_0tan2"]
 [ext_resource type="Texture2D" uid="uid://0byb8mpdvpgy" path="res://Assets/UI/Art/Background.png" id="1_iyrik"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://b8bsdya0clg1j" path="res://Assets/UI/Art/SobrePressed.png" id="7_fdvul"]
 [ext_resource type="Texture2D" uid="uid://n20rclfqrjrx" path="res://Assets/IDV/Logo.png" id="14_nmscp"]
 
+[sub_resource type="Theme" id="Theme_fdvul"]
+
 [node name="MainMenu" type="Control"]
 custom_minimum_size = Vector2(640, 360)
 layout_mode = 3
@@ -24,6 +26,7 @@ grow_vertical = 2
 script = ExtResource("1_0tan2")
 
 [node name="Background" type="TextureRect" parent="."]
+modulate = Color(0.909804, 0.415686, 0.690196, 1)
 texture_filter = 1
 layout_mode = 1
 offset_right = 1280.0
@@ -44,8 +47,19 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="MarginContainer" type="MarginContainer" parent="Margin"]
+[node name="Panel" type="TextureRect" parent="Margin"]
+custom_minimum_size = Vector2(116, 148)
 layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme = SubResource("Theme_fdvul")
+
+[node name="MarginContainer" type="MarginContainer" parent="Margin/Panel"]
+layout_mode = 2
+offset_right = 116.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 theme_override_constants/margin_left = 8
@@ -53,13 +67,12 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Margin/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Margin/Panel/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 
-[node name="Label" type="Label" parent="Margin/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(80, 0)
+[node name="Label" type="Label" parent="Margin/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/line_spacing = 0
 theme_override_fonts/font = ExtResource("2_nmscp")
@@ -69,7 +82,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Margin/MarginContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Margin/Panel/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -77,8 +90,8 @@ size_flags_vertical = 4
 texture = ExtResource("3_0tan2")
 expand_mode = 1
 
-[node name="Label2" type="Label" parent="Margin/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(128, 0)
+[node name="Label2" type="Label" parent="Margin/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_constants/line_spacing = 0
 theme_override_fonts/font = ExtResource("4_mfebp")
@@ -203,7 +216,6 @@ layout_mode = 2
 uri = "https://forms.gle/aHXq1wsaB8hbV3vf7"
 
 [node name="Label" type="Label" parent="Margin/VBox/Feedback"]
-modulate = Color(1, 1, 1, 0.470588)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

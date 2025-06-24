@@ -66,6 +66,9 @@ var collision_shape = true
 
 func on_hit(damage, source_cat = null):
 	hp -= damage
+	modulate = Color.WHITE * 2.0  # Multiplica para ficar mais brilhante
+	await get_tree().create_timer(0.1).timeout
+	modulate = Color.WHITE  # Volta ao normal
 	
 	if hp <= 0 and dead == false:
 		
