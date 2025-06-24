@@ -56,8 +56,8 @@ func get_best_cat():
 		var cat_damage = cat.individual_stats.get("total_damage_dealt", 0)
 		if cat_damage > best_damage:
 			best_damage = cat_damage
+			
 			best_cat = cat
-			await Analytics.handle_exit()
 	
 	if best_cat:
 		return {

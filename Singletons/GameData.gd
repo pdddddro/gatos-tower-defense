@@ -160,79 +160,70 @@ var card_data = {
 	"basic": [
 		{
 			"name": "Pelas tartarugas!",
-			"description": "Este gato desenvolveu alergia a materiais sintéticos, 15% mais dano contra os slimes de Plástico",
+			"description": "Este gato desenvolveu alergia a materiais sintéticos, 50% mais dano contra os slimes de Plástico",
 			"icon": "res://Assets/Icons/CardIconPlaceholder.png",
 			"effects": [
-				{"type": "damage_vs_type", "target_type": "Plastico", "power": 15, "power_type": "percentage"}
-			],
-			"sell_value": "25"
-		}
-		,{
-			"name": "Garras Venenosas",
-			"description": "Lambe as garras antes de atacar. Ninguém sabe por quê, mas seus ataques causam 8% de dano a mais nos inimigos",
-			"icon": "res://Assets/Icons/CardIconPlaceholder.png",
-			"effects": [
-				{"type": "damage_boost", "power": 8, "power_type": "percentage"}
+				{"type": "damage_vs_type", "target_type": "Plastico", "power": 50, "power_type": "percentage"}
 			],
 			"sell_value": "25"
 		}
 		,{
 			"name": "Sou do Rock",
-			"description": "Ouviu muito Heavy Metal e agora consegue matar slimes de Metal e Pilha, ainda da 15% de dano bônus",
+			"description": "Ouviu muito Heavy Metal e agora consegue matar slimes de Metal e Pilha, ainda da 35% de dano bônus",
 			"icon": "res://Assets/Icons/CardIconPlaceholder.png",
 			"effects": [
 				{"type": "target_expansion", "target_types": ["Metal", "Pilha"]},
-				{"type": "damage_vs_type", "target_type": "Metal", "power": 15, "power_type": "percentage"},
-				{"type": "damage_vs_type", "target_type": "Pilha", "power": 15, "power_type": "percentage"}
+				{"type": "damage_vs_type", "target_type": "Metal", "power": 35, "power_type": "percentage"},
+				{"type": "damage_vs_type", "target_type": "Pilha", "power": 35, "power_type": "percentage"}
 			],
 			"sell_value": "25"
 		}
 		,{
 			"name": "Petisco sabor Whey l",
-			"description": "Este gato descobriu os petiscos proteicos do dono - Cada ataque da 20 de dano adicional",
+			"description": "Este gato descobriu os petiscos proteicos do dono - Cada ataque da 40 de dano adicional",
 			"icon": "res://Assets/Icons/CardIconPlaceholder.png",
 			"effects": [
-				{"type": "damage_boost", "power": 20, "power_type": "absolute"}
+				{"type": "damage_boost", "power": 40, "power_type": "absolute"}
 			],
 			"sell_value": "25"
 		}
 		,{
 			"name": "Treinamento Básico",
-			"description": "Assistiu 'Como ser um Gato Guerreiro' no YouTube, aumenta todos os atributos em 5%",
+			"description": "Assistiu 'Como ser um Gato Guerreiro' no YouTube, aumenta todos os atributos em 7%",
 			"icon": "res://Assets/Icons/CardIconPlaceholder.png",
 			"effects": [
-				{"type": "damage_boost", "power": 5, "power_type": "percentage"},
-				{"type": "speed_boost", "power": 5, "power_type": "percentage"},
-				{"type": "range_boost", "power": 5, "power_type": "percentage"},
-				{"type": "critic_boost", "power": 5, "power_type": "percentage"}
+				{"type": "damage_boost", "power": 7, "power_type": "percentage"},
+				{"type": "speed_boost", "power": 7, "power_type": "percentage"},
+				{"type": "range_boost", "power": 7, "power_type": "percentage"},
+				{"type": "critic_boost", "power": 7, "power_type": "percentage"}
 			],
 			"sell_value": "100"
 		}
 		,{
 			"name": "Gato Míope",
-			"description": "Não enxerga longe mas compensa com ataques rápidos - Ataca 20% mais rápido porém perde 15% de Alcance",
+			"description": "Não enxerga longe mas compensa com ataques rápidos - Ataca 50% mais rápido porém perde 30% de Alcance",
 			"icon": "res://Assets/Icons/CardIconPlaceholder.png",
 			"effects": [
-				{"type": "speed_boost", "power": 20, "power_type": "percentage"},
-				{"type": "range_boost", "power": -15, "power_type": "percentage"}
+				{"type": "speed_boost", "power": 50, "power_type": "percentage"},
+				{"type": "range_boost", "power": -30, "power_type": "percentage"}
 			],
 			"sell_value": "100"
 		}
 		,{
 			"name": "Ritmo do Ronronar",
-			"description": "Quanto mais ronrona, mais rápido bate! Ganha +12% de velocidade de ataque",
+			"description": "Quanto mais ronrona, mais rápido bate! Ganha +30% de velocidade de ataque",
 			"icon": "res://Assets/Icons/CardIconPlaceholder.png",
 			"effects": [
-				{"type": "speed_boost", "power": 12, "power_type": "percentage"},
+				{"type": "speed_boost", "power": 30, "power_type": "percentage"},
 			],
 			"sell_value": "100"
 		}
 		,{
 			"name": "Hora do sachê l",
-			"description": "Esse gato está ficando com fome, quer acabar com isso logo - Ganha 10% de Range",
+			"description": "Esse gato está ficando com fome, quer acabar com isso logo - Ganha 15% de alcance",
 			"icon": "res://Assets/Icons/CardIconPlaceholder.png",
 			"effects": [
-				{"type": "range_boost", "power": 10, "power_type": "percentage"},
+				{"type": "range_boost", "power": 15, "power_type": "percentage"},
 			],
 			"sell_value": "100"
 		}
@@ -241,31 +232,31 @@ var card_data = {
 	"medium": [
 		{
 			"name": "Mestrado no RU",
-			"description": "Sobreviveu 4 anos comendo no restaurante universitário, agora tem estômago de ferro - 15% de dano no Slime Metal",
+			"description": "Sobreviveu 4 anos comendo no restaurante universitário, agora tem estômago de ferro - 30% de dano no Slime Metal",
 			"icon": "res://Assets/Icons/CardIconPlaceholder.png",
 			"effects": [
-				{"type": "damage_vs_type", "target_type": "Metal", "power": 15, "power_type": "percentage"},
+				{"type": "damage_vs_type", "target_type": "Metal", "power": 30, "power_type": "percentage"},
 			],
 			"sell_value": "50"
 		}
 		,{
 			"name": "Hora do sachê ll",
-			"description": "EEsse gato está com tanta fome que vai fazer de tudo para acabar a partida mais rápido, ganha 20% de alcance",
+			"description": "Esse gato está com tanta fome que vai fazer de tudo para acabar a partida mais rápido, ganha 25% de alcance",
 			"icon": "res://Assets/Icons/CardIconPlaceholder.png",
 			"effects": [
-				{"type": "range_boost", "power": 20, "power_type": "percentage"},
+				{"type": "range_boost", "power": 25, "power_type": "percentage"},
 			],
 			"sell_value": "100"
 		}
 		,{
 			"name": "Miau Cast",
-			"description": "Ouve o melhor podcast sobre vida felina, absorveu dicas valiosas - aumenta todos os atributos em 10%",
+			"description": "Ouve o melhor podcast sobre vida felina, absorveu dicas valiosas - aumenta todos os atributos em 15%",
 			"icon": "res://Assets/Icons/CardIconPlaceholder.png",
 			"effects": [
-				{"type": "damage_boost", "power": 10, "power_type": "percentage"},
-				{"type": "speed_boost", "power": 10, "power_type": "percentage"},
-				{"type": "range_boost", "power": 10, "power_type": "percentage"},
-				{"type": "critic_boost", "power": 10, "power_type": "percentage"}
+				{"type": "damage_boost", "power": 15, "power_type": "percentage"},
+				{"type": "speed_boost", "power": 15, "power_type": "percentage"},
+				{"type": "range_boost", "power": 15, "power_type": "percentage"},
+				{"type": "critic_boost", "power": 15, "power_type": "percentage"}
 			],
 			"sell_value": "100"
 		}
@@ -281,20 +272,20 @@ var card_data = {
 		}
 		,{
 			"name": "Pelos Anti-Colates",
-			"description": "Nasceu com pelos tão macios que nada consegue grudar nele - Consegue atacar o Slime Chiclete e da 15% de dano a mais neles",
+			"description": "Nasceu com pelos tão macios que nada consegue grudar nele - Consegue atacar o Slime Chiclete e da 40% de dano a mais neles",
 			"icon": "res://Assets/Icons/CardIconPlaceholder.png",
 			"effects": [
 				{"type": "target_expansion", "target_types": ["Chiclete"]},
-				{"type": "damage_vs_type", "target_type": "Chiclete", "power": 15, "power_type": "percentage"}
+				{"type": "damage_vs_type", "target_type": "Chiclete", "power": 40, "power_type": "percentage"}
 			],
 			"sell_value": "25"
 		}
 		,{
-			"name": "Petisco sabor Whey",
-			"description": "Este gato descobriu os petiscos proteicos do dono - Cada ataque da 50 de dano adicional",
+			"name": "Petisco sabor Whey II",
+			"description": "Este gato descobriu os petiscos proteicos do dono - Cada ataque da 80 de dano adicional",
 			"icon": "res://Assets/Icons/CardIconPlaceholder.png",
 			"effects": [
-				{"type": "damage_boost", "power": 50, "power_type": "absolute"}
+				{"type": "damage_boost", "power": 80, "power_type": "absolute"}
 			],
 			"sell_value": "25"
 		}
@@ -303,14 +294,14 @@ var card_data = {
 	"rare": [
 		{
 			"name": "ASMR de Elevação Quântica",
-			"description": "Este gato transcendeu as limitações físicas, aumenta todos os atributos em +25%",
+			"description": "Este gato transcendeu as limitações físicas, aumenta todos os atributos em +30%",
 			"icon": "res://Assets/Icons/CardIconPlaceholder.png",
 			"effects": [
 				{"type": "target_expansion", "target_types": ["all"]},
-				{"type": "damage_boost", "power": 25, "power_type": "percentage"},
-				{"type": "speed_boost", "power": 25, "power_type": "percentage"},
-				{"type": "range_boost", "power": 25, "power_type": "percentage"},
-				{"type": "critic_boost", "power": 25, "power_type": "percentage"}
+				{"type": "damage_boost", "power": 30, "power_type": "percentage"},
+				{"type": "speed_boost", "power": 30, "power_type": "percentage"},
+				{"type": "range_boost", "power": 30, "power_type": "percentage"},
+				{"type": "critic_boost", "power": 30, "power_type": "percentage"}
 			],
 			"sell_value": "100"
 		}
