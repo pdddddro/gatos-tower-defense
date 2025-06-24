@@ -308,7 +308,8 @@ func show_wave_textbox(text_data: Dictionary):
 	current_textbox = textbox_scene.instantiate()
 	get_node("UI").add_child(current_textbox)
 	
-	# Conecta sinal de fechamento
+	# Conecta os sinais
+	current_textbox.textbox_opened.connect(_on_textbox_opened)
 	current_textbox.textbox_closed.connect(_on_textbox_closed)
 	
 	# Mostra a textbox com os dados
@@ -321,6 +322,10 @@ func _on_textbox_closed():
 	var wave_data = retrieve_wave_data()
 	await get_tree().create_timer(0.2).timeout
 	spawn_enemies(wave_data)
+
+func _on_textbox_opened():
+	if shop:
+		shop._on_close_pressed()
 
 func retrieve_wave_data():
 	var wave_key = "wave" + str(current_wave)

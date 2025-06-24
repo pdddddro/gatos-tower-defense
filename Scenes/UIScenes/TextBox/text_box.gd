@@ -10,6 +10,7 @@ extends Control
 var tween: Tween
 
 signal textbox_closed
+signal textbox_opened
 
 func _ready():
 	# Conecta o botão de fechar
@@ -25,7 +26,7 @@ func _ready():
 func show_textbox(text_data: Dictionary):
 	title.text = text_data.title
 	content.text = text_data.message
-	
+	textbox_opened.emit()
 	# Anima entrada de baixo para cima sem bounce
 	animate_in()
 

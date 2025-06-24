@@ -53,6 +53,8 @@ func _ready():
 	disable_sell_n_details_buttons()
 	
 	sell_cat_button.pressed.connect(_on_sell_cat_button_pressed)
+	
+
 
 func _process(delta):
 	anchor_top = lerp(anchor_top,_target_anchor.x,lerp_speed)
