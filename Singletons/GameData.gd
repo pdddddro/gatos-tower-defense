@@ -105,7 +105,7 @@ var enemies_data = {
 	"BossRadioativo": {
 		"damage": 1,
 		"speed": 20,
-		"hp": 400,
+		"hp": 10,
 		"fish_reward": 400
 	}
 }

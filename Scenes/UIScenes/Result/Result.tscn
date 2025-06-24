@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://c3eo4k3gsmtd0"]
+[gd_scene load_steps=45 format=3 uid="uid://c3eo4k3gsmtd0"]
 
 [ext_resource type="Script" uid="uid://c4terrj7gjgx0" path="res://Scenes/UIScenes/Result/result.gd" id="1_adago"]
 [ext_resource type="Texture2D" uid="uid://0byb8mpdvpgy" path="res://Assets/UI/Art/Background.png" id="2_3orr4"]
@@ -19,6 +19,8 @@
 [ext_resource type="FontFile" uid="uid://8qe2jqb87ubg" path="res://Assets/Fonts/press_start_2p/PressStart2P.ttf" id="14_j4aux"]
 [ext_resource type="Texture2D" uid="uid://l3qb28hgmuhn" path="res://Assets/UI/Equipped_card_background.png" id="16_d55iw"]
 [ext_resource type="Texture2D" uid="uid://bfwtkfw56eu2j" path="res://Assets/UI/Equipped_card_background_hover.png" id="18_bcbo1"]
+[ext_resource type="Script" uid="uid://ber1tq1cvvvc3" path="res://Scenes/UIScenes/TextBox/tooltip_Interact.gd" id="19_flsdf"]
+[ext_resource type="PackedScene" uid="uid://cto02ur6a2nje" path="res://Scenes/UIScenes/TextBox/tooltip.tscn" id="20_vw8t1"]
 [ext_resource type="Texture2D" uid="uid://baepjslnydqim" path="res://Assets/UI/Buttons/botao_principal_padrao.png" id="28_l3m27"]
 [ext_resource type="Texture2D" uid="uid://mx3dyc0tnke" path="res://Assets/UI/Buttons/botao_principal_hover.png" id="29_evi2c"]
 [ext_resource type="Texture2D" uid="uid://cgceauk46iquy" path="res://Assets/UI/Buttons/botao_sec_padrao.png" id="30_7plpr"]
@@ -571,6 +573,9 @@ offset_right = 8.0
 offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("19_flsdf")
+
+[node name="Tooltip" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cards/Card1/CardIcon" instance=ExtResource("20_vw8t1")]
 
 [node name="Card2" type="TextureButton" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cards"]
 custom_minimum_size = Vector2(32, 32)
@@ -596,6 +601,9 @@ offset_right = 8.0
 offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("19_flsdf")
+
+[node name="Tooltip" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cards/Card2/CardIcon" instance=ExtResource("20_vw8t1")]
 
 [node name="Card3" type="TextureButton" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cards"]
 custom_minimum_size = Vector2(32, 32)
@@ -621,6 +629,9 @@ offset_right = 8.0
 offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("19_flsdf")
+
+[node name="Tooltip" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cards/Card3/CardIcon" instance=ExtResource("20_vw8t1")]
 
 [node name="Card4" type="TextureButton" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cards"]
 custom_minimum_size = Vector2(32, 32)
@@ -646,6 +657,9 @@ offset_right = 8.0
 offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("19_flsdf")
+
+[node name="Tooltip" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cards/Card4/CardIcon" instance=ExtResource("20_vw8t1")]
 
 [node name="TotalDamage" type="HBoxContainer" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer"]
 layout_mode = 2

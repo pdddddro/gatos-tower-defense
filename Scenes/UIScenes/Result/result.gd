@@ -52,11 +52,22 @@ func get_best_cat():
 	var cats = get_tree().get_nodes_in_group("active_cats")
 	
 	for cat in cats:
-		if cat.total_damage_dealt > best_damage:
-			best_damage = cat.total_damage_dealt
+		var cat_damage = cat.individual_stats.get("total_damage_dealt", 0)
+		if cat_damage > best_damage:
+			best_damage = cat_damage
 			best_cat = cat
 	
-	return [best_cat, best_damage]
+	if best_cat:
+		return {
+			"cat": best_cat,
+			"damage": best_damage,
+			"fish_earned": best_cat.individual_stats.get("fish_collected", 0),
+			"enemies_defeated": best_cat.individual_stats.get("enemies_defeated", 0),
+			"equipped_cards": best_cat.get_equipped_cards()
+		}
+	return null
+	
+	#return [best_cat, best_damage]
 
 func get_best_cat_stats():
 	var best_cat = null
@@ -87,9 +98,11 @@ func update_stats_ui():
 	var money_spent_label = $VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics/MoneySpent/Number
 	var number_of_cats = $VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics/NumberOfCats/Number
 	
-	enemies_defeated_label.text = format_number(GameData.enemies_defeated)
-	total_damage_label.text = format_number(GameData.total_damage)
-	fishs_collected_label.text = format_number(GameData.fishs_collected)
+	var total_stats = collect_all_cats_stats()
+	
+	enemies_defeated_label.text = format_number(total_stats.enemies_defeated)
+	total_damage_label.text = format_number(total_stats.total_damage)
+	fishs_collected_label.text = format_number(total_stats.fishs_collected)
 	time_in_game_label.text = format_time(GameData.time_in_game)
 	money_spent_label.text = format_number(GameData.money_spent)
 	number_of_cats.text = format_number(GameData.number_of_cats)
@@ -103,7 +116,14 @@ func update_stats_ui():
 		$VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/EnemiesDefeated/Number.text = format_number(best_stats.enemies_defeated)
 		$VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/FishsCollected/Number.text = format_number(best_stats.fish_earned)
 		display_equipped_cards(best_stats.equipped_cards)
-		
+
+func collect_all_cats_stats() -> Dictionary:
+	return {
+		"enemies_defeated": GameData.enemies_defeated,
+		"total_damage": GameData.total_damage,
+		"fishs_collected": GameData.fishs_collected
+	}
+
 func format_time(seconds: float) -> String:
 	var mins = int(seconds) / 60
 	var secs = int(seconds) % 60

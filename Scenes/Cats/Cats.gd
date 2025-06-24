@@ -19,14 +19,17 @@ var enemies_defeated: int = 0
 func add_damage(amount: int):
 	total_damage_dealt += amount
 	individual_stats["total_damage_dealt"] = total_damage_dealt
+	GameData.total_damage += amount
 
 func add_fish_earned(fish_amount):
 	total_fish_earned += fish_amount
 	individual_stats["fish_collected"] = total_fish_earned
+	GameData.fishs_collected += fish_amount
 
 func add_enemy_defeated():
 	enemies_defeated += 1
 	individual_stats["enemies_defeated"] = enemies_defeated
+	GameData.enemies_defeated += 1
 	
 func get_equipped_cards():
 	return equipped_cards

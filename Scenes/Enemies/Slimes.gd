@@ -66,14 +66,13 @@ var collision_shape = true
 
 func on_hit(damage, source_cat = null):
 	hp -= damage
-	GameData.total_damage += damage
 	
 	if hp <= 0 and dead == false:
-		GameData.enemies_defeated += 1
 		
 		dead = true
 		
 		if source_cat and is_instance_valid(source_cat):
+			source_cat.add_damage(damage)
 			source_cat.add_enemy_defeated()
 			var fish_reward = GameData.enemies_data[type]["fish_reward"]
 			source_cat.add_fish_earned(fish_reward)
