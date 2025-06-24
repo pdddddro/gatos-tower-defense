@@ -16,7 +16,7 @@ var cat_data = { ## "Plástico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 		"atkcooldown": 1,
 		"range": 800,
 		"cost": 100,
-		"critical_chance": 10,
+		"critical_chance": 100,
 		"target_types": ["Plástico", "Metal", "Chiclete", "BossRadioativo"]
 	},
 	
@@ -347,12 +347,12 @@ var card_data = {
 			"description": "Você não quer saber o que esse gato ja viveu... - 40% mais dano contra todos os slimes comuns",
 			"icon": "res://Assets/Icons/Fish1.png",
 			"effects": [
-				{"type": "damage_vs_type", "target_type": "Plastico", "power": 20, "power_type": "percentage"},
-				{"type": "damage_vs_type", "target_type": "Metal", "power": 20, "power_type": "percentage"},
-				{"type": "damage_vs_type", "target_type": "Pilha", "power": 20, "power_type": "percentage"},
-				{"type": "damage_vs_type", "target_type": "Chiclete", "power": 20, "power_type": "percentage"},
-				{"type": "damage_vs_type", "target_type": "BossRadioativo", "power": 20, "power_type": "percentage"},
-				{"type": "damage_vs_type", "target_type": "BossPlastico", "power": 20, "power_type": "percentage"}
+				{"type": "damage_vs_type", "target_type": "Plastico", "power": 40, "power_type": "percentage"},
+				{"type": "damage_vs_type", "target_type": "Metal", "power": 40, "power_type": "percentage"},
+				{"type": "damage_vs_type", "target_type": "Pilha", "power": 40, "power_type": "percentage"},
+				{"type": "damage_vs_type", "target_type": "Chiclete", "power": 40, "power_type": "percentage"},
+				{"type": "damage_vs_type", "target_type": "BossRadioativo", "power": 40, "power_type": "percentage"},
+				{"type": "damage_vs_type", "target_type": "BossPlastico", "power": 40, "power_type": "percentage"}
 		],
 			"sell_value": "25"
 		}

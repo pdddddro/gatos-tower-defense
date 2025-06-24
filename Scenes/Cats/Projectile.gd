@@ -5,6 +5,8 @@ var type: String
 var speed = 400
 var damage: int
 
+var is_critical = false 
+
 func _ready():
 	#body_entered.connect(_on_body_entered)
 	$AnimatedSprite2D.play(type)

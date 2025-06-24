@@ -237,7 +237,12 @@ func attack():
 		var projectile = projectile_scene.instantiate()
 		projectile.type = str(type)
 		projectile.enemy = enemy
-		projectile.damage = individual_stats["damage"]
+		
+		var base_damage = calculate_damage_against_enemy(enemy.type)
+		var damage_result = calculate_final_damage(base_damage)
+		
+		projectile.damage = damage_result["damage"]
+		projectile.is_critical = damage_result["is_critical"]
 		projectile.source_cat = self
 		
 		var aim_position = $Aim.global_position
@@ -249,6 +254,24 @@ func attack():
 	else:
 		status = "Idle"
 		attack_ready = true
+
+func calculate_final_damage(base_damage: int) -> Dictionary:
+	var crit_chance = individual_stats["critical_chance"]
+	var is_critical = randf() * 100 < crit_chance
+	
+	var final_damage = base_damage
+	var damage_multiplier = 1.5  # 50% de dano extra (padrão em muitos jogos)
+	
+	if is_critical:
+		final_damage = int(base_damage * damage_multiplier)
+		print("CRÍTICO! Dano: ", final_damage, " (", base_damage, " x ", damage_multiplier, ")")
+	
+	return {
+		"damage": final_damage,
+		"is_critical": is_critical,
+		"multiplier": damage_multiplier if is_critical else 1.0
+	}
+
 
 func _on_range_body_entered(body: Node2D) -> void:
 	enemy_array.append(body.get_parent())
