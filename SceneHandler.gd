@@ -5,8 +5,8 @@ func _ready():
 	pass
 
 func load_main_menu():
-	get_node("MainMenu/Margin/VBox/NovoJogo").pressed.connect(on_new_game_pressed)
-#	get_node("MainMenu/Margin/VBox/Sair").pressed.connect(on_quit_pressed)
+	get_node("MainMenu/Margin/VBox/NewGame").pressed.connect(on_new_game_pressed)
+	get_node("MainMenu/Margin/VBox/About").pressed.connect(on_about_pressed)
 
 func on_new_game_pressed():
 	GameData.reset_fish_quantity()
@@ -33,7 +33,11 @@ func on_new_game_pressed():
 	
 	get_tree().paused = false
 	game_scene.connect("game_finished", self.unload_game)
-	
+
+func on_about_pressed():
+	var about_scene = load("res://Scenes/MainScenes/About.tscn").instantiate()
+	add_child(about_scene)
+
 #func on_quit_pressed():
 	#get_tree().quit()
 
