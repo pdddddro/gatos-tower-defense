@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameData="*res://Singletons/GameData.gd"
+Analytics="*res://addons/quiver_analytics/analytics.tscn"
 
 [display]
 
@@ -28,6 +29,10 @@ window/size/resizable=false
 window/stretch/mode="viewport"
 window/stretch/aspect="ignore"
 window/stretch/scale_mode="integer"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/quiver-analytics-godot-plugin-main/addons/quiver_analytics/plugin.cfg", "res://addons/quiver-analytics-godot-plugin-main/quiver-analytics-godot-plugin-main/addons/quiver_analytics/plugin.cfg", "res://addons/quiver_analytics/plugin.cfg")
 
 [file_customization]
 
@@ -73,6 +78,10 @@ ui_cancel={
 [input_devices]
 
 pointing/emulate_touch_from_mouse=true
+
+[quiver]
+
+general/auth_token="Cps3fCZR3vfx2uv0hzIGxLzWjbfwPPr4tlgDTQ2t"
 
 [rendering]
 

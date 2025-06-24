@@ -37,6 +37,7 @@ func _on_main_action_pressed() -> void:
 		best_cat.visible = true
 		
 		screen_step += 1
+		await Analytics.handle_exit()
 		return
 		
 	if screen_step == 1:
@@ -56,6 +57,7 @@ func get_best_cat():
 		if cat_damage > best_damage:
 			best_damage = cat_damage
 			best_cat = cat
+			await Analytics.handle_exit()
 	
 	if best_cat:
 		return {

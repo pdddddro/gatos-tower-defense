@@ -71,4 +71,5 @@ func _on_card_selected(selected_card_data):
 	GameData.add_card_to_collection(selected_card_data)
 	get_tree().paused = false
 	print(GameData.card_collection)
+	Analytics.add_event("Carta escolhidas no Pack", {"Carta": selected_card_data})
 	queue_free()
