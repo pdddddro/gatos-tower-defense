@@ -165,7 +165,6 @@ layout_mode = 2
 theme_override_constants/separation = 8
 
 [node name="CatInfo" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 8
@@ -454,7 +453,7 @@ size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
 theme_override_fonts/font = ExtResource("15_v6pep")
 theme_override_font_sizes/font_size = 8
-text = "16"
+text = "0"
 vertical_alignment = 1
 
 [node name="FishsCollected" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/Status/Rows/Row2"]
@@ -481,7 +480,7 @@ size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
 theme_override_fonts/font = ExtResource("15_v6pep")
 theme_override_font_sizes/font_size = 8
-text = "50"
+text = "0"
 vertical_alignment = 1
 clip_text = true
 
@@ -610,6 +609,7 @@ script = ExtResource("16_vsduq")
 [node name="Tooltip" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/EquippedCards/Cards/Card4/CardIcon" instance=ExtResource("18_ywieb")]
 
 [node name="TextureRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(168, 0)
 layout_mode = 2
 size_flags_horizontal = 3

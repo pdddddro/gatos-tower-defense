@@ -143,27 +143,27 @@ func open_cat_info():
 ## Falta adicionar o enemies_defeated e fish_collected
 func update_cat_info(cat_type):
 	print("Informações Atualizadas")
-	if cat_type:
-		cat_name.text = GameData.cat_data[cat_type]["name"]
+	if cat_type and current_cat_reference:
+		cat_name.text = current_cat_reference.individual_stats["name"]
 		cat_sprite.texture = load(GameData.cat_data[cat_type]["sprite"])
 		
-		cat_damage.text = format_number_k(GameData.cat_data[cat_type]["damage"])
-		cat_range.text = format_number_k(GameData.cat_data[cat_type]["range"])
+		cat_damage.text = format_number_k(current_cat_reference.individual_stats["damage"])
+		cat_range.text = format_number_k(current_cat_reference.individual_stats["range"])
 		
-		var cooldown = GameData.cat_data[cat_type]["atkcooldown"]
+		var cooldown = current_cat_reference.individual_stats["atkcooldown"]
 		var attacks_per_second = 1.0 / cooldown
 		cat_attack_speed.text = "%.1f/s" % attacks_per_second
 		
-		cat_critical_chance.text = str(int(GameData.cat_data[cat_type]["critical_chance"])) + "%"
+		cat_critical_chance.text = str(int(current_cat_reference.individual_stats["critical_chance"])) + "%"
 		
-		#cat_enemies_defeated.text = format_number_k(GameData.cat_data[cat_type]["enemies_defeated"])
-		#cat_fish_collected.text = format_number_k(GameData.cat_data[cat_type]["fish_collected"])
+		cat_enemies_defeated.text = format_number_k(current_cat_reference.individual_stats["enemies_defeated"])
+		cat_fish_collected.text = format_number_k(current_cat_reference.individual_stats["fish_collected"])
 		
 		var cat_cost = GameData.cat_data[cat_type]["cost"]
 		var sell_value = int(cat_cost * 0.5)
 		cat_sell_price.text = str(sell_value)
 		
-		update_equipped_cards_ui([])
+		update_equipped_cards_ui(current_cat_reference.equipped_cards)
 		
 func format_number_k(value: float) -> String:
 	if value >= 1000:
@@ -185,6 +185,9 @@ func set_current_cat(cat_node):
 	print("Gato tem cartas equipadas? ", cat_node.equipped_cards.size() if cat_node else "Gato é null")
 	
 	current_cat_reference = cat_node
+	
+	if cat_node:
+		call_deferred("update_cat_info", cat_node.type)
 
 	print("Atualizando UI com ", cat_node.equipped_cards.size(), " cartas")
 	update_equipped_cards_ui(cat_node.equipped_cards)

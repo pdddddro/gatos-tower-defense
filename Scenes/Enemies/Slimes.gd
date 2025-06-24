@@ -64,7 +64,7 @@ func update_animation(direction: Vector2):
 
 var collision_shape = true
 
-func on_hit(damage):
+func on_hit(damage, source_cat = null):
 	hp -= damage
 	GameData.total_damage += damage
 	
@@ -72,6 +72,13 @@ func on_hit(damage):
 		GameData.enemies_defeated += 1
 		
 		dead = true
+		
+		if source_cat and is_instance_valid(source_cat):
+			source_cat.add_enemy_defeated()
+			var fish_reward = GameData.enemies_data[type]["fish_reward"]
+			source_cat.add_fish_earned(fish_reward)
+			print("Estatísticas atualizadas para gato: ", source_cat.type)
+		
 		emit_signal("enemy_defeated", type)
 		
 		$CharacterBody2D/CollisionShape2D.call_deferred("set_disabled", true)

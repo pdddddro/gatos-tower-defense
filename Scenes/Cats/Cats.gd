@@ -8,6 +8,9 @@ var attack_ready = true
 var status = "Idle"
 var direction = Vector2.ZERO 
 
+var individual_stats = {}
+var damage_bonuses_vs_type = {}
+
 ## Coletar as estatísticas do gato
 var total_damage_dealt: int = 0
 var total_fish_earned: int = 0
@@ -15,18 +18,22 @@ var enemies_defeated: int = 0
 
 func add_damage(amount: int):
 	total_damage_dealt += amount
+	individual_stats["total_damage_dealt"] = total_damage_dealt
 
 func add_fish_earned(fish_amount):
 	total_fish_earned += fish_amount
+	individual_stats["fish_collected"] = total_fish_earned
 
 func add_enemy_defeated():
 	enemies_defeated += 1
+	individual_stats["enemies_defeated"] = enemies_defeated
 	
 func get_equipped_cards():
 	return equipped_cards
 
 func _ready():
 	if built:
+		initialize_individual_stats()
 		get_node("Range/CollisionShape2D").get_shape().radius = 0.5 * GameData.cat_data[type]["range"]
 
 	if has_node("ClickableArea"):
@@ -53,6 +60,13 @@ func _physics_process(delta: float) -> void:
 		status = "Idle"
 		enemy = null
 		update_animation(Vector2(-1 if last_flip_h else 1, 0))
+
+func initialize_individual_stats():
+	individual_stats = GameData.cat_data[type].duplicate(true)
+	individual_stats["enemies_defeated"] = 0
+	individual_stats["fish_collected"] = 0
+	individual_stats["total_damage_dealt"] = 0
+	print("Estatísticas individuais inicializadas para ", type, ": ", individual_stats)
 
 var showing_range = false
 
@@ -92,15 +106,13 @@ func select_enemy():
 	enemy = valid_enemies[enemy_index]
 
 func can_target_enemy(target_enemy) -> bool:
-	var allowed_targets = GameData.cat_data[type].get("target_types", [])
+	var allowed_targets = individual_stats.get("target_types", [])
 	
 	if allowed_targets.size() == 0:
 		return true
 	
 	# Verifica se o tipo do inimigo está na lista permitida
 	return target_enemy.type in allowed_targets
-
-var damage_bonuses_vs_type = {}  # {"Plastico": 25, "Metal": 10}
 
 func apply_card_effect(effect_data: Dictionary):
 	var effect_type = effect_data["type"]
@@ -113,62 +125,67 @@ func apply_card_effect(effect_data: Dictionary):
 			if target_type != "":
 				var current_bonus = damage_bonuses_vs_type.get(target_type, 0)
 				if power_type == "percentage":
-					var base_damage = GameData.cat_data[type]["damage"]
+					var base_damage = individual_stats["damage"]  # Usa stats individuais
 					var bonus_damage = base_damage * (power / 100.0)
 					damage_bonuses_vs_type[target_type] = current_bonus + bonus_damage
 				else:
 					damage_bonuses_vs_type[target_type] = current_bonus + power
 				print("Bônus de dano contra ", target_type, ": +", damage_bonuses_vs_type[target_type])
-				
+		
 		"damage_boost":
 			if power_type == "percentage":
-				var damage_increase = GameData.cat_data[type]["damage"] * (power / 100.0)
-				GameData.cat_data[type]["damage"] += damage_increase
-				print("Dano aumentado em ", power, "% (", damage_increase, "). Novo dano: ", GameData.cat_data[type]["damage"])
+				var damage_increase = individual_stats["damage"] * (power / 100.0)  # Usa stats individuais
+				individual_stats["damage"] += damage_increase  # Modifica apenas este gato
+				print("Dano aumentado em ", power, "% (", damage_increase, "). Novo dano: ", individual_stats["damage"])
 			else:
-				GameData.cat_data[type]["damage"] += power
-				print("Dano aumentado em ", power, ". Novo dano: ", GameData.cat_data[type]["damage"])
+				individual_stats["damage"] += power  # Modifica apenas este gato
+				print("Dano aumentado em ", power, ". Novo dano: ", individual_stats["damage"])
 		
 		"speed_boost":
 			if power_type == "percentage":
-				var cooldown_reduction = GameData.cat_data[type]["atkcooldown"] * (power / 100.0)
-				GameData.cat_data[type]["atkcooldown"] = max(0.1, GameData.cat_data[type]["atkcooldown"] - cooldown_reduction)
-				print("Velocidade aumentada em ", power, "% (", cooldown_reduction, "s). Novo cooldown: ", GameData.cat_data[type]["atkcooldown"])
+				var cooldown_reduction = individual_stats["atkcooldown"] * (power / 100.0)  # Usa stats individuais
+				individual_stats["atkcooldown"] = max(0.1, individual_stats["atkcooldown"] - cooldown_reduction)
+				print("Velocidade aumentada em ", power, "% (", cooldown_reduction, "s). Novo cooldown: ", individual_stats["atkcooldown"])
 			else:
-				GameData.cat_data[type]["atkcooldown"] = max(0.1, GameData.cat_data[type]["atkcooldown"] - power)
-				print("Velocidade aumentada em ", power, "s. Novo cooldown: ", GameData.cat_data[type]["atkcooldown"])
+				individual_stats["atkcooldown"] = max(0.1, individual_stats["atkcooldown"] - power)
+				print("Velocidade aumentada em ", power, "s. Novo cooldown: ", individual_stats["atkcooldown"])
 		
 		"range_boost":
 			if power_type == "percentage":
-				var range_increase = GameData.cat_data[type]["range"] * (power / 100.0)
-				GameData.cat_data[type]["range"] += range_increase
-				print("Alcance aumentado em ", power, "% (", range_increase, "). Novo alcance: ", GameData.cat_data[type]["range"])
+				var range_increase = individual_stats["range"] * (power / 100.0)  # Usa stats individuais
+				individual_stats["range"] += range_increase
+				print("Alcance aumentado em ", power, "% (", range_increase, "). Novo alcance: ", individual_stats["range"])
 			else:
-				GameData.cat_data[type]["range"] += power
-				print("Alcance aumentado em ", power, ". Novo alcance: ", GameData.cat_data[type]["range"])
+				individual_stats["range"] += power
+				print("Alcance aumentado em ", power, ". Novo alcance: ", individual_stats["range"])
 			
-			# Atualiza o range visual
+			# Atualiza o range visual usando stats individuais
 			if built:
-				get_node("Range/CollisionShape2D").get_shape().radius = 0.5 * GameData.cat_data[type]["range"]
+				get_node("Range/CollisionShape2D").get_shape().radius = 0.5 * individual_stats["range"]
 		
 		"target_expansion":
 			var new_targets = effect_data.get("target_types", [])
 			if "all" in new_targets:
-				# Remove restrições, pode atacar qualquer tipo
-				GameData.cat_data[type]["target_types"] = []
+				individual_stats["target_types"] = []  # Modifica apenas este gato
 			else:
-				# Adiciona novos tipos à lista existente
-				var current_targets = GameData.cat_data[type].get("target_types", [])
+				var current_targets = individual_stats.get("target_types", [])  # ✅ Usa stats individuais
 				for target_type in new_targets:
 					if target_type not in current_targets:
 						current_targets.append(target_type)
-						GameData.cat_data[type]["target_types"] = current_targets
-			print("Tipos de alvo atualizados para ", type, ": ", GameData.cat_data[type]["target_types"])
-		_:
-			print("Efeito desconhecido: ", effect_type)
+				individual_stats["target_types"] = current_targets
+			print("Tipos de alvo atualizados para ", type, ": ", individual_stats["target_types"])
+		
+		"critic_boost":
+			if power_type == "percentage":
+				var crit_increase = individual_stats["critical_chance"] * (power / 100.0)
+				individual_stats["critical_chance"] += crit_increase
+				print("Chance crítica aumentada em ", power, "% (", crit_increase, "). Nova chance: ", individual_stats["critical_chance"])
+			else:
+				individual_stats["critical_chance"] += power
+				print("Chance crítica aumentada em ", power, ". Nova chance: ", individual_stats["critical_chance"])
 
 func calculate_damage_against_enemy(enemy_type: String) -> int:
-	var base_damage = GameData.cat_data[type]["damage"]
+	var base_damage = individual_stats["damage"]
 	var total_damage = base_damage
 	
 	# Verifica bônus específico contra o tipo
@@ -220,14 +237,14 @@ func attack():
 		var projectile = projectile_scene.instantiate()
 		projectile.type = str(type)
 		projectile.enemy = enemy
-		projectile.damage = GameData.cat_data[type]["damage"]
+		projectile.damage = individual_stats["damage"]
 		projectile.source_cat = self
 		
 		var aim_position = $Aim.global_position
 		projectile.global_position = aim_position
 		get_parent().add_child(projectile)
 		
-		await get_tree().create_timer(GameData.cat_data[type]["atkcooldown"]).timeout
+		await get_tree().create_timer(individual_stats["atkcooldown"]).timeout
 		attack_ready = true
 	else:
 		status = "Idle"
@@ -247,8 +264,8 @@ func _on_clickable_area_input_event(viewport: Node, event: InputEvent, shape_idx
 		print(shop)
 		if shop and built:
 			shop.open_cat_info()
-			shop.update_cat_info(type)
-			shop.set_current_cat(self) 
+			shop.set_current_cat(self)
+			shop.update_cat_info(type)  
 			
 			hide_all_cat_ranges()
 			show_range()
@@ -275,7 +292,9 @@ func equip_card(card_data: Dictionary) -> bool:
 		print("Carta equipada com sucesso: ", card_data.name)
 		print("Total de cartas agora: ", equipped_cards.size())
 		
-		apply_card_effect(card_data.effects[0])
+		for effect in card_data.effects:
+			apply_card_effect(effect)
+			print("Efeito aplicado: ", effect)
 		
 		# Debug da loja
 		if shop:
