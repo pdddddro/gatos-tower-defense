@@ -471,6 +471,7 @@ func add_card_to_collection(card_data: Dictionary):
 
 func _ready():
 	update_rarity_chances()
+	load_game_data()
 
 ## Round Rarity
 var card_rarity_chances = {
@@ -549,3 +550,49 @@ func reset_statistics():
 	time_in_game = 0.0  # Em segundos
 	money_spent = 0
 	number_of_cats = 0
+
+var tutorial_completed: bool = false
+var save_file_path = "user://game_save.dat"
+
+# Função para salvar dados
+func save_game_data():
+	var file = FileAccess.open(save_file_path, FileAccess.WRITE)
+	if file:
+		var save_data = {
+			"tutorial_completed": tutorial_completed
+		}
+		file.store_string(JSON.stringify(save_data))
+		file.close()
+		print("Dados salvos com sucesso")
+	else:
+		print("Erro ao salvar dados")
+
+# Função para carregar dados
+func load_game_data():
+	if FileAccess.file_exists(save_file_path):
+		var file = FileAccess.open(save_file_path, FileAccess.READ)
+		if file:
+			var json_string = file.get_as_text()
+			file.close()
+			var json = JSON.new()
+			var parse_result = json.parse(json_string)
+			if parse_result == OK:
+				var save_data = json.data
+				tutorial_completed = save_data.get("tutorial_completed", false)
+				print("Dados carregados: tutorial_completed = ", tutorial_completed)
+			else:
+				print("Erro ao fazer parse do JSON")
+		else:
+			print("Erro ao abrir arquivo de save")
+	else:
+		print("Arquivo de save não existe, usando valores padrão")
+
+# Função para marcar tutorial como completo
+func mark_tutorial_completed():
+	tutorial_completed = true
+	save_game_data()
+	print("Tutorial marcado como completo e salvo")
+
+# NOVA FUNÇÃO: Para mostrar tutorial manualmente (botão de ajuda)
+func show_tutorial_manually():
+	print("Tutorial solicitado manualmente pelo jogador")

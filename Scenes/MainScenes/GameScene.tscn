@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://b3oj3u5omej0y"]
+[gd_scene load_steps=14 format=3 uid="uid://b3oj3u5omej0y"]
 
 [ext_resource type="Script" uid="uid://d3rxrafiwqqn2" path="res://Scenes/MainScenes/GameScene.gd" id="1_hosin"]
 [ext_resource type="PackedScene" uid="uid://b4lqfl3wc00q3" path="res://Scenes/Maps/Map1.tscn" id="1_ianr5"]
 [ext_resource type="Script" uid="uid://befst367i3h8q" path="res://Scenes/MainScenes/Ui.gd" id="3_flvd6"]
 [ext_resource type="Texture2D" uid="uid://bjfvhsd0bqhge" path="res://Assets/Icons/Pause.png" id="6_h0y4r"]
+[ext_resource type="Texture2D" uid="uid://b411g780km2rh" path="res://Assets/Icons/QuestionMark.png" id="6_j856t"]
 [ext_resource type="Texture2D" uid="uid://8adf7fkny4qr" path="res://Assets/Icons/Play.png" id="6_jem3k"]
 [ext_resource type="Script" uid="uid://ber1tq1cvvvc3" path="res://Scenes/UIScenes/TextBox/tooltip_Interact.gd" id="7_80vwl"]
 [ext_resource type="FontFile" uid="uid://8qe2jqb87ubg" path="res://Assets/Fonts/press_start_2p/PressStart2P.ttf" id="7_jem3k"]
@@ -54,6 +55,14 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 theme_override_constants/separation = 0
+
+[node name="Pause2" type="TextureButton" parent="UI/HUD/MarginContainer/GameControls"]
+process_mode = 3
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+texture_normal = ExtResource("6_j856t")
+stretch_mode = 0
 
 [node name="Pause" type="TextureButton" parent="UI/HUD/MarginContainer/GameControls"]
 process_mode = 3
@@ -129,6 +138,9 @@ theme_override_fonts/font = ExtResource("7_jem3k")
 theme_override_font_sizes/font_size = 8
 text = "Dinheiro"
 
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/HUD/MarginContainer"]
+layout_mode = 2
+
 [node name="WaveContainer" type="VBoxContainer" parent="UI/HUD/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
@@ -139,7 +151,7 @@ theme_override_constants/separation = 4
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.431373)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.564706)
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 1
 theme_override_constants/shadow_outline_size = 0
@@ -152,7 +164,7 @@ vertical_alignment = 1
 [node name="WaveCount" type="Label" parent="UI/HUD/MarginContainer/WaveContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.431373)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.564706)
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 1
 theme_override_constants/shadow_outline_size = 0
@@ -162,5 +174,6 @@ text = "01/50"
 horizontal_alignment = 2
 vertical_alignment = 1
 
+[connection signal="pressed" from="UI/HUD/MarginContainer/GameControls/Pause2" to="." method="_on_pause_pressed"]
 [connection signal="pressed" from="UI/HUD/MarginContainer/GameControls/Pause" to="." method="_on_pause_pressed"]
 [connection signal="pressed" from="UI/HUD/MarginContainer/GameControls/Play" to="." method="_on_play_pressed"]

@@ -474,3 +474,10 @@ func _on_pause_pressed() -> void:
 	
 	pause_instance.z_index = 1000
 	get_tree().paused = true
+
+func show_tutorial_help():
+	var scene_handler = get_node("/root/SceneHandler")
+	if scene_handler:
+		scene_handler.show_tutorial_from_game()
+	else:
+		print("SceneHandler não encontrado")

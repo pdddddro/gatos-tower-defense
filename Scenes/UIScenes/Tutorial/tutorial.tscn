@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://dtm2702711ct3"]
+[gd_scene load_steps=17 format=3 uid="uid://dtm2702711ct3"]
 
 [ext_resource type="Texture2D" uid="uid://0byb8mpdvpgy" path="res://Assets/UI/Art/Background.png" id="1_1s4ul"]
+[ext_resource type="Script" uid="uid://tgu4lrdwc6eu" path="res://Scenes/UIScenes/Tutorial/tutorial.gd" id="1_6r8ot"]
 [ext_resource type="Texture2D" uid="uid://co5s87r2b4543" path="res://Assets/UI/Tutorial/PlaceCatTutorial.png" id="1_7h60f"]
 [ext_resource type="FontFile" uid="uid://dypca4yn0mcqr" path="res://Assets/Fonts/retro_gaming/Retro Gaming.ttf" id="2_av4rr"]
 [ext_resource type="FontFile" uid="uid://bxh8oh1s7ap4j" path="res://Assets/Fonts/medodicaregular.otf" id="3_fovud"]
@@ -48,9 +49,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_6r8ot")
 
 [node name="Background" type="TextureRect" parent="."]
-modulate = Color(0, 0, 0, 0.588235)
+modulate = Color(0, 0, 0, 0.717647)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
