@@ -1,0 +1,281 @@
+[gd_scene load_steps=9 format=3 uid="uid://bkfxqaebcx0qo"]
+
+[ext_resource type="Texture2D" uid="uid://0byb8mpdvpgy" path="res://Assets/UI/Art/Background.png" id="1_2go3v"]
+[ext_resource type="Texture2D" uid="uid://dv3g48f7hixr8" path="res://Assets/UI/ui_background.png" id="1_weu3u"]
+[ext_resource type="FontFile" uid="uid://dypca4yn0mcqr" path="res://Assets/Fonts/retro_gaming/Retro Gaming.ttf" id="2_jx0qf"]
+[ext_resource type="FontFile" uid="uid://bxh8oh1s7ap4j" path="res://Assets/Fonts/medodicaregular.otf" id="3_l1ugq"]
+[ext_resource type="Texture2D" uid="uid://c7pqt3atbvqu3" path="res://Assets/UI/Photo/pedropixel.png" id="4_jx0qf"]
+[ext_resource type="Texture2D" uid="uid://xvjesvsh2vh8" path="res://Assets/Icons/Social Media/Insta.png" id="5_0hvsp"]
+[ext_resource type="Texture2D" uid="uid://cn0qpqwv6feij" path="res://Assets/Icons/Social Media/Linkedin.png" id="6_0l6uu"]
+[ext_resource type="Texture2D" uid="uid://ccxj37gq2soj7" path="res://Assets/UI/Photo/lumapixel.png" id="7_0l6uu"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="."]
+modulate = Color(0, 0, 0, 0.588235)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_2go3v")
+
+[node name="BestCat" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -146.0
+offset_top = -146.0
+offset_right = 146.0
+offset_bottom = 146.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+alignment = 2
+
+[node name="Background" type="NinePatchRect" parent="BestCat"]
+texture_filter = 1
+clip_contents = true
+custom_minimum_size = Vector2(292, 234)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+texture = ExtResource("1_weu3u")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="MarginContainer" type="MarginContainer" parent="BestCat/Background"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="BestCat/Background/MarginContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="Content" type="VBoxContainer" parent="BestCat/Background/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 16
+
+[node name="Text" type="VBoxContainer" parent="BestCat/Background/MarginContainer/ScrollContainer/Content"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="BestCat/Background/MarginContainer/ScrollContainer/Content/Text"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_constants/line_spacing = -2
+theme_override_fonts/font = ExtResource("2_jx0qf")
+theme_override_font_sizes/font_size = 11
+text = "Sobre o Projeto G.A.T.I.N.H.O.S."
+autowrap_mode = 2
+
+[node name="Text" type="Label" parent="BestCat/Background/MarginContainer/ScrollContainer/Content/Text"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("3_l1ugq")
+theme_override_font_sizes/font_size = 16
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris elementum, elit quis rhoncus fringilla, diam erat fermentum libero, ut rutrum tellus ante ac magna. Quisque quis mauris sed ligula fermentum ullamcorper. Nulla tempus, risus sed ornare accumsan, neque eros dapibus mauris, id vestibulum metus neque sit amet dui. "
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="TeamMembers" type="VBoxContainer" parent="BestCat/Background/MarginContainer/ScrollContainer/Content"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="BestCat/Background/MarginContainer/ScrollContainer/Content/TeamMembers"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("2_jx0qf")
+theme_override_font_sizes/font_size = 11
+text = "Jogo feito por:"
+
+[node name="TeamMember" type="HBoxContainer" parent="BestCat/Background/MarginContainer/ScrollContainer/Content/TeamMembers"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Photo" type="TextureRect" parent="BestCat/Background/MarginContainer/ScrollContainer/Content/TeamMembers/TeamMember"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("4_jx0qf")
+
+[node name="Text" type="VBoxContainer" parent="BestCat/Background/MarginContainer/ScrollContainer/Content/TeamMembers/TeamMember"]
+layout_mode = 2
+alignment = 1
+
+[node name="Name" type="Label" parent="BestCat/Background/MarginContainer/ScrollContainer/Content/TeamMembers/TeamMember/Text"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("2_jx0qf")
+theme_override_font_sizes/font_size = 11
+text = "Pedro Lima"
+
+[node name="CatName" type="Label" parent="BestCat/Background/MarginContainer/ScrollContainer/Content/TeamMembers/TeamMember/Text"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("3_l1ugq")
+theme_override_font_sizes/font_size = 16
+text = "Designer e Programador"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BestCat/Background/MarginContainer/ScrollContainer/Content/TeamMembers/TeamMember/Text"]
+layout_mode = 2
+
+[node name="Instagram" type="HBoxContainer" parent="BestCat/Background/MarginContainer/ScrollContainer/Content/TeamMembers/TeamMember/Text/HBoxContainer"]
+layout_mode = 2
+
+[node name="Logo" type="TextureRect" parent="BestCat/Background/MarginContainer/ScrollContainer/Content/TeamMembers/TeamMember/Text/HBoxContainer/Instagram"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("5_0hvsp")
+
+[node name="Handle" type="Label" parent="BestCat/Background/MarginContainer/ScrollContainer/Content/TeamMembers/TeamMember/Text/HBoxContainer/Instagram"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
+theme_override_fonts/font = ExtResource("3_l1ugq")
+theme_override_font_sizes/font_size = 16
+text = "@pdrohls"
+vertical_alignment = 1
+
+[node name="LinkedIn" type="HBoxContainer" parent="BestCat/Background/MarginContainer/ScrollContainer/Content/TeamMembers/TeamMember/Text/HBoxContainer"]
+layout_mode = 2
+
+[node name="Logo" type="TextureRect" parent="BestCat/Background/MarginContainer/ScrollContainer/Content/TeamMembers/TeamMember/Text/HBoxContainer/LinkedIn"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("6_0l6uu")
+
+[node name="Handle" type="Label" parent="BestCat/Background/MarginContainer/ScrollContainer/Content/TeamMembers/TeamMember/Text/HBoxContainer/LinkedIn"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
+theme_override_fonts/font = ExtResource("3_l1ugq")
+theme_override_font_sizes/font_size = 16
+text = "pdrohls"
+vertical_alignment = 1
+
+[node name="TeamMember2" type="HBoxContainer" parent="BestCat/Background/MarginContainer/ScrollContainer/Content/TeamMembers"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Photo" type="TextureRect" parent="BestCat/Background/MarginContainer/ScrollContainer/Content/TeamMembers/TeamMember2"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("7_0l6uu")
+
+[node name="Text" type="VBoxContainer" parent="BestCat/Background/MarginContainer/ScrollContainer/Content/TeamMembers/TeamMember2"]
+layout_mode = 2
+alignment = 1
+
+[node name="Name" type="Label" parent="BestCat/Background/MarginContainer/ScrollContainer/Content/TeamMembers/TeamMember2/Text"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("2_jx0qf")
+theme_override_font_sizes/font_size = 11
+text = "Luma Fialho"
+
+[node name="CatName" type="Label" parent="BestCat/Background/MarginContainer/ScrollContainer/Content/TeamMembers/TeamMember2/Text"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("3_l1ugq")
+theme_override_font_sizes/font_size = 16
+text = "Designer"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BestCat/Background/MarginContainer/ScrollContainer/Content/TeamMembers/TeamMember2/Text"]
+layout_mode = 2
+
+[node name="Instagram" type="HBoxContainer" parent="BestCat/Background/MarginContainer/ScrollContainer/Content/TeamMembers/TeamMember2/Text/HBoxContainer"]
+layout_mode = 2
+
+[node name="Logo" type="TextureRect" parent="BestCat/Background/MarginContainer/ScrollContainer/Content/TeamMembers/TeamMember2/Text/HBoxContainer/Instagram"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("5_0hvsp")
+
+[node name="Handle" type="Label" parent="BestCat/Background/MarginContainer/ScrollContainer/Content/TeamMembers/TeamMember2/Text/HBoxContainer/Instagram"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
+theme_override_fonts/font = ExtResource("3_l1ugq")
+theme_override_font_sizes/font_size = 16
+text = "@eululisss"
+vertical_alignment = 1
+
+[node name="LinkedIn" type="HBoxContainer" parent="BestCat/Background/MarginContainer/ScrollContainer/Content/TeamMembers/TeamMember2/Text/HBoxContainer"]
+layout_mode = 2
+
+[node name="Logo" type="TextureRect" parent="BestCat/Background/MarginContainer/ScrollContainer/Content/TeamMembers/TeamMember2/Text/HBoxContainer/LinkedIn"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("6_0l6uu")
+
+[node name="Handle" type="Label" parent="BestCat/Background/MarginContainer/ScrollContainer/Content/TeamMembers/TeamMember2/Text/HBoxContainer/LinkedIn"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
+theme_override_fonts/font = ExtResource("3_l1ugq")
+theme_override_font_sizes/font_size = 16
+text = "sla"
+vertical_alignment = 1

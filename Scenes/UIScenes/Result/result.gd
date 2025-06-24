@@ -37,7 +37,7 @@ func _on_main_action_pressed() -> void:
 		best_cat.visible = true
 		
 		screen_step += 1
-		await Analytics.handle_exit()
+		#await Analytics.handle_exit()
 		return
 		
 	if screen_step == 1:
