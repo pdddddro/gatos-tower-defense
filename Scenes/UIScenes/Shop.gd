@@ -52,6 +52,8 @@ func _ready():
 	
 	disable_sell_n_details_buttons()
 	
+	update_cat_shop_prices()
+	
 	sell_cat_button.pressed.connect(_on_sell_cat_button_pressed)
 	
 
@@ -142,7 +144,6 @@ func open_cat_info():
 
 @onready var cat_sell_price = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/Cat/Sell/HBoxContainer/SellPrice
 
-## Falta adicionar o enemies_defeated e fish_collected
 func update_cat_info(cat_type):
 	print("Informações Atualizadas")
 	if cat_type and current_cat_reference:
@@ -183,6 +184,33 @@ func format_number_k(value: float) -> String:
 		return ("%.1fk" % k_value).replace(".0k", "k")
 	else:
 		return str(int(value))
+
+func update_cat_shop_prices():
+	# Acessa o CatList através do caminho correto da estrutura
+	var cat_list_node = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList
+	
+	# Para cada gato na loja
+	for child in cat_list_node.get_children():
+		# Verifica se tem a estrutura VBoxContainer/HBoxContainer/CatPrice
+		var vbox = child.get_node_or_null("VBoxContainer")
+		if vbox:
+			var hbox = vbox.get_node_or_null("HBoxContainer")
+			if hbox:
+				var price_label = hbox.get_node_or_null("CatPrice")
+				if price_label:
+					# Usa o nome do nó como tipo do gato
+					var cat_type = child.name
+					if GameData.cat_data.has(cat_type):
+						price_label.text = str(GameData.cat_data[cat_type]["cost"])
+						print("Preço atualizado para ", cat_type, ": ", GameData.cat_data[cat_type]["cost"])
+					else:
+						print("ERRO: Gato não encontrado no GameData: ", cat_type)
+				else:
+					print("ERRO: CatPrice não encontrado para: ", child.name)
+			else:
+				print("ERRO: HBoxContainer não encontrado para: ", child.name)
+		else:
+			print("ERRO: VBoxContainer não encontrado para: ", child.name)
 
 ### Cat Cards
 @onready var card_slot_1 = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/EquippedCards/Cards/Card1
@@ -373,29 +401,26 @@ var selected_inventory_card: TextureButton = null
 func _on_inventory_card_selected(card_node):
 	# Se a carta clicada já está selecionada, desseleciona
 	if selected_inventory_card == card_node:
-		card_node.texture_normal = card_node.normal_texture  # Volta para textura padrão
+		card_node.texture_normal = card_node.normal_texture # Usa a propriedade exportada
 		selected_inventory_card = null
 		print("Carta desselecionada: ", card_node.get_node("MarginContainer/VBoxContainer/CardName").text)
-		
 		disable_sell_n_details_buttons()
-		
 	else:
 		# Desmarca a carta anterior, se houver
 		if selected_inventory_card and is_instance_valid(selected_inventory_card):
-			selected_inventory_card.texture_normal = selected_inventory_card.normal_texture  # Remove destaque da anterior
-
+			selected_inventory_card.texture_normal = selected_inventory_card.normal_texture # Usa a propriedade exportada
+		
 		# Marca a nova carta selecionada
 		selected_inventory_card = card_node
-		selected_inventory_card.texture_normal = selected_inventory_card.selected_texture  # Aplica textura de selecionado
+		selected_inventory_card.texture_normal = selected_inventory_card.selected_texture # Usa a propriedade exportada
 		
 		var card_data = card_node.get_meta("card_data")
 		if card_data and "sell_value" in card_data:
 			sell_price.text = str(card_data["sell_value"])
 		else:
-			sell_price.text = "0"  # Valor padrão se não houver sell_value
-			
-		enable_sell_n_details_buttons()
+			sell_price.text = "0" # Valor padrão se não houver sell_value
 		
+		enable_sell_n_details_buttons()
 		print("Carta selecionada: ", selected_inventory_card.get_node("MarginContainer/VBoxContainer/CardName").text)
 
 func setup_inventory_card(card_node, card_data):

@@ -32,8 +32,8 @@ func setup_tutorial_pages():
 			"steps": [
 				"Seu objetivo é impedir que os Slimes cheguem no final do caminho",
 				"1. Posicione os seus Gatinhos",
-				"2. Compre cartinhas com peixe para melhora-los",
-				"3. Vença ao terminar todas as rodadas... Mas cuidado! Caso muitos slimes chegue no final do trajeto, você perde!"
+				"2. Compre cartinhas com peixe para melhorá-los",
+				"3. Vença ao terminar todas as rodadas... Mas cuidado! Caso muitos slimes cheguem no final do trajeto, você perde!"
 			],
 			"animation": "Tips"
 		}
