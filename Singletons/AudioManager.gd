@@ -46,10 +46,11 @@ func play_sfx(sound_path: String, volume_db: float = 0.0, pitch_variation: float
 	
 	var player = sfx_players[current_sfx_index]
 	player.stream = load(sound_path)
-	player.volume_db = volume_db
+	player.volume_db = volume_db  # Agora usa o volume do GameData
 	
-	var min_pitch = 0.95 - pitch_variation
-	var max_pitch = 1.1 + pitch_variation
+	# Variação de pitch
+	var min_pitch = 1.0 - pitch_variation
+	var max_pitch = 1.0 + pitch_variation
 	player.pitch_scale = randf_range(min_pitch, max_pitch)
 	
 	player.play()

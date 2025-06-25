@@ -20,6 +20,12 @@ func _ready() -> void:
 	previous_position = position
 	init_status()
 	add_to_group("enemies")
+	
+	previous_position = position
+	last_position = position
+	init_status()
+	add_to_group("enemies")
+	setup_walking_sound()
 
 func init_status():
 	speed = GameData.enemies_data[type]["speed"]
@@ -28,20 +34,29 @@ func init_status():
 
 func _physics_process(delta: float) -> void:
 	var current_position = position
-	var new_position = position
+	
+	# Calcular velocidade de movimento
+	var movement_speed = current_position.distance_to(last_position) / delta
+	last_position = current_position
+	
+	# Atualizar direção e animação
 	var direction = (position - previous_position).normalized()
-	
-	previous_position = new_position
-	
+	previous_position = current_position
 	update_animation(direction)
-
+	
+	# Controlar som baseado na velocidade
+	if movement_speed > movement_threshold and !dead:
+		start_walking_sound()
+	else:
+		stop_walking_sound()
+	
+	# Lógica existente
 	if progress_ratio == 1.0 and !dead:
 		emit_signal("base_damage", enemy_damage)
-
 		if dead == false:
 			emit_signal("enemy_escaped", type)
-			dead = true
-			queue_free()
+		dead = true
+		queue_free()
 	
 	if dead == false:
 		move(delta)
@@ -78,6 +93,7 @@ func on_hit(damage, source_cat = null):
 		
 		if source_cat and is_instance_valid(source_cat):
 			GameData.play_sound("enemies", type, "death")
+			stop_walking_sound()
 			source_cat.add_damage(damage)
 			source_cat.add_enemy_defeated()
 			var fish_reward = GameData.enemies_data[type]["fish_reward"]
@@ -98,4 +114,40 @@ func on_hit(damage, source_cat = null):
 		return true
 		
 	return false
+
+var is_walking: bool = false
+var walk_sound_timer: Timer
+var walk_sound_delay: float = 0.4  # Delay entre repetições
+var last_position: Vector2
+var movement_threshold: float = 1.0  # Velocidade mínima para 
+
+func setup_walking_sound():
+	# Criar timer para controlar o delay entre sons
+	walk_sound_timer = Timer.new()
+	walk_sound_timer.wait_time = walk_sound_delay
+	walk_sound_timer.one_shot = true
+	walk_sound_timer.timeout.connect(_on_walk_sound_timer_timeout)
+	add_child(walk_sound_timer)
+
+func start_walking_sound():
+	if not is_walking:
+		is_walking = true
+		play_walking_sound()
+
+func stop_walking_sound():
+	if is_walking:
+		is_walking = false
+		walk_sound_timer.stop()
+
+func play_walking_sound():
+	if is_walking and not dead:
+		# Usar o sistema GameData existente
+		GameData.play_sound("enemies", type, "walk")
 		
+		# Iniciar timer para próxima repetição
+		walk_sound_timer.start()
+
+func _on_walk_sound_timer_timeout():
+	# Repetir o som se ainda estiver caminhando
+	if is_walking and not dead:
+		play_walking_sound()

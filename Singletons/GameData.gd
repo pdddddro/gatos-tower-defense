@@ -592,73 +592,75 @@ var music_data = 	{
 var sound_data = {
 	"enemies": {
 		"Papel": {
-			"death": "res://Audio/Enemies/Papel/Death.ogg",
-			"walking": ""
+			"death": {"path": "res://Audio/Enemies/Papel/Death.ogg", "volume": -5.0},
+			"walk": {"path": "res://Audio/Enemies/Papel/Walk.ogg", "volume": -8.0}
 		},
 		"Chiclete": {
-			"death": "res://Audio/Enemies/Chiclete/439186__fourthwoods__pop-5.ogg",
-			"walking": ""
+			"death": {"path": "res://Audio/Enemies/Chiclete/439186__fourthwoods__pop-5.ogg", "volume": -3.0},
+			"walk": {"path": "", "volume": -6.0}
 		},
 		"Plastico": {
-			"death": "",
-			"walking": ""
+			"death": {"path": "", "volume": -4.0},
+			"walk": {"path": "", "volume": -7.0}
 		},
 		"Metal": {
-			"death": "",
-			"walking": ""
+			"death": {"path": "", "volume": -2.0},
+			"walk": {"path": "", "volume": -5.0}
 		},
 		"Pilha": {
-			"death": "",
-			"walking": ""
+			"death": {"path": "", "volume": -3.0},
+			"walk": {"path": "", "volume": -6.0}
 		},
 		"Radioativo": {
-			"death": "",
-			"walking": ""
+			"death": {"path": "", "volume": -1.0},
+			"walk": {"path": "", "volume": -4.0}
 		},
 		"BossRadioativo": {
-			"death": "",
-			"walking": ""
+			"death": {"path": "", "volume": 2.0},
+			"walk": {"path": "", "volume": -2.0}
 		},
 		"BossPneu": {
-			"death": "",
-			"walking": ""
+			"death": {"path": "", "volume": 1.0},
+			"walk": {"path": "", "volume": -3.0}
 		}
 	},
 	"cats": {
 		"Chicao": {
-			"attack": "",
-			"place": ""
+			"attack": {"path": "", "volume": -4.0},
+			"place": {"path": "", "volume": -6.0}
 		},
 		"Pele": {
-			"attack": "res://Assets/Audio/SFX/Characters/Cats/pele_attack.wav",
-			"place": ""
+			"attack": {"path": "res://Assets/Audio/SFX/Characters/Cats/pele_attack.wav", "volume": -2.0},
+			"place": {"path": "", "volume": -5.0}
 		},
 		"Nino": {
-			"attack": "res://Audio/Cats/Nino/Attack.ogg",
-			"place": ""
+			"attack": {"path": "res://Audio/Cats/Nino/Attack.ogg", "volume": -3.0},
+			"place": {"path": "", "volume": -6.0}
 		},
 		"Cartolina": {
-			"attack": "res://Audio/Cats/Cartolina/Attack.ogg",
-			"place": ""
+			"attack": {"path": "res://Audio/Cats/Cartolina/Attack.ogg", "volume": -2.5},
+			"place": {"path": "", "volume": -5.5}
 		},
 		"Nut": {
-			"attack": "",
-			"place": ""
+			"attack": {"path": "", "volume": -3.5},
+			"place": {"path": "", "volume": -6.5}
 		}
 	},
 	"ui": {
-		"button_click": "res://Audio/UI/593955__mincedbeats__mouse-button-click.ogg",
-		"button_hover": "res://Audio/UI/166186__drminky__menu-screen-mouse-over.ogg",
-		"card_equip": "res://Assets/Audio/SFX/UI/card_equip.wav",
-		"purchase": "res://Assets/Audio/SFX/UI/purchase.wav",
-		"error": "res://Assets/Audio/SFX/UI/error.wav"
+		"button": {
+			"click": {"path": "res://Audio/UI/593955__mincedbeats__mouse-button-click.ogg", "volume": -8.0},
+			"hover": {"path": "res://Audio/UI/166186__drminky__menu-screen-mouse-over.ogg", "volume": -12.0},	
+		},
+		"card_equip": {"path": "res://Assets/Audio/SFX/UI/card_equip.wav", "volume": -4.0},
+		"purchase": {"path": "res://Assets/Audio/SFX/UI/purchase.wav", "volume": -3.0},
+		"error": {"path": "res://Assets/Audio/SFX/UI/error.wav", "volume": -2.0}
 	},
 	"game": {
-		"wave_start": "res://Assets/Audio/SFX/Game/wave_start.wav",
-		"wave_complete": "res://Assets/Audio/SFX/Game/wave_complete.wav",
-		"game_over": "res://Assets/Audio/SFX/Game/game_over.wav",
-		"victory": "res://Assets/Audio/SFX/Game/victory.wav"
-	},
+		"wave_start": {"path": "res://Assets/Audio/SFX/Game/wave_start.wav", "volume": -5.0},
+		"wave_complete": {"path": "res://Assets/Audio/SFX/Game/wave_complete.wav", "volume": -3.0},
+		"game_over": {"path": "res://Assets/Audio/SFX/Game/game_over.wav", "volume": -1.0},
+		"victory": {"path": "res://Assets/Audio/SFX/Game/victory.wav", "volume": 0.0}
+	}
 }
 
 func change_background_music(music_type: String):
@@ -670,13 +672,26 @@ func change_background_music(music_type: String):
 # Função para tocar sons
 func play_sound(category: String, type: String, action: String):
 	if sound_data.has(category) and sound_data[category].has(type) and sound_data[category][type].has(action):
-		var sound_path = sound_data[category][type][action]
-		AudioManager.play_sfx(sound_path)
-		return true
+		var sound_info = sound_data[category][type][action]
+		
+		# Verifica se é o formato novo (dicionário) ou antigo (string)
+		if typeof(sound_info) == TYPE_DICTIONARY:
+			var sound_path = sound_info.get("path", "")
+			var volume = sound_info.get("volume", 0.0)
+			
+			if sound_path != "":
+				AudioManager.play_sfx(sound_path, volume)
+				return true
+			else:
+				print("Caminho de som vazio: ", category, "/", type, "/", action)
+				return false
+		else:
+			# Compatibilidade com formato antigo (string direta)
+			AudioManager.play_sfx(sound_info)
+			return true
 	else:
 		print("Som não encontrado: ", category, "/", type, "/", action)
 		return false
-
 ## round
 ## Rich Text Label
 ## [b][font_size=11]Texto[/font_size][/b]  - Font Retro Gaming 
