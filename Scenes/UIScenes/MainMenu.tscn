@@ -62,6 +62,17 @@ text = "Próximas Atualizações "
 vertical_alignment = 1
 autowrap_mode = 2
 
+[node name="Label5" type="Label" parent="Margin/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.667849, 0.199668, 0.516046, 1)
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("4_mfebp")
+theme_override_font_sizes/font_size = 16
+text = "Melhorias no Balanceamento"
+vertical_alignment = 1
+autowrap_mode = 2
+
 [node name="Label2" type="Label" parent="Margin/VBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
@@ -84,17 +95,6 @@ text = "Ranking"
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Label5" type="Label" parent="Margin/VBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(0.667849, 0.199668, 0.516046, 1)
-theme_override_constants/line_spacing = 0
-theme_override_fonts/font = ExtResource("4_mfebp")
-theme_override_font_sizes/font_size = 16
-text = "Melhorias no Balanceamento"
-vertical_alignment = 1
-autowrap_mode = 2
-
 [node name="Label3" type="Label" parent="Margin/VBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
@@ -107,18 +107,19 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="Panel" type="TextureRect" parent="Margin"]
-custom_minimum_size = Vector2(116, 148)
+custom_minimum_size = Vector2(156, 148)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 theme = SubResource("Theme_fdvul")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Margin/Panel"]
-layout_mode = 2
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 108.0
-offset_bottom = 140.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 
@@ -128,7 +129,7 @@ theme_override_colors/font_color = Color(0.635294, 0.184314, 0.486275, 1)
 theme_override_constants/line_spacing = 0
 theme_override_fonts/font = ExtResource("2_nmscp")
 theme_override_font_sizes/font_size = 11
-text = "Doe para os gatos da EBA"
+text = "Doe para os  Gatinhos da Escola de Belas Artes"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -149,7 +150,8 @@ theme_override_colors/font_color = Color(0.633675, 0.18596, 0.487764, 1)
 theme_override_constants/line_spacing = 0
 theme_override_fonts/font = ExtResource("4_mfebp")
 theme_override_font_sizes/font_size = 16
-text = "Chave PIX: 999.999.999-99"
+text = "Chave PIX: 
+999.999.999-99"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2

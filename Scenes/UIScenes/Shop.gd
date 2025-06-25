@@ -165,7 +165,15 @@ func update_cat_info(cat_type):
 		var sell_value = int(cat_cost * 0.5)
 		cat_sell_price.text = str(sell_value)
 		
-		current_cat_reference.queue_redraw()
+		var new_range = current_cat_reference.individual_stats["range"]
+		
+		# Atualiza a colisão do range
+		if current_cat_reference.has_node("Range/CollisionShape2D"):
+			current_cat_reference.get_node("Range/CollisionShape2D").get_shape().radius = 0.5 * new_range
+		
+		# Força a atualização visual do range se estiver sendo mostrado
+		if current_cat_reference.showing_range:
+			current_cat_reference.queue_redraw()
 		
 		update_equipped_cards_ui(current_cat_reference.equipped_cards)
 		
@@ -192,6 +200,11 @@ func set_current_cat(cat_node):
 	
 	if cat_node:
 		call_deferred("update_cat_info", cat_node.type)
+		
+		if cat_node.showing_range:
+			var new_range = cat_node.individual_stats["range"]
+			if cat_node.has_node("Range/CollisionShape2D"):
+				cat_node.queue_redraw()
 
 	print("Atualizando UI com ", cat_node.equipped_cards.size(), " cartas")
 	update_equipped_cards_ui(cat_node.equipped_cards)

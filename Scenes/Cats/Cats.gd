@@ -77,7 +77,7 @@ var showing_range = false
 func _draw():
 	# Desenha o range apenas se deve mostrar e o gato está construído
 	if showing_range and built:
-		var radius = GameData.cat_data[type]["range"]/2
+		var radius = individual_stats["range"]/2
 		draw_circle(Vector2.ZERO, radius, Color(0, 0.7, 1, 0.3))  # Círculo preenchido azul semi-transparente
 		draw_arc(Vector2.ZERO, radius, 0, TAU, 64, Color(0, 0.7, 1, 0.8), 1)  # Borda azul
 
@@ -165,6 +165,8 @@ func apply_card_effect(effect_data: Dictionary):
 			# Atualiza o range visual usando stats individuais
 			if built:
 				get_node("Range/CollisionShape2D").get_shape().radius = 0.5 * individual_stats["range"]
+				
+			queue_redraw()
 		
 		"target_expansion":
 			var new_targets = effect_data.get("target_types", [])
@@ -204,7 +206,7 @@ func turn():
 		update_animation(direction)
 	else:
 		# Comportamento quando não há inimigo válido
-		update_animation(Vector2(1, 0))
+		update_animation(direction)
 
 var last_flip_h = false
 

@@ -12,10 +12,10 @@ var cat_data = { ## "Plástico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 	"Chicao": { ## Chicão não ataca slimes pilha pra não dar ainda mais energia pra eles
 		"name": "Chicao",
 		"sprite": "res://Assets/Cats/Chicao/Chicao.png",
-		"damage": 15,
+		"damage": 30,
 		"atkcooldown": 2,
-		"range": 150,
-		"cost": 230,
+		"range": 160,
+		"cost": 50,
 		"critical_chance": 0,
 		"target_types": ["Plástico", "Metal", "Chiclete", "BossRadioativo", "Papel", "Radioativo"]
 	},
@@ -23,20 +23,20 @@ var cat_data = { ## "Plástico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 	"Pele": { ## Apesar de afiada, as garras de Pelé não conseguem destruir o Slime Metal
 		"name": "Pele",
 		"sprite": "res://Assets/Cats/Pele/Pele.png",
-		"damage": 7.5,
-		"atkcooldown": .5,
-		"range": 88,
+		"damage": 15,
+		"atkcooldown": 1.5,
+		"range": 96,
 		"cost": 250,
-		"critical_chance": 1,
+		"critical_chance": 0,
 		"target_types": ["Plástico", "Pilha", "Chiclete", "BossRadioativo", "Papel", "Radioativo"]
 	},
 	
 	"Nino": { ## Nino não consegue ver o slime de plástico com um olho só por conta da sua trasparência
 		"name": "Nino",
 		"sprite": "res://Assets/Cats/Nino/Nino.png",
-		"damage": 15,
-		"atkcooldown": 2,
-		"range": 150,
+		"damage": 35,
+		"atkcooldown": 2.5,
+		"range": 160,
 		"cost": 200,
 		"critical_chance": 0,
 		"target_types": ["Metal", "Chiclete", "Pilha", "BossRadioativo", "Papel", "Radioativo"]
@@ -45,9 +45,9 @@ var cat_data = { ## "Plástico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 	"Cartolina": { ## Cartolina não bate no slime de chiclete, seria horrivel ter chiclete em seus pelos
 		"name": "Cartolina",
 		"sprite": "res://Assets/Cats/Cartolina/Cartolina.png",
-		"damage": 10,
-		"atkcooldown": 1,
-		"range": 108,
+		"damage": 20,
+		"atkcooldown": 1.8,
+		"range": 96,
 		"cost": 200,
 		"critical_chance": 0,
 		"target_types": ["Plástico", "Metal", "Pilha", "BossRadioativo", "Papel", "Radioativo"]
@@ -56,9 +56,9 @@ var cat_data = { ## "Plástico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 	"Nut": { ## Os novelos de lã de nut não passam de carinhos no slime metal, então ele nem gasta sua lã com ele
 		"name": "Nut",
 		"sprite": "res://Assets/Cats/Nut/Nut.png",
-		"damage": 7.5,
-		"atkcooldown": 1.5,
-		"range": 170,
+		"damage": 15,
+		"atkcooldown": 2,
+		"range": 128,
 		"cost": 250,
 		"critical_chance": 0,
 		"target_types": ["Plástico", "Pilha", "Chiclete", "BossRadioativo", "Papel", "Radioativo"]
@@ -78,47 +78,53 @@ func update_fish_quantity(amount: int):
 
 ## Enemies
 var enemies_data = {
-	"Plastico": {
-		"damage": 8,
-		"speed": 50,
-		"hp": 35,
-		"fish_reward": 13
+	"Papel": {
+		"damage": 5,
+		"speed": 60,
+		"hp": 15,
+		"fish_reward": 8
 	},
 	"Chiclete": {
-		"damage": 4,
-		"speed": 40,
-		"hp": 31,
-		"fish_reward": 10
+		"damage": 8,
+		"speed": 48,
+		"hp": 35,
+		"fish_reward": 12
+	},
+	"Plastico": {
+		"damage": 15,
+		"speed": 64,
+		"hp": 60,
+		"fish_reward": 18
 	},
 	"Metal": {
-		"damage": 20,
-		"speed": 45,
-		"hp": 50,
-		"fish_reward": 15
+		"damage": 15,
+		"speed": 40,
+		"hp": 80,
+		"fish_reward": 25
 	},
 	"Pilha": {
-		"damage": 10,
-		"speed": 90,
-		"hp": 50,
-		"fish_reward": 10
+		"damage": 20,
+		"speed": 88,
+		"hp": 45,
+		"fish_reward": 30
 	},
 	"Radioativo": {
-		"damage": 30,
-		"speed": 50,
-		"hp": 31,
-		"fish_reward": 17
-	},
-	"Papel": {
-		"damage": 6,
-		"speed": 50,
-		"hp": 15,
-		"fish_reward": 7
+		"damage": 25,
+		"speed": 56,
+		"hp": 120,
+		"fish_reward": 40
 	},
 	"BossRadioativo": {
 		"damage": 80,
-		"speed": 35,
+		"speed": 32,
+		"hp": 500,
+		"fish_reward": 200
+	},
+	"BossPneu": {
+		"damage": 80,
+		"speed": 68,
 		"hp": 300,
-		"fish_reward": 250
+		"fish_reward": 150
 	}
 }
 
@@ -132,132 +138,836 @@ var enemies_data = {
 ## [tornado radius=5 freq=10]Texto ondulado[/tornado]
 ## [color=#hex]trocar a cor[/color]
 
+		#"text_box": {
+			#"show": true,
+			#"title": "Prontos para a batalha gatinhos?",
+			#"message": "Slimes Chiclete à vista! Eles grudam no chão e na natureza. Cartolina nem chega perto deles... imagina se gruda no rabo?"
+		#}
+
 var waves = {
-	"wave1": { ## Bem vindo
+	"wave1": {
 		"enemies": [
-			["Papel", 2],
-			["Papel", 2],
-			["Papel", 2],
-			["Papel", 2],
+			["Papel", 1.5],
+			["Papel", 1.5],
+			["Papel", 1.5],
+			["Papel", 1.5],
+			["Papel", 1.5],
 		],
-		"text_box": {
-			"show": true,
-			"title": "Prontos para a batalha gatinhos?",
-			"message": "Slimes Chiclete à vista! Eles grudam no chão e na natureza. Cartolina nem chega perto deles... imagina se gruda no rabo?"
-		}
 	},
-	"wave2": { ## Frase sobre estar vindo MUITO papel
+	
+	"wave2": {
 		"enemies": [
-			["Papel", .8],
-			["Papel", .8],
-			["Papel", .8],
-			["Papel", .8],
-			["Papel", .8],
-			["Papel", .8],
-			["Papel", .8],
-		]
+			["Papel", 1.2],
+			["Papel", 1.2],
+			["Papel", 1.2],
+			["Papel", 1.2],
+			["Papel", 2],
+			["Papel", 1.2],
+			["Papel", 1.2],
+			["Papel", 1.2],
+			["Papel", 1.2],
+		],
 	},
+	
 	"wave3": {
 		"enemies": [
-			["Papel", .2],
-			["Papel", .2],
-			["Papel", 4],
-			["Papel", .2],
-			["Papel", .2],
-			["Papel", 4],
-			["Papel", .2],
-			["Papel", .2],
-			["Papel", 4],
-			["Papel", .2],
-			["Papel", .2],
-		]
-	},
-	"wave4": { 
-		"enemies": [
-			["Papel", .5],
-			["Papel", .5],
-			["Papel", .5],
-			["Papel", .5],
-			["Papel", .5],
+			["Papel", .8],
+			["Papel", .8],
+			["Papel", .8],
+			["Papel", .8],
+			["Papel", .8],
+			["Papel", 2],
+			["Papel", .8],
+			["Papel", .8],
+			["Papel", .8],
+			["Papel", .8],
+			["Papel", .8],
+			["Papel", .8],
+			["Papel", .8],
+			["Papel", 2],
 			["Papel", 3],
-			["Papel", .5],
-			["Papel", .5],
-			["Papel", .5],
-			["Papel", .5],
-			["Papel", .5],
-			["Papel", .5],
-			["Chiclete", 1],
-			["Papel", 5],
-			["Papel", .5],
-			["Papel", .5],
-			["Papel", .5],
-			["Papel", .5],
-			["Papel", .5],
-			["Papel", .5],
-			["Papel", .5],
-			["Papel", .5],
-			["Papel", .5],
-			["Papel", .5],
-		],
-		"text_box": {
-			"show": true,
-			"title": "E não é que eles grudam mesmo?",
-			"message": ""
-		}
-	},
-	"wave5": { ## Frase sobre o chiclete
-		"enemies": [
-			["Papel", .5],
-			["Papel", .5],
-			["Chiclete", 1],
-			["Chiclete", .5],
-			["Papel", 2],
-			["Papel", .5],
-			["Chiclete", 1],
-			["Chiclete", .5],
-			["Papel", 2],
-			["Papel", .5],
-			["Chiclete", 1],
-			["Chiclete", .5],
-			["Papel", 2],
-			["Papel", .5],
-			["Plastico", 6]
-		],
-		"text_box": {
-			"show": true,
-			"title": "Esse slime de metal?",
-			"message": "Parece inofensivo, mas o alumínio demora até 500 anos pra sumir da natureza!"
-		}
-	},
 
-	# FASE 2: DESENVOLVIMENTO (Ondas 6-10)
-	"wave6": {
+		],
+	},
+	
+	"wave4": {
 		"enemies": [
-			["Chiclete", .3],
-			["Chiclete", .3],
-			["Chiclete", .3],
-			["Chiclete", .3],
-			["Chiclete", .3],
-			["Chiclete", .3],
-			["Papel", 2],
 			["Papel", 1],
+			["Papel", 0.5],
+			["Papel", 0.5],
+			["Papel", 0.5],
+			["Papel", 0.5],
+			["Papel", 0.5],
+			["Papel", 0.5],
+			["Papel", 0.5],
+			["Chiclete", .2],
+			["Papel", .5],
+			["Papel", 0.5],
+			["Papel", .5],
+			["Papel", .5],
+		],
+	},
+	
+	"wave5": { ## Introduz chiclete
+		"enemies": [
+			["Papel", 1.5],
+			["Papel", 1.2],
+			["Chiclete", 3],
 			["Papel", 1],
+			["Papel", 1.2],
+			["Chiclete", 2.8],
+			["Papel", 1.5],
+			["Papel", 1.8],
+		],
+	},
+	
+	"wave6": { ## Chiclete com papel
+		"enemies": [
+			["Chiclete", 2],
 			["Papel", 1],
+			["Papel", 0.8],
+			["Chiclete", 1.8],
+			["Papel", 0.8],
 			["Papel", 1],
+			["Chiclete", 2.2],
+			["Papel", 1.2],
 			["Papel", 1],
-			["Chiclete", .3],
-			["Papel", .1],
-			["Chiclete", .3],
-			["Papel", .1],
-			["Chiclete", .3],
-			["Papel", .1],
-			["Chiclete", .3],
-			["Papel", .1],
-			["Chiclete", .3],
-			["Papel", .1],
-			["Chiclete", .3],
-			["Papel", .1],
-		]
+			["Chiclete", 2.5],
+		],
+	},
+	
+	"wave7": { ## Mais chiclete
+		"enemies": [
+			["Papel", 0.8],
+			["Chiclete", 1.5],
+			["Papel", 0.6],
+			["Chiclete", 1.2],
+			["Papel", 0.8],
+			["Chiclete", 1.5],
+			["Papel", 0.6],
+			["Chiclete", 1.8],
+			["Papel", 1],
+			["Chiclete", 2],
+			["Papel", 1.2],
+		],
+	},
+	
+	"wave8": { ## Enxame misto
+		"enemies": [
+			["Chiclete", 1.2],
+			["Papel", 0.6],
+			["Chiclete", 1],
+			["Papel", 0.6],
+			["Chiclete", 1.2],
+			["Papel", 0.5],
+			["Chiclete", 1],
+			["Papel", 0.6],
+			["Chiclete", 1.5],
+			["Papel", 0.8],
+			["Chiclete", 1.2],
+			["Papel", 1],
+		],
+	},
+	
+	"wave9": { ## Dominância chiclete
+		"enemies": [
+			["Chiclete", 1],
+			["Chiclete", 0.8],
+			["Papel", 0.6],
+			["Chiclete", 1],
+			["Chiclete", 0.8],
+			["Papel", 0.5],
+			["Chiclete", 1.2],
+			["Chiclete", 1],
+			["Papel", 0.8],
+			["Chiclete", 1.5],
+			["Chiclete", 1.2],
+			["Papel", 1],
+		],
+	},
+	
+	"wave10": { ## Tsunami chiclete
+		"enemies": [
+			["Chiclete", 0.8],
+			["Chiclete", 0.6],
+			["Chiclete", 0.8],
+			["Papel", 0.5],
+			["Chiclete", 0.6],
+			["Chiclete", 0.8],
+			["Chiclete", 0.6],
+			["Papel", 0.5],
+			["Chiclete", 0.8],
+			["Chiclete", 1],
+			["Chiclete", 0.8],
+			["Chiclete", 1.2],
+			["Papel", 0.8],
+		],
+	},
+	
+	"wave11": { ## Preparação para novo inimigo
+		"enemies": [
+			["Papel", 0.8],
+			["Chiclete", 1],
+			["Papel", 0.6],
+			["Chiclete", 0.8],
+			["Papel", 0.6],
+			["Chiclete", 1],
+			["Papel", 0.8],
+			["Chiclete", 1.2],
+			["Papel", 0.6],
+			["Chiclete", 1],
+			["Papel", 0.8],
+			["Chiclete", 1.5],
+			["Papel", 1],
+		],
+	},
+	
+	"wave12": { ## Introduz plástico
+		"enemies": [
+			["Plastico", 4],
+			["Papel", 1],
+			["Chiclete", 1.2],
+			["Plastico", 3.5],
+			["Papel", 0.8],
+			["Chiclete", 1],
+			["Plastico", 4.2],
+			["Chiclete", 1.5],
+			["Papel", 1.2],
+		],
+	},
+	
+	"wave13": { ## Plástico com escolta
+		"enemies": [
+			["Papel", 0.8],
+			["Chiclete", 1],
+			["Plastico", 3],
+			["Papel", 0.6],
+			["Chiclete", 0.8],
+			["Plastico", 2.8],
+			["Papel", 0.8],
+			["Chiclete", 1.2],
+			["Plastico", 3.2],
+			["Papel", 1],
+			["Chiclete", 1.5],
+		],
+	},
+	
+	"wave14": { ## Mais plástico
+		"enemies": [
+			["Plastico", 2.5],
+			["Chiclete", 0.8],
+			["Papel", 0.6],
+			["Plastico", 2.2],
+			["Chiclete", 0.8],
+			["Papel", 0.5],
+			["Plastico", 2.8],
+			["Chiclete", 1],
+			["Papel", 0.8],
+			["Plastico", 3],
+			["Chiclete", 1.2],
+			["Papel", 1],
+		],
+	},
+	
+	"wave15": { ## Trinca estabelecida
+		"enemies": [
+			["Plastico", 2],
+			["Chiclete", 0.8],
+			["Papel", 0.6],
+			["Plastico", 1.8],
+			["Chiclete", 0.6],
+			["Papel", 0.5],
+			["Plastico", 2.2],
+			["Chiclete", 0.8],
+			["Papel", 0.6],
+			["Plastico", 2.5],
+			["Chiclete", 1],
+			["Papel", 0.8],
+			["Plastico", 2.8],
+		],
+	},
+	
+	"wave16": { ## Enxame plástico
+		"enemies": [
+			["Plastico", 1.5],
+			["Plastico", 1.2],
+			["Chiclete", 0.8],
+			["Plastico", 1],
+			["Plastico", 1.2],
+			["Papel", 0.6],
+			["Plastico", 1.5],
+			["Plastico", 1.8],
+			["Chiclete", 1],
+			["Plastico", 1.2],
+			["Plastico", 1.5],
+			["Papel", 0.8],
+		],
+	},
+	
+	"wave17": { ## Velocidade plástica
+		"enemies": [
+			["Plastico", 1.2],
+			["Chiclete", 0.6],
+			["Plastico", 1],
+			["Papel", 0.5],
+			["Plastico", 1.2],
+			["Chiclete", 0.6],
+			["Plastico", 1],
+			["Papel", 0.5],
+			["Plastico", 1.5],
+			["Chiclete", 0.8],
+			["Plastico", 1.2],
+			["Papel", 0.6],
+			["Plastico", 1.8],
+		],
+	},
+	
+	"wave18": { ## Tsunami plástico
+		"enemies": [
+			["Plastico", 1],
+			["Plastico", 0.8],
+			["Plastico", 1],
+			["Chiclete", 0.6],
+			["Plastico", 0.8],
+			["Plastico", 1],
+			["Plastico", 0.8],
+			["Papel", 0.5],
+			["Plastico", 1],
+			["Plastico", 1.2],
+			["Plastico", 1],
+			["Chiclete", 0.8],
+			["Plastico", 1.5],
+		],
+	},
+	
+	"wave19": { ## Preparação metal
+		"enemies": [
+			["Chiclete", 0.8],
+			["Plastico", 1.2],
+			["Papel", 0.6],
+			["Chiclete", 0.6],
+			["Plastico", 1],
+			["Papel", 0.5],
+			["Chiclete", 0.8],
+			["Plastico", 1.5],
+			["Papel", 0.6],
+			["Chiclete", 1],
+			["Plastico", 1.8],
+			["Papel", 0.8],
+			["Chiclete", 1.2],
+		],
+	},
+	
+	"wave20": { ## Introduz metal
+		"enemies": [
+			["Metal", 5],
+			["Papel", 0.8],
+			["Chiclete", 1],
+			["Metal", 4.5],
+			["Plastico", 1.5],
+			["Metal", 5.2],
+			["Chiclete", 1.2],
+			["Metal", 4.8],
+			["Papel", 1],
+		],
+	},
+	
+	"wave21": { ## Metal com proteção
+		"enemies": [
+			["Papel", 0.6],
+			["Chiclete", 0.8],
+			["Metal", 4],
+			["Plastico", 1.2],
+			["Papel", 0.6],
+			["Metal", 3.8],
+			["Chiclete", 1],
+			["Plastico", 1.5],
+			["Metal", 4.2],
+			["Papel", 0.8],
+			["Chiclete", 1.2],
+		],
+	},
+	
+	"wave22": { ## Mais metal
+		"enemies": [
+			["Metal", 3.5],
+			["Plastico", 1],
+			["Chiclete", 0.8],
+			["Metal", 3.2],
+			["Papel", 0.6],
+			["Metal", 3.8],
+			["Plastico", 1.2],
+			["Chiclete", 1],
+			["Metal", 4],
+			["Papel", 0.8],
+			["Metal", 4.5],
+		],
+	},
+	
+	"wave23": { ## Quarteto estabelecido
+		"enemies": [
+			["Metal", 3],
+			["Plastico", 1],
+			["Chiclete", 0.6],
+			["Papel", 0.5],
+			["Metal", 2.8],
+			["Plastico", 1.2],
+			["Chiclete", 0.8],
+			["Papel", 0.6],
+			["Metal", 3.2],
+			["Plastico", 1.5],
+			["Chiclete", 1],
+			["Papel", 0.8],
+			["Metal", 3.5],
+		],
+	},
+	
+	"wave24": { ## Resistência crescente
+		"enemies": [
+			["Metal", 2.5],
+			["Metal", 2.2],
+			["Plastico", 1],
+			["Metal", 2.8],
+			["Chiclete", 0.8],
+			["Metal", 2.5],
+			["Plastico", 1.2],
+			["Metal", 3],
+			["Chiclete", 1],
+			["Metal", 2.8],
+			["Papel", 0.6],
+			["Metal", 3.2],
+		],
+	},
+	
+	"wave25": { ## Enxame metálico
+		"enemies": [
+			["Metal", 2],
+			["Metal", 1.8],
+			["Metal", 2.2],
+			["Plastico", 1],
+			["Metal", 1.8],
+			["Metal", 2],
+			["Chiclete", 0.8],
+			["Metal", 2.5],
+			["Metal", 2.2],
+			["Papel", 0.6],
+			["Metal", 2.8],
+			["Metal", 3],
+		],
+	},
+	
+	"wave26": { ## Preparação surpresa
+		"enemies": [
+			["Plastico", 1.2],
+			["Metal", 2.5],
+			["Chiclete", 0.8],
+			["Plastico", 1],
+			["Metal", 2.2],
+			["Papel", 0.6],
+			["Plastico", 1.5],
+			["Metal", 2.8],
+			["Chiclete", 1],
+			["Papel", 0.8],
+			["Metal", 3],
+			["Plastico", 1.8],
+		],
+	},
+	
+	"wave27": { ## SURPRESA! Primeira pilha
+		"enemies": [
+			["Metal", 2.5],
+			["Plastico", 1.2],
+			["Chiclete", 0.8],
+			["Metal", 2.2],
+			["Papel", 0.6],
+			["Pilha", 8], ## SURPRESA! Delay longo para pegar desprevenido
+			["Metal", 2.8],
+			["Plastico", 1.5],
+			["Chiclete", 1],
+		],
+	},
+	
+	"wave28": { ## Pilha com escolta
+		"enemies": [
+			["Papel", 0.6],
+			["Chiclete", 0.8],
+			["Pilha", 4.5],
+			["Metal", 2.5],
+			["Plastico", 1.2],
+			["Pilha", 4.2],
+			["Chiclete", 1],
+			["Metal", 2.8],
+			["Pilha", 4.8],
+			["Papel", 0.8],
+		],
+	},
+	
+	"wave29": { ## Mais pilhas
+		"enemies": [
+			["Pilha", 3.5],
+			["Metal", 2],
+			["Plastico", 1],
+			["Pilha", 3.2],
+			["Chiclete", 0.8],
+			["Metal", 2.5],
+			["Pilha", 3.8],
+			["Plastico", 1.2],
+			["Chiclete", 1],
+			["Pilha", 4],
+			["Metal", 2.8],
+		],
+	},
+	
+	"wave30": { ## Quinteto completo
+		"enemies": [
+			["Pilha", 3],
+			["Metal", 2],
+			["Plastico", 1],
+			["Chiclete", 0.6],
+			["Papel", 0.5],
+			["Pilha", 2.8],
+			["Metal", 2.2],
+			["Plastico", 1.2],
+			["Chiclete", 0.8],
+			["Papel", 0.6],
+			["Pilha", 3.2],
+			["Metal", 2.5],
+			["Plastico", 1.5],
+		],
+	},
+	
+	"wave31": { ## Velocidade vs resistência
+		"enemies": [
+			["Pilha", 2.5],
+			["Metal", 1.8],
+			["Pilha", 2.2],
+			["Plastico", 1],
+			["Pilha", 2.8],
+			["Metal", 2],
+			["Pilha", 2.5],
+			["Chiclete", 0.8],
+			["Pilha", 3],
+			["Metal", 2.2],
+			["Pilha", 2.8],
+			["Plastico", 1.2],
+			["Pilha", 3.2],
+		],
+	},
+	
+	"wave32": { ## Enxame de pilhas
+		"enemies": [
+			["Pilha", 2],
+			["Pilha", 1.8],
+			["Metal", 2.5],
+			["Pilha", 1.5],
+			["Pilha", 1.8],
+			["Plastico", 1],
+			["Pilha", 2],
+			["Pilha", 2.2],
+			["Metal", 2.8],
+			["Pilha", 1.8],
+			["Pilha", 2],
+			["Chiclete", 0.8],
+			["Pilha", 2.5],
+		],
+	},
+	
+	"wave33": { ## Preparação radioativa
+		"enemies": [
+			["Metal", 2],
+			["Pilha", 2.5],
+			["Plastico", 1.2],
+			["Metal", 1.8],
+			["Pilha", 2.2],
+			["Chiclete", 0.8],
+			["Metal", 2.5],
+			["Pilha", 2.8],
+			["Plastico", 1.5],
+			["Metal", 2.2],
+			["Pilha", 3],
+			["Papel", 0.6],
+			["Metal", 2.8],
+		],
+	},
+	
+	"wave34": { ## Introduz radioativo
+		"enemies": [
+			["Radioativo", 6],
+			["Metal", 2.5],
+			["Pilha", 2],
+			["Radioativo", 5.5],
+			["Plastico", 1.5],
+			["Metal", 2.8],
+			["Radioativo", 6.2],
+			["Pilha", 2.5],
+			["Chiclete", 1.2],
+		],
+	},
+	
+	"wave35": { ## Radioativo com proteção
+		"enemies": [
+			["Pilha", 2],
+			["Metal", 2.2],
+			["Radioativo", 5],
+			["Plastico", 1.2],
+			["Pilha", 1.8],
+			["Radioativo", 4.8],
+			["Metal", 2.5],
+			["Chiclete", 1],
+			["Radioativo", 5.2],
+			["Pilha", 2.2],
+			["Metal", 2.8],
+		],
+	},
+	
+	"wave36": { ## Sexteto completo
+		"enemies": [
+			["Radioativo", 4.5],
+			["Pilha", 1.8],
+			["Metal", 2],
+			["Plastico", 1],
+			["Chiclete", 0.6],
+			["Papel", 0.5],
+			["Radioativo", 4.2],
+			["Pilha", 2],
+			["Metal", 2.2],
+			["Plastico", 1.2],
+			["Chiclete", 0.8],
+			["Radioativo", 4.8],
+			["Pilha", 2.5],
+		],
+	},
+	
+	"wave37": { ## Ameaça radioativa
+		"enemies": [
+			["Radioativo", 3.8],
+			["Metal", 1.8],
+			["Radioativo", 3.5],
+			["Pilha", 2],
+			["Radioativo", 4],
+			["Plastico", 1.2],
+			["Radioativo", 3.8],
+			["Metal", 2.2],
+			["Radioativo", 4.2],
+			["Pilha", 2.5],
+			["Radioativo", 4.5],
+			["Chiclete", 1],
+		],
+	},
+	
+	"wave38": { ## SURPRESA! Pilha rápida no meio do caos
+		"enemies": [
+			["Radioativo", 3.5],
+			["Metal", 2],
+			["Pilha", 1.8],
+			["Radioativo", 3.2],
+			["Plastico", 1.2],
+			["Pilha", 0.5], ## SURPRESA! Pilha super rápida
+			["Metal", 2.5],
+			["Radioativo", 3.8],
+			["Pilha", 2.2],
+			["Chiclete", 1],
+			["Radioativo", 4],
+		],
+	},
+	
+	"wave39": { ## Preparação para boss
+		"enemies": [
+			["Pilha", 1.8],
+			["Radioativo", 3.5],
+			["Metal", 2],
+			["Pilha", 1.5],
+			["Radioativo", 3.2],
+			["Plastico", 1.2],
+			["Pilha", 2],
+			["Metal", 2.5],
+			["Radioativo", 3.8],
+			["Pilha", 2.2],
+			["Chiclete", 1],
+			["Radioativo", 4],
+			["Metal", 2.8],
+		],
+	},
+	
+	"wave40": { ## Primeiro boss - Boss Pneu
+		"enemies": [
+			["Papel", 0.6],
+			["Chiclete", 0.8],
+			["Plastico", 1.2],
+			["Metal", 2],
+			["BossPneu", 6],
+			["Pilha", 2],
+			["Radioativo", 3.5],
+			["Metal", 2.5],
+			["Pilha", 2.2],
+			["Radioativo", 4],
+		],
+	},
+	
+	"wave41": { ## Pós-boss intenso
+		"enemies": [
+			["Radioativo", 3],
+			["Pilha", 1.5],
+			["Metal", 1.8],
+			["Radioativo", 2.8],
+			["Pilha", 1.2],
+			["Plastico", 1],
+			["Metal", 2],
+			["Radioativo", 3.2],
+			["Pilha", 1.8],
+			["Metal", 2.2],
+			["Radioativo", 3.5],
+			["Pilha", 2],
+			["Chiclete", 0.8],
+		],
+	},
+	
+	"wave42": { ## Escalada brutal
+		"enemies": [
+			["Pilha", 1.2],
+			["Radioativo", 2.5],
+			["Metal", 1.5],
+			["Pilha", 1],
+			["Radioativo", 2.2],
+			["Plastico", 0.8],
+			["Pilha", 1.5],
+			["Metal", 1.8],
+			["Radioativo", 2.8],
+			["Pilha", 1.2],
+			["Metal", 2],
+			["Radioativo", 3],
+			["Pilha", 1.8],
+		],
+	},
+	
+	"wave43": { ## Enxame radioativo
+		"enemies": [
+			["Radioativo", 2.2],
+			["Radioativo", 2],
+			["Pilha", 1.5],
+			["Radioativo", 2.5],
+			["Metal", 1.8],
+			["Radioativo", 2.2],
+			["Radioativo", 2.8],
+			["Pilha", 1.2],
+			["Radioativo", 2.5],
+			["Metal", 2],
+			["Radioativo", 3],
+			["Pilha", 1.8],
+			["Radioativo", 3.2],
+		],
+	},
+	
+	"wave44": { ## SURPRESA! Boss Radioativo aparece cedo
+		"enemies": [
+			["Pilha", 1.5],
+			["Radioativo", 2.5],
+			["Metal", 1.8],
+			["BossRadioativo", 4], ## SURPRESA! Boss aparece no meio
+			["Pilha", 1.2],
+			["Radioativo", 2.8],
+			["Metal", 2],
+			["Pilha", 1.8],
+			["Radioativo", 3],
+		],
+	},
+	
+	"wave45": { ## Dupla ameaça boss
+		"enemies": [
+			["BossPneu", 3.5],
+			["Radioativo", 2.5],
+			["Pilha", 1.2],
+			["Metal", 1.8],
+			["BossRadioativo", 4.5],
+			["Pilha", 1.5],
+			["Radioativo", 2.8],
+			["Metal", 2],
+			["Pilha", 1.8],
+		],
+	},
+	
+	"wave46": { ## Caos controlado
+		"enemies": [
+			["Pilha", 1],
+			["Radioativo", 1.8],
+			["Metal", 1.2],
+			["Pilha", 0.8],
+			["Radioativo", 1.5],
+			["Plastico", 0.8],
+			["Pilha", 1.2],
+			["Metal", 1.5],
+			["Radioativo", 2],
+			["Pilha", 1],
+			["BossPneu", 3],
+			["Radioativo", 2.5],
+			["Pilha", 1.5],
+		],
+	},
+	
+	"wave47": { ## Preparação final
+		"enemies": [
+			["BossRadioativo", 3.5],
+			["Pilha", 1],
+			["Radioativo", 1.8],
+			["Metal", 1.2],
+			["BossPneu", 3],
+			["Pilha", 1.2],
+			["Radioativo", 2],
+			["Metal", 1.5],
+			["Pilha", 1],
+			["Radioativo", 2.2],
+		],
+	},
+	
+	"wave48": { ## Penúltimo inferno
+		"enemies": [
+			["Radioativo", 1.5],
+			["Pilha", 0.8],
+			["BossRadioativo", 2.5],
+			["Metal", 1.2],
+			["Pilha", 0.6],
+			["Radioativo", 1.8],
+			["BossPneu", 2.8],
+			["Pilha", 1],
+			["Metal", 1.5],
+			["Radioativo", 2],
+			["Pilha", 0.8],
+		],
+	},
+	
+	"wave49": { ## Teste supremo
+		"enemies": [
+			["BossPneu", 2],
+			["BossRadioativo", 2.5],
+			["Pilha", 0.6],
+			["Radioativo", 1.2],
+			["Metal", 1],
+			["Pilha", 0.5],
+			["BossRadioativo", 2.2],
+			["Radioativo", 1.5],
+			["BossPneu", 2.8],
+			["Pilha", 0.8],
+			["Radioativo", 1.8],
+		],
+	},
+	
+	"wave50": { ## Apocalipse final
+		"enemies": [
+			["BossRadioativo", 2],
+			["BossPneu", 1.8],
+			["Pilha", 0.4],
+			["Radioativo", 1],
+			["BossRadioativo", 1.5],
+			["Metal", 0.8],
+			["Pilha", 0.4],
+			["BossPneu", 2],
+			["Radioativo", 1.2],
+			["BossRadioativo", 1.8],
+			["Pilha", 0.6],
+			["BossPneu", 2.2],
+			["Radioativo", 1.5],
+			["BossRadioativo", 2.5],
+		],
 	}
 }
 
