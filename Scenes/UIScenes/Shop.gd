@@ -146,10 +146,10 @@ func open_cat_info():
 
 func update_cat_info(cat_type):
 	print("Informações Atualizadas")
+	
 	if cat_type and current_cat_reference:
 		cat_name.text = current_cat_reference.individual_stats["name"]
 		cat_sprite.texture = load(GameData.cat_data[cat_type]["sprite"])
-		
 		cat_damage.text = format_number_k(current_cat_reference.individual_stats["damage"])
 		cat_range.text = format_number_k(current_cat_reference.individual_stats["range"])
 		
@@ -158,21 +158,17 @@ func update_cat_info(cat_type):
 		cat_attack_speed.text = "%.1f/s" % attacks_per_second
 		
 		cat_critical_chance.text = str(int(current_cat_reference.individual_stats["critical_chance"])) + "%"
-		
 		cat_enemies_defeated.text = format_number_k(current_cat_reference.individual_stats["enemies_defeated"])
 		cat_fish_collected.text = format_number_k(current_cat_reference.individual_stats["fish_collected"])
 		
-		var cat_cost = GameData.cat_data[cat_type]["cost"]
-		var sell_value = int(cat_cost * 0.5)
-		cat_sell_price.text = str(sell_value)
+		# Atualizar preço do botão de venda
+		update_sell_cat_button_price()
 		
+		# Resto do código existente...
 		var new_range = current_cat_reference.individual_stats["range"]
-		
-		# Atualiza a colisão do range
 		if current_cat_reference.has_node("Range/CollisionShape2D"):
 			current_cat_reference.get_node("Range/CollisionShape2D").get_shape().radius = 0.5 * new_range
 		
-		# Força a atualização visual do range se estiver sendo mostrado
 		if current_cat_reference.showing_range:
 			current_cat_reference.queue_redraw()
 		
@@ -242,16 +238,47 @@ func set_current_cat(cat_node):
 
 func update_equipped_cards_ui(equipped_cards: Array):
 	print("Número de cartas para mostrar: ", equipped_cards.size())
-	
 	var card_slots = [card_slot_1, card_slot_2, card_slot_3, card_slot_4]
 	
 	for i in range(4):
 		if card_slots[i]:
 			clear_card_slot(card_slots[i])
-
+			# Desconectar sinais anteriores se existirem
+			if card_slots[i].is_connected("pressed", _on_cat_card_selected):
+				card_slots[i].disconnect("pressed", _on_cat_card_selected)
+	
 	for i in range(min(equipped_cards.size(), 4)):
 		if card_slots[i]:
 			setup_card_slot(card_slots[i], equipped_cards[i])
+			# Conectar sinal de seleção para cada carta
+			card_slots[i].pressed.connect(_on_cat_card_selected.bind(card_slots[i]))
+
+func _on_cat_card_selected(card_slot: TextureButton):
+	if not current_cat_reference:
+		return
+	
+	var card_data = card_slot.get_meta("card_data")
+	if not card_data:
+		return
+	
+	# Se a carta clicada já está selecionada, desseleciona
+	if selected_cat_card == card_slot:
+		card_slot.texture_normal = card_slot.get_meta("normal_texture")
+		selected_cat_card = null
+		cat_card_sell_mode = false
+		print("Carta do gato desselecionada")
+		update_sell_cat_button_price()
+	else:
+		# Desmarca a carta anterior, se houver
+		if selected_cat_card and is_instance_valid(selected_cat_card):
+			selected_cat_card.texture_normal = selected_cat_card.get_meta("normal_texture")
+		
+		# Marca a nova carta selecionada
+		selected_cat_card = card_slot
+		selected_cat_card.texture_normal = selected_cat_card.texture_pressed
+		cat_card_sell_mode = true
+		print("Carta do gato selecionada: ", card_data.name)
+		update_sell_cat_button_price()
 
 func setup_card_slot(slot_node, card_data: Dictionary):
 	var card_icon = slot_node.get_node("CardIcon")
@@ -259,25 +286,79 @@ func setup_card_slot(slot_node, card_data: Dictionary):
 		if ResourceLoader.exists(card_data.icon):
 			card_icon.texture = load(card_data.icon)
 			card_icon.visible = true
-			
 			slot_node.set_meta("card_data", card_data)
-			
+			# Salvar textura normal para poder restaurar
+			slot_node.set_meta("normal_texture", slot_node.texture_normal)
 		else:
 			print("ERRO: Arquivo de ícone não encontrado: ", card_data.icon)
 	else:
 		print("ERRO: CardIcon não encontrado no slot")
+
+func update_sell_cat_button_price():
+	if not current_cat_reference:
+		return
+	
+	if cat_card_sell_mode and selected_cat_card:
+		# Modo venda de carta - mostra preço da carta
+		var card_data = selected_cat_card.get_meta("card_data")
+		if card_data and "sell_value" in card_data:
+			cat_sell_price.text = str(card_data.sell_value)
+		else:
+			cat_sell_price.text = "0"
+	else:
+		# Modo venda de gato - mostra preço do gato
+		var cat_cost = GameData.cat_data[current_cat_reference.type]["cost"]
+		var sell_value = int(cat_cost * 0.5)
+		cat_sell_price.text = str(sell_value)
 
 func clear_card_slot(slot_node):
 	var card_icon = slot_node.get_node("CardIcon")
 	if card_icon:
 		card_icon.texture = null
 		card_icon.visible = false
-		
+	
+	# IMPORTANTE: Limpar TODOS os metadados relacionados à carta
 	if slot_node.has_meta("card_data"):
 		slot_node.remove_meta("card_data")
+	if slot_node.has_meta("normal_texture"):
+		slot_node.remove_meta("normal_texture")
+	
+	# FORÇA o reset da textura para o estado normal padrão
+	slot_node.texture_normal = load("res://Assets/UI/Equipped_card_background.png")
 
 func _on_sell_cat_button_pressed():
-	sell_cat(current_cat_reference)
+	if cat_card_sell_mode and selected_cat_card:
+		sell_cat_card()
+	else:
+		sell_cat(current_cat_reference)
+
+func sell_cat_card():
+	if not selected_cat_card or not current_cat_reference:
+		return
+	
+	var card_data = selected_cat_card.get_meta("card_data")
+	if not card_data:
+		return
+	
+	var sell_value = int(card_data.get("sell_value", 0))
+	
+	# Remove a carta do gato
+	current_cat_reference.equipped_cards.erase(card_data)
+	
+	# Adiciona o dinheiro
+	GameData.update_fish_quantity(sell_value)
+	
+	print("Carta vendida por ", sell_value, " peixes")
+	
+	# IMPORTANTE: Reset do modo de seleção ANTES de atualizar a UI
+	selected_cat_card = null
+	cat_card_sell_mode = false
+	
+	# Atualiza a UI (isso vai limpar os slots e reconectar os sinais)
+	update_equipped_cards_ui(current_cat_reference.equipped_cards)
+	
+	# Atualiza o preço do botão após resetar tudo
+	update_sell_cat_button_price()
 
 func sell_cat(cat_node):
 	var cat_cost = GameData.cat_data[cat_node.type]["cost"]
@@ -311,12 +392,14 @@ func close_cat_info():
 	
 	if current_cat_reference:
 		current_cat_reference.hide_range()
-		
-	current_cat_reference = null
+		current_cat_reference = null
+	
+	# Reset do modo de seleção de cartas
+	selected_cat_card = null
+	cat_card_sell_mode = false
 	
 	if sell_cat_button:
 		sell_cat_button.disabled = true
-
 ### Inventory and Pack
 var pack_cost = 300
 
@@ -478,3 +561,6 @@ func _on_sell_pressed() -> void:
 			print("Erro: Valor de venda não encontrado nos dados da carta.")
 	else:
 		print("Erro: Nenhuma carta selecionada para vender.")
+
+var selected_cat_card: TextureButton = null
+var cat_card_sell_mode = false

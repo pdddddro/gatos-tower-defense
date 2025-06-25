@@ -277,6 +277,13 @@ func calculate_final_damage(base_damage: int) -> Dictionary:
 		"multiplier": damage_multiplier if is_critical else 1.0
 	}
 
+func remove_equipped_card(card_data: Dictionary) -> bool:
+	var index = equipped_cards.find(card_data)
+	if index != -1:
+		equipped_cards.remove_at(index)
+		print("Carta removida: ", card_data.name)
+		return true
+	return false
 
 func _on_range_body_entered(body: Node2D) -> void:
 	enemy_array.append(body.get_parent())
