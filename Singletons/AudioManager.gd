@@ -2,51 +2,58 @@ extends Node
 
 @onready var sfx_players: Array[AudioStreamPlayer] = []
 @onready var music_player: AudioStreamPlayer
+
 var current_sfx_index = 0
 var max_sfx_players = 10
 
 func _ready():
-	# Criar múltiplos players para efeitos sonoros simultâneos
+	# Criar múltiplos players para efeitos sonoros
 	for i in range(max_sfx_players):
 		var player = AudioStreamPlayer.new()
+		player.bus = "SFX"  # Definir bus para efeitos sonoros
 		add_child(player)
 		sfx_players.append(player)
-	
+
 	# Criar o player de música
 	music_player = AudioStreamPlayer.new()
+	music_player.bus = "Music"  # Definir bus para música
 	add_child(music_player)
-	
-	# IMPORTANTE: Iniciar música automaticamente quando o jogo abrir
+
 	call_deferred("start_background_music")
 
 func start_background_music():
-	# Puxar música do GameData
-	var background_music_path = GameData.music_data["background"]
-	play_background_music(background_music_path)
+	var music_info = GameData.music_data.get("background", {})
+	
+	if music_info.has("path"):
+		var music_path = music_info["path"]
+		var volume = music_info.get("volume", 0)
+		
+		print("Tentando tocar música: ", music_path, " com volume: ", volume)
+		
+		if ResourceLoader.exists(music_path):
+			music_player.stream = load(music_path)
+			music_player.volume_db = volume
+			music_player.play()
+			print("Música de fundo iniciada com sucesso!")
+		else:
+			print("ERRO: Arquivo de música não encontrado: ", music_path)
+	else:
+		print("ERRO: Dados de música de fundo não encontrados")
 
-func play_background_music(music_path: String, volume_db: float = -15.0):
-	if not ResourceLoader.exists(music_path):
-		print("Arquivo de música não encontrado: ", music_path)
-		return
-	
-	music_player.stream = load(music_path)
-	music_player.volume_db = volume_db
-	
-	# Configurar para loop infinito
-	if music_player.stream is AudioStreamOggVorbis:
-		music_player.stream.loop = true
-	
-	music_player.play()
-	print("Música de fundo iniciada: ", music_path)
+# Nova função para aplicar volume específico
+func set_music_volume_from_data(music_type: String):
+	if GameData.music_data.has(music_type):
+		var volume = GameData.music_data[music_type].get("volume", 0)
+		music_player.volume_db = volume
 
 func play_sfx(sound_path: String, volume_db: float = 0.0, pitch_variation: float = 0.2):
 	if not ResourceLoader.exists(sound_path):
 		print("Arquivo de som não encontrado: ", sound_path)
 		return
-	
+
 	var player = sfx_players[current_sfx_index]
 	player.stream = load(sound_path)
-	player.volume_db = volume_db  # Agora usa o volume do GameData
+	player.volume_db = volume_db
 	
 	# Variação de pitch
 	var min_pitch = 1.0 - pitch_variation

@@ -542,13 +542,16 @@ func save_game_data():
 	var file = FileAccess.open(save_file_path, FileAccess.WRITE)
 	if file:
 		var save_data = {
-			"tutorial_completed": tutorial_completed
+			"tutorial_completed": tutorial_completed,
+			"music_volume": music_volume,
+			"sfx_volume": sfx_volume
 		}
 		file.store_string(JSON.stringify(save_data))
 		file.close()
 		print("Dados salvos com sucesso")
 	else:
 		print("Erro ao salvar dados")
+		
 
 # Função para carregar dados
 func load_game_data():
@@ -562,13 +565,45 @@ func load_game_data():
 			if parse_result == OK:
 				var save_data = json.data
 				tutorial_completed = save_data.get("tutorial_completed", false)
+				music_volume = save_data.get("music_volume", 1.0)
+				sfx_volume = save_data.get("sfx_volume", 1.0)
+				
+				# Aplicar volumes salvos APENAS se os buses existirem
+				call_deferred("apply_saved_volumes")
+				
 				print("Dados carregados: tutorial_completed = ", tutorial_completed)
+				print("Volumes carregados - Música: ", music_volume, " SFX: ", sfx_volume)
 			else:
 				print("Erro ao fazer parse do JSON")
 		else:
 			print("Erro ao abrir arquivo de save")
 	else:
 		print("Arquivo de save não existe, usando valores padrão")
+
+func apply_saved_volumes():
+	var music_bus = AudioServer.get_bus_index("Music")
+	var sfx_bus = AudioServer.get_bus_index("SFX")
+	
+	if music_bus != -1:
+		AudioServer.set_bus_volume_db(music_bus, linear_to_db(music_volume))
+		print("Volume da música aplicado: ", music_volume)
+	else:
+		print("Bus Music não encontrado")
+		
+	if sfx_bus != -1:
+		AudioServer.set_bus_volume_db(sfx_bus, linear_to_db(sfx_volume))
+		print("Volume do SFX aplicado: ", sfx_volume)
+	else:
+		print("Bus SFX não encontrado")
+
+func update_music_volume_from_ui(volume_percentage: float):
+	# Converte porcentagem (0-100) para decibéis (-80 a 0)
+	var volume_db = linear_to_db(volume_percentage / 100.0)
+	set_global_music_volume_offset(volume_db)
+	
+	# Salva a configuração
+	music_volume = volume_percentage / 100.0
+	save_game_data()
 
 # Função para marcar tutorial como completo
 func mark_tutorial_completed():
@@ -582,93 +617,108 @@ func show_tutorial_manually():
 
 ## Audio
 
-var music_data = 	{
-	"background": "res:2//Audio/Music/[no copyright music] 'soho cat' background music [80L2EWOCaT4].mp3",
-	"menu": "res://Assets/Audio/Music/menu_music.ogg",
-	"victory": "res://Assets/Audio/Music/victory_music.ogg",
-	"game_over": "res://Assets/Audio/Music/game_over_music.ogg"
+var music_volume: float = 1.0
+var sfx_volume: float = 1.0
+
+var music_data = {
+	"background": { "path": "res://Audio/Music/[no copyright music] 'soho cat' background music [80L2EWOCaT4].mp3","volume": -25},
+	"menu": { "path": "res://Assets/Audio/Music/menu_music.ogg", "volume": -8 },
+	"victory": { "path": "res://Assets/Audio/Music/victory_music.ogg", "volume": -3 },
+	"game_over": { "path": "res://Assets/Audio/Music/game_over_music.ogg", "volume": -10 }
 }
 
 var sound_data = {
 	"enemies": {
 		"Papel": {
-			"death": {"path": "res://Audio/Enemies/Papel/Death.ogg", "volume": -5.0},
-			"walk": {"path": "res://Audio/Enemies/Papel/Walk.ogg", "volume": -8.0}
+			"death": {"path": "res://Audio/Enemies/Papel/Death.ogg", "volume": -10},
+			"walk": {"path": "res://Audio/Enemies/Papel/Walk.ogg", "volume": -30}
 		},
 		"Chiclete": {
-			"death": {"path": "res://Audio/Enemies/Chiclete/439186__fourthwoods__pop-5.ogg", "volume": -3.0},
-			"walk": {"path": "", "volume": -6.0}
+			"death": {"path": "res://Audio/Enemies/Chiclete/439186__fourthwoods__pop-5.ogg", "volume": -15},
+			"walk": {"path": "", "volume": 0}
 		},
 		"Plastico": {
-			"death": {"path": "", "volume": -4.0},
-			"walk": {"path": "", "volume": -7.0}
+			"death": {"path": "", "volume": 0},
+			"walk": {"path": "", "volume": 0}
 		},
 		"Metal": {
-			"death": {"path": "", "volume": -2.0},
-			"walk": {"path": "", "volume": -5.0}
+			"death": {"path": "", "volume": 0},
+			"walk": {"path": "", "volume": 0}
 		},
 		"Pilha": {
-			"death": {"path": "", "volume": -3.0},
-			"walk": {"path": "", "volume": -6.0}
+			"death": {"path": "", "volume": 0},
+			"walk": {"path": "", "volume": 0}
 		},
 		"Radioativo": {
-			"death": {"path": "", "volume": -1.0},
-			"walk": {"path": "", "volume": -4.0}
+			"death": {"path": "", "volume": 0},
+			"walk": {"path": "", "volume": 0}
 		},
 		"BossRadioativo": {
-			"death": {"path": "", "volume": 2.0},
-			"walk": {"path": "", "volume": -2.0}
+			"death": {"path": "", "volume": 0},
+			"walk": {"path": "", "volume": 0}
 		},
 		"BossPneu": {
-			"death": {"path": "", "volume": 1.0},
-			"walk": {"path": "", "volume": -3.0}
+			"death": {"path": "", "volume": 0},
+			"walk": {"path": "", "volume": 0}
 		}
 	},
 	"cats": {
 		"Chicao": {
-			"attack": {"path": "", "volume": -4.0},
-			"place": {"path": "", "volume": -6.0}
+			"attack": {"path": "", "volume": 0},
+			"place": {"path": "", "volume": 0}
 		},
 		"Pele": {
-			"attack": {"path": "res://Assets/Audio/SFX/Characters/Cats/pele_attack.wav", "volume": -2.0},
-			"place": {"path": "", "volume": -5.0}
+			"attack": {"path": "res://Assets/Audio/SFX/Characters/Cats/pele_attack.wav", "volume": -5.0},
+			"place": {"path": "", "volume": 0}
 		},
 		"Nino": {
-			"attack": {"path": "res://Audio/Cats/Nino/Attack.ogg", "volume": -3.0},
-			"place": {"path": "", "volume": -6.0}
+			"attack": {"path": "res://Audio/Cats/Nino/Attack.ogg", "volume": 0},
+			"place": {"path": "", "volume": 0}
 		},
 		"Cartolina": {
-			"attack": {"path": "res://Audio/Cats/Cartolina/Attack.ogg", "volume": -2.5},
-			"place": {"path": "", "volume": -5.5}
+			"attack": {"path": "res://Audio/Cats/Cartolina/Attack.ogg", "volume": 0},
+			"place": {"path": "", "volume": 0}
 		},
 		"Nut": {
-			"attack": {"path": "", "volume": -3.5},
-			"place": {"path": "", "volume": -6.5}
+			"attack": {"path": "", "volume": 0},
+			"place": {"path": "", "volume": 0}
 		}
 	},
 	"ui": {
 		"button": {
-			"click": {"path": "res://Audio/UI/593955__mincedbeats__mouse-button-click.ogg", "volume": -8.0},
-			"hover": {"path": "res://Audio/UI/166186__drminky__menu-screen-mouse-over.ogg", "volume": -12.0},	
+			"click": {"path": "res://Audio/UI/593955__mincedbeats__mouse-button-click.ogg", "volume": 0},
+			"hover": {"path": "res://Audio/UI/166186__drminky__menu-screen-mouse-over.ogg", "volume": 0},	
 		},
-		"card_equip": {"path": "res://Assets/Audio/SFX/UI/card_equip.wav", "volume": -4.0},
-		"purchase": {"path": "res://Assets/Audio/SFX/UI/purchase.wav", "volume": -3.0},
-		"error": {"path": "res://Assets/Audio/SFX/UI/error.wav", "volume": -2.0}
+		"card_equip": {"path": "", "volume": 0},
+		"purchase": {"path": "", "volume": 0},
+		"error": {"path": "", "volume": 0}
 	},
 	"game": {
-		"wave_start": {"path": "res://Assets/Audio/SFX/Game/wave_start.wav", "volume": -5.0},
-		"wave_complete": {"path": "res://Assets/Audio/SFX/Game/wave_complete.wav", "volume": -3.0},
-		"game_over": {"path": "res://Assets/Audio/SFX/Game/game_over.wav", "volume": -1.0},
-		"victory": {"path": "res://Assets/Audio/SFX/Game/victory.wav", "volume": 0.0}
+		"wave_start": {"path": "", "volume": 0},
+		"wave_complete": {"path": "", "volume": 0},
+		"game_over": {"path": "", "volume": 0},
+		"victory": {"path": "", "volume": 0.0}
 	}
 }
 
 func change_background_music(music_type: String):
-	if sound_data["music"].has(music_type):
-		AudioManager.change_music(sound_data["music"][music_type])
+	if music_data.has(music_type):
+		var music_info = music_data[music_type]
+		var music_path = music_info["path"]
+		var volume = music_info["volume"]
+		
+		print("Tentando trocar música para: ", music_type, " - ", music_path, " volume: ", volume)
+		
+		if ResourceLoader.exists(music_path):
+			AudioManager.music_player.stream = load(music_path)
+			AudioManager.music_player.volume_db = volume
+			AudioManager.music_player.play()
+			print("Música alterada com sucesso!")
+		else:
+			print("ERRO: Arquivo de música não encontrado: ", music_path)
 	else:
-		print("Tipo de música não encontrado: ", music_type)
-
+		print("ERRO: Tipo de música não encontrado: ", music_type)
+		print("Tipos disponíveis: ", music_data.keys())
 # Função para tocar sons
 func play_sound(category: String, type: String, action: String):
 	if sound_data.has(category) and sound_data[category].has(type) and sound_data[category][type].has(action):
@@ -692,6 +742,29 @@ func play_sound(category: String, type: String, action: String):
 	else:
 		print("Som não encontrado: ", category, "/", type, "/", action)
 		return false
+		
+# Variável para controle global do volume da música
+var global_music_volume_offset: float = 0.0
+
+func set_global_music_volume_offset(offset_db: float):
+	global_music_volume_offset = offset_db
+	# Aplica o novo volume à música atual
+	if AudioManager.music_player.playing:
+		var current_music_type = get_current_music_type()
+		if current_music_type != "":
+			apply_volume_to_current_music(current_music_type)
+
+func apply_volume_to_current_music(music_type: String):
+	if music_data.has(music_type):
+		var base_volume = music_data[music_type]["volume"]
+		var final_volume = base_volume + global_music_volume_offset
+		AudioManager.music_player.volume_db = final_volume
+
+# Função auxiliar para identificar a música atual (você pode implementar conforme sua necessidade)
+func get_current_music_type() -> String:
+	# Implementar lógica para identificar qual música está tocando
+	return "background" # placeholder
+
 ## round
 ## Rich Text Label
 ## [b][font_size=11]Texto[/font_size][/b]  - Font Retro Gaming 

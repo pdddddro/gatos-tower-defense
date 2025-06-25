@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bqgryvp00o5tn"]
+[gd_scene load_steps=12 format=3 uid="uid://bqgryvp00o5tn"]
 
 [ext_resource type="Script" uid="uid://o17y5t7odt15" path="res://Scenes/UIScenes/Pause/pause.gd" id="1_gyyt8"]
 [ext_resource type="Texture2D" uid="uid://0byb8mpdvpgy" path="res://Assets/UI/Art/Background.png" id="1_vf8ia"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://8adf7fkny4qr" path="res://Assets/Icons/Play.png" id="7_k6jkc"]
 [ext_resource type="Texture2D" uid="uid://cgceauk46iquy" path="res://Assets/UI/Buttons/botao_sec_padrao.png" id="8_jralj"]
 [ext_resource type="Texture2D" uid="uid://cat5x4hm2pqvj" path="res://Assets/UI/Buttons/botao_sec_hover.png" id="9_k7vye"]
+[ext_resource type="Script" uid="uid://b7x0lgn3ivdb3" path="res://Scenes/UIScenes/Pause/h_slider.gd" id="11_i3i3m"]
 
 [node name="Pause" type="Control"]
 process_mode = 2
@@ -152,6 +153,23 @@ theme_override_font_sizes/font_size = 11
 text = "Voltar ao Menu"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="."]
+layout_mode = 0
+offset_right = 187.0
+offset_bottom = 16.0
+max_value = 1.0
+step = 0.5
+script = ExtResource("11_i3i3m")
+
+[node name="SFXSlider" type="HSlider" parent="."]
+offset_left = 27.0
+offset_top = 50.0
+offset_right = 214.0
+offset_bottom = 66.0
+max_value = 1.0
+step = 0.1
+script = ExtResource("11_i3i3m")
 
 [connection signal="pressed" from="VBoxContainer/ActionButtons/MainAction" to="." method="_on_main_action_pressed"]
 [connection signal="pressed" from="VBoxContainer/ActionButtons/Reset" to="." method="_on_reset_pressed"]
