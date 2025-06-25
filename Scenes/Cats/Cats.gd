@@ -84,7 +84,7 @@ func _draw():
 func show_range():
 	showing_range = true
 	queue_redraw()
-	print("Mostrando range do gato: ", GameData.cat_data[type]["range"])
+	print("Mostrando range do gato: ", individual_stats["range"])
 
 func hide_range():
 	showing_range = false
