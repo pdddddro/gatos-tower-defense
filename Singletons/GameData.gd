@@ -581,65 +581,74 @@ func show_tutorial_manually():
 	print("Tutorial solicitado manualmente pelo jogador")
 
 ## Audio
+
+var music_data = 	{
+	"background": "res:2//Audio/Music/[no copyright music] 'soho cat' background music [80L2EWOCaT4].mp3",
+	"menu": "res://Assets/Audio/Music/menu_music.ogg",
+	"victory": "res://Assets/Audio/Music/victory_music.ogg",
+	"game_over": "res://Assets/Audio/Music/game_over_music.ogg"
+}
+
 var sound_data = {
 	"enemies": {
 		"Papel": {
-			"death": "res://Assets/Audio/SFX/Characters/Enemies/papel_death.wav",
-			"spawn": "res://Assets/Audio/SFX/Characters/Enemies/papel_spawn.wav"
+			"death": "res://Audio/Enemies/Papel/Death.ogg",
+			"walking": ""
 		},
 		"Chiclete": {
 			"death": "res://Audio/Enemies/Chiclete/439186__fourthwoods__pop-5.ogg",
-			"spawn": "res://Assets/Audio/SFX/Characters/Enemies/chiclete_spawn.wav"
+			"walking": ""
 		},
 		"Plastico": {
-			"death": "res://Assets/Audio/SFX/Characters/Enemies/plastico_death.wav",
-			"spawn": "res://Assets/Audio/SFX/Characters/Enemies/plastico_spawn.wav"
+			"death": "",
+			"walking": ""
 		},
 		"Metal": {
-			"death": "res://Assets/Audio/SFX/Characters/Enemies/metal_death.wav",
-			"spawn": "res://Assets/Audio/SFX/Characters/Enemies/metal_spawn.wav"
+			"death": "",
+			"walking": ""
 		},
 		"Pilha": {
-			"death": "res://Assets/Audio/SFX/Characters/Enemies/pilha_death.wav",
-			"spawn": "res://Assets/Audio/SFX/Characters/Enemies/pilha_spawn.wav"
+			"death": "",
+			"walking": ""
 		},
 		"Radioativo": {
-			"death": "res://Assets/Audio/SFX/Characters/Enemies/radioativo_death.wav",
-			"spawn": "res://Assets/Audio/SFX/Characters/Enemies/radioativo_spawn.wav"
+			"death": "",
+			"walking": ""
 		},
 		"BossRadioativo": {
-			"death": "res://Assets/Audio/SFX/Characters/Enemies/boss_radioativo_death.wav",
-			"spawn": "res://Assets/Audio/SFX/Characters/Enemies/boss_radioativo_spawn.wav"
+			"death": "",
+			"walking": ""
 		},
 		"BossPneu": {
-			"death": "res://Assets/Audio/SFX/Characters/Enemies/boss_pneu_death.wav",
-			"spawn": "res://Assets/Audio/SFX/Characters/Enemies/boss_pneu_spawn.wav"
+			"death": "",
+			"walking": ""
 		}
 	},
 	"cats": {
 		"Chicao": {
-			"attack": "res://Assets/Audio/SFX/Characters/Cats/chicao_attack.wav",
-			"place": "res://Assets/Audio/SFX/Characters/Cats/cat_place.wav"
+			"attack": "",
+			"place": ""
 		},
 		"Pele": {
 			"attack": "res://Assets/Audio/SFX/Characters/Cats/pele_attack.wav",
-			"place": "res://Assets/Audio/SFX/Characters/Cats/cat_place.wav"
+			"place": ""
 		},
 		"Nino": {
-			"attack": "res://Assets/Audio/SFX/Characters/Cats/nino_attack.wav",
-			"place": "res://Assets/Audio/SFX/Characters/Cats/cat_place.wav"
+			"attack": "res://Audio/Cats/Nino/Attack.ogg",
+			"place": ""
 		},
 		"Cartolina": {
-			"attack": "res://Assets/Audio/SFX/Characters/Cats/cartolina_attack.wav",
-			"place": "res://Assets/Audio/SFX/Characters/Cats/cat_place.wav"
+			"attack": "res://Audio/Cats/Cartolina/Attack.ogg",
+			"place": ""
 		},
 		"Nut": {
-			"attack": "res://Assets/Audio/SFX/Characters/Cats/nut_attack.wav",
-			"place": "res://Assets/Audio/SFX/Characters/Cats/cat_place.wav"
+			"attack": "",
+			"place": ""
 		}
 	},
 	"ui": {
-		"button_click": "res://Assets/Audio/SFX/UI/button_click.wav",
+		"button_click": "res://Audio/UI/593955__mincedbeats__mouse-button-click.ogg",
+		"button_hover": "res://Audio/UI/166186__drminky__menu-screen-mouse-over.ogg",
 		"card_equip": "res://Assets/Audio/SFX/UI/card_equip.wav",
 		"purchase": "res://Assets/Audio/SFX/UI/purchase.wav",
 		"error": "res://Assets/Audio/SFX/UI/error.wav"
@@ -650,12 +659,6 @@ var sound_data = {
 		"game_over": "res://Assets/Audio/SFX/Game/game_over.wav",
 		"victory": "res://Assets/Audio/SFX/Game/victory.wav"
 	},
-	"music": {
-		"background": "res://Audio/Background/[no copyright music] 'soho cat' background music [80L2EWOCaT4].mp3",
-		"menu": "res://Assets/Audio/Music/menu_music.ogg",
-		"victory": "res://Assets/Audio/Music/victory_music.ogg",
-		"game_over": "res://Assets/Audio/Music/game_over_music.ogg"
-	}
 }
 
 func change_background_music(music_type: String):

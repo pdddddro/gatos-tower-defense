@@ -21,7 +21,7 @@ func _ready():
 
 func start_background_music():
 	# Puxar música do GameData
-	var background_music_path = GameData.sound_data["music"]["background"]
+	var background_music_path = GameData.music_data["background"]
 	play_background_music(background_music_path)
 
 func play_background_music(music_path: String, volume_db: float = -15.0):
@@ -39,7 +39,7 @@ func play_background_music(music_path: String, volume_db: float = -15.0):
 	music_player.play()
 	print("Música de fundo iniciada: ", music_path)
 
-func play_sfx(sound_path: String, volume_db: float = 0.0):
+func play_sfx(sound_path: String, volume_db: float = 0.0, pitch_variation: float = 0.2):
 	if not ResourceLoader.exists(sound_path):
 		print("Arquivo de som não encontrado: ", sound_path)
 		return
@@ -47,6 +47,11 @@ func play_sfx(sound_path: String, volume_db: float = 0.0):
 	var player = sfx_players[current_sfx_index]
 	player.stream = load(sound_path)
 	player.volume_db = volume_db
+	
+	var min_pitch = 0.95 - pitch_variation
+	var max_pitch = 1.1 + pitch_variation
+	player.pitch_scale = randf_range(min_pitch, max_pitch)
+	
 	player.play()
 	current_sfx_index = (current_sfx_index + 1) % max_sfx_players
 

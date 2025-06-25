@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://3n4enlhcgms4"]
+[gd_scene load_steps=17 format=3 uid="uid://3n4enlhcgms4"]
 
 [ext_resource type="Script" uid="uid://gjhy6gu7wr75" path="res://Scenes/UIScenes/main_menu.gd" id="1_0tan2"]
 [ext_resource type="Texture2D" uid="uid://0byb8mpdvpgy" path="res://Assets/UI/Art/Background.png" id="1_iyrik"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://1suqrngm7iq6" path="res://Assets/UI/Art/Sobre.png" id="5_1brix"]
 [ext_resource type="Texture2D" uid="uid://dt0o401gek7i1" path="res://Assets/UI/Art/RankingPressed.png" id="5_hi0sg"]
 [ext_resource type="Texture2D" uid="uid://b8bsdya0clg1j" path="res://Assets/UI/Art/SobrePressed.png" id="7_fdvul"]
+[ext_resource type="Script" uid="uid://c2nlmty2nmu5n" path="res://Scenes/UIScenes/Buttons/button.gd" id="8_0tan2"]
 [ext_resource type="Texture2D" uid="uid://dvb8syxh2fhc0" path="res://Assets/UI/Art/Enviar Feedback.png" id="12_nmscp"]
 [ext_resource type="Texture2D" uid="uid://bkcmnhvp24rfw" path="res://Assets/UI/Art/Enviar FeedbackPressed.png" id="13_0tan2"]
 [ext_resource type="Texture2D" uid="uid://n20rclfqrjrx" path="res://Assets/IDV/Logo.png" id="14_nmscp"]
@@ -174,6 +175,7 @@ texture_pressed = ExtResource("2_1brix")
 texture_hover = ExtResource("2_qc1fl")
 ignore_texture_size = true
 stretch_mode = 0
+script = ExtResource("8_0tan2")
 
 [node name="Label" type="Label" parent="Margin/VBox/NewGame"]
 layout_mode = 1
@@ -209,6 +211,7 @@ texture_pressed = ExtResource("7_fdvul")
 texture_hover = ExtResource("5_1brix")
 ignore_texture_size = true
 stretch_mode = 0
+script = ExtResource("8_0tan2")
 
 [node name="Label" type="Label" parent="Margin/VBox/About"]
 layout_mode = 1
@@ -244,6 +247,7 @@ texture_pressed = ExtResource("5_hi0sg")
 texture_hover = ExtResource("4_2e4mf")
 ignore_texture_size = true
 stretch_mode = 0
+script = ExtResource("8_0tan2")
 
 [node name="Label" type="Label" parent="Margin/VBox/Ranking"]
 modulate = Color(1, 1, 1, 0.470588)
@@ -279,6 +283,7 @@ mouse_default_cursor_shape = 2
 texture_pressed = ExtResource("13_0tan2")
 texture_hover = ExtResource("12_nmscp")
 ignore_texture_size = true
+script = ExtResource("8_0tan2")
 
 [node name="Feedback" type="LinkButton" parent="Margin/VBox/Feedback"]
 custom_minimum_size = Vector2(152, 32)

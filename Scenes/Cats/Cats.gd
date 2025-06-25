@@ -242,6 +242,7 @@ func attack():
 		var projectile = projectile_scene.instantiate()
 		projectile.type = str(type)
 		projectile.enemy = enemy
+		GameData.play_sound("cats", type, "attack")
 		
 		var base_damage = calculate_damage_against_enemy(enemy.type)
 		var damage_result = calculate_final_damage(base_damage)
