@@ -372,7 +372,7 @@ func check_wave_end():
 		WaveCount.text = str(current_wave) + "/50"
 		
 		## Vitória
-		if current_wave > 2 and base_health > 0:
+		if current_wave > 30 and base_health > 0:
 			await get_tree().create_timer(1.0).timeout
 			
 			emit_signal("game_finished", true)
