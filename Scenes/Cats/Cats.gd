@@ -280,6 +280,10 @@ func calculate_final_damage(base_damage: int) -> Dictionary:
 func remove_equipped_card(card_data: Dictionary) -> bool:
 	var index = equipped_cards.find(card_data)
 	if index != -1:
+		# Remove os efeitos da carta ANTES de remover a carta
+		remove_card_effects(card_data)
+		
+		# Remove a carta da lista
 		equipped_cards.remove_at(index)
 		print("Carta removida: ", card_data.name)
 		return true
@@ -338,3 +342,94 @@ func equip_card(card_data: Dictionary) -> bool:
 		return true
 	else:
 		return false
+
+func remove_card_effects(card_data: Dictionary):
+	print("Removendo efeitos da carta: ", card_data.name)
+	
+	# Remove cada efeito da carta
+	for effect in card_data.effects:
+		remove_card_effect(effect)
+	
+	print("Efeitos removidos. Stats atuais: ", individual_stats)
+
+func remove_card_effect(effect_data: Dictionary):
+	var effect_type = effect_data["type"]
+	var power = effect_data.get("power", 0)
+	var power_type = effect_data.get("power_type", "absolute")
+	
+	match effect_type:
+		"damage_vs_type":
+			var target_type = effect_data.get("target_type", "")
+			if target_type != "" and damage_bonuses_vs_type.has(target_type):
+				var current_bonus = damage_bonuses_vs_type[target_type]
+				if power_type == "percentage":
+					var base_damage = GameData.cat_data[type]["damage"] # Usa stats base
+					var bonus_damage = base_damage * (power / 100.0)
+					damage_bonuses_vs_type[target_type] = max(0, current_bonus - bonus_damage)
+				else:
+					damage_bonuses_vs_type[target_type] = max(0, current_bonus - power)
+				
+				# Remove a entrada se o bônus chegou a zero
+				if damage_bonuses_vs_type[target_type] <= 0:
+					damage_bonuses_vs_type.erase(target_type)
+				
+				print("Bônus de dano contra ", target_type, " removido. Novo valor: ", damage_bonuses_vs_type.get(target_type, 0))
+		
+		"damage_boost":
+			if power_type == "percentage":
+				var base_damage = GameData.cat_data[type]["damage"] # Usa stats base
+				var damage_decrease = base_damage * (power / 100.0)
+				individual_stats["damage"] = max(1, individual_stats["damage"] - damage_decrease)
+				print("Dano reduzido em ", power, "% (", damage_decrease, "). Novo dano: ", individual_stats["damage"])
+			else:
+				individual_stats["damage"] = max(1, individual_stats["damage"] - power)
+				print("Dano reduzido em ", power, ". Novo dano: ", individual_stats["damage"])
+		
+		"speed_boost":
+			if power_type == "percentage":
+				var base_cooldown = GameData.cat_data[type]["atkcooldown"] # Usa stats base
+				var cooldown_increase = base_cooldown * (power / 100.0)
+				individual_stats["atkcooldown"] += cooldown_increase
+				print("Velocidade reduzida em ", power, "% (", cooldown_increase, "s). Novo cooldown: ", individual_stats["atkcooldown"])
+			else:
+				individual_stats["atkcooldown"] += power
+				print("Velocidade reduzida em ", power, "s. Novo cooldown: ", individual_stats["atkcooldown"])
+		
+		"range_boost":
+			if power_type == "percentage":
+				var base_range = GameData.cat_data[type]["range"] # Usa stats base
+				var range_decrease = base_range * (power / 100.0)
+				individual_stats["range"] = max(32, individual_stats["range"] - range_decrease)
+				print("Alcance reduzido em ", power, "% (", range_decrease, "). Novo alcance: ", individual_stats["range"])
+			else:
+				individual_stats["range"] = max(32, individual_stats["range"] - power)
+				print("Alcance reduzido em ", power, ". Novo alcance: ", individual_stats["range"])
+			
+			# Atualiza o range visual
+			if built:
+				get_node("Range/CollisionShape2D").get_shape().radius = 0.5 * individual_stats["range"]
+				queue_redraw()
+		
+		"target_expansion":
+			var removed_targets = effect_data.get("target_types", [])
+			if "all" in removed_targets:
+				# Restaura os tipos de alvo originais
+				individual_stats["target_types"] = GameData.cat_data[type].get("target_types", []).duplicate()
+			else:
+				var current_targets = individual_stats.get("target_types", [])
+				for target_type in removed_targets:
+					if target_type in current_targets:
+						current_targets.erase(target_type)
+				individual_stats["target_types"] = current_targets
+			
+			print("Tipos de alvo atualizados para ", type, ": ", individual_stats["target_types"])
+		
+		"critic_boost":
+			if power_type == "percentage":
+				var base_crit = GameData.cat_data[type]["critical_chance"] # Usa stats base
+				var crit_decrease = base_crit * (power / 100.0)
+				individual_stats["critical_chance"] = max(0, individual_stats["critical_chance"] - crit_decrease)
+				print("Chance crítica reduzida em ", power, "% (", crit_decrease, "). Nova chance: ", individual_stats["critical_chance"])
+			else:
+				individual_stats["critical_chance"] = max(0, individual_stats["critical_chance"] - power)
+				print("Chance crítica reduzida em ", power, ". Nova chance: ", individual_stats["critical_chance"])

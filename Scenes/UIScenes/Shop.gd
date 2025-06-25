@@ -342,8 +342,8 @@ func sell_cat_card():
 	
 	var sell_value = int(card_data.get("sell_value", 0))
 	
-	# Remove a carta do gato
-	current_cat_reference.equipped_cards.erase(card_data)
+	# Remove a carta do gato (isso já chama remove_card_effects)
+	current_cat_reference.remove_equipped_card(card_data)
 	
 	# Adiciona o dinheiro
 	GameData.update_fish_quantity(sell_value)
@@ -354,10 +354,13 @@ func sell_cat_card():
 	selected_cat_card = null
 	cat_card_sell_mode = false
 	
-	# Atualiza a UI (isso vai limpar os slots e reconectar os sinais)
+	# Atualiza a UI
 	update_equipped_cards_ui(current_cat_reference.equipped_cards)
 	
-	# Atualiza o preço do botão após resetar tudo
+	# Atualiza as informações do gato para refletir os novos stats
+	update_cat_info(current_cat_reference.type)
+	
+	# Atualiza o preço do botão
 	update_sell_cat_button_price()
 
 func sell_cat(cat_node):
