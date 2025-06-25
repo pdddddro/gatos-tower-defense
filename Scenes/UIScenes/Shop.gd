@@ -165,6 +165,8 @@ func update_cat_info(cat_type):
 		var sell_value = int(cat_cost * 0.5)
 		cat_sell_price.text = str(sell_value)
 		
+		current_cat_reference.queue_redraw()
+		
 		update_equipped_cards_ui(current_cat_reference.equipped_cards)
 		
 func format_number_k(value: float) -> String:

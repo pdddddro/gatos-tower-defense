@@ -54,7 +54,7 @@ size_flags_vertical = 8
 
 [node name="Title" type="Label" parent="Margin/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.667849, 0.199668, 0.516046, 1)
+theme_override_colors/font_color = Color(0.4, 0.0941176, 0.298039, 1)
 theme_override_constants/line_spacing = 0
 theme_override_fonts/font = ExtResource("2_nmscp")
 theme_override_font_sizes/font_size = 11
@@ -81,6 +81,17 @@ theme_override_constants/line_spacing = 0
 theme_override_fonts/font = ExtResource("4_mfebp")
 theme_override_font_sizes/font_size = 16
 text = "Ranking"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label5" type="Label" parent="Margin/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.667849, 0.199668, 0.516046, 1)
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("4_mfebp")
+theme_override_font_sizes/font_size = 16
+text = "Melhorias no Balanceamento"
 vertical_alignment = 1
 autowrap_mode = 2
 
@@ -113,6 +124,7 @@ size_flags_vertical = 8
 
 [node name="Label" type="Label" parent="Margin/Panel/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.635294, 0.184314, 0.486275, 1)
 theme_override_constants/line_spacing = 0
 theme_override_fonts/font = ExtResource("2_nmscp")
 theme_override_font_sizes/font_size = 11
@@ -122,6 +134,7 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="Margin/Panel/VBoxContainer"]
+modulate = Color(0.399184, 0.0942787, 0.299897, 1)
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -132,6 +145,7 @@ expand_mode = 1
 [node name="Label2" type="Label" parent="Margin/Panel/VBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.633675, 0.18596, 0.487764, 1)
 theme_override_constants/line_spacing = 0
 theme_override_fonts/font = ExtResource("4_mfebp")
 theme_override_font_sizes/font_size = 16
@@ -144,7 +158,7 @@ autowrap_mode = 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-theme_override_constants/separation = 8
+theme_override_constants/separation = 0
 
 [node name="NewGame" type="TextureButton" parent="Margin/VBox"]
 custom_minimum_size = Vector2(112, 32)
@@ -307,7 +321,7 @@ theme_override_colors/font_color = Color(0.667849, 0.199668, 0.516046, 1)
 theme_override_constants/line_spacing = 0
 theme_override_fonts/font = ExtResource("4_mfebp")
 theme_override_font_sizes/font_size = 16
-text = "Ultima Atualização: 24/06 - 19:44"
+text = "Ultima Atualização: 25/06 - 00:56"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
