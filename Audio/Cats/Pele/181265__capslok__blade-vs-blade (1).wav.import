@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://up14k6lj2x4i"
+path="res://.godot/imported/181265__capslok__blade-vs-blade (1).wav-915a1748f606725654dd914c12211f5b.sample"
+
+[deps]
+
+source_file="res://Audio/Cats/Pele/181265__capslok__blade-vs-blade (1).wav"
+dest_files=["res://.godot/imported/181265__capslok__blade-vs-blade (1).wav-915a1748f606725654dd914c12211f5b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

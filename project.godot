@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameData="*res://Singletons/GameData.gd"
+AudioManager="*res://Singletons/AudioManager.gd"
 
 [display]
 
@@ -33,10 +34,11 @@ window/stretch/scale_mode="integer"
 
 folder_colors={
 "res://Assets/": "orange",
+"res://Audio/": "teal",
 "res://Licenses/": "orange",
-"res://Resources/": "orange",
-"res://Scenes/": "orange",
-"res://Singletons/": "orange",
+"res://Resources/": "gray",
+"res://Scenes/": "yellow",
+"res://Singletons/": "pink",
 "res://build/": "gray",
 "res://mobs/": "orange",
 "res://node_modules/": "gray",

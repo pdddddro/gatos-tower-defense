@@ -71,11 +71,13 @@ func on_hit(damage, source_cat = null):
 		await get_tree().create_timer(0.1).timeout
 		modulate = Color.WHITE  # Volta ao normal
 	
+		
 	if hp <= 0 and dead == false:
 		
 		dead = true
 		
 		if source_cat and is_instance_valid(source_cat):
+			GameData.play_sound("enemies", type, "death")
 			source_cat.add_damage(damage)
 			source_cat.add_enemy_defeated()
 			var fish_reward = GameData.enemies_data[type]["fish_reward"]

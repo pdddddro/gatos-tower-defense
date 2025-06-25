@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dby7csjb352y7"
+path="res://.godot/imported/538527__escobarrb26__little-cat-meow.mp3-d387bae096301c1665863fde16d1e510.mp3str"
+
+[deps]
+
+source_file="res://Audio/Cats/Random Meow/538527__escobarrb26__little-cat-meow.mp3"
+dest_files=["res://.godot/imported/538527__escobarrb26__little-cat-meow.mp3-d387bae096301c1665863fde16d1e510.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://3n4enlhcgms4"]
+[gd_scene load_steps=16 format=3 uid="uid://3n4enlhcgms4"]
 
 [ext_resource type="Script" uid="uid://gjhy6gu7wr75" path="res://Scenes/UIScenes/main_menu.gd" id="1_0tan2"]
 [ext_resource type="Texture2D" uid="uid://0byb8mpdvpgy" path="res://Assets/UI/Art/Background.png" id="1_iyrik"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://1suqrngm7iq6" path="res://Assets/UI/Art/Sobre.png" id="5_1brix"]
 [ext_resource type="Texture2D" uid="uid://dt0o401gek7i1" path="res://Assets/UI/Art/RankingPressed.png" id="5_hi0sg"]
 [ext_resource type="Texture2D" uid="uid://b8bsdya0clg1j" path="res://Assets/UI/Art/SobrePressed.png" id="7_fdvul"]
+[ext_resource type="Texture2D" uid="uid://dvb8syxh2fhc0" path="res://Assets/UI/Art/Enviar Feedback.png" id="12_nmscp"]
+[ext_resource type="Texture2D" uid="uid://bkcmnhvp24rfw" path="res://Assets/UI/Art/Enviar FeedbackPressed.png" id="13_0tan2"]
 [ext_resource type="Texture2D" uid="uid://n20rclfqrjrx" path="res://Assets/IDV/Logo.png" id="14_nmscp"]
 
 [sub_resource type="Theme" id="Theme_fdvul"]
@@ -167,6 +169,7 @@ custom_minimum_size = Vector2(112, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
+mouse_default_cursor_shape = 2
 texture_pressed = ExtResource("2_1brix")
 texture_hover = ExtResource("2_qc1fl")
 ignore_texture_size = true
@@ -201,6 +204,7 @@ custom_minimum_size = Vector2(80, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_default_cursor_shape = 2
 texture_pressed = ExtResource("7_fdvul")
 texture_hover = ExtResource("5_1brix")
 ignore_texture_size = true
@@ -235,6 +239,7 @@ custom_minimum_size = Vector2(96, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
+mouse_default_cursor_shape = 2
 texture_pressed = ExtResource("5_hi0sg")
 texture_hover = ExtResource("4_2e4mf")
 ignore_texture_size = true
@@ -265,12 +270,28 @@ text = "Ranking"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Feedback" type="LinkButton" parent="Margin/VBox"]
+[node name="Feedback" type="TextureButton" parent="Margin/VBox"]
 custom_minimum_size = Vector2(152, 32)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+mouse_default_cursor_shape = 2
+texture_pressed = ExtResource("13_0tan2")
+texture_hover = ExtResource("12_nmscp")
+ignore_texture_size = true
+
+[node name="Feedback" type="LinkButton" parent="Margin/VBox/Feedback"]
+custom_minimum_size = Vector2(152, 32)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 uri = "https://forms.gle/aHXq1wsaB8hbV3vf7"
 
-[node name="Label" type="Label" parent="Margin/VBox/Feedback"]
+[node name="Label" type="Label" parent="Margin/VBox/Feedback/Feedback"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
