@@ -1,67 +1,67 @@
 extends Node
 
-var default_fish_quantity = 100000
+var default_fish_quantity = 500
 var fish_quantity: int = default_fish_quantity  # Valor inicial de moedas
 
 ## Fish
 func reset_fish_quantity():
-	fish_quantity = 100000
+	fish_quantity = default_fish_quantity
 
 ## Cats
 var cat_data = { ## "Plástico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 	"Chicao": { ## Chicão não ataca slimes pilha pra não dar ainda mais energia pra eles
 		"name": "Chicao",
 		"sprite": "res://Assets/Cats/Chicao/Chicao.png",
-		"damage": 20,
-		"atkcooldown": 1,
-		"range": 160,
-		"cost": 100,
-		"critical_chance": 1,
-		"target_types": ["Plástico", "Metal", "Chiclete", "BossRadioativo"]
+		"damage": 15,
+		"atkcooldown": 2,
+		"range": 150,
+		"cost": 230,
+		"critical_chance": 0,
+		"target_types": ["Plástico", "Metal", "Chiclete", "BossRadioativo", "Papel", "Radioativo"]
 	},
 	
 	"Pele": { ## Apesar de afiada, as garras de Pelé não conseguem destruir o Slime Metal
 		"name": "Pele",
 		"sprite": "res://Assets/Cats/Pele/Pele.png",
-		"damage": 25,
-		"atkcooldown": 0.5,
-		"range": 96,
-		"cost": 100,
-		"critical_chance": 0,
-		"target_types": ["Plástico", "Pilha", "Chiclete", "BossRadioativo"]
+		"damage": 7.5,
+		"atkcooldown": .5,
+		"range": 88,
+		"cost": 250,
+		"critical_chance": 1,
+		"target_types": ["Plástico", "Pilha", "Chiclete", "BossRadioativo", "Papel", "Radioativo"]
 	},
 	
 	"Nino": { ## Nino não consegue ver o slime de plástico com um olho só por conta da sua trasparência
 		"name": "Nino",
 		"sprite": "res://Assets/Cats/Nino/Nino.png",
 		"damage": 15,
-		"atkcooldown": 1,
-		"range": 190,
-		"cost": 300,
+		"atkcooldown": 2,
+		"range": 150,
+		"cost": 200,
 		"critical_chance": 0,
-		"target_types": ["Metal", "Chiclete", "Pilha", "BossRadioativo"]
+		"target_types": ["Metal", "Chiclete", "Pilha", "BossRadioativo", "Papel", "Radioativo"]
 	},
 	
 	"Cartolina": { ## Cartolina não bate no slime de chiclete, seria horrivel ter chiclete em seus pelos
 		"name": "Cartolina",
 		"sprite": "res://Assets/Cats/Cartolina/Cartolina.png",
-		"damage": 35,
+		"damage": 10,
 		"atkcooldown": 1,
-		"range": 96,
-		"cost": 100,
+		"range": 108,
+		"cost": 200,
 		"critical_chance": 0,
-		"target_types": ["Plástico", "Metal", "Pilha", "BossRadioativo"]
+		"target_types": ["Plástico", "Metal", "Pilha", "BossRadioativo", "Papel", "Radioativo"]
 	},
 	
 	"Nut": { ## Os novelos de lã de nut não passam de carinhos no slime metal, então ele nem gasta sua lã com ele
 		"name": "Nut",
 		"sprite": "res://Assets/Cats/Nut/Nut.png",
-		"damage": 10,
-		"atkcooldown": 1,
-		"range": 220,
-		"cost": 130,
+		"damage": 7.5,
+		"atkcooldown": 1.5,
+		"range": 170,
+		"cost": 250,
 		"critical_chance": 0,
-		"target_types": ["Plástico", "Pilha", "Chiclete", "BossRadioativo"]
+		"target_types": ["Plástico", "Pilha", "Chiclete", "BossRadioativo", "Papel", "Radioativo"]
 	}
 }
 
@@ -79,33 +79,45 @@ func update_fish_quantity(amount: int):
 ## Enemies
 var enemies_data = {
 	"Plastico": {
-		"damage": 22,
+		"damage": 8,
 		"speed": 50,
-		"hp": 200,
-		"fish_reward": 30
+		"hp": 35,
+		"fish_reward": 13
 	},
 	"Chiclete": {
 		"damage": 4,
 		"speed": 40,
-		"hp": 90,
-		"fish_reward": 35
+		"hp": 31,
+		"fish_reward": 10
 	},
 	"Metal": {
-		"damage": 18,
+		"damage": 20,
 		"speed": 45,
-		"hp": 250,
-		"fish_reward": 45
+		"hp": 50,
+		"fish_reward": 15
 	},
 	"Pilha": {
-		"damage": 30,
+		"damage": 10,
 		"speed": 90,
-		"hp": 80,
-		"fish_reward": 60
+		"hp": 50,
+		"fish_reward": 10
+	},
+	"Radioativo": {
+		"damage": 30,
+		"speed": 50,
+		"hp": 31,
+		"fish_reward": 17
+	},
+	"Papel": {
+		"damage": 6,
+		"speed": 50,
+		"hp": 15,
+		"fish_reward": 7
 	},
 	"BossRadioativo": {
 		"damage": 80,
 		"speed": 35,
-		"hp": 600,
+		"hp": 300,
 		"fish_reward": 250
 	}
 }
@@ -121,13 +133,12 @@ var enemies_data = {
 ## [color=#hex]trocar a cor[/color]
 
 var waves = {
-	# FASE 1: APRENDIZADO (Ondas 1-5)
-	"wave1": {
+	"wave1": { ## Bem vindo
 		"enemies": [
-			["Chiclete", 1],
-			["Chiclete", 3],
-			["Chiclete", 3],
-			["Chiclete", 5]
+			["Papel", 2],
+			["Papel", 2],
+			["Papel", 2],
+			["Papel", 2],
 		],
 		"text_box": {
 			"show": true,
@@ -135,27 +146,58 @@ var waves = {
 			"message": "Slimes Chiclete à vista! Eles grudam no chão e na natureza. Cartolina nem chega perto deles... imagina se gruda no rabo?"
 		}
 	},
-	"wave2": {
+	"wave2": { ## Frase sobre estar vindo MUITO papel
 		"enemies": [
-			["Chiclete", 2],
-			["Chiclete", 2],
-			["Chiclete", 2],
-			["Chiclete", 2],
-			["Chiclete", 2]
+			["Papel", .8],
+			["Papel", .8],
+			["Papel", .8],
+			["Papel", .8],
+			["Papel", .8],
+			["Papel", .8],
+			["Papel", .8],
 		]
 	},
 	"wave3": {
 		"enemies": [
-			["Chiclete", .1],
-			["Chiclete", .1],
-			["Chiclete", .1],
-			["Chiclete", .1],
-			["Chiclete", .1]
+			["Papel", .2],
+			["Papel", .2],
+			["Papel", 4],
+			["Papel", .2],
+			["Papel", .2],
+			["Papel", 4],
+			["Papel", .2],
+			["Papel", .2],
+			["Papel", 4],
+			["Papel", .2],
+			["Papel", .2],
 		]
 	},
-	"wave4": {
+	"wave4": { 
 		"enemies": [
-			["Metal", 1]
+			["Papel", .5],
+			["Papel", .5],
+			["Papel", .5],
+			["Papel", .5],
+			["Papel", .5],
+			["Papel", 3],
+			["Papel", .5],
+			["Papel", .5],
+			["Papel", .5],
+			["Papel", .5],
+			["Papel", .5],
+			["Papel", .5],
+			["Chiclete", 1],
+			["Papel", 5],
+			["Papel", .5],
+			["Papel", .5],
+			["Papel", .5],
+			["Papel", .5],
+			["Papel", .5],
+			["Papel", .5],
+			["Papel", .5],
+			["Papel", .5],
+			["Papel", .5],
+			["Papel", .5],
 		],
 		"text_box": {
 			"show": true,
@@ -163,9 +205,22 @@ var waves = {
 			"message": ""
 		}
 	},
-	"wave5": {
+	"wave5": { ## Frase sobre o chiclete
 		"enemies": [
-			["Chiclete", 0],
+			["Papel", .5],
+			["Papel", .5],
+			["Chiclete", 1],
+			["Chiclete", .5],
+			["Papel", 2],
+			["Papel", .5],
+			["Chiclete", 1],
+			["Chiclete", .5],
+			["Papel", 2],
+			["Papel", .5],
+			["Chiclete", 1],
+			["Chiclete", .5],
+			["Papel", 2],
+			["Papel", .5],
 			["Plastico", 6]
 		],
 		"text_box": {
@@ -178,282 +233,31 @@ var waves = {
 	# FASE 2: DESENVOLVIMENTO (Ondas 6-10)
 	"wave6": {
 		"enemies": [
-			["Plastico", 0],
-			["Plastico", 5],
-			["Chiclete", 10]
+			["Chiclete", .3],
+			["Chiclete", .3],
+			["Chiclete", .3],
+			["Chiclete", .3],
+			["Chiclete", .3],
+			["Chiclete", .3],
+			["Papel", 2],
+			["Papel", 1],
+			["Papel", 1],
+			["Papel", 1],
+			["Papel", 1],
+			["Papel", 1],
+			["Chiclete", .3],
+			["Papel", .1],
+			["Chiclete", .3],
+			["Papel", .1],
+			["Chiclete", .3],
+			["Papel", .1],
+			["Chiclete", .3],
+			["Papel", .1],
+			["Chiclete", .3],
+			["Papel", .1],
+			["Chiclete", .3],
+			["Papel", .1],
 		]
-	},
-	"wave7": {
-		"enemies": [
-			["Plastico", 0],
-			["Plastico", 3],
-			["Plastico", 6]
-		]
-	},
-	"wave8": {
-		"enemies": [
-			["Pilha", 0]
-		],
-		"text_box": {
-			"show": true,
-			"title": "PERIGO TÓXICO!",
-			"message": "Pilha! Pequena mas LETAL - mercúrio e chumbo!"
-		}
-	},
-	"wave9": {
-		"enemies": [
-			["Chiclete", 0],
-			["Plastico", 4],
-			["Pilha", 10]
-		]
-	},
-	"wave10": {
-		"enemies": [
-			["Plastico", 0],
-			["Plastico", 2],
-			["Plastico", 4],
-			["Pilha", 8]
-		]
-	},
-
-	# FASE 3: COMPLEXIDADE (Ondas 11-15)
-	"wave11": {
-		"enemies": [
-			["Metal", 0]
-		],
-		"text_box": {
-			"show": true,
-			"title": "Metal Industrial!",
-			"message": "O mais resistente! Metais pesados tóxicos!"
-		}
-	},
-	"wave12": {
-		"enemies": [
-			["Chiclete", 0],
-			["Plastico", 3],
-			["Metal", 8]
-		]
-	},
-	"wave13": {
-		"enemies": [
-			["Pilha", 0],
-			["Pilha", 2],
-			["Plastico", 6],
-			["Plastico", 8]
-		]
-	},
-	"wave14": {
-		"enemies": [
-			["Metal", 0],
-			["Plastico", 4],
-			["Plastico", 6],
-			["Chiclete", 10]
-		]
-	},
-	"wave15": {
-		"enemies": [
-			["BossRadioativo", 0]
-		],
-		"text_box": {
-			"show": true,
-			"title": "Primeiro Boss!",
-			"message": "Boss Radioativo! Contaminação acumulada!"
-		}
-	},
-
-	# FASE 4: INTENSIFICAÇÃO (Ondas 16-20)
-	"wave16": {
-		"enemies": [
-			["Plastico", 0],
-			["Plastico", 1],
-			["Plastico", 2],
-			["Pilha", 6]
-		]
-	},
-	"wave17": {
-		"enemies": [
-			["Metal", 0],
-			["Metal", 4],
-			["Chiclete", 8],
-			["Chiclete", 10]
-		]
-	},
-	"wave18": {
-		"enemies": [
-			["Pilha", 0],
-			["Plastico", 3],
-			["Plastico", 4],
-			["Plastico", 5],
-			["Metal", 8]
-		]
-	},
-	"wave19": {
-		"enemies": [
-			["Chiclete", 0],
-			["Chiclete", 2],
-			["Plastico", 4],
-			["Plastico", 5],
-			["Pilha", 8],
-			["Metal", 12]
-		]
-	},
-	"wave20": {
-		"enemies": [
-			["BossRadioativo", 0],
-			["Metal", 8],
-			["Plastico", 12],
-			["Plastico", 13]
-		]
-	},
-
-	# FASE 5: ENXAMES (Ondas 21-25)
-	"wave21": {
-		"enemies": [
-			["Plastico", 0],
-			["Plastico", 0.5],
-			["Plastico", 1],
-			["Plastico", 1.5],
-			["Plastico", 2]
-		],
-		"text_box": {
-			"show": true,
-			"title": "Enxame Plástico!",
-			"message": "Invasão em massa! Como na vida real!"
-		}
-	},
-	"wave22": {
-		"enemies": [
-			["Pilha", 0],
-			["Pilha", 1],
-			["Pilha", 2],
-			["Metal", 6],
-			["Chiclete", 10]
-		]
-	},
-	"wave23": {
-		"enemies": [
-			["Plastico", 0],
-			["Plastico", 0.3],
-			["Plastico", 0.6],
-			["Plastico", 0.9],
-			["Metal", 3],
-			["Metal", 5],
-			["Pilha", 8]
-		]
-	},
-	"wave24": {
-		"enemies": [
-			["BossRadioativo", 0],
-			["Plastico", 5],
-			["Plastico", 5.2],
-			["Plastico", 5.4],
-			["Pilha", 8],
-			["Pilha", 9]
-		]
-	},
-	"wave25": {
-		"enemies": [
-			["BossPlastico", 0]
-		],
-		"text_box": {
-			"show": true,
-			"title": "Boss Plástico!",
-			"message": "Grande Ilha de Plástico do Pacífico!"
-		}
-	},
-
-	# FASE 6: APOCALIPSE FINAL (Ondas 26-30)
-	"wave26": {
-		"enemies": [
-			["Metal", 0],
-			["Metal", 1],
-			["Metal", 2],
-			["Pilha", 5],
-			["Pilha", 6],
-			["Plastico", 8],
-			["Plastico", 8.5],
-			["Plastico", 9]
-		]
-	},
-	"wave27": {
-		"enemies": [
-			["BossRadioativo", 0],
-			["Metal", 5],
-			["Metal", 6],
-			["Pilha", 8],
-			["Pilha", 8.5],
-			["Pilha", 9],
-			["Plastico", 12],
-			["Plastico", 12.2],
-			["Plastico", 12.4],
-			["Plastico", 12.6]
-		]
-	},
-	"wave28": {
-		"enemies": [
-			["BossPlastico", 0],
-			["BossRadioativo", 8],
-			["Metal", 12],
-			["Metal", 13],
-			["Pilha", 16],
-			["Pilha", 16.3],
-			["Plastico", 20],
-			["Plastico", 20.1],
-			["Plastico", 20.2],
-			["Plastico", 20.3],
-			["Plastico", 20.4]
-		]
-	},
-	"wave29": {
-		"enemies": [
-			["BossRadioativo", 0],
-			["BossRadioativo", 5],
-			["BossPlastico", 10],
-			["Metal", 15],
-			["Metal", 16],
-			["Metal", 17],
-			["Pilha", 20],
-			["Pilha", 20.2],
-			["Pilha", 20.4],
-			["Pilha", 20.6],
-			["Plastico", 25],
-			["Plastico", 25.1],
-			["Plastico", 25.2],
-			["Plastico", 25.3],
-			["Plastico", 25.4],
-			["Plastico", 25.5]
-		]
-	},
-	"wave30": {
-		"enemies": [
-			["BossPlastico", 0],
-			["BossPlastico", 8],
-			["BossRadioativo", 16],
-			["BossRadioativo", 20],
-			["Metal", 25],
-			["Metal", 26],
-			["Metal", 27],
-			["Metal", 28],
-			["Pilha", 30],
-			["Pilha", 30.1],
-			["Pilha", 30.2],
-			["Pilha", 30.3],
-			["Pilha", 30.4],
-			["Plastico", 35],
-			["Plastico", 35.05],
-			["Plastico", 35.1],
-			["Plastico", 35.15],
-			["Plastico", 35.2],
-			["Plastico", 35.25],
-			["Plastico", 35.3],
-			["Plastico", 35.35],
-			["Plastico", 35.4]
-		],
-		"text_box": {
-			"show": true,
-			"title": "BATALHA FINAL ÉPICA!",
-			"message": "Todos os poluentes unidos! O destino da natureza está em suas patas!"
-		}
 	}
 }
 
