@@ -22,6 +22,8 @@ texture_pressed = ExtResource("2_o8oco")
 texture_hover = ExtResource("2_yaibm")
 stretch_mode = 0
 script = ExtResource("2_42axt")
+normal_texture = ExtResource("1_r7sdq")
+selected_texture = ExtResource("2_o8oco")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
