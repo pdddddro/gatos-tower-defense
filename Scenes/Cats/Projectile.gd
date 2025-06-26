@@ -8,7 +8,7 @@ var damage: int
 var is_critical = false 
 
 func _ready():
-	body_entered.connect(_on_body_entered)
+	#body_entered.connect(_on_body_entered)
 	$AnimatedSprite2D.play(type)
 
 func _process(delta):

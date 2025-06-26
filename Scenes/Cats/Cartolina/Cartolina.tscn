@@ -196,9 +196,7 @@ position = Vector2(8, -4)
 texture_filter = 1
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_qs2hh")
-animation = &"AttackDownRight"
-frame = 2
-frame_progress = 1.0
+animation = &"IdleDownRight"
 
 [node name="Range" type="Area2D" parent="."]
 visible = false

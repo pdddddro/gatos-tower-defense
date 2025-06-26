@@ -215,23 +215,47 @@ func update_animation(direction):
 	
 	if direction.y < -0.6:
 		dir += "Up"
+		# Para direções UP, usa animações específicas Left/Right
+		if direction.x < 0:
+			dir += "Left"
+			$AnimatedSprite2D.flip_h = false
+			last_flip_h = true
+		elif direction.x > 0:
+			dir += "Right"
+			$AnimatedSprite2D.flip_h = false
+			last_flip_h = false
+		else:
+			# Mantém a última direção horizontal
+			if last_flip_h:
+				dir += "Left"
+			else:
+				dir += "Right"
+			$AnimatedSprite2D.flip_h = false
 	else:
 		dir += "Down"
-
-	# Só atualiza o flip se houver direção horizontal
-	if direction.x < 0:
-		dir += "Right"
-		$AnimatedSprite2D.flip_h = true
-		last_flip_h = true
-	elif direction.x > 0:
-		dir += "Right"
-		$AnimatedSprite2D.flip_h = false
-		last_flip_h = false
+		# Para direções DOWN, usa apenas Right com flip
+		if direction.x < 0:
+			dir += "Right"
+			$AnimatedSprite2D.flip_h = true
+			last_flip_h = true
+		elif direction.x > 0:
+			dir += "Right"
+			$AnimatedSprite2D.flip_h = false
+			last_flip_h = false
+		else:
+			dir += "Right"
+			$AnimatedSprite2D.flip_h = last_flip_h
+	
+	var animation_name = status + dir
+	
+	# Verifica se a animação existe antes de tocar
+	if $AnimatedSprite2D.sprite_frames.has_animation(animation_name):
+		$AnimatedSprite2D.play(animation_name)
 	else:
-		# Se não houver movimento horizontal, mantém o último flip
-		$AnimatedSprite2D.flip_h = last_flip_h
-
-	$AnimatedSprite2D.play(status + dir)
+		print("Animação não encontrada: " + animation_name)
+		# Opcional: tocar uma animação padrão como fallback
+		if $AnimatedSprite2D.sprite_frames.has_animation("IdleDownRight"):
+			$AnimatedSprite2D.play("IdleDownRight")
 
 var projectile_scene = preload("res://Scenes/Cats/Projectile.tscn")
 

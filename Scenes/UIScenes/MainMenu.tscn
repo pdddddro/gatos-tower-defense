@@ -51,13 +51,14 @@ theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Margin"]
+custom_minimum_size = Vector2(256, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 
 [node name="Title" type="Label" parent="Margin/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.4, 0.0941176, 0.298039, 1)
+theme_override_colors/font_color = Color(0.34, 0.0646, 0.2482, 0.345098)
 theme_override_constants/line_spacing = 0
 theme_override_fonts/font = ExtResource("2_nmscp")
 theme_override_font_sizes/font_size = 11
@@ -68,7 +69,7 @@ autowrap_mode = 2
 [node name="Label5" type="Label" parent="Margin/VBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.667849, 0.199668, 0.516046, 1)
+theme_override_colors/font_color = Color(0.806222, 0.294457, 0.633175, 1)
 theme_override_constants/line_spacing = 0
 theme_override_fonts/font = ExtResource("4_mfebp")
 theme_override_font_sizes/font_size = 16
@@ -79,18 +80,18 @@ autowrap_mode = 2
 [node name="Label2" type="Label" parent="Margin/VBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.667849, 0.199668, 0.516046, 1)
+theme_override_colors/font_color = Color(0.806222, 0.294457, 0.633175, 1)
 theme_override_constants/line_spacing = 0
 theme_override_fonts/font = ExtResource("4_mfebp")
 theme_override_font_sizes/font_size = 16
-text = "Sons"
+text = "Mais Efeitos Sonoros"
 vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="Label4" type="Label" parent="Margin/VBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.667849, 0.199668, 0.516046, 1)
+theme_override_colors/font_color = Color(0.806222, 0.294457, 0.633175, 1)
 theme_override_constants/line_spacing = 0
 theme_override_fonts/font = ExtResource("4_mfebp")
 theme_override_font_sizes/font_size = 16
@@ -98,10 +99,21 @@ text = "Ranking"
 vertical_alignment = 1
 autowrap_mode = 2
 
+[node name="Label6" type="Label" parent="Margin/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.806222, 0.294457, 0.633175, 1)
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("4_mfebp")
+theme_override_font_sizes/font_size = 16
+text = "Maior caracterização dos Gatos"
+vertical_alignment = 1
+autowrap_mode = 2
+
 [node name="Label3" type="Label" parent="Margin/VBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-theme_override_colors/font_color = Color(0.667849, 0.199668, 0.516046, 1)
+theme_override_colors/font_color = Color(0.806222, 0.294457, 0.633175, 1)
 theme_override_constants/line_spacing = 0
 theme_override_fonts/font = ExtResource("4_mfebp")
 theme_override_font_sizes/font_size = 16
@@ -349,7 +361,7 @@ theme_override_colors/font_color = Color(0.667849, 0.199668, 0.516046, 1)
 theme_override_constants/line_spacing = 0
 theme_override_fonts/font = ExtResource("4_mfebp")
 theme_override_font_sizes/font_size = 16
-text = "Ultima Atualização: 25/06 - 14:52"
+text = "Ultima Atualização: 26/06 - 02:18"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
