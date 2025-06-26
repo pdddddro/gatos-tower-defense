@@ -1,15 +1,22 @@
 extends Control
 
 @onready var tooltip = $Tooltip
+@onready var audio_player = AudioStreamPlayer.new()
 
 func _ready() -> void:
 	mouse_entered.connect(on_mouse_entered)
 	mouse_exited.connect(on_mouse_exited)
+	
+	add_child(audio_player)
+	audio_player.bus = "SFX"
 
 func on_mouse_entered():
 	var parent_card = get_parent()
 	var current_node_name = name
 	
+	GameData.play_sound("ui", "button", "hover")
+
+		
 	if parent_card and parent_card.has_meta("card_data") or (current_node_name in ["Card1", "Card2", "Card3", "Card4"]):
 		var data = parent_card.get_meta("card_data")
 		

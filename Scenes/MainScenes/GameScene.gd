@@ -275,6 +275,8 @@ func verify_and_build():
 			map_node.get_node("Cats").add_child(new_cat)
 			map_node.get_node("Exclusion").set_cell(build_tile, 5, Vector2i(0, 0))
 			
+			GameData.play_sound("cats", build_type, "place")
+			
 			GameData.money_spent += cat_cost
 			GameData.number_of_cats += 1
 		

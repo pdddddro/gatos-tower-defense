@@ -1,8 +1,9 @@
-[gd_scene load_steps=42 format=3 uid="uid://d0y6aaiw6832f"]
+[gd_scene load_steps=43 format=3 uid="uid://d0y6aaiw6832f"]
 
 [ext_resource type="Script" uid="uid://dh2a0v6qsoipe" path="res://Scenes/UIScenes/Shop.gd" id="1_ba3kk"]
 [ext_resource type="Texture2D" uid="uid://ycbwxuewd3jo" path="res://Assets/Icons/Catt3.png" id="2_k8126"]
 [ext_resource type="Texture2D" uid="uid://clqf5htsi1rom" path="res://Assets/Icons/Cards2.png" id="3_3lir5"]
+[ext_resource type="Script" uid="uid://c2nlmty2nmu5n" path="res://Scenes/UIScenes/Buttons/button.gd" id="3_ympee"]
 [ext_resource type="Texture2D" uid="uid://bgba1jqqv4rpe" path="res://Assets/Icons/Close.png" id="4_ld2fe"]
 [ext_resource type="Texture2D" uid="uid://dv3g48f7hixr8" path="res://Assets/UI/ui_background.png" id="5_ahyw7"]
 [ext_resource type="Texture2D" uid="uid://dahq70rsnb1fi" path="res://Assets/UI/ScrollBackground.png" id="6_uhyj3"]
@@ -126,6 +127,7 @@ size_flags_vertical = 8
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("4_ld2fe")
 stretch_mode = 0
+script = ExtResource("3_ympee")
 
 [node name="ShopContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -639,7 +641,6 @@ mouse_filter = 0
 theme = SubResource("Theme_y8xan")
 
 [node name="CatList" type="HFlowContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer"]
-visible = false
 custom_minimum_size = Vector2(148, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -655,6 +656,7 @@ mouse_default_cursor_shape = 2
 texture_normal = ExtResource("6_y2hbt")
 texture_hover = ExtResource("8_qah3m")
 stretch_mode = 0
+script = ExtResource("3_ympee")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Pele"]
 layout_mode = 1
@@ -748,6 +750,7 @@ mouse_default_cursor_shape = 2
 texture_normal = ExtResource("6_y2hbt")
 texture_hover = ExtResource("8_qah3m")
 stretch_mode = 0
+script = ExtResource("3_ympee")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Chicao"]
 layout_mode = 1
@@ -841,6 +844,7 @@ mouse_default_cursor_shape = 2
 texture_normal = ExtResource("6_y2hbt")
 texture_hover = ExtResource("8_qah3m")
 stretch_mode = 0
+script = ExtResource("3_ympee")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Nino"]
 layout_mode = 1
@@ -932,6 +936,7 @@ mouse_default_cursor_shape = 2
 texture_normal = ExtResource("6_y2hbt")
 texture_hover = ExtResource("8_qah3m")
 stretch_mode = 0
+script = ExtResource("3_ympee")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Cartolina"]
 layout_mode = 1
@@ -1022,6 +1027,7 @@ mouse_default_cursor_shape = 2
 texture_normal = ExtResource("6_y2hbt")
 texture_hover = ExtResource("8_qah3m")
 stretch_mode = 0
+script = ExtResource("3_ympee")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Nut"]
 layout_mode = 1
@@ -1104,6 +1110,7 @@ theme_override_font_sizes/font_size = 8
 text = "0"
 
 [node name="CardList" type="HFlowContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0

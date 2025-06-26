@@ -41,7 +41,7 @@ folder_colors={
 "res://Audio/": "teal",
 "res://Licenses/": "orange",
 "res://Resources/": "gray",
-"res://Scenes/": "yellow",
+"res://Scenes/": "orange",
 "res://Singletons/": "pink",
 "res://build/": "gray",
 "res://mobs/": "orange",

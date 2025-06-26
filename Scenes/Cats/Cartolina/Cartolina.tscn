@@ -207,7 +207,6 @@ visible = false
 shape = SubResource("CircleShape2D_66lg1")
 
 [node name="ClickableArea" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClickableArea"]
 shape = SubResource("CapsuleShape2D_tedku")

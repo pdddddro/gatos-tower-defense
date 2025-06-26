@@ -117,7 +117,7 @@ func on_hit(damage, source_cat = null):
 
 var is_walking: bool = false
 var walk_sound_timer: Timer
-var walk_sound_delay: float = 0.4  # Delay entre repetições
+var walk_sound_delay: float = 1 # Delay entre repetições
 var last_position: Vector2
 var movement_threshold: float = 1.0  # Velocidade mínima para 
 

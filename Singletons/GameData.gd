@@ -8,7 +8,7 @@ func reset_fish_quantity():
 	fish_quantity = default_fish_quantity
 
 ## Cats
-var cat_data = { ## "Plástico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
+var cat_data = { ## "Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 	"Chicao": { ## Chicão não ataca slimes pilha pra não dar ainda mais energia pra eles
 		"name": "Chicao",
 		"sprite": "res://Assets/Cats/Chicao/Chicao.png",
@@ -17,7 +17,7 @@ var cat_data = { ## "Plástico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 		"range": 160,
 		"cost": 50,
 		"critical_chance": 0,
-		"target_types": ["Plástico", "Metal", "Pilha", "Chiclete", "BossRadioativo", "Papel", "Radioativo"]
+		"target_types": ["Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo", "Papel", "Radioativo"]
 	},
 	
 	"Pele": { ## Apesar de afiada, as garras de Pelé não conseguem destruir o Slime Metal
@@ -28,7 +28,7 @@ var cat_data = { ## "Plástico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 		"range": 96,
 		"cost": 250,
 		"critical_chance": 0,
-		"target_types": ["Plástico", "Metal", "Pilha", "Chiclete", "BossRadioativo", "Papel", "Radioativo"]
+		"target_types": ["Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo", "Papel", "Radioativo"]
 	},
 	
 	"Nino": { ## Nino não consegue ver o slime de plástico com um olho só por conta da sua trasparência
@@ -39,7 +39,7 @@ var cat_data = { ## "Plástico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 		"range": 160,
 		"cost": 200,
 		"critical_chance": 0,
-		"target_types": ["Plástico", "Metal", "Pilha", "Chiclete", "BossRadioativo", "Papel", "Radioativo"]
+		"target_types": ["Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo", "Papel", "Radioativo"]
 	},
 	
 	"Cartolina": { ## Cartolina não bate no slime de chiclete, seria horrivel ter chiclete em seus pelos
@@ -50,7 +50,7 @@ var cat_data = { ## "Plástico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 		"range": 96,
 		"cost": 200,
 		"critical_chance": 0,
-		"target_types": ["Plástico", "Metal", "Pilha", "Chiclete", "BossRadioativo", "Papel", "Radioativo"]
+		"target_types": ["Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo", "Papel", "Radioativo"]
 	},
 	
 	"Nut": { ## Os novelos de lã de nut não passam de carinhos no slime metal, então ele nem gasta sua lã com ele
@@ -61,7 +61,7 @@ var cat_data = { ## "Plástico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 		"range": 128,
 		"cost": 250,
 		"critical_chance": 0,
-		"target_types": ["Plástico", "Metal", "Pilha", "Chiclete", "BossRadioativo", "Papel", "Radioativo"]
+		"target_types": ["Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo", "Papel", "Radioativo"]
 	}
 }
 
@@ -630,16 +630,16 @@ var music_data = {
 var sound_data = {
 	"enemies": {
 		"Papel": {
-			"death": {"path": "res://Audio/Enemies/Papel/Death.ogg", "volume": -10},
-			"walk": {"path": "res://Audio/Enemies/Papel/Walk.ogg", "volume": -30}
+			"death": {"path": "res://Audio/Enemies/Papel/Death.ogg", "volume": -5},
+			"walk": {"path": "res://Audio/Enemies/Papel/Walk.ogg", "volume": -5}
 		},
 		"Chiclete": {
 			"death": {"path": "res://Audio/Enemies/Chiclete/439186__fourthwoods__pop-5.ogg", "volume": -15},
 			"walk": {"path": "", "volume": 0}
 		},
 		"Plastico": {
-			"death": {"path": "", "volume": 0},
-			"walk": {"path": "", "volume": 0}
+			"death": {"path": "res://Audio/Enemies/Plastico/Death.ogg", "volume": -4},
+			"walk": {"path": "res://Audio/Enemies/Plastico/Walk.ogg", "volume": -15}
 		},
 		"Metal": {
 			"death": {"path": "", "volume": 0},
@@ -664,24 +664,24 @@ var sound_data = {
 	},
 	"cats": {
 		"Chicao": {
-			"attack": {"path": "", "volume": 0},
-			"place": {"path": "", "volume": 0}
+			"attack": {"path": "res://Audio/Cats/Chicao/Attack.ogg", "volume": -13},
+			"place": {"path": "res://Audio/Cats/Chicao/Place.ogg", "volume": -10}
 		},
 		"Pele": {
-			"attack": {"path": "res://Assets/Audio/SFX/Characters/Cats/pele_attack.wav", "volume": -5.0},
-			"place": {"path": "", "volume": 0}
+			"attack": {"path": "res://Audio/Cats/Pele/Attack.ogg", "volume": -5.0},
+			"place": {"path": "res://Audio/Cats/Pele/Place.ogg", "volume": -5}
 		},
 		"Nino": {
 			"attack": {"path": "res://Audio/Cats/Nino/Attack.ogg", "volume": 0},
-			"place": {"path": "", "volume": 0}
+			"place": {"path": "res://Audio/Cats/Nino/Place.ogg", "volume": -5}
 		},
 		"Cartolina": {
-			"attack": {"path": "res://Audio/Cats/Cartolina/Attack.ogg", "volume": 0},
-			"place": {"path": "", "volume": 0}
+			"attack": {"path": "res://Audio/Cats/Cartolina/Attack.ogg", "volume": -4},
+			"place": {"path": "res://Audio/Cats/Cartolina/Place.ogg", "volume": -5}
 		},
 		"Nut": {
-			"attack": {"path": "", "volume": 0},
-			"place": {"path": "", "volume": 0}
+			"attack": {"path": "res://Audio/Cats/Nut/Attack.ogg", "volume": 0},
+			"place": {"path": "res://Audio/Cats/Nut/Place.ogg", "volume": -5}
 		}
 	},
 	"ui": {
@@ -784,11 +784,11 @@ func get_current_music_type() -> String:
 var waves = {
 	"wave1": {
 		"enemies": [
-			["Chiclete", 1.5],
-			["Chiclete", 1.5],
-			["Chiclete", 1.5],
-			["Chiclete", 1.5],
-			["Chiclete", 1.5],
+			["Plastico", 1.5],
+			["Papel", 1.5],
+			["Papel", 1.5],
+			["Papel", 1.5],
+			["Papel", 1.5],
 		],
 		"text_box": {
 			"show": true,
