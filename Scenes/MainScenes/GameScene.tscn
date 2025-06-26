@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b3oj3u5omej0y"]
+[gd_scene load_steps=15 format=3 uid="uid://b3oj3u5omej0y"]
 
 [ext_resource type="Script" uid="uid://d3rxrafiwqqn2" path="res://Scenes/MainScenes/GameScene.gd" id="1_hosin"]
 [ext_resource type="PackedScene" uid="uid://b4lqfl3wc00q3" path="res://Scenes/Maps/Map1.tscn" id="1_ianr5"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://8adf7fkny4qr" path="res://Assets/Icons/Play.png" id="6_jem3k"]
 [ext_resource type="Script" uid="uid://ber1tq1cvvvc3" path="res://Scenes/UIScenes/TextBox/tooltip_Interact.gd" id="7_80vwl"]
 [ext_resource type="FontFile" uid="uid://8qe2jqb87ubg" path="res://Assets/Fonts/press_start_2p/PressStart2P.ttf" id="7_jem3k"]
+[ext_resource type="Script" uid="uid://c2nlmty2nmu5n" path="res://Scenes/UIScenes/Buttons/button.gd" id="7_wb53i"]
 [ext_resource type="PackedScene" uid="uid://lhinuy75rcjw" path="res://Scenes/UIScenes/TextBox/text_box.tscn" id="9_tcjp3"]
 [ext_resource type="PackedScene" uid="uid://cto02ur6a2nje" path="res://Scenes/UIScenes/TextBox/tooltip.tscn" id="10_br1xs"]
 [ext_resource type="Texture2D" uid="uid://d0s1xis4xqbm6" path="res://Assets/Icons/Fish1.png" id="10_h0y4r"]
@@ -61,39 +62,30 @@ process_mode = 3
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
+mouse_default_cursor_shape = 16
 texture_normal = ExtResource("6_j856t")
 stretch_mode = 0
-script = ExtResource("7_80vwl")
-
-[node name="Tooltip" parent="UI/HUD/MarginContainer/GameControls/QuestionMark" instance=ExtResource("10_br1xs")]
-tooltip_title = ""
-tooltip_content = "Tutorial"
+script = ExtResource("7_wb53i")
 
 [node name="Pause" type="TextureButton" parent="UI/HUD/MarginContainer/GameControls"]
 process_mode = 3
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("6_h0y4r")
 stretch_mode = 0
-script = ExtResource("7_80vwl")
-
-[node name="Tooltip" parent="UI/HUD/MarginContainer/GameControls/Pause" instance=ExtResource("10_br1xs")]
-tooltip_title = ""
-tooltip_content = "Ajustes"
+script = ExtResource("7_wb53i")
 
 [node name="Play" type="TextureButton" parent="UI/HUD/MarginContainer/GameControls"]
 process_mode = 3
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 0
+mouse_default_cursor_shape = 2
 texture_normal = ExtResource("6_jem3k")
 stretch_mode = 0
-script = ExtResource("7_80vwl")
-
-[node name="Tooltip" parent="UI/HUD/MarginContainer/GameControls/Play" instance=ExtResource("10_br1xs")]
-tooltip_title = ""
-tooltip_content = "Iniciar"
+script = ExtResource("7_wb53i")
 
 [node name="Status" type="HBoxContainer" parent="UI/HUD/MarginContainer"]
 layout_mode = 2

@@ -225,7 +225,7 @@ var card_data = {
 		}
 		,{
 			"name": "Sem Paciência I",
-			"description": "Não aguenta mais, só quer que isso acabe logo, bate 20% mais rápido",
+			"description": "Não aguenta mais, só quer que isso acabe logo. Bate 20% mais rápido",
 			"icon": "res://Assets/Icons/Cards/Sem paciencia-icon.png",
 			"effects": [
 				{"type": "speed_boost", "power": 20, "power_type": "percentage"}
@@ -318,7 +318,7 @@ var card_data = {
 		}
 		,{
 			"name": "Sem Paciência II",
-			"description": "Não aguenta mais, só quer que isso acabe logo, bate 40% mais rápido",
+			"description": "Não aguenta mais, só quer que isso acabe logo. Bate 40% mais rápido",
 			"icon": "res://Assets/Icons/Cards/Sem paciencia-icon.png",
 			"effects": [
 				{"type": "speed_boost", "power": 40, "power_type": "percentage"}
@@ -413,7 +413,7 @@ var card_data = {
 		}
 		,{
 			"name": "Sem Paciência III",
-			"description": "Não aguenta mais, só quer que isso acabe logo, bate 60% mais rápido",
+			"description": "Não aguenta mais, só quer que isso acabe logo. Bate 60% mais rápido",
 			"icon": "res://Assets/Icons/Cards/Sem paciencia-icon.png",
 			"effects": [
 				{"type": "speed_boost", "power": 60, "power_type": "percentage"}

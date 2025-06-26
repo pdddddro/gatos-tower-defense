@@ -18,7 +18,7 @@ func _ready():
 	# Criar o player de música
 	music_player = AudioStreamPlayer.new()
 	music_player.bus = "Music"  # Definir bus para música
-	music_player.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+	music_player.process_mode = Node.PROCESS_MODE_ALWAYS
 	add_child(music_player)
 
 	call_deferred("start_background_music")

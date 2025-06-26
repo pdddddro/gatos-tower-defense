@@ -38,29 +38,30 @@ func setup_tutorial_pages():
 			"animation": "Tips"
 		}
 		,{
-			"title": "Como posicionar os Gatinhos?",
+			"title": "Como ganho os Gatinhos?",
 			"steps": [
-				"1. Clique no ícone dos Gato",
-				"2. Escolha seu gato, clique ou arraste e solte ele para o campo",
-				"3. Posicione o Gatinho estrategicamente",
-				"4. Agora aprecie a fofura... - Digo, use uma cartinha!"
+				"1. Clique no ícone dos Gatos",
+				"2. Escolha o seu, arraste e solte ele para o campo",
+				"3. Posicione o estrategicamente",
+				"4. Agora aprecie a fofura... - Digo, use uma cartinha para melhorá-lo!"
 			],
 			"animation": "CatShop"
 		}
 		,{
-			"title": "Como usar as Cartinhas?",
+			"title": "Como consigo Cartinhas?",
 			"steps": [
-				"1. Abra o Pack de Cartas e escolha uma das 3 opções",
-				"2. Arraste até o Gato (cada gato pode ter até 4 cartas equipadas)",
-				"3. Clique no gato e confira a mudança nos atributos!",
+				"1. Clique no ícone das Cartas",
+				"2. Abra o Pack de Cartas e escolha uma das 3 opções",
+				"3. Arraste até o Gato (cada gato pode ter até 4 cartas equipadas)",
+				"4. Clique no gato e confira a mudança nos atributos!",
 			],
 			"animation": "CardUsage"
 		}
 		,{
-			"title": "Como iniciar as Rodadas?",
+			"title": "Como eu começo a jogar?",
 			"steps": [
-				"1. Clique no botão Play para iniciar a onda",
-				"2. Cada rodada tem um conjunto de inimigos diferentes",
+				"1. Clique no botão Play para iniciar a rodada",
+				"2. Cada rodada tem uma onda diferente de inimigos",
 				"3. Cuidado! Caso um slime chegue no final do trajeto, você perde vida!",
 			],
 			"animation": "WaveStart"
@@ -68,9 +69,9 @@ func setup_tutorial_pages():
 		,{
 			"title": "Dicas Importantes",
 			"steps": [
-				"1. Cada gato tem tipos específicos de inimigos que pode atacar, utilize as cartas para mudar isso!",
-				"2. Cuidado com os Chefões... eles são perigosos",
-				"3. Se divirta, aprenda e aprecie a fofura!"
+				"1. Cuidado com os Chefões... eles são perigosos",
+				"2. As frases tem dicas valiosas sobre o jogo e sobre o planeta, leia!",
+				"3. Se divirta, aprenda e aprecie a fofura..."
 			],
 			"animation": "Tips"
 		}
