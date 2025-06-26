@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://clopssiyrufoj"
+path="res://.godot/imported/530615__lukeo135__slime-3 (1).ogg-e0d9498f62eea4fd2e7fc8d93d5ad4b6.oggvorbisstr"
+
+[deps]
+
+source_file="res://Audio/Enemies/Metal/530615__lukeo135__slime-3 (1).ogg"
+dest_files=["res://.godot/imported/530615__lukeo135__slime-3 (1).ogg-e0d9498f62eea4fd2e7fc8d93d5ad4b6.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

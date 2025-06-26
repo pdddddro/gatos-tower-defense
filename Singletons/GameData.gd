@@ -635,15 +635,15 @@ var sound_data = {
 		},
 		"Chiclete": {
 			"death": {"path": "res://Audio/Enemies/Chiclete/439186__fourthwoods__pop-5.ogg", "volume": -15},
-			"walk": {"path": "", "volume": 0}
+			"walk": {"path": "res://Audio/Enemies/Chiclete/167075__drminky__slime-land.wav", "volume": -25}
 		},
 		"Plastico": {
 			"death": {"path": "res://Audio/Enemies/Plastico/Death.ogg", "volume": -4},
 			"walk": {"path": "res://Audio/Enemies/Plastico/Walk.ogg", "volume": -15}
 		},
 		"Metal": {
-			"death": {"path": "", "volume": 0},
-			"walk": {"path": "", "volume": 0}
+			"death": {"path": "res://Audio/Enemies/Metal/Death.ogg", "volume": -7},
+			"walk": {"path": "res://Audio/Enemies/Metal/Walk.ogg", "volume": -10}
 		},
 		"Pilha": {
 			"death": {"path": "", "volume": 0},
@@ -784,11 +784,7 @@ func get_current_music_type() -> String:
 var waves = {
 	"wave1": {
 		"enemies": [
-			["Plastico", 1.5],
-			["Papel", 1.5],
-			["Papel", 1.5],
-			["Papel", 1.5],
-			["Papel", 1.5],
+			["Metal", 1.5],
 		],
 		"text_box": {
 			"show": true,
