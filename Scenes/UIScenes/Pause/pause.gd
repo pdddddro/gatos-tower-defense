@@ -1,8 +1,8 @@
 extends Control
 
 @onready var scene_handler = get_node("/root/SceneHandler")
-@onready var music_slider = $MusicSlider  # Ajuste o caminho conforme sua estrutura
-@onready var sfx_slider = $SFXSlider      # Ajuste o caminho conforme sua estrutura
+@onready var music_slider = $VBoxContainer/BestCat/Background/MarginContainer/Container/MusicVolume/MusicSlider  # Ajuste o caminho conforme sua estrutura
+@onready var sfx_slider = $VBoxContainer/BestCat/Background/MarginContainer/Container/SFXVolume/SFXSlider      # Ajuste o caminho conforme sua estrutura
 
 # Índices dos buses de áudio
 var music_bus_index: int

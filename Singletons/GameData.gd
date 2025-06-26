@@ -144,7 +144,7 @@ var card_data = {
 		{
 			"name": "Pelas tartarugas!",
 			"description": "Este gato desenvolveu alergia a materiais sintéticos, 50% mais dano contra os slimes de Plástico",
-			"icon": "res://Assets/Icons/CardIconPlaceholder.png",
+			"icon": "res://Assets/Icons/Cards/Tartaruga-icon.png",
 			"effects": [
 				{"type": "damage_vs_type", "target_type": "Plastico", "power": 50, "power_type": "percentage"}
 			],
@@ -153,7 +153,7 @@ var card_data = {
 		,{
 			"name": "Sou do Rock",
 			"description": "Ouviu muito Heavy Metal e agora causa 35% de dano bônus em Slimes Metal",
-			"icon": "res://Assets/Icons/CardIconPlaceholder.png",
+			"icon": "res://Assets/Icons/Cards/rock-icon.png",
 			"effects": [
 				{"type": "target_expansion", "target_types": ["Metal", "Pilha"]},
 				{"type": "damage_vs_type", "target_type": "Metal", "power": 35, "power_type": "percentage"},
@@ -183,18 +183,18 @@ var card_data = {
 			"sell_value": "100"
 		}
 		,{
-			"name": "Ritmo do Ronronar I",
+			"name": "Ritmo do Ronronar II",
 			"description": "Quanto mais ronrona, mais rápido bate! Ganha +15% de velocidade de ataque",
-			"icon": "res://Assets/Icons/CardIconPlaceholder.png",
+			"icon": "res://Assets/Icons/Cards/ronronar-icon.png",
 			"effects": [
 				{"type": "speed_boost", "power": 20, "power_type": "percentage"},
 			],
 			"sell_value": "100"
 		}
 		,{
-			"name": "Hora do sachê I",
+			"name": "Hora do Patê I",
 			"description": "Esse gato está ficando com fome, quer acabar com isso logo - Ganha 20% de alcance",
-			"icon": "res://Assets/Icons/CardIconPlaceholder.png",
+			"icon": "res://Assets/Icons/Cards/Sache-Icon.png",
 			"effects": [
 				{"type": "range_boost", "power": 15, "power_type": "percentage"},
 			],
@@ -203,7 +203,7 @@ var card_data = {
 		,{
 			"name": "Pré-treino Radioativo I",
 			"description": "Tomou uma substância verde esquisita que encontrou, agora tem 20% de chance de crítico",
-			"icon": "res://Assets/Icons/CardIconPlaceholder.png",
+			"icon": "res://Assets/Icons/Cards/Pre-Treino-icon.png",
 			"effects": [
 				{"type": "critic_boost", "power": 20, "power_type": "absolute"}
 			],
@@ -212,7 +212,7 @@ var card_data = {
 		,{
 			"name": "Veterano de Guerra I",
 			"description": "Você não quer saber o que esse gato ja viveu... - 20% mais dano contra todos os slimes comuns",
-			"icon": "res://Assets/Icons/CardIconPlaceholder.png",
+			"icon": "res://Assets/Icons/Cards/Veterano-Guerra-Icon.png",
 			"effects": [
 				{"type": "damage_vs_type", "target_type": "Plastico", "power": 20, "power_type": "percentage"},
 				{"type": "damage_vs_type", "target_type": "Metal", "power": 20, "power_type": "percentage"},
@@ -226,7 +226,7 @@ var card_data = {
 		,{
 			"name": "Sem Paciência I",
 			"description": "Não aguenta mais, só quer que isso acabe logo, bate 20% mais rápido",
-			"icon": "res://Assets/Icons/CardIconPlaceholder.png",
+			"icon": "res://Assets/Icons/Cards/Sem paciencia-icon.png",
 			"effects": [
 				{"type": "speed_boost", "power": 20, "power_type": "percentage"}
 		],
@@ -235,7 +235,7 @@ var card_data = {
 		,{
 			"name": "Gato Míope I",
 			"description": "Não enxerga longe mas compensa com ataques rápidos - Ataca 40% mais rápido porém perde 30% de Alcance",
-			"icon": "res://Assets/Icons/CardIconPlaceholder.png",
+			"icon": "res://Assets/Icons/Cards/GatoMiope-Icon.png",
 			"effects": [
 				{"type": "speed_boost", "power": 40, "power_type": "percentage"},
 				{"type": "range_boost", "power": -30, "power_type": "percentage"}
@@ -257,7 +257,7 @@ var card_data = {
 		,{
 			"name": "Pré-treino Radioativo II",
 			"description": "Tomou uma substância verde esquisita que encontrou, agora tem mais 30% de chance de crítico",
-			"icon": "res://Assets/Icons/CardIconPlaceholder.png",
+			"icon": "res://Assets/Icons/Cards/Pre-Treino-icon.png",
 			"effects": [
 				{"type": "critic_boost", "power": 30, "power_type": "absolute"}
 			],
@@ -266,16 +266,16 @@ var card_data = {
 		,{
 			"name": "Ritmo do Ronronar II",
 			"description": "Quanto mais ronrona, mais rápido bate! Ganha +30% de velocidade de ataque",
-			"icon": "res://Assets/Icons/CardIconPlaceholder.png",
+			"icon": "res://Assets/Icons/Cards/ronronar-icon.png",
 			"effects": [
 				{"type": "speed_boost", "power": 30, "power_type": "percentage"},
 			],
 			"sell_value": "100"
 		}
 		,{
-			"name": "Hora do sachê II",
+			"name": "Hora do Patê II",
 			"description": "Esse gato está com tanta fome que vai fazer de tudo para acabar a partida mais rápido, ganha 35% de alcance",
-			"icon": "res://Assets/Icons/CardIconPlaceholder.png",
+			"icon": "res://Assets/Icons/Cards/Sache-Icon.png",
 			"effects": [
 				{"type": "range_boost", "power": 25, "power_type": "percentage"},
 			],
@@ -305,7 +305,7 @@ var card_data = {
 		,{
 			"name": "Veterano de Guerra II",
 			"description": "Você não quer saber o que esse gato ja viveu... - 30% mais dano contra todos os slimes comuns",
-			"icon": "res://Assets/Icons/CardIconPlaceholder.png",
+			"icon": "res://Assets/Icons/Cards/Veterano-Guerra-Icon.png",
 			"effects": [
 				{"type": "damage_vs_type", "target_type": "Plastico", "power": 30, "power_type": "percentage"},
 				{"type": "damage_vs_type", "target_type": "Metal", "power": 30, "power_type": "percentage"},
@@ -319,7 +319,7 @@ var card_data = {
 		,{
 			"name": "Sem Paciência II",
 			"description": "Não aguenta mais, só quer que isso acabe logo, bate 40% mais rápido",
-			"icon": "res://Assets/Icons/CardIconPlaceholder.png",
+			"icon": "res://Assets/Icons/Cards/Sem paciencia-icon.png",
 			"effects": [
 				{"type": "speed_boost", "power": 40, "power_type": "percentage"}
 		],
@@ -328,7 +328,7 @@ var card_data = {
 		,{
 			"name": "Gato Míope II",
 			"description": "Não enxerga longe mas compensa com ataques rápidos - Ataca 60% mais rápido porém perde 40% de Alcance",
-			"icon": "res://Assets/Icons/CardIconPlaceholder.png",
+			"icon": "res://Assets/Icons/Cards/GatoMiope-Icon.png",
 			"effects": [
 				{"type": "speed_boost", "power": 60, "power_type": "percentage"},
 				{"type": "range_boost", "power": -40, "power_type": "percentage"}
@@ -354,7 +354,7 @@ var card_data = {
 		,{
 			"name": "Pré-treino Radioativo III",
 			"description": "Tomou uma substância verde esquisita que encontrou, agora tem mais 50% de chance de crítico",
-			"icon": "res://Assets/Icons/CardIconPlaceholder.png",
+			"icon": "res://Assets/Icons/Cards/Pre-Treino-icon.png",
 			"effects": [
 				{"type": "critic_boost", "power": 50, "power_type": "absolute"}
 			],
@@ -363,16 +363,16 @@ var card_data = {
 		,{
 			"name": "Ritmo do Ronronar III",
 			"description": "Quanto mais ronrona, mais rápido bate! Ganha +40% de velocidade de ataque",
-			"icon": "res://Assets/Icons/CardIconPlaceholder.png",
+			"icon": "res://Assets/Icons/Cards/ronronar-icon.png",
 			"effects": [
 				{"type": "speed_boost", "power": 40, "power_type": "percentage"},
 			],
 			"sell_value": "100"
 		}
 		,{
-			"name": "Hora do sachê III",
+			"name": "Hora do Patê III",
 			"description": "Esse gato está quer devorar tudo que vê pela frente, +50% de alcance",
-			"icon": "res://Assets/Icons/CardIconPlaceholder.png",
+			"icon": "res://Assets/Icons/Cards/Sache-Icon.png",
 			"effects": [
 				{"type": "range_boost", "power": 40, "power_type": "percentage"},
 			],
@@ -400,7 +400,7 @@ var card_data = {
 		,{
 			"name": "Veterano de Guerra III",
 			"description": "Você não quer saber o que esse gato ja viveu... - 60% mais dano contra todos os slimes comuns",
-			"icon": "res://Assets/Icons/CardIconPlaceholder.png",
+			"icon": "res://Assets/Icons/Cards/Veterano-Guerra-Icon.png",
 			"effects": [
 				{"type": "damage_vs_type", "target_type": "Plastico", "power": 60, "power_type": "percentage"},
 				{"type": "damage_vs_type", "target_type": "Metal", "power": 60, "power_type": "percentage"},
@@ -414,7 +414,7 @@ var card_data = {
 		,{
 			"name": "Sem Paciência III",
 			"description": "Não aguenta mais, só quer que isso acabe logo, bate 60% mais rápido",
-			"icon": "res://Assets/Icons/CardIconPlaceholder.png",
+			"icon": "res://Assets/Icons/Cards/Sem paciencia-icon.png",
 			"effects": [
 				{"type": "speed_boost", "power": 60, "power_type": "percentage"}
 		],
@@ -423,7 +423,7 @@ var card_data = {
 		,{
 			"name": "Gato Míope III",
 			"description": "Não enxerga longe mas compensa com ataques rápidos - Ataca 100% mais rápido porém perde 60% de Alcance",
-			"icon": "res://Assets/Icons/CardIconPlaceholder.png",
+			"icon": "res://Assets/Icons/Cards/GatoMiope-Icon.png",
 			"effects": [
 				{"type": "speed_boost", "power": 100, "power_type": "percentage"},
 				{"type": "range_boost", "power": -60, "power_type": "percentage"}
@@ -790,6 +790,11 @@ var waves = {
 			["Chiclete", 1.5],
 			["Chiclete", 1.5],
 		],
+		"text_box": {
+			"show": true,
+			"title": "Prontos para a batalha gatinhos?",
+			"message": "Slimes Chiclete à vista! Eles grudam no chão e na natureza. Cartolina nem chega perto deles... imagina se gruda no rabo?"
+		}
 	},
 	
 	"wave2": {

@@ -11,12 +11,14 @@ func _ready():
 	for i in range(max_sfx_players):
 		var player = AudioStreamPlayer.new()
 		player.bus = "SFX"  # Definir bus para efeitos sonoros
+		player.process_mode = Node.PROCESS_MODE_PAUSABLE
 		add_child(player)
 		sfx_players.append(player)
 
 	# Criar o player de música
 	music_player = AudioStreamPlayer.new()
 	music_player.bus = "Music"  # Definir bus para música
+	music_player.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 	add_child(music_player)
 
 	call_deferred("start_background_music")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://c3eo4k3gsmtd0"]
+[gd_scene load_steps=46 format=3 uid="uid://c3eo4k3gsmtd0"]
 
 [ext_resource type="Script" uid="uid://c4terrj7gjgx0" path="res://Scenes/UIScenes/Result/result.gd" id="1_adago"]
 [ext_resource type="Texture2D" uid="uid://0byb8mpdvpgy" path="res://Assets/UI/Art/Background.png" id="2_3orr4"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://bfwtkfw56eu2j" path="res://Assets/UI/Equipped_card_background_hover.png" id="18_bcbo1"]
 [ext_resource type="Script" uid="uid://ber1tq1cvvvc3" path="res://Scenes/UIScenes/TextBox/tooltip_Interact.gd" id="19_flsdf"]
 [ext_resource type="PackedScene" uid="uid://cto02ur6a2nje" path="res://Scenes/UIScenes/TextBox/tooltip.tscn" id="20_vw8t1"]
+[ext_resource type="Script" uid="uid://c2nlmty2nmu5n" path="res://Scenes/UIScenes/Buttons/button.gd" id="24_vw8t1"]
 [ext_resource type="Texture2D" uid="uid://baepjslnydqim" path="res://Assets/UI/Buttons/botao_principal_padrao.png" id="28_l3m27"]
 [ext_resource type="Texture2D" uid="uid://mx3dyc0tnke" path="res://Assets/UI/Buttons/botao_principal_hover.png" id="29_evi2c"]
 [ext_resource type="Texture2D" uid="uid://cgceauk46iquy" path="res://Assets/UI/Buttons/botao_sec_padrao.png" id="30_7plpr"]
@@ -771,6 +772,7 @@ texture_normal = ExtResource("30_7plpr")
 texture_hover = ExtResource("31_h07x6")
 texture_disabled = ExtResource("9_2hg7p")
 stretch_mode = 0
+script = ExtResource("24_vw8t1")
 
 [node name="Label" type="Label" parent="VBoxContainer/ActionButtons/Menu"]
 layout_mode = 1
@@ -795,6 +797,7 @@ texture_normal = ExtResource("28_l3m27")
 texture_hover = ExtResource("29_evi2c")
 texture_disabled = ExtResource("9_2hg7p")
 stretch_mode = 0
+script = ExtResource("24_vw8t1")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ActionButtons/MainAction"]
 layout_mode = 1
