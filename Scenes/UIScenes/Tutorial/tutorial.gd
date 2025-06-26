@@ -8,6 +8,7 @@ var current_page: int = 0
 var tutorial_pages = []
 
 func _ready():
+	get_tree().paused = true
 	setup_tutorial_pages()
 	
 	# Conecta os botões existentes aos sinais
@@ -51,7 +52,7 @@ func setup_tutorial_pages():
 			"title": "Como consigo Cartinhas?",
 			"steps": [
 				"1. Clique no ícone das Cartas",
-				"2. Abra o Pack de Cartas e escolha uma das 3 opções",
+				"2. Abra o Pack de Cartas e escolha umas",
 				"3. Arraste até o Gato (cada gato pode ter até 4 cartas equipadas)",
 				"4. Clique no gato e confira a mudança nos atributos!",
 			],
@@ -160,6 +161,7 @@ func _on_next_pressed():
 	else:
 		# Última página - finaliza tutorial
 		emit_signal("tutorial_completed")
+		get_tree().paused = false
 		queue_free()
 
 func _on_back_pressed():
@@ -169,4 +171,5 @@ func _on_back_pressed():
 
 func _on_skip_pressed():
 	emit_signal("tutorial_skipped")
+	get_tree().paused = false
 	queue_free()

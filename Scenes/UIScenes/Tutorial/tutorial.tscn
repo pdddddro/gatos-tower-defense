@@ -42,6 +42,7 @@ animations = [{
 }]
 
 [node name="Tutorial" type="Control"]
+process_mode = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -205,6 +206,30 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 alignment = 1
 
+[node name="Back" type="TextureButton" parent="MarginContainer/VBoxContainer2/Content/MarginContainer/Content/Controls"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("7_6r8ot")
+texture_hover = ExtResource("8_lkjwt")
+texture_disabled = ExtResource("6_1s4ul")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer2/Content/MarginContainer/Content/Controls/Back"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("2_av4rr")
+theme_override_font_sizes/font_size = 11
+text = "Voltar"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Next" type="TextureButton" parent="MarginContainer/VBoxContainer2/Content/MarginContainer/Content/Controls"]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
@@ -231,30 +256,6 @@ theme_override_colors/font_color = Color(0.0138108, 0.2322, 0.0459039, 1)
 theme_override_fonts/font = ExtResource("2_av4rr")
 theme_override_font_sizes/font_size = 11
 text = "Próximo"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Back" type="TextureButton" parent="MarginContainer/VBoxContainer2/Content/MarginContainer/Content/Controls"]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
-size_flags_horizontal = 0
-mouse_default_cursor_shape = 2
-texture_normal = ExtResource("7_6r8ot")
-texture_hover = ExtResource("8_lkjwt")
-texture_disabled = ExtResource("6_1s4ul")
-stretch_mode = 0
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer2/Content/MarginContainer/Content/Controls/Back"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
-theme_override_fonts/font = ExtResource("2_av4rr")
-theme_override_font_sizes/font_size = 11
-text = "Voltar"
 horizontal_alignment = 1
 vertical_alignment = 1
 
