@@ -48,6 +48,7 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
 [node name="Control" parent="UI/HUD/MarginContainer" instance=ExtResource("11_80vwl")]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 
