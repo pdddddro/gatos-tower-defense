@@ -8,8 +8,8 @@
 [ext_resource type="FontFile" uid="uid://bxh8oh1s7ap4j" path="res://Assets/Fonts/medodicaregular.otf" id="3_l1ugq"]
 [ext_resource type="Texture2D" uid="uid://xvjesvsh2vh8" path="res://Assets/Icons/Social Media/Insta.png" id="5_0hvsp"]
 [ext_resource type="Texture2D" uid="uid://cn0qpqwv6feij" path="res://Assets/Icons/Social Media/Linkedin.png" id="6_0l6uu"]
+[ext_resource type="Texture2D" uid="uid://wbr3px7j1n3e" path="res://Assets/UI/Photo/pedro.jpg" id="7_4wfam"]
 [ext_resource type="Texture2D" uid="uid://jge6ymwvk3dj" path="res://Assets/UI/Photo/luma.jpg" id="10_4wfam"]
-[ext_resource type="Texture2D" uid="uid://criax4ram0va3" path="res://Assets/487433704_1312343273397265_72656.jpg" id="11_dwgd0"]
 
 [node name="About" type="Control"]
 layout_mode = 3
@@ -157,7 +157,7 @@ custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-texture = ExtResource("11_dwgd0")
+texture = ExtResource("7_4wfam")
 expand_mode = 1
 
 [node name="Text" type="VBoxContainer" parent="VBoxContainer/BestCat/Background/MarginContainer/ScrollContainer/Container/TeamMembers/TeamContainer/TeamMember"]

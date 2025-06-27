@@ -43,7 +43,7 @@ func setup_tutorial_pages():
 			"steps": [
 				"1. Clique no ícone dos Gatos",
 				"2. Escolha o seu, arraste e solte ele para o campo",
-				"3. Posicione o estrategicamente",
+				"3. Posicione-os estrategicamente",
 				"4. Agora aprecie a fofura... - Digo, use uma cartinha para melhorá-lo!"
 			],
 			"animation": "CatShop"
@@ -52,7 +52,7 @@ func setup_tutorial_pages():
 			"title": "Como consigo Cartinhas?",
 			"steps": [
 				"1. Clique no ícone das Cartas",
-				"2. Abra o Pack de Cartas e escolha umas",
+				"2. Abra o Pack de Cartas e escolha uma",
 				"3. Arraste até o Gato (cada gato pode ter até 4 cartas equipadas)",
 				"4. Clique no gato e confira a mudança nos atributos!",
 			],
