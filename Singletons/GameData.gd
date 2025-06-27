@@ -35,10 +35,10 @@ var cat_data = { ## "Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 	"Chicao": { ## Chicão não ataca slimes pilha pra não dar ainda mais energia pra eles
 		"name": "Chicao",
 		"sprite": "res://Assets/Cats/Chicao/Chicao.png",
-		"damage": 30,
+		"damage": 25,
 		"atkcooldown": 2,
 		"range": 160,
-		"cost": 50,
+		"cost": 250,
 		"critical_chance": 0,
 		"target_types": ["Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo", "Papel", "Radioativo"]
 	},
@@ -103,37 +103,37 @@ func update_fish_quantity(amount: int):
 var enemies_data = {
 	"Papel": {
 		"damage": 5,
-		"speed": 60,
+		"speed": 50,
 		"hp": 20,
 		"fish_reward": 8
 	},
 	"Chiclete": {
 		"damage": 8,
-		"speed": 48,
+		"speed": 38,
 		"hp": 45,
 		"fish_reward": 12
 	},
 	"Plastico": {
 		"damage": 15,
-		"speed": 64,
+		"speed": 50,
 		"hp": 80,
 		"fish_reward": 18
 	},
 	"Metal": {
 		"damage": 15,
-		"speed": 40,
+		"speed": 30,
 		"hp": 160,
 		"fish_reward": 25
 	},
 	"Pilha": {
 		"damage": 20,
-		"speed": 88,
+		"speed": 80,
 		"hp": 90,
 		"fish_reward": 30
 	},
 	"Radioativo": {
 		"damage": 25,
-		"speed": 56,
+		"speed": 46,
 		"hp": 150,
 		"fish_reward": 40
 	},
@@ -838,8 +838,7 @@ var waves = {
 			["Papel", 1],
 			["Papel", 1],
 			["Papel", 1],
-			["Papel", 1],
-			["Papel", 3],
+			["Papel", 4],
 			["Papel", 1],
 			["Papel", 1],
 			["Papel", 1],
@@ -852,8 +851,8 @@ var waves = {
 			["Papel", .8],
 			["Papel", .8],
 			["Papel", .8],
-			["Papel", .8],
-			["Chiclete", 2],
+			["Papel", 2],
+			["Chiclete", .8],
 			["Papel", .8],
 			["Papel", .8],
 			["Papel", .8],
@@ -877,11 +876,6 @@ var waves = {
 			["Chiclete", 1],
 			["Papel", 1.5],
 			["Chiclete", 1],
-			["Papel", 1.5],
-			["Chiclete", 1],
-			["Papel", 1.5],
-			["Chiclete", 1],
-			["Papel", 1.5],
 		],
 	},
 	
@@ -994,27 +988,18 @@ var waves = {
 	
 	"wave12": { ## Água e eletricidade não combinam! Mas agora ta vindo um tsunami de plástico!
 		"enemies": [
-			["Plastico", 0.1],
-			["Plastico", 0.1],
-			["Plastico", 0.1],
-			["Plastico", 0.1],
-			["Plastico", 0.1],
-			["Plastico", 0.1],
-			["Plastico", 0.1],
-			["Plastico", 0.1],
-			["Plastico", 0.1],
-			["Plastico", 0.1],
-			["Plastico", 0.1],
-			["Plastico", 0.1],
-			["Plastico", 0.1],
-			["Plastico", 0.1],
-			["Plastico", 0.1],
-			["Plastico", 0.1],
-			["Plastico", 0.1],
-			["Plastico", 0.1],
-			["Plastico", 0.1],
-			["Plastico", 0.1],
-			["Plastico", 0.1],
+			["Plastico", 0.2],
+			["Plastico", 0.2],
+			["Plastico", 0.2],
+			["Plastico", 0.2],
+			["Plastico", 0.2],
+			["Plastico", 0.2],
+			["Plastico", 0.2],
+			["Plastico", 0.2],
+			["Plastico", 0.2],
+			["Plastico", 0.2],
+			["Plastico", 0.2],
+
 		],
 	},
 	
@@ -1121,7 +1106,7 @@ var waves = {
 		],
 	},
 	
-	"wave18": { ##  Olha quem chegou... Maldito Slime Radioativo! Mas isso ainda pode piorar...
+	"wave18": { ##  Olha quem chegou... Maldito Slime Radioativo!
 		"enemies": [
 			["Radioativo", .5],
 			["Radioativo", .5],
@@ -1145,30 +1130,29 @@ var waves = {
 			["Radioativo", .5],
 			["Metal", .5],
 			["Metal", .5],
-			["Metal", .5],
+			["Metal", 2],
+			["Plastico", .5],
+			["Plastico", .5],
+			["Plastico", .5],
 			["Plastico", 2],
-			["Plastico", .5],
-			["Plastico", .5],
-			["Plastico", .5],
+			["Chiclete", .5],
+			["Chiclete", .5],
+			["Chiclete", .5],
 			["Chiclete", 2],
-			["Chiclete", .5],
-			["Chiclete", .5],
-			["Chiclete", .5],
 			["Papel", .5],
 			["Papel", .5],
 			["Papel", .5],
-			["Papel", .5],
-			["Pilha", 5],
+			["Papel", 5],
+			["Pilha", .5],
 			["Pilha", .5],
 
 		],
 	},
 	
-	"wave20": {  ## Boss Radioativo ## To me sentindo meio estranho... Tem algo vindo... que t-t-temos um problema Gatinhos!
+	"wave20": {  ## Que barulho é esse...? Tem algo se aproximando, gatinhos, se preparem!
 		"enemies": [
-			["Radioativo", .5],
-			["Radioativo", 2],
-			["Radioativo", 2],
+			["Radioativo", 4],
+			["BossPneu", .5],
 			["BossRadioativo", 2],
 		],
 	},
@@ -1198,14 +1182,16 @@ var waves = {
 	"wave22": {
 		"enemies": [
 			["Papel", 5],
-			["Pilha", 6],
 			["Pilha", .2],
+			["Chiclete", .5],
 			["Pilha", .2],
 			["Pilha", .2],
 			["Radioativo", .2],
+			["Radioativo", .2],
+			["Radioativo", .2],
 			["Pilha", .2],
 			["Pilha", .2],
-			["Pilha", .2],
+			["Chiclete", .5],
 			["Pilha", .2],
 			["Pilha", .2],
 		],
@@ -1213,62 +1199,132 @@ var waves = {
 	
 	"wave23": {
 		"enemies": [
-
+			["BossPneu", 2],
+			["Metal", 10],
+			["BossPneu", 2],
+			["Metal", 1],
 		],
 	},
 	
-	"wave24": {
+	"wave24": { 
 		"enemies": [
-
+			["Radioativo", .5],
+			["Radioativo", 1],
+			["Radioativo", 1.5],
+			["Metal", 1],
+			["Chiclete", .5],
+			["Papel", .5],
+			["Chiclete", .5],
+			["Metal", 1],
+			["Chiclete", .5],
+			["Papel", .5],
+			["Papel", .5],
+			["Papel", .5],
+			["Papel", .5],
+			["Chiclete", .5],
+			["Metal", 1],
+			["Chiclete", .5],
+			["Papel", .5],
+			["Chiclete", .5],
+			["Metal", 1],
+			["Radioativo", .5],
+			["Radioativo", 1],
+			["Radioativo", 1.5],
 		],
 	},
 	
-	"wave25": { ## Boss Pneu
+	"wave25": { ## Boss Radioativo ## To me sentindo meio estranho... Tem algo vindo... que t-t-temos um problema Gatinhos!
 		"enemies": [
-
+			["BossRadioativo", .5],
 		],
 	},
 	
 	"wave26": {
 		"enemies": [
-
+			["BossRadioativo", 5],
+			["Radioativo", 1],
+			["Radioativo", 1],
+			["Radioativo", 1],
+			["Radioativo", 1],
+			["Radioativo", 1],
+			["Radioativo", 1],
 		],
 	},
 	
 	"wave27": {
 		"enemies": [
-
+			["Chiclete", 1.5],
+			["Chiclete", 1.5],
+			["Chiclete", .1],
+			["BossPneu", 2],
+			["Pilha", 1.5],
+			["Chiclete", 1.5],
+			["Chiclete", 1.5],
+			["Chiclete", 1.5],
 		],
 	},
 	
 	"wave28": {
 		"enemies": [
-
+			["BossRadioativo", 5],
+			["Papel", .2],
+			["Papel", .2],
+			["Papel", .2],
+			["Papel", .2],
+			["Plastico", .2],
+			["Plastico", .2],
+			["Plastico", .2],
+			["Plastico", 5],
+			["BossRadioativo", 5],
+			["Papel", .2],
+			["Papel", .2],
+			["Papel", .2],
+			["Papel", .2],
+			["Plastico", .2],
+			["Plastico", .2],
+			["Plastico", .2],
+			["Plastico", .2],
 		],
 	},
 	
 	"wave29": {
 		"enemies": [
-
+			["Pilha", .2],
+			["Pilha", 5],
+			["Pilha", .2],
+			["Pilha", .2],
+			["Pilha", 5],
+			["Pilha", .2],
+			["Pilha", .2],
+			["Pilha", .2],
+			["Pilha", .2],
+			["Pilha", 5],
+			["Pilha", .2],
+			["Pilha", .2],
+			["Pilha", .2],
+			["Pilha", .2],
+			["Pilha", .2],
+			["Pilha", .2],
+			["Pilha", .2],
+			["Pilha", .2],
+			["Pilha", 5],
 		],
 	},
 	
-	"wave30": {
+	"wave30": { ## Boss Radioativo ## To me sentindo meio estranho... Tem algo vindo... que t-t-temos um problema Gatinhos!
 		"enemies": [
-			["BossRadioativo", 2],
-			["BossRadioativo", 2],
-			["Radioativo", .5],
-			["Radioativo", .5],
-			["Radioativo", .5],
-			["Radioativo", .5],
-			["Radioativo", .5],
-			["BossPneu", 7],
 			["BossPneu", 3],
-			["Pilha", 5],
-			["Pilha", 2],
-			["Pilha", 2],
-			["Pilha", 2],
-			["Pilha", 2],
+			["BossPneu", 3],
+			["Radioativo", .5],
+			["Radioativo", .5],
+			["Radioativo", .5],
+			["Radioativo", .5],
+			["BossRadioativo", 3],
+			["BossRadioativo", 5],
+			["Pilha", 1],
+			["Pilha", 1],
+			["Pilha", 1],
+			["Pilha", 1],
 		],
 	},
 }
