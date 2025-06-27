@@ -36,9 +36,9 @@ var cat_data = { ## "Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 		"name": "Chicao",
 		"sprite": "res://Assets/Cats/Chicao/Chicao.png",
 		"damage": 25,
-		"atkcooldown": 2,
+		"atkcooldown": 1.8,
 		"range": 160,
-		"cost": 250,
+		"cost": 200,
 		"critical_chance": 0,
 		"target_types": ["Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo", "Papel", "Radioativo"]
 	},
@@ -47,7 +47,7 @@ var cat_data = { ## "Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 		"name": "Pele",
 		"sprite": "res://Assets/Cats/Pele/Pele.png",
 		"damage": 15,
-		"atkcooldown": 1.5,
+		"atkcooldown": 1.3,
 		"range": 96,
 		"cost": 250,
 		"critical_chance": 0,
@@ -57,8 +57,8 @@ var cat_data = { ## "Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 	"Nino": { ## Nino não consegue ver o slime de plástico com um olho só por conta da sua trasparência
 		"name": "Nino",
 		"sprite": "res://Assets/Cats/Nino/Nino.png",
-		"damage": 35,
-		"atkcooldown": 2.5,
+		"damage": 25,
+		"atkcooldown": 1.8,
 		"range": 160,
 		"cost": 200,
 		"critical_chance": 0,
@@ -69,7 +69,7 @@ var cat_data = { ## "Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 		"name": "Cartolina",
 		"sprite": "res://Assets/Cats/Cartolina/Cartolina.png",
 		"damage": 20,
-		"atkcooldown": 1.8,
+		"atkcooldown": 1.5,
 		"range": 96,
 		"cost": 200,
 		"critical_chance": 0,
@@ -80,7 +80,7 @@ var cat_data = { ## "Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 		"name": "Nut",
 		"sprite": "res://Assets/Cats/Nut/Nut.png",
 		"damage": 15,
-		"atkcooldown": 2,
+		"atkcooldown": 1.3,
 		"range": 128,
 		"cost": 250,
 		"critical_chance": 0,
@@ -103,19 +103,19 @@ func update_fish_quantity(amount: int):
 var enemies_data = {
 	"Papel": {
 		"damage": 5,
-		"speed": 50,
+		"speed": 45,
 		"hp": 20,
 		"fish_reward": 8
 	},
 	"Chiclete": {
 		"damage": 8,
-		"speed": 38,
+		"speed": 34,
 		"hp": 45,
 		"fish_reward": 12
 	},
 	"Plastico": {
 		"damage": 15,
-		"speed": 50,
+		"speed": 45,
 		"hp": 80,
 		"fish_reward": 18
 	},
@@ -127,25 +127,25 @@ var enemies_data = {
 	},
 	"Pilha": {
 		"damage": 20,
-		"speed": 80,
+		"speed": 70,
 		"hp": 90,
 		"fish_reward": 30
 	},
 	"Radioativo": {
 		"damage": 25,
-		"speed": 46,
+		"speed": 40,
 		"hp": 150,
-		"fish_reward": 40
+		"fish_reward": 35
 	},
 	"BossRadioativo": {
 		"damage": 99,
-		"speed": 32,
+		"speed": 26,
 		"hp": 2000,
 		"fish_reward": 500
 	},
 	"BossPneu": {
 		"damage": 99,
-		"speed": 68,
+		"speed": 55,
 		"hp": 1500,
 		"fish_reward": 350
 	}
@@ -488,36 +488,36 @@ var card_rarity_chances = {
 
 ## Rarity Table
 var rarity_table = {
-	1: {"basic": 99, "medium": 1, "rare": 0},
-	2: {"basic": 99, "medium": 1, "rare": 0},
-	3: {"basic": 95, "medium": 4, "rare": 1},
-	4: {"basic": 90, "medium": 19, "rare": 1},
-	5: {"basic": 75, "medium": 35, "rare": 25},
-	6: {"basic": 35, "medium": 35, "rare": 30},
-	7: {"basic": 30, "medium": 35, "rare": 35},
-	8: {"basic": 25, "medium": 35, "rare": 40},
-	9: {"basic": 20, "medium": 35, "rare": 45},
-	10: {"basic": 15, "medium": 35, "rare": 50},
-	11: {"basic": 99, "medium": 1, "rare": 0},
-	12: {"basic": 90, "medium": 10, "rare": 1},
-	13: {"basic": 50, "medium": 34, "rare": 16},
-	14: {"basic": 45, "medium": 35, "rare": 20},
-	15: {"basic": 40, "medium": 35, "rare": 25},
-	16: {"basic": 35, "medium": 35, "rare": 30},
-	17: {"basic": 30, "medium": 35, "rare": 35},
-	18: {"basic": 25, "medium": 35, "rare": 40},
-	19: {"basic": 20, "medium": 35, "rare": 45},
-	20: {"basic": 15, "medium": 35, "rare": 50},
-	21: {"basic": 99, "medium": 1, "rare": 0},
-	22: {"basic": 90, "medium": 10, "rare": 1},
-	23: {"basic": 50, "medium": 34, "rare": 16},
-	24: {"basic": 45, "medium": 35, "rare": 20},
-	25: {"basic": 40, "medium": 35, "rare": 25},
-	26: {"basic": 35, "medium": 35, "rare": 30},
-	27: {"basic": 30, "medium": 35, "rare": 35},
-	28: {"basic": 25, "medium": 35, "rare": 40},
-	29: {"basic": 20, "medium": 35, "rare": 45},
-	30: {"basic": 5, "medium": 15, "rare": 80}
+	1: {"basic": 100, "medium": 0, "rare": 0},
+	2: {"basic": 95, "medium": 5, "rare": 0},
+	3: {"basic": 90, "medium": 8, "rare": 2},
+	4: {"basic": 85, "medium": 12, "rare": 3},
+	5: {"basic": 80, "medium": 15, "rare": 5},
+	6: {"basic": 75, "medium": 18, "rare": 7},
+	7: {"basic": 70, "medium": 22, "rare": 8},
+	8: {"basic": 65, "medium": 25, "rare": 10},
+	9: {"basic": 60, "medium": 28, "rare": 12},
+	10: {"basic": 55, "medium": 30, "rare": 15},
+	11: {"basic": 50, "medium": 32, "rare": 18},
+	12: {"basic": 45, "medium": 35, "rare": 20},
+	13: {"basic": 40, "medium": 37, "rare": 23},
+	14: {"basic": 35, "medium": 40, "rare": 25},
+	15: {"basic": 30, "medium": 42, "rare": 28},
+	16: {"basic": 25, "medium": 45, "rare": 30},
+	17: {"basic": 22, "medium": 46, "rare": 32},
+	18: {"basic": 20, "medium": 47, "rare": 33},
+	19: {"basic": 18, "medium": 47, "rare": 35},
+	20: {"basic": 10, "medium": 35, "rare": 55},  # BOSS - Salto maior
+	21: {"basic": 16, "medium": 46, "rare": 38},
+	22: {"basic": 14, "medium": 46, "rare": 40},
+	23: {"basic": 12, "medium": 46, "rare": 42},
+	24: {"basic": 10, "medium": 45, "rare": 45},
+	25: {"basic": 5, "medium": 30, "rare": 65},   # BOSS - Salto maior
+	26: {"basic": 8, "medium": 42, "rare": 50},
+	27: {"basic": 6, "medium": 39, "rare": 55},
+	28: {"basic": 5, "medium": 35, "rare": 60},
+	29: {"basic": 3, "medium": 27, "rare": 70},   # BOSS - Salto maior (máximo)
+	30: {"basic": 2, "medium": 28, "rare": 70}    # Final - básico muito baixo
 }
 
 var current_round: int = 1
