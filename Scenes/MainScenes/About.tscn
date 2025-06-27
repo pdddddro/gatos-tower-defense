@@ -96,7 +96,6 @@ size_flags_vertical = 0
 theme_override_constants/separation = 16
 
 [node name="Content" type="VBoxContainer" parent="VBoxContainer/BestCat/Background/MarginContainer/ScrollContainer/Container"]
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 8
 
@@ -124,9 +123,9 @@ theme_override_constants/outline_size = 0
 theme_override_constants/shadow_outline_size = 0
 theme_override_fonts/font = ExtResource("3_l1ugq")
 theme_override_font_sizes/font_size = 16
-text = "Nesse jogo, gatos carismáticos cansam da inércia humana em relação ao descarte de lixo na natureza e, afetados pela radiação, eles se unem para defender o mundo de inimigos bem esquisitos: slimes feitos de lixo.
+text = "Nesse jogo, gatos cansam da inércia humana em relação ao descarte de lixo na natureza e, afetados pela radiação, eles se unem para defender o mundo de inimigos bem esquisitos: slimes feitos de lixo. G.A.T.I.N.H.O.S significa Grupo Acadêmico de Táticas Inteligentes para Neutralizar Horríveis Objetos Sujos.
 
-Esse foi um projeto desenvolvido por 2 alunos do curso de Design da UFBA, com a missão de criar algo divertido que fizesse pensar, que de alguma forma agregue na sociedade, indo além do entretenimento. É aí que entra o design engajado, um jeito de pensar o jogo como uma experiência que conversa com o mundo fora da tela, com a nossa personalidade (e umas boas piadinhas de gato).
+Esse foi um projeto desenvolvido por 2 alunos do curso de Design da UFBA, com a missão de criar algo divertido e que fizesse pensar, agregando na sociedade, indo além do entretenimento. É aí que entra o design engajado, um jeito de pensar o jogo como uma experiência que conversa com o mundo fora da tela, com a nossa personalidade (e umas boas piadinhas de gato).
 
 Além disso, o projeto busca colher arrecadações para os gatinhos da Escola de Belas Artes (QRCode e Chave PIX na tela inicial)
 

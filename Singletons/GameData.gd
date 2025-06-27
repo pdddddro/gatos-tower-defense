@@ -173,7 +173,7 @@ var card_data = {
 			"effects": [
 				{"type": "damage_vs_type", "target_type": "Plastico", "power": 100, "power_type": "percentage"}
 			],
-			"sell_value": "25"
+			"sell_value": "50"
 		}
 		,{
 			"name": "Sou do Rock",
@@ -184,7 +184,7 @@ var card_data = {
 				{"type": "damage_vs_type", "target_type": "Metal", "power": 80, "power_type": "percentage"},
 				{"type": "damage_vs_type", "target_type": "Pilha", "power": 80, "power_type": "percentage"}
 			],
-			"sell_value": "25"
+			"sell_value": "50"
 		}
 		,{
 			"name": "Petisco sabor Whey l",
@@ -193,7 +193,7 @@ var card_data = {
 			"effects": [
 				{"type": "damage_boost", "power": 15, "power_type": "absolute"}
 			],
-			"sell_value": "25"
+			"sell_value": "50"
 		}
 		,{
 			"name": "Treinamento Básico",
@@ -205,7 +205,7 @@ var card_data = {
 				{"type": "range_boost", "power": 10, "power_type": "percentage"},
 				{"type": "critic_boost", "power": 20, "power_type": "absolute"}
 			],
-			"sell_value": "100"
+			"sell_value": "50"
 		}
 		,{
 			"name": "Ritmo do Ronronar I",
@@ -214,7 +214,7 @@ var card_data = {
 			"effects": [
 				{"type": "speed_boost", "power": 0.5, "power_type": "absolute"},
 			],
-			"sell_value": "100"
+			"sell_value": "50"
 		}
 		,{
 			"name": "Hora do Patê I",
@@ -223,7 +223,7 @@ var card_data = {
 			"effects": [
 				{"type": "range_boost", "power": 30, "power_type": "percentage"},
 			],
-			"sell_value": "100"
+			"sell_value": "50"
 		}
 		,{
 			"name": "Química do Mal I",
@@ -232,7 +232,7 @@ var card_data = {
 			"effects": [
 				{"type": "critic_boost", "power": 25, "power_type": "absolute"}
 			],
-			"sell_value": "100"
+			"sell_value": "50"
 		}
 		,{
 			"name": "Veterano de Guerra I",
@@ -246,7 +246,7 @@ var card_data = {
 				{"type": "damage_vs_type", "target_type": "BossRadioativo", "power": 50, "power_type": "percentage"},
 				{"type": "damage_vs_type", "target_type": "BossPneu", "power": 50, "power_type": "percentage"}
 		],
-			"sell_value": "25"
+			"sell_value": "50"
 		}
 		,{
 			"name": "Sem Paciência I",
@@ -256,7 +256,7 @@ var card_data = {
 				{"type": "speed_boost", "power": 0.4, "power_type": "absolute"},
 				{"type": "range_boost", "power": 20, "power_type": "percentage"}
 		],
-			"sell_value": "25"
+			"sell_value": "50"
 		}
 		,{
 			"name": "Gato Míope I",
@@ -266,7 +266,7 @@ var card_data = {
 				{"type": "speed_boost", "power": 50, "power_type": "percentage"},
 				{"type": "range_boost", "power": -20, "power_type": "percentage"}
 			],
-			"sell_value": "100"
+			"sell_value": "50"
 		}
 		],
 		
@@ -278,7 +278,7 @@ var card_data = {
 			"effects": [
 				{"type": "damage_vs_type", "target_type": "Metal", "power": 150, "power_type": "percentage"},
 			],
-			"sell_value": "50"
+			"sell_value": "100"
 		}
 		,{
 			"name": "Química do Mal II",
@@ -326,7 +326,7 @@ var card_data = {
 			"effects": [
 				{"type": "damage_boost", "power": 30, "power_type": "absolute"}
 			],
-			"sell_value": "25"
+			"sell_value": "100"
 		}
 		,{
 			"name": "Veterano de Guerra II",
@@ -340,7 +340,7 @@ var card_data = {
 				{"type": "damage_vs_type", "target_type": "BossRadioativo", "power": 70, "power_type": "percentage"},
 				{"type": "damage_vs_type", "target_type": "BossPneu", "power": 70, "power_type": "percentage"}
 		],
-			"sell_value": "25"
+			"sell_value": "100"
 		}
 		,{
 			"name": "Sem Paciência II",
@@ -350,7 +350,7 @@ var card_data = {
 				{"type": "speed_boost", "power": 0.6, "power_type": "absolute"},
 				{"type": "range_boost", "power": 20, "power_type": "percentage"}
 		],
-			"sell_value": "25"
+			"sell_value": "100"
 		}
 		,{
 			"name": "Gato Míope II",
@@ -376,7 +376,7 @@ var card_data = {
 				{"type": "range_boost", "power": 20, "power_type": "percentage"},
 				{"type": "speed_boost", "power": .6, "power_type": "absolute"}
 			],
-			"sell_value": "100"
+			"sell_value": "150"
 		}
 		,{
 			"name": "Química do Mal III",
@@ -385,7 +385,7 @@ var card_data = {
 			"effects": [
 				{"type": "critic_boost", "power": 100, "power_type": "absolute"}
 			],
-			"sell_value": "100"
+			"sell_value": "150"
 		}
 		,{
 			"name": "Ritmo do Ronronar III",
@@ -394,7 +394,7 @@ var card_data = {
 			"effects": [
 				{"type": "speed_boost", "power": 2, "power_type": "absolute"},
 			],
-			"sell_value": "100"
+			"sell_value": "150"
 		}
 		,{
 			"name": "Hora do Patê III",
@@ -403,7 +403,7 @@ var card_data = {
 			"effects": [
 				{"type": "range_boost", "power": 40, "power_type": "percentage"},
 			],
-			"sell_value": "100"
+			"sell_value": "150"
 		}
 		,{
 			"name": "O gato mais forte de todos",
@@ -414,7 +414,7 @@ var card_data = {
 				{"type": "critic_boost", "power": 60, "power_type": "absolute"},
 				{"type": "speed_boost", "power": 30, "power_type": "percentage"}
 			],
-			"sell_value": "100"
+			"sell_value": "150"
 		}
 		#,{	
 			#"name": "Trid lll",
@@ -437,7 +437,7 @@ var card_data = {
 				{"type": "damage_vs_type", "target_type": "BossRadioativo", "power": 100, "power_type": "percentage"},
 				{"type": "damage_vs_type", "target_type": "BossPneu", "power": 100, "power_type": "percentage"}
 		],
-			"sell_value": "25"
+			"sell_value": "150"
 		}
 		,{
 			"name": "Sem Paciência III",
@@ -447,7 +447,7 @@ var card_data = {
 				{"type": "speed_boost", "power": 0.8, "power_type": "absolute"},
 				{"type": "range_boost", "power": 25, "power_type": "percentage"}
 		],
-			"sell_value": "25"
+			"sell_value": "150"
 		}
 		,{
 			"name": "Gato Míope III",
@@ -457,7 +457,7 @@ var card_data = {
 				{"type": "speed_boost", "power": 100, "power_type": "percentage"},
 				{"type": "range_boost", "power": -50, "power_type": "percentage"}
 			],
-			"sell_value": "100"
+			"sell_value": "150"
 		}
 		,{
 			"name": "Petisco sabor Whey III",
@@ -466,7 +466,7 @@ var card_data = {
 			"effects": [
 				{"type": "damage_boost", "power": 60, "power_type": "absolute"}
 			],
-			"sell_value": "25"
+			"sell_value": "150"
 		}
 		],
 }
