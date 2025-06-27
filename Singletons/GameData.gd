@@ -36,7 +36,7 @@ var cat_data = { ## "Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 		"name": "Chicão",
 		"sprite": "res://Assets/Cats/Chicao/Chicao.png",
 		"damage": 25,
-		"atkcooldown": 1.8,
+		"atkcooldown": 2,
 		"range": 160,
 		"cost": 200,
 		"critical_chance": 0,
@@ -68,7 +68,7 @@ var cat_data = { ## "Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 	"Cartolina": { ## Cartolina não bate no slime de chiclete, seria horrivel ter chiclete em seus pelos
 		"name": "Cartolina",
 		"sprite": "res://Assets/Cats/Cartolina/Cartolina.png",
-		"damage": 10,
+		"damage": 20,
 		"atkcooldown": 1,
 		"range": 96,
 		"cost": 200,
@@ -79,8 +79,8 @@ var cat_data = { ## "Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 	"Nut": { ## Os novelos de lã de nut não passam de carinhos no slime metal, então ele nem gasta sua lã com ele
 		"name": "Nut",
 		"sprite": "res://Assets/Cats/Nut/Nut.png",
-		"damage": 15,
-		"atkcooldown": 1.3,
+		"damage": 10,
+		"atkcooldown": 1.8,
 		"range": 300,
 		"cost": 250,
 		"critical_chance": 0,
@@ -105,48 +105,48 @@ var enemies_data = {
 		"damage": 5,
 		"speed": 45,
 		"hp": 20,
-		"fish_reward": 10
+		"fish_reward": 15
 	},
 	"Chiclete": {
 		"damage": 8,
 		"speed": 34,
 		"hp": 45,
-		"fish_reward": 14
+		"fish_reward": 19
 	},
 	"Plastico": {
 		"damage": 15,
 		"speed": 45,
-		"hp": 80,
-		"fish_reward": 20
+		"hp": 70,
+		"fish_reward": 25
 	},
 	"Metal": {
 		"damage": 15,
 		"speed": 30,
 		"hp": 160,
-		"fish_reward": 27
+		"fish_reward": 33
 	},
 	"Pilha": {
 		"damage": 20,
 		"speed": 70,
 		"hp": 90,
-		"fish_reward": 32
+		"fish_reward": 36
 	},
 	"Radioativo": {
 		"damage": 25,
 		"speed": 40,
 		"hp": 150,
-		"fish_reward": 37
+		"fish_reward": 45
 	},
 	"BossRadioativo": {
 		"damage": 99,
 		"speed": 26,
-		"hp": 2000,
+		"hp": 1000,
 		"fish_reward": 900
 	},
 	"BossPneu": {
 		"damage": 99,
 		"speed": 55,
-		"hp": 1500,
+		"hp": 750,
 		"fish_reward": 600
 	}
 }
@@ -508,16 +508,16 @@ var rarity_table = {
 	18: {"basic": 20, "medium": 47, "rare": 33},
 	19: {"basic": 18, "medium": 47, "rare": 35},
 	20: {"basic": 10, "medium": 35, "rare": 55},  # BOSS - Salto maior
-	21: {"basic": 16, "medium": 46, "rare": 38},
-	22: {"basic": 14, "medium": 46, "rare": 40},
-	23: {"basic": 12, "medium": 46, "rare": 42},
-	24: {"basic": 10, "medium": 45, "rare": 45},
-	25: {"basic": 5, "medium": 30, "rare": 65},   # BOSS - Salto maior
-	26: {"basic": 8, "medium": 42, "rare": 50},
-	27: {"basic": 6, "medium": 39, "rare": 55},
-	28: {"basic": 5, "medium": 35, "rare": 60},
-	29: {"basic": 3, "medium": 27, "rare": 70},   # BOSS - Salto maior (máximo)
-	30: {"basic": 2, "medium": 28, "rare": 70}    # Final - básico muito baixo
+	21: {"basic": 8, "medium": 34, "rare": 58},   # Continua crescendo
+	22: {"basic": 7, "medium": 33, "rare": 60},
+	23: {"basic": 6, "medium": 32, "rare": 62},
+	24: {"basic": 5, "medium": 31, "rare": 64},
+	25: {"basic": 3, "medium": 27, "rare": 70},   # BOSS - Salto maior
+	26: {"basic": 3, "medium": 25, "rare": 72},   # Continua crescendo (mas não passa de 70% rare)
+	27: {"basic": 2, "medium": 24, "rare": 74},   # Ajustado para não passar de 70%
+	28: {"basic": 2, "medium": 23, "rare": 75},   # Ajustado
+	29: {"basic": 1, "medium": 22, "rare": 77},   # BOSS - Máximo (ajustado)
+	30: {"basic": 1, "medium": 21, "rare": 78}    # Final - básico muito baixo (ajustado)
 }
 
 var current_round: int = 1
@@ -852,13 +852,8 @@ var waves = {
 			["Papel", .8],
 			["Papel", .8],
 			["Papel", .8],
-			["Papel", .8],
 			["Papel", 2],
 			["Chiclete", .8],
-			["Papel", .8],
-			["Papel", .8],
-			["Papel", .8],
-			["Papel", .8],
 			["Papel", .8],
 			["Papel", .8],
 			["Papel", .8],
@@ -867,8 +862,6 @@ var waves = {
 	
 	"wave4": { ## O que é isso rosa? acho que foi um slime chiclete... Cartolina
 		"enemies": [
-			["Chiclete", 1],
-			["Papel", 1.5],
 			["Chiclete", 1],
 			["Papel", 1.5],
 			["Chiclete", 1],
@@ -988,9 +981,6 @@ var waves = {
 	
 	"wave12": { ## Água e eletricidade não combinam! Mas agora ta vindo um tsunami de plástico!
 		"enemies": [
-			["Plastico", 0.2],
-			["Plastico", 0.2],
-			["Plastico", 0.2],
 			["Plastico", 0.2],
 			["Plastico", 0.2],
 			["Plastico", 0.2],
