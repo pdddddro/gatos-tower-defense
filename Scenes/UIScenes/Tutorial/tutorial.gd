@@ -29,12 +29,12 @@ func _ready():
 func setup_tutorial_pages():
 	tutorial_pages = [
 		{
-			"title": "Como funciona o jogo?",
+			"title": "Seu objetivo é impedir que os \nSlimes cheguem no final",
 			"steps": [
-				"Seu objetivo é impedir que os Slimes cheguem no final do caminho",
 				"1. Posicione os seus Gatinhos",
 				"2. Compre cartinhas com peixe para melhorá-los",
-				"3. Vença ao terminar todas as rodadas... Mas cuidado! Caso muitos slimes cheguem no final do trajeto, você perde!"
+				"3. Vença ao terminar todas as rodadas...",
+				"4. Leia o que o Gatinho diz para obter dicas valiosas sobre o jogo e sobre o planeta!"
 			],
 			"animation": "Tips"
 		}
@@ -66,15 +66,6 @@ func setup_tutorial_pages():
 				"3. Cuidado! Caso um slime chegue no final do trajeto, você perde vida!",
 			],
 			"animation": "WaveStart"
-		}
-		,{
-			"title": "Dicas Importantes",
-			"steps": [
-				"1. Cuidado com os Chefões... eles são perigosos",
-				"2. As frases tem dicas valiosas sobre o jogo e sobre o planeta, leia!",
-				"3. Se divirta, aprenda e aprecie a fofura..."
-			],
-			"animation": "Tips"
 		}
 	]
 

@@ -168,7 +168,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 2
 theme_override_constants/separation = 8
 
-[node name="Reset" type="TextureButton" parent="VBoxContainer/ActionButtons"]
+[node name="Menu" type="TextureButton" parent="VBoxContainer/ActionButtons"]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -179,7 +179,7 @@ texture_disabled = ExtResource("6_5bar8")
 stretch_mode = 0
 script = ExtResource("8_07md7")
 
-[node name="Label" type="Label" parent="VBoxContainer/ActionButtons/Reset"]
+[node name="Label" type="Label" parent="VBoxContainer/ActionButtons/Menu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -189,7 +189,7 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
 theme_override_fonts/font = ExtResource("3_i3i3m")
 theme_override_font_sizes/font_size = 11
-text = "Reiniciar Nível"
+text = "Voltar ao Menu"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -229,7 +229,7 @@ text = "Continuar"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Menu" type="TextureButton" parent="VBoxContainer/ActionButtons"]
+[node name="Reset" type="TextureButton" parent="VBoxContainer/ActionButtons"]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -240,7 +240,7 @@ texture_disabled = ExtResource("6_5bar8")
 stretch_mode = 0
 script = ExtResource("8_07md7")
 
-[node name="Label" type="Label" parent="VBoxContainer/ActionButtons/Menu"]
+[node name="Label" type="Label" parent="VBoxContainer/ActionButtons/Reset"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -250,10 +250,10 @@ grow_vertical = 2
 theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
 theme_override_fonts/font = ExtResource("3_i3i3m")
 theme_override_font_sizes/font_size = 11
-text = "Voltar ao Menu"
+text = "Reiniciar Nível"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="VBoxContainer/ActionButtons/Reset" to="." method="_on_reset_pressed"]
-[connection signal="pressed" from="VBoxContainer/ActionButtons/MainAction" to="." method="_on_main_action_pressed"]
 [connection signal="pressed" from="VBoxContainer/ActionButtons/Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="VBoxContainer/ActionButtons/MainAction" to="." method="_on_main_action_pressed"]
+[connection signal="pressed" from="VBoxContainer/ActionButtons/Reset" to="." method="_on_reset_pressed"]

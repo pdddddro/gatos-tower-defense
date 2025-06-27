@@ -293,7 +293,7 @@ var current_textbox = null
 
 func start_next_wave():
 	var wave_data = retrieve_wave_data()
-	
+	Analytics.add_event("RodadasJogadas", {"Rodada": str(current_wave)})
 	# Verifica se deve mostrar textbox
 	if GameData.should_show_textbox(current_wave):
 		var text_data = GameData.get_textbox_data(current_wave)

@@ -107,7 +107,7 @@ var enemies_data = {
 		"damage": 5,
 		"speed": 45,
 		"hp": 20,
-		"fish_reward": 18
+		"fish_reward": 20
 	},
 	"Chiclete": {
 		"damage": 8,
@@ -119,37 +119,37 @@ var enemies_data = {
 		"damage": 15,
 		"speed": 45,
 		"hp": 70,
-		"fish_reward": 27
+		"fish_reward": 25
 	},
 	"Metal": {
 		"damage": 15,
 		"speed": 30,
 		"hp": 160,
-		"fish_reward": 37
+		"fish_reward": 25
 	},
 	"Pilha": {
 		"damage": 20,
 		"speed": 70,
 		"hp": 80,
-		"fish_reward": 50
+		"fish_reward": 35
 	},
 	"Radioativo": {
 		"damage": 25,
 		"speed": 40,
 		"hp": 150,
-		"fish_reward": 62
+		"fish_reward": 40
 	},
 	"BossRadioativo": {
 		"damage": 99,
 		"speed": 26,
 		"hp": 1000,
-		"fish_reward": 900
+		"fish_reward": 600
 	},
 	"BossPneu": {
 		"damage": 99,
 		"speed": 55,
 		"hp": 750,
-		"fish_reward": 600
+		"fish_reward": 300
 	}
 }
 

@@ -639,8 +639,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 0
 theme = SubResource("Theme_y8xan")
+vertical_scroll_mode = 2
 
 [node name="CatList" type="HFlowContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer"]
+visible = false
 custom_minimum_size = Vector2(148, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -1110,7 +1112,6 @@ theme_override_font_sizes/font_size = 8
 text = "0"
 
 [node name="CardList" type="HFlowContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
@@ -1130,7 +1131,6 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="CardsControl" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2

@@ -39,7 +39,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"CatShop",
-"speed": 0.8
+"speed": 0.7
 }]
 
 [node name="Tutorial" type="Control"]
@@ -140,6 +140,7 @@ theme_override_colors/font_color = Color(0.529412, 0.843137, 0.215686, 1)
 theme_override_fonts/font = ExtResource("2_av4rr")
 theme_override_font_sizes/font_size = 11
 text = "Como posicionar os Gatinhos?"
+autowrap_mode = 2
 
 [node name="Steps" type="VBoxContainer" parent="MarginContainer/VBoxContainer2/Content/MarginContainer/Content/VBoxContainer"]
 layout_mode = 2
