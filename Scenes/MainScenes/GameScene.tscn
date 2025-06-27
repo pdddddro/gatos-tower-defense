@@ -82,6 +82,7 @@ script = ExtResource("7_wb53i")
 [node name="Pause" type="TextureButton" parent="UI/HUD/MarginContainer/GameControls/Pause"]
 process_mode = 3
 custom_minimum_size = Vector2(32, 32)
+layout_mode = 0
 size_flags_horizontal = 0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("6_h0y4r")

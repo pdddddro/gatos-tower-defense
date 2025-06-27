@@ -195,12 +195,12 @@ var card_data = {
 		}
 		,{
 			"name": "Treinamento Básico",
-			"description": "Assistiu 'Como ser um Gato Guerreiro' no YouTube, aumenta o dano em 7, crítico em 20%, alcance em 5% e velocidade de ataque em 0.2s",
+			"description": "Assistiu 'Como ser um Gato Guerreiro' no YouTube, aumenta o dano em 5, crítico em 20%, alcance em 10% e velocidade de ataque em 0.2s",
 			"icon": "res://Assets/Icons/Cards/Treinanmeto-Basico-Icon.png",
 			"effects": [
-				{"type": "damage_boost", "power": 7, "power_type": "absolute"},
-				{"type": "speed_boost", "power": .3, "power_type": "absolute"},
-				{"type": "range_boost", "power": 5, "power_type": "percentage"},
+				{"type": "damage_boost", "power": 5, "power_type": "absolute"},
+				{"type": "speed_boost", "power": .2, "power_type": "absolute"},
+				{"type": "range_boost", "power": 10, "power_type": "percentage"},
 				{"type": "critic_boost", "power": 20, "power_type": "absolute"}
 			],
 			"sell_value": "100"
@@ -307,13 +307,13 @@ var card_data = {
 		}
 		,{
 			"name": "Miau Cast",
-			"description": "Ouve o melhor podcast sobre vida felina, absorveu dicas valiosas - aumenta todos os atributos em 15%",
+			"description": "Ouve o melhor podcast sobre vida felina, absorveu dicas valiosas - aumenta o dano em 10, crítico em 30%, alcance em 15% e velocidade de ataque em 0.4s",
 			"icon": "res://Assets/Icons/Cards/Treinanmeto-Basico-Icon.png",
 			"effects": [
-				{"type": "damage_boost", "power": 15, "power_type": "percentage"},
-				{"type": "speed_boost", "power": 15, "power_type": "percentage"},
+				{"type": "damage_boost", "power": 10, "power_type": "absolute"},
+				{"type": "speed_boost", "power": .4, "power_type": "absolute"},
 				{"type": "range_boost", "power": 15, "power_type": "percentage"},
-				{"type": "critic_boost", "power": 15, "power_type": "percentage"}
+				{"type": "critic_boost", "power": 30, "power_type": "absolute"}
 			],
 			"sell_value": "100"
 		}
@@ -365,14 +365,14 @@ var card_data = {
 	"rare": [
 		{
 			"name": "ASMR de Elevação Quantica",
-			"description": "Este gato transcendeu as limitações físicas, aumenta todos os atributos em +30%",
+			"description": "Este gato transcendeu as limitações físicas, - aumenta o dano em 15, crítico em 40%, alcance em 20% e velocidade de ataque em 0.6s",
 			"icon": "res://Assets/Icons/Cards/Treinanmeto-Basico-Icon.png",
 			"effects": [
 				{"type": "target_expansion", "target_types": ["all"]},
-				{"type": "damage_boost", "power": 30, "power_type": "percentage"},
-				{"type": "speed_boost", "power": 30, "power_type": "percentage"},
-				{"type": "range_boost", "power": 30, "power_type": "percentage"},
-				{"type": "critic_boost", "power": 30, "power_type": "percentage"}
+				{"type": "damage_boost", "power": 15, "power_type": "absolute"},
+				{"type": "critic_boost", "power": 40, "power_type": "absolute"},
+				{"type": "range_boost", "power": 20, "power_type": "percentage"},
+				{"type": "speed_boost", "power": .6, "power_type": "absolute"}
 			],
 			"sell_value": "100"
 		}
