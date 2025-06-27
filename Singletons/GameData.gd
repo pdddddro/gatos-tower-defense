@@ -18,10 +18,10 @@ extends Node
 ## Brincadeira, se quiser ajudar no projeto, só chamar @joguegatinhos na DM
 
 
-var default_fish_quantity = 5500
+var default_fish_quantity = 500
 var fish_quantity: int = default_fish_quantity  # Valor inicial de moedas
 
-var default_health_quantity = 10000
+var default_health_quantity = 100
 var health_quantity: int = default_health_quantity  # Valor inicial de moedas
 
 var totalWaveNumber = 30
@@ -36,7 +36,7 @@ var cat_data = { ## "Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 		"name": "Chicão",
 		"sprite": "res://Assets/Cats/Chicao/Chicao.png",
 		"damage": 10,
-		"atkcooldown": 1.2,
+		"atkcooldown": 1,
 		"range": 160,
 		"cost": 200,
 		"critical_chance": 0,
@@ -47,7 +47,7 @@ var cat_data = { ## "Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 		"name": "Pelé",
 		"sprite": "res://Assets/Cats/Pele/Pele.png",
 		"damage": 5,
-		"atkcooldown": .3,
+		"atkcooldown": .4,
 		"range": 90,
 		"cost": 250,
 		"critical_chance": 0,
@@ -58,7 +58,7 @@ var cat_data = { ## "Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 		"name": "Nino",
 		"sprite": "res://Assets/Cats/Nino/Nino.png",
 		"damage": 10,
-		"atkcooldown": 1,
+		"atkcooldown": 1.2,
 		"range": 200,
 		"cost": 250,
 		"critical_chance": 0,
@@ -224,7 +224,7 @@ var card_data = {
 			"sell_value": "100"
 		}
 		,{
-			"name": "Bebida Radioativa I",
+			"name": "Química do Mal I",
 			"description": "Tomou uma substância verde esquisita que encontrou, agora tem 30% de chance de crítico",
 			"icon": "res://Assets/Icons/Cards/Pre-Treino-icon.png",
 			"effects": [
@@ -279,7 +279,7 @@ var card_data = {
 			"sell_value": "50"
 		}
 		,{
-			"name": "Bebida Radioativa II",
+			"name": "Química do Mal II",
 			"description": "Tomou uma substância verde esquisita que encontrou, agora tem mais 60% de chance de crítico",
 			"icon": "res://Assets/Icons/Cards/Pre-Treino-icon.png",
 			"effects": [
@@ -377,7 +377,7 @@ var card_data = {
 			"sell_value": "100"
 		}
 		,{
-			"name": "Bebida Radioativa III",
+			"name": "Química do Mal III",
 			"description": "Tomou uma substância verde esquisita que encontrou, agora tem mais 100% de chance de crítico",
 			"icon": "res://Assets/Icons/Cards/Pre-Treino-icon.png",
 			"effects": [

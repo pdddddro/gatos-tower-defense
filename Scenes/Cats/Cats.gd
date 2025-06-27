@@ -122,6 +122,11 @@ func apply_card_effect(effect_data: Dictionary):
 	var power = effect_data.get("power", 0)
 	var power_type = effect_data.get("power_type", "absolute")
 	
+	if shop:
+		shop.selected_inventory_card = null
+		shop.disable_sell_n_details_buttons()
+		shop.update_empty_inventory_label()
+	
 	match effect_type:
 		"damage_vs_type":
 			var target_type = effect_data.get("target_type", "")
