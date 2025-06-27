@@ -4,11 +4,11 @@
 [ext_resource type="Script" uid="uid://bw0i0dfgadxnl" path="res://Scenes/UIScenes/inventory_card.gd" id="2_42axt"]
 [ext_resource type="Texture2D" uid="uid://dfka8j1jjfih7" path="res://Assets/UI/card_background_pressed.png" id="2_o8oco"]
 [ext_resource type="Texture2D" uid="uid://c6au0wn47cs01" path="res://Assets/UI/card_background_hover.png" id="2_yaibm"]
-[ext_resource type="Texture2D" uid="uid://dwchgcpqg52pg" path="res://Assets/UI/Teste.png" id="3_42axt"]
 [ext_resource type="FontFile" uid="uid://dypca4yn0mcqr" path="res://Assets/Fonts/retro_gaming/Retro Gaming.ttf" id="4_r7sdq"]
 [ext_resource type="Script" uid="uid://ber1tq1cvvvc3" path="res://Scenes/UIScenes/TextBox/tooltip_Interact.gd" id="4_yaibm"]
 [ext_resource type="Texture2D" uid="uid://b5msph4pswwgu" path="res://Assets/UI/Rarity/Rara.png" id="5_26xix"]
 [ext_resource type="PackedScene" uid="uid://cto02ur6a2nje" path="res://Scenes/UIScenes/TextBox/tooltip.tscn" id="5_o8oco"]
+[ext_resource type="Texture2D" uid="uid://bl5d52hsd1dbi" path="res://Assets/Icons/CardIconPlaceholder.png" id="8_o8oco"]
 
 [sub_resource type="Theme" id="Theme_hxsv2"]
 
@@ -46,7 +46,7 @@ show_rarity = false
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 theme = SubResource("Theme_hxsv2")
-theme_override_constants/separation = 2
+theme_override_constants/separation = 4
 alignment = 1
 
 [node name="CardRarity" type="TextureRect" parent="MarginContainer/VBoxContainer"]
@@ -63,7 +63,7 @@ custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-texture = ExtResource("3_42axt")
+texture = ExtResource("8_o8oco")
 
 [node name="CardName" type="Label" parent="MarginContainer/VBoxContainer"]
 texture_filter = 1

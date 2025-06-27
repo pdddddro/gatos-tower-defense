@@ -106,7 +106,7 @@ theme_override_constants/shadow_offset_y = 1
 theme_override_constants/shadow_outline_size = 0
 theme_override_fonts/font = ExtResource("2_jx0qf")
 theme_override_font_sizes/font_size = 11
-text = "Sobre o Projeto G.A.T.I.N.H.O.S."
+text = "Sobre o Projeto"
 
 [node name="Text" type="Label" parent="VBoxContainer/BestCat/Background/MarginContainer/ScrollContainer/Container/Content"]
 texture_filter = 1
@@ -115,9 +115,23 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
+theme_override_colors/font_shadow_color = Color(0.54, 0.33687, 0.2106, 0.121569)
+theme_override_constants/paragraph_spacing = -4
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 0
+theme_override_constants/shadow_outline_size = 0
 theme_override_fonts/font = ExtResource("3_l1ugq")
 theme_override_font_sizes/font_size = 16
-text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris elementum, elit quis rhoncus fringilla, diam erat fermentum libero, ut rutrum tellus ante ac magna. Quisque quis mauris sed ligula fermentum ullamcorper. Nulla tempus, risus sed ornare accumsan, neque eros dapibus mauris, id vestibulum metus neque sit amet dui. "
+text = "Nesse jogo, gatos carismáticos cansam da inércia humana em relação ao descarte de lixo na natureza e, afestados pela radiação, eles se unem para defender o mundo de inimigos bem esquisitos: slimes feitos de lixo.
+
+Esse foi um projeto desenvolvido por 2 alunos do curso de Design da UFBA, com a missão de criar algo divertido que também fizesse pensar. A gente acredita que jogos podem ir além do entretenimento: podem informar, provocar e engajar. É aí que entra o design engajado: um jeito de pensar o jogo como uma experiência que conversa com o mundo fora da tela.
+
+Tudo no jogo foi pensado com muito carinho pra trazer a pauta da sustentabilidade de um jeito leve, acessível e criativo. Sem discurso chato e engessado, e sim com a nossa personalidade (e umas boas piadinhas de gato).
+
+Além disso, o projeto busca colher arrecadações para os gatinhos da Escola de Belas Artes (QRCode e Chave PIX na tela inicial)
+
+No fim, G.A.T.I.N.H.O.S. é sobre isso: jogar, se divertir e, quem sabe, sair da partida querendo mudar um hábito ou prestar mais atenção ao lixo que a gente gera."
 vertical_alignment = 1
 autowrap_mode = 3
 
@@ -306,7 +320,8 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
 theme_override_fonts/font = ExtResource("2_jx0qf")
 theme_override_font_sizes/font_size = 11
-text = "Gostou do Projeto? Compartilhe!"
+text = "Gostou? Doe e Compartilhe!"
+autowrap_mode = 3
 
 [node name="Instagram" type="HBoxContainer" parent="VBoxContainer/BestCat/Background/MarginContainer/ScrollContainer/Container/CTA"]
 layout_mode = 2
@@ -327,6 +342,18 @@ theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
 theme_override_fonts/font = ExtResource("3_l1ugq")
 theme_override_font_sizes/font_size = 16
 text = "@joguegatinhos"
+vertical_alignment = 1
+
+[node name="Handle2" type="Label" parent="VBoxContainer/BestCat/Background/MarginContainer/ScrollContainer/Container/CTA"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
+theme_override_fonts/font = ExtResource("3_l1ugq")
+theme_override_font_sizes/font_size = 16
+text = "Chave PIX: pintura-eba@hotmail.com"
 vertical_alignment = 1
 
 [connection signal="pressed" from="VBoxContainer/Close" to="." method="_on_close_pressed"]

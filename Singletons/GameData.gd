@@ -164,7 +164,7 @@ var card_data = {
 		,{
 			"name": "Petisco sabor Whey l",
 			"description": "Este gato descobriu os petiscos proteicos do dono - Cada ataque da 30 de dano adicional",
-			"icon": "res://Assets/Icons/CardIconPlaceholder.png",
+			"icon": "res://Assets/Icons/Cards/biceps-icon.png",
 			"effects": [
 				{"type": "damage_boost", "power": 30, "power_type": "absolute"}
 			],
@@ -173,7 +173,7 @@ var card_data = {
 		,{
 			"name": "Treinamento Básico",
 			"description": "Assistiu 'Como ser um Gato Guerreiro' no YouTube, aumenta todos os atributos em 7%",
-			"icon": "res://Assets/Icons/CardIconPlaceholder.png",
+			"icon": "res://Assets/Icons/Cards/Treinanmeto-Basico-Icon.png",
 			"effects": [
 				{"type": "damage_boost", "power": 7, "power_type": "percentage"},
 				{"type": "speed_boost", "power": 7, "power_type": "percentage"},
@@ -248,7 +248,7 @@ var card_data = {
 		{
 			"name": "Mestrado no RU",
 			"description": "Sobreviveu 4 anos comendo no restaurante universitário, agora tem estômago de ferro - 30% de dano no Slime Metal",
-			"icon": "res://Assets/Icons/CardIconPlaceholder.png",
+			"icon": "res://Assets/Icons/Cards/Mestrado-RU-Icxon.png",
 			"effects": [
 				{"type": "damage_vs_type", "target_type": "Metal", "power": 30, "power_type": "percentage"},
 			],
@@ -284,7 +284,7 @@ var card_data = {
 		,{
 			"name": "Miau Cast",
 			"description": "Ouve o melhor podcast sobre vida felina, absorveu dicas valiosas - aumenta todos os atributos em 15%",
-			"icon": "res://Assets/Icons/CardIconPlaceholder.png",
+			"icon": "res://Assets/Icons/Cards/Treinanmeto-Basico-Icon.png",
 			"effects": [
 				{"type": "damage_boost", "power": 15, "power_type": "percentage"},
 				{"type": "speed_boost", "power": 15, "power_type": "percentage"},
@@ -296,7 +296,7 @@ var card_data = {
 		,{
 			"name": "Petisco sabor Whey II",
 			"description": "Este gato descobriu os petiscos proteicos do dono - Cada ataque da 60 de dano adicional",
-			"icon": "res://Assets/Icons/CardIconPlaceholder.png",
+			"icon": "res://Assets/Icons/Cards/biceps-icon.png",
 			"effects": [
 				{"type": "damage_boost", "power": 60, "power_type": "absolute"}
 			],
@@ -341,7 +341,7 @@ var card_data = {
 		{
 			"name": "ASMR de Elevação Quantica",
 			"description": "Este gato transcendeu as limitações físicas, aumenta todos os atributos em +30%",
-			"icon": "res://Assets/Icons/CardIconPlaceholder.png",
+			"icon": "res://Assets/Icons/Cards/Treinanmeto-Basico-Icon.png",
 			"effects": [
 				{"type": "target_expansion", "target_types": ["all"]},
 				{"type": "damage_boost", "power": 30, "power_type": "percentage"},
@@ -381,7 +381,7 @@ var card_data = {
 		,{
 			"name": "O gato mais forte de todos",
 			"description": "EU SOU O MAIS FORTE DE TODOS!! Aumenta a chance de crítico em 99% mas perde 30% de velocidade de ataque",
-			"icon": "res://Assets/Icons/CardIconPlaceholder.png",
+			"icon": "res://Assets/Icons/Cards/O-melhor-gato-icon.png",
 			"effects": [
 				{"type": "range_boost", "power": -30, "power_type": "percentage"},
 				{"type": "critic_boost", "power": 99, "power_type": "absolute"}
@@ -433,7 +433,7 @@ var card_data = {
 		,{
 			"name": "Petisco sabor Whey III",
 			"description": "Este gato descobriu os petiscos proteicos do dono - Cada ataque da 100 de dano adicional",
-			"icon": "res://Assets/Icons/CardIconPlaceholder.png",
+			"icon": "res://Assets/Icons/Cards/biceps-icon.png",
 			"effects": [
 				{"type": "damage_boost", "power": 100, "power_type": "absolute"}
 			],
@@ -784,26 +784,22 @@ func get_current_music_type() -> String:
 var waves = {
 	"wave1": {
 		"enemies": [
-			["Metal", 1.5],
-		],
-		"text_box": {
-			"show": true,
-			"title": "Prontos para a batalha gatinhos?",
-			"message": "Slimes Chiclete à vista! Eles grudam no chão e na natureza. Cartolina nem chega perto deles... imagina se gruda no rabo?"
-		}
+			["Papel", 2],
+			["Papel", 2],
+			["Papel", 2],
+		]
 	},
 	
 	"wave2": {
 		"enemies": [
-			["Papel", 1.2],
-			["Papel", 1.2],
-			["Papel", 1.2],
-			["Papel", 1.2],
-			["Papel", 2],
-			["Papel", 1.2],
-			["Papel", 1.2],
-			["Papel", 1.2],
-			["Papel", 1.2],
+			["Papel", 1],
+			["Papel", 1],
+			["Papel", 1],
+			["Papel", 1],
+			["Papel", 3],
+			["Papel", 1],
+			["Papel", 1],
+			["Papel", 1],
 		],
 	},
 	
@@ -822,15 +818,13 @@ var waves = {
 			["Papel", .8],
 			["Papel", .8],
 			["Papel", .8],
-			["Papel", 2],
-			["Papel", 3],
 
 		],
 	},
 	
 	"wave4": {
 		"enemies": [
-			["Papel", 1],
+			["Papel", 0.5],
 			["Papel", 0.5],
 			["Papel", 0.5],
 			["Papel", 0.5],
@@ -839,10 +833,14 @@ var waves = {
 			["Papel", 0.5],
 			["Papel", 0.5],
 			["Chiclete", .2],
-			["Papel", .5],
 			["Papel", 0.5],
-			["Papel", .5],
-			["Papel", .5],
+			["Papel", 0.5],
+			["Papel", 0.5],
+			["Papel", 0.5],
+			["Papel", 0.5],
+			["Papel", 0.5],
+			["Papel", 0.5],
+			["Papel", 0.5],
 		],
 	},
 	

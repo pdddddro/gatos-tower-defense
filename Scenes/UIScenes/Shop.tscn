@@ -1130,7 +1130,6 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="CardsControl" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2

@@ -13,8 +13,8 @@ func _ready() -> void:
 func on_mouse_entered():
 	var parent_card = get_parent()
 	var current_node_name = name
-	
-	GameData.play_sound("ui", "button", "hover")
+
+	#GameData.play_sound("ui", "button", "hover")
 
 		
 	if parent_card and parent_card.has_meta("card_data") or (current_node_name in ["Card1", "Card2", "Card3", "Card4"]):
