@@ -35,7 +35,7 @@ var enemies_in_wave = 0
 @onready var WaveCount = get_node("UI/HUD/MarginContainer/WaveContainer/WaveCount")
 
 # Status
-var base_health = 100
+var base_health = GameData.default_health_quantity
 
 @onready var fish_label = get_node("UI/HUD/MarginContainer/Status/FishContainer/FishLabel")
 
@@ -46,7 +46,7 @@ func _ready() -> void:
 	map_node = get_node("Map1")
 	get_node("UI/HUD/MarginContainer/Status/HeartContainer/HeartLabel").text = str(base_health)
 	
-	WaveCount.text = str(current_wave) + "/50"
+	WaveCount.text = str(current_wave) + "/" + str(GameData.totalWaveNumber)
 	
 	#GameData.next_round()
 	GameData.fish_quantity_updated.connect(_on_fish_quantity_updated)
@@ -56,6 +56,9 @@ func _ready() -> void:
 		i.pressed.connect(Callable(self, "initiate_build_mode").bind(i.get_name()))
 	
 	connect_card_signals()
+	
+	get_node("UI/HUD/MarginContainer/WaveContainer/Navegation/Back").pressed.connect(_on_back_pressed)
+	get_node("UI/HUD/MarginContainer/WaveContainer/Navegation/Next").pressed.connect(_on_next_pressed)
 
 func _process(delta):
 	if build_mode:
@@ -295,7 +298,7 @@ func start_next_wave():
 	
 	if full_wave_data.has("text_box") and full_wave_data.text_box.show:
 		show_wave_textbox(full_wave_data.text_box)
-		return  # Não inicia a wave ainda
+		return # Não inicia a wave ainda
 	
 	# Se não tem textbox, inicia a wave normalmente
 	await get_tree().create_timer(0.2).timeout
@@ -371,7 +374,7 @@ func check_wave_end():
 	if enemies_in_wave <= 0:
 		print("Wave finalizada!")
 		current_wave += 1
-		WaveCount.text = str(current_wave) + "/50"
+		WaveCount.text = str(current_wave) + "/" + str(GameData.totalWaveNumber)
 		
 		## Vitória
 		if current_wave > 30 and base_health > 0:
@@ -484,6 +487,49 @@ func show_tutorial_help():
 	else:
 		print("SceneHandler não encontrado")
 
+## Wave Control
 
-func _on_question_mark_pressed() -> void:
-	show_tutorial_help()
+func _on_back_pressed() -> void:
+	if current_wave > 1:
+		navigate_to_wave(current_wave - 1)
+
+func _on_next_pressed() -> void:
+	if current_wave < GameData.totalWaveNumber: 
+		navigate_to_wave(current_wave + 1)
+
+func navigate_to_wave(target_wave: int):
+	# Limpar inimigos atuais
+	clear_current_enemies()
+	
+	# Parar qualquer textbox ativa
+	if current_textbox:
+		current_textbox.queue_free()
+		current_textbox = null
+	
+	# Atualizar wave atual
+	current_wave = target_wave
+	enemies_in_wave = 0
+	
+	# Atualizar UI
+	WaveCount.text = str(current_wave) + "/" + str(GameData.totalWaveNumber)
+	GameData.current_round = current_wave
+	GameData.update_rarity_chances()
+	
+	# Resetar botão de play
+	Engine.set_time_scale(1.0)
+	play_button.texture_normal = play
+	fast_mode = true
+	
+	print("Navegado para wave ", current_wave)
+
+func clear_current_enemies():
+	# Remove todos os inimigos ativos
+	var path_node = map_node.get_node("Path")
+	for child in path_node.get_children():
+		if child.has_method("queue_free"):
+			child.queue_free()
+	
+	# Reseta contador de inimigos
+	enemies_in_wave = 0
+	
+	print("Inimigos da wave atual removidos")
