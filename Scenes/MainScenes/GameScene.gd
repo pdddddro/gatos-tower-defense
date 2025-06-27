@@ -292,13 +292,13 @@ var current_textbox = null
 func start_next_wave():
 	var wave_data = retrieve_wave_data()
 	
-	# Verifica se a wave tem textbox
-	var wave_key = "wave" + str(current_wave)
-	var full_wave_data = GameData.waves.get(wave_key, {})
-	
-	if full_wave_data.has("text_box") and full_wave_data.text_box.show:
-		show_wave_textbox(full_wave_data.text_box)
-		return # Não inicia a wave ainda
+	# Verifica se deve mostrar textbox
+	if GameData.should_show_textbox(current_wave):
+		var text_data = GameData.get_textbox_data(current_wave)
+		
+		if not text_data.is_empty():
+			show_wave_textbox(text_data)
+			return # Não inicia a wave ainda
 	
 	# Se não tem textbox, inicia a wave normalmente
 	await get_tree().create_timer(0.2).timeout
@@ -377,9 +377,9 @@ func check_wave_end():
 		WaveCount.text = str(current_wave) + "/" + str(GameData.totalWaveNumber)
 		
 		## Vitória
-		if current_wave > 30 and base_health > 0:
+		if current_wave > GameData.totalWaveNumber and base_health > 0:
 			await get_tree().create_timer(1.0).timeout
-			
+			GameData.mark_victory()
 			emit_signal("game_finished", true)
 			return
 		

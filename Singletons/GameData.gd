@@ -35,12 +35,12 @@ var cat_data = { ## "Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 	"Chicao": { ## Chicão não ataca slimes pilha pra não dar ainda mais energia pra eles
 		"name": "Chicão",
 		"sprite": "res://Assets/Cats/Chicao/Chicao.png",
-		"damage": 25,
-		"atkcooldown": 2,
+		"damage": 2500,
+		"atkcooldown": .2,
 		"range": 160,
 		"cost": 200,
 		"critical_chance": 0,
-		"target_types": ["Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo", "Papel", "Radioativo"]
+		"target_types": ["Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo", "Papel", "Radioativo", "BossPneu"]
 	},
 	
 	"Pele": { ## Apesar de afiada, as garras de Pelé não conseguem destruir o Slime Metal
@@ -51,7 +51,7 @@ var cat_data = { ## "Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 		"range": 90,
 		"cost": 250,
 		"critical_chance": 0,
-		"target_types": ["Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo", "Papel", "Radioativo"]
+		"target_types": ["Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo", "Papel", "Radioativo", "BossPneu"]
 	},
 	
 	"Nino": { ## Nino não consegue ver o slime de plástico com um olho só por conta da sua trasparência
@@ -62,7 +62,7 @@ var cat_data = { ## "Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 		"range": 200,
 		"cost": 250,
 		"critical_chance": 0,
-		"target_types": ["Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo", "Papel", "Radioativo"]
+		"target_types": ["Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo", "Papel", "Radioativo", "BossPneu"]
 	},
 	
 	"Cartolina": { ## Cartolina não bate no slime de chiclete, seria horrivel ter chiclete em seus pelos
@@ -73,7 +73,7 @@ var cat_data = { ## "Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 		"range": 96,
 		"cost": 200,
 		"critical_chance": 0,
-		"target_types": ["Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo", "Papel", "Radioativo"]
+		"target_types": ["Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo", "Papel", "Radioativo", "BossPneu"]
 	},
 	
 	"Nut": { ## Os novelos de lã de nut não passam de carinhos no slime metal, então ele nem gasta sua lã com ele
@@ -84,7 +84,7 @@ var cat_data = { ## "Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 		"range": 300,
 		"cost": 250,
 		"critical_chance": 0,
-		"target_types": ["Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo", "Papel", "Radioativo"]
+		"target_types": ["Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo", "Papel", "Radioativo", "BossPneu"]
 	}
 }
 
@@ -111,7 +111,7 @@ var enemies_data = {
 		"damage": 8,
 		"speed": 34,
 		"hp": 45,
-		"fish_reward": 19
+		"fish_reward": 20
 	},
 	"Plastico": {
 		"damage": 15,
@@ -123,19 +123,19 @@ var enemies_data = {
 		"damage": 15,
 		"speed": 30,
 		"hp": 160,
-		"fish_reward": 33
+		"fish_reward": 35
 	},
 	"Pilha": {
 		"damage": 20,
 		"speed": 70,
 		"hp": 90,
-		"fish_reward": 36
+		"fish_reward": 40
 	},
 	"Radioativo": {
 		"damage": 25,
 		"speed": 40,
 		"hp": 150,
-		"fish_reward": 45
+		"fish_reward": 60
 	},
 	"BossRadioativo": {
 		"damage": 99,
@@ -587,7 +587,8 @@ func save_game_data():
 		var save_data = {
 			"tutorial_completed": tutorial_completed,
 			"music_volume": music_volume,
-			"sfx_volume": sfx_volume
+			"sfx_volume": sfx_volume,
+			"has_won_at_least_once": has_won_at_least_once  # ADICIONE ESTA LINHA
 		}
 		file.store_string(JSON.stringify(save_data))
 		file.close()
@@ -610,11 +611,12 @@ func load_game_data():
 				tutorial_completed = save_data.get("tutorial_completed", false)
 				music_volume = save_data.get("music_volume", 1.0)
 				sfx_volume = save_data.get("sfx_volume", 1.0)
+				has_won_at_least_once = save_data.get("has_won_at_least_once", false)  # ADICIONE ESTA LINHA
 				
 				# Aplicar volumes salvos APENAS se os buses existirem
 				call_deferred("apply_saved_volumes")
-				
 				print("Dados carregados: tutorial_completed = ", tutorial_completed)
+				print("has_won_at_least_once = ", has_won_at_least_once)  # ADICIONE ESTA LINHA
 				print("Volumes carregados - Música: ", music_volume, " SFX: ", sfx_volume)
 			else:
 				print("Erro ao fazer parse do JSON")
@@ -831,8 +833,14 @@ var waves = {
 			["Papel", 2],
 			["Papel", 2],
 			["Papel", 2],
-		]
+		],
+		"text_box": {
+			"show": true,
+			"title": "Prontos para a batalha gatinhos?",
+			"message": "Se posicionem estrategicamente, preparem suas cartas e matem esse Slime Papel todo amassado que está vindo!"
+		}
 	},
+	
 	
 	"wave2": {
 		"enemies": [
@@ -860,7 +868,7 @@ var waves = {
 		],
 	},
 	
-	"wave4": { ## O que é isso rosa? acho que foi um slime chiclete... Cartolina
+	"wave4": {
 		"enemies": [
 			["Chiclete", 1],
 			["Papel", 1.5],
@@ -872,6 +880,11 @@ var waves = {
 			["Papel", 1.5],
 			["Chiclete", 1],
 		],
+		"text_box": {
+			"show": true,
+			"title": "O que é isso Rosa?",
+			"message": "Acho que foi um Slime Chiclete... Cartolina vai ficar furiosa se grudar no rabo dela..."
+		}
 	},
 	
 	"wave5": {
@@ -899,7 +912,7 @@ var waves = {
 		],
 	},
 	
-	"wave7": { ## E nao é que eles grudam mesmo? Mas algo pior está vindo, a Pilha!
+	"wave7": {
 		"enemies": [
 			["Chiclete", .3],
 			["Chiclete", .3],
@@ -908,6 +921,11 @@ var waves = {
 			["Chiclete", .3],
 			["Pilha", 0],
 		],
+		"text_box": {
+			"show": true,
+			"title": "E nao é que eles grudam mesmo??",
+			"message": "Mas algo pior está vindo, o Slime Pilha - Melhor Chicão não gritar perto deles para não energiza-los ainda mais!"
+		}
 	},
 	
 	"wave8": {
@@ -979,7 +997,7 @@ var waves = {
 		],
 	},
 	
-	"wave12": { ## Água e eletricidade não combinam! Mas agora ta vindo um tsunami de plástico!
+	"wave12": { ## Água e eletricidade não combinam! 
 		"enemies": [
 			["Plastico", 0.2],
 			["Plastico", 0.2],
@@ -989,8 +1007,12 @@ var waves = {
 			["Plastico", 0.2],
 			["Plastico", 0.2],
 			["Plastico", 0.2],
-
 		],
+			"text_box": {
+			"show": true,
+			"title": "Água e eletricidade não combinam!",
+			"message": "Não sei o que é pior, isso ou um tsunami de Slime Plástico!"
+		}
 	},
 	
 	"wave13": { ##
@@ -1001,21 +1023,14 @@ var waves = {
 			["Plastico", .5],
 			["Plastico", .5],
 			["Papel", 0.5],
-			["Pilha", 1],
+			["Pilha", 4],
 			["Papel", 0.5],
 			["Chiclete", 1],
 			["Chiclete", .5],
 			["Plastico", .5],
 			["Plastico", .5],
 			["Papel", 0.5],
-			["Pilha", 1],
-			["Papel", 0.5],
-			["Chiclete", 1],
-			["Chiclete", .5],
-			["Plastico", .5],
-			["Plastico", .5],
-			["Papel", 0.5],
-			["Pilha", 1],
+			["Pilha", 3],
 			["Papel", 0.5],
 			["Chiclete", 1],
 			["Chiclete", .5],
@@ -1026,7 +1041,7 @@ var waves = {
 		],
 	},
 	
-	"wave14": { ## Metal
+	"wave14": {
 		"enemies": [
 			["Metal", 1],
 			["Metal", 1],
@@ -1040,7 +1055,7 @@ var waves = {
 		],
 	},
 	
-	"wave15": { ## 
+	"wave15": {
 		"enemies": [
 			["Metal", .5],
 			["Metal", .5],
@@ -1051,6 +1066,11 @@ var waves = {
 			["Metal", .5],
 			["Pilha", 2],
 		],
+			"text_box": {
+			"show": true,
+			"title": "Ferro velho ambulante à vista!",
+			"message": "O Slime Metal pode parecer durão, mas todo metal pode ser derretido... ou arranhado até virar pó!"
+		}
 	},
 	
 	"wave16": {
@@ -1100,17 +1120,22 @@ var waves = {
 		"enemies": [
 			["Radioativo", .5],
 			["Radioativo", .5],
-			["Pilha", 5],
+			["Pilha", 3],
 			["Radioativo", .5],
 			["Radioativo", .5],
-			["Pilha", 5],
+			["Pilha", 3],
 			["Radioativo", .5],
 			["Radioativo", .5],
-			["Pilha", 5],
+			["Pilha", 3],
 			["Radioativo", .5],
 			["Radioativo", .5],
-			["Pilha", 5],
+			["Pilha", 3],
 		],
+			"text_box": {
+			"show": true,
+			"title": "Estou começando a me sentir estranho...",
+			"message": "Culpa do o Slime Radioativo! Pelé odeia radiação, ele nem vai chegar perto!"
+		}
 	},
 	
 	"wave19": {
@@ -1139,12 +1164,17 @@ var waves = {
 		],
 	},
 	
-	"wave20": {  ## Que barulho é esse...? Tem algo se aproximando, gatinhos, se preparem!
+	"wave20": {  
 		"enemies": [
 			["Radioativo", 4],
 			["BossPneu", .5],
 			["BossRadioativo", 2],
 		],
+		"text_box": {
+			"show": true,
+			"title": "[shake rate=20 level=10] Das profundezas do lixão, ele surge... [/shake]",
+			"message": "Revestido de borracha e sede de destruição.  [b][font_size=11][shake rate=20 level=10]O Chefão Pneu[/shake][/font_size][/b] desafia até os mais corajosos!"
+		}
 	},
 	
 	"wave21": {
@@ -1157,7 +1187,7 @@ var waves = {
 			["Plastico", 1],
 			["Radioativo", 1],
 			["Plastico", 1],
-			["Radioativo", 5],
+			["Radioativo", 3],
 			["Plastico", 1],
 			["Radioativo", 1],
 			["Plastico", 1],
@@ -1171,7 +1201,7 @@ var waves = {
 	
 	"wave22": {
 		"enemies": [
-			["Papel", 5],
+			["Papel", 1],
 			["Pilha", .2],
 			["Chiclete", .5],
 			["Pilha", .2],
@@ -1227,6 +1257,11 @@ var waves = {
 		"enemies": [
 			["BossRadioativo", .5],
 		],
+			"text_box": {
+			"show": true,
+			"title": "[wave rate=20 level=10][color=#14a02e]Atenção: níveis de radiação subindo! [/color][/wave]",
+			"message": "To me sentindo meio estranho... Preparem os EPI’s e as garras, [b][font_size=11][wave rate=20 level=10][color=#14a02e]Chefão Radioativo[/color][/wave][/font_size][/b] chegando!"
+		}
 	},
 	
 	"wave26": {
@@ -1299,6 +1334,11 @@ var waves = {
 			["Pilha", .2],
 			["Pilha", 5],
 		],
+			"text_box": {
+			"show": true,
+			"title": "Meu Deus, que perigo!",
+			"message": "Dois [b][font_size=11][wave rate=20 level=10][color=#14a02e]Chefões Radioativos[/color][/wave][/font_size][/b] foi de mais pra mim... imagina se aparecem 2 de cada Chefão..."
+		}
 	},
 	
 	"wave30": { ## Boss Radioativo ## To me sentindo meio estranho... Tem algo vindo... que t-t-temos um problema Gatinhos!
@@ -1316,5 +1356,137 @@ var waves = {
 			["Pilha", 1],
 			["Pilha", 1],
 		],
+			"text_box": {
+			"show": true,
+			"title": "Atenção, tropas felinas!",
+			"message": "Vamos tirar esse lixo do mapa de uma vez por todas. Últimos inimigos chegando, força máxima!"
+		}
 	},
 }
+var random_phrases = {
+	"phrase1": {
+		"title": "Curiosidade Felina",
+		"message": "Você sabia que os gatos podem dormir até 16 horas por dia? Talvez por isso eles são tão eficientes em batalha!"
+	},
+	"phrase2": {
+		"title": "Dica Estratégica",
+		"message": "Posicionar seus gatos em pontos de curva do caminho maximiza o tempo de ataque contra os slimes!"
+	},
+	"phrase3": {
+		"title": "Fato Ambiental",
+		"message": "O plástico pode levar até 400 anos para se degradar na natureza. Por isso nossos gatinhos estão aqui para ajudar!"
+	},
+	"phrase4": {
+		"title": "Segredo dos Gatinhos",
+		"message": "Cada gato tem personalidade única! Observe como eles reagem diferente a cada tipo de slime."
+	},
+	"phrase5": {
+		"title": "Sustentabilidade",
+		"message": "Reciclar uma lata de alumínio economiza energia suficiente para manter uma TV ligada por 3 horas!"
+	},
+	"phrase6": {
+		"title": "Poder Felino",
+		"message": "Os bigodes dos gatos são sensores super precisos. Eles podem detectar até as menores vibrações!"
+	},
+	"phrase7": {
+		"title": "Eco Dica",
+		"message": "Separar o lixo corretamente é o primeiro passo para um planeta mais limpo. Nossos gatos aprovam!"
+	},
+	"phrase8": {
+		"title": "Curiosidade",
+		"message": "Um gato pode fazer mais de 100 sons diferentes, enquanto um cachorro faz apenas 10!"
+	}
+}
+
+# Função para obter uma frase aleatória
+func get_random_phrase() -> Dictionary:
+	var phrase_keys = random_phrases.keys()
+	var random_key = phrase_keys[randi() % phrase_keys.size()]
+	return random_phrases[random_key]
+
+var has_won_at_least_once = false
+
+func should_show_textbox(wave_number: int) -> bool:
+	# Rodada 1 sempre mostra frase (boas-vindas ou tutorial)
+	if wave_number == 1:
+		return true
+	
+	# Se nunca ganhou, usa o sistema original de tutorial
+	if not has_won_at_least_once:
+		var wave_key = "wave" + str(wave_number)
+		var full_wave_data = waves.get(wave_key, {})
+		return full_wave_data.has("text_box") and full_wave_data.text_box.show
+	
+	# Se já ganhou pelo menos 1x, mostra frases aleatórias a cada 5 rodadas
+	return wave_number % 5 == 0
+
+# Função para marcar que o jogador ganhou
+func mark_victory():
+	has_won_at_least_once = true
+	save_game_data()
+
+# Função para determinar qual tipo de frase mostrar
+func get_textbox_data(wave_number: int) -> Dictionary:
+	# Rodada 1: boas-vindas se já ganhou pelo menos 1x, senão tutorial original
+	if wave_number == 1:
+		if has_won_at_least_once:
+			return get_welcome_phrase()
+		else:
+			# Retorna a frase original do tutorial da wave1
+			var wave_data = waves.get("wave1", {})
+			if wave_data.has("text_box"):
+				return wave_data.text_box
+	
+	# Para outras waves: só mostra frases padrão se nunca ganhou
+	if not has_won_at_least_once:
+		var wave_key = "wave" + str(wave_number)
+		var wave_data = waves.get(wave_key, {})
+		if wave_data.has("text_box"):
+			return wave_data.text_box
+	else:
+		# Se já ganhou pelo menos 1x, mostra frases aleatórias a cada 5 rodadas
+		if wave_number % 5 == 0:
+			return get_random_phrase()
+	
+	return {}
+
+var welcome_phrases = {
+	"welcome1": {
+		"title": "Bem-vindo, Guardião!",
+		"message": "Os gatinhos estão prontos para defender nosso planeta! Prepare-se para uma aventura ecológica!"
+	},
+	"welcome2": {
+		"title": "Missão Iniciada!",
+		"message": "Hora de mostrar para esses slimes poluentes quem manda aqui! Nossos felinos estão ansiosos!"
+	},
+	"welcome3": {
+		"title": "Defesa Ativada!",
+		"message": "O sistema de defesa felino foi ativado! Cada gato tem habilidades únicas para proteger o ambiente!"
+	},
+	"welcome4": {
+		"title": "Eco-Guerreiros!",
+		"message": "Nossos gatinhos eco-guerreiros estão prontos! Juntos vamos limpar este mundo da poluição!"
+	},
+	"welcome5": {
+		"title": "Aventura Sustentável!",
+		"message": "Bem-vindo à maior aventura de sustentabilidade! Cada vitória é um passo para um planeta mais limpo!"
+	},
+	"welcome6": {
+		"title": "Força Felina!",
+		"message": "A força felina está do nosso lado! Prepare-se para enfrentar ondas de desafios ambientais!"
+	},
+	"welcome7": {
+		"title": "Proteção Ambiental!",
+		"message": "Hora de proteger nosso lar! Os gatos sabem exatamente como lidar com invasores indesejados!"
+	},
+	"welcome8": {
+		"title": "Início da Jornada!",
+		"message": "Sua jornada como protetor ambiental começa agora! Confie nos seus companheiros felinos!"
+	}
+}
+
+# Função para obter uma frase de boas-vindas aleatória
+func get_welcome_phrase() -> Dictionary:
+	var phrase_keys = welcome_phrases.keys()
+	var random_key = phrase_keys[randi() % phrase_keys.size()]
+	return welcome_phrases[random_key]
