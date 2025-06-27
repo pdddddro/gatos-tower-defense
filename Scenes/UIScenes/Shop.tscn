@@ -11,16 +11,11 @@
 [ext_resource type="FontFile" uid="uid://dypca4yn0mcqr" path="res://Assets/Fonts/retro_gaming/Retro Gaming.ttf" id="8_0ya3t"]
 [ext_resource type="Texture2D" uid="uid://c6au0wn47cs01" path="res://Assets/UI/card_background_hover.png" id="8_qah3m"]
 [ext_resource type="Texture2D" uid="uid://dvhrsyngix8od" path="res://Assets/Cats/Sombra.png" id="8_uhyj3"]
-[ext_resource type="Texture2D" uid="uid://bkttfrcv1d5uu" path="res://Assets/Cats/Chicao/Chicao.png" id="9_0ya3t"]
 [ext_resource type="Texture2D" uid="uid://eym1v5rb5qmv" path="res://Assets/UI/Buttons/botao_sec_padrao_small.png" id="9_bymxr"]
 [ext_resource type="Texture2D" uid="uid://d0s1xis4xqbm6" path="res://Assets/Icons/Fish1.png" id="10_8gkmu"]
 [ext_resource type="Texture2D" uid="uid://c75b523rfmig3" path="res://Assets/Cats/Empty.png" id="10_78vis"]
 [ext_resource type="Texture2D" uid="uid://ded80qbnyb2sf" path="res://Assets/UI/Buttons/botao_sec_hover_small.png" id="10_qh346"]
-[ext_resource type="Texture2D" uid="uid://c061d35ptj35w" path="res://Assets/Cats/Pele/Pele.png" id="11_qah3m"]
-[ext_resource type="Texture2D" uid="uid://cyly7nfosdk6" path="res://Assets/Cats/Nino/Nino.png" id="12_apai1"]
-[ext_resource type="Texture2D" uid="uid://ca7dcxojm22x4" path="res://Assets/Cats/Cartolina/Cartolina.png" id="13_v6pep"]
 [ext_resource type="FontFile" uid="uid://bxh8oh1s7ap4j" path="res://Assets/Fonts/medodicaregular.otf" id="14_7fwff"]
-[ext_resource type="Texture2D" uid="uid://chbpn8hrki162" path="res://Assets/Cats/Nut/Nut.png" id="14_rtmr6"]
 [ext_resource type="Texture2D" uid="uid://bja4m423dmu6i" path="res://Assets/Icons/Attack.png" id="15_bymxr"]
 [ext_resource type="FontFile" uid="uid://8qe2jqb87ubg" path="res://Assets/Fonts/press_start_2p/PressStart2P.ttf" id="15_v6pep"]
 [ext_resource type="Texture2D" uid="uid://l3qb28hgmuhn" path="res://Assets/UI/Equipped_card_background.png" id="16_rtmr6"]
@@ -40,6 +35,11 @@
 [ext_resource type="Texture2D" uid="uid://d0v5okl1qyk2p" path="res://Assets/Icons/Rarity/Comum.png" id="27_bymxr"]
 [ext_resource type="Texture2D" uid="uid://bpu3geeqpnail" path="res://Assets/Icons/Rarity/Incomum.png" id="28_qh346"]
 [ext_resource type="Texture2D" uid="uid://dcbuhbtk2btfc" path="res://Assets/Icons/Rarity/Rara.png" id="29_vsduq"]
+[ext_resource type="Texture2D" uid="uid://dbt6e16kfjtib" path="res://Assets/Cats/Chicao/ChicaoCard.png" id="29_ympee"]
+[ext_resource type="Texture2D" uid="uid://cs8b8u0okq1go" path="res://Assets/Cats/Pele/ChicaoAttack.png" id="30_4wtvo"]
+[ext_resource type="Texture2D" uid="uid://d1yb4hos4dxxd" path="res://Assets/Cats/Nino/NinoCard.png" id="31_r373f"]
+[ext_resource type="Texture2D" uid="uid://bxcxnewuqv410" path="res://Assets/Cats/Nut/NutCard.png" id="32_wa4i2"]
+[ext_resource type="Texture2D" uid="uid://n721k2b4gra6" path="res://Assets/Cats/Cartolina/CarolinaCard.png" id="33_wgxyr"]
 
 [sub_resource type="Theme" id="Theme_hxsv2"]
 
@@ -168,6 +168,7 @@ layout_mode = 2
 theme_override_constants/separation = 8
 
 [node name="CatInfo" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 8
@@ -611,7 +612,6 @@ script = ExtResource("16_vsduq")
 [node name="Tooltip" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/EquippedCards/Cards/Card4/CardIcon" instance=ExtResource("18_ywieb")]
 
 [node name="TextureRect" type="NinePatchRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer"]
-visible = false
 custom_minimum_size = Vector2(168, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -714,7 +714,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-texture = ExtResource("9_0ya3t")
+texture = ExtResource("29_ympee")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Chicao/VBoxContainer"]
 layout_mode = 2
@@ -808,7 +808,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-texture = ExtResource("11_qah3m")
+texture = ExtResource("30_4wtvo")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Pele/VBoxContainer"]
 layout_mode = 2
@@ -900,7 +900,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-texture = ExtResource("12_apai1")
+texture = ExtResource("31_r373f")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Nino/VBoxContainer"]
 layout_mode = 2
@@ -992,7 +992,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-texture = ExtResource("14_rtmr6")
+texture = ExtResource("32_wa4i2")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Nut/VBoxContainer"]
 layout_mode = 2
@@ -1083,7 +1083,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-texture = ExtResource("13_v6pep")
+texture = ExtResource("33_wgxyr")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Cartolina/VBoxContainer"]
 layout_mode = 2

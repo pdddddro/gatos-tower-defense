@@ -107,6 +107,17 @@ text = "- Ranking"
 vertical_alignment = 1
 autowrap_mode = 2
 
+[node name="Label6" type="Label" parent="Margin/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.806222, 0.294457, 0.633175, 1)
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("4_mfebp")
+theme_override_font_sizes/font_size = 16
+text = "- Maior caracterização dos Gatos"
+vertical_alignment = 1
+autowrap_mode = 2
+
 [node name="Label2" type="Label" parent="Margin/VBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
@@ -118,14 +129,14 @@ text = "- Mais Efeitos Sonoros"
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Label6" type="Label" parent="Margin/VBoxContainer"]
+[node name="Label5" type="Label" parent="Margin/VBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.806222, 0.294457, 0.633175, 1)
 theme_override_constants/line_spacing = 0
 theme_override_fonts/font = ExtResource("4_mfebp")
 theme_override_font_sizes/font_size = 16
-text = "- Maior caracterização dos Gatos"
+text = "- Transições"
 vertical_alignment = 1
 autowrap_mode = 2
 

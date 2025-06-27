@@ -472,6 +472,22 @@ func show_max_cards_message():
 	# Implementar uma mensagem visual para o jogador
 	print("Máximo de 4 cartas por gato!")
 
+func _unhandled_input(event):
+	if event is InputEventKey and event.pressed:
+		if event.keycode == KEY_ESCAPE:
+			# Só abre se não estiver pausado
+			if not get_tree().paused:
+				_on_pause_pressed()
+
+func close_pause_menu():
+	var ui_node = get_node("UI")
+	for child in ui_node.get_children():
+		if child.name.contains("Pause") or child.has_method("_on_main_action_pressed"):
+			child.queue_free()
+			break
+	
+	get_tree().paused = false
+
 ## Pause Menu
 func _on_pause_pressed() -> void:
 	var pause_scene = preload("res://Scenes/UIScenes/Pause/pause.tscn")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bqgryvp00o5tn"]
+[gd_scene load_steps=16 format=3 uid="uid://bqgryvp00o5tn"]
 
 [ext_resource type="Script" uid="uid://o17y5t7odt15" path="res://Scenes/UIScenes/Pause/pause.gd" id="1_gyyt8"]
 [ext_resource type="Texture2D" uid="uid://0byb8mpdvpgy" path="res://Assets/UI/Art/Background.png" id="1_vf8ia"]
@@ -8,10 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://baepjslnydqim" path="res://Assets/UI/Buttons/botao_principal_padrao.png" id="4_07md7"]
 [ext_resource type="Texture2D" uid="uid://mx3dyc0tnke" path="res://Assets/UI/Buttons/botao_principal_hover.png" id="5_i24kg"]
 [ext_resource type="Texture2D" uid="uid://cdunclj7frjlu" path="res://Assets/UI/Buttons/botao_disabled.png" id="6_5bar8"]
-[ext_resource type="Texture2D" uid="uid://xvjesvsh2vh8" path="res://Assets/Icons/Social Media/Insta.png" id="6_k6jkc"]
+[ext_resource type="Texture2D" uid="uid://i2hcc1bn7gtm" path="res://Assets/Icons/Cards/ronronar-icon.png" id="6_k6jkc"]
 [ext_resource type="Texture2D" uid="uid://8adf7fkny4qr" path="res://Assets/Icons/Play.png" id="7_k6jkc"]
 [ext_resource type="Script" uid="uid://c2nlmty2nmu5n" path="res://Scenes/UIScenes/Buttons/button.gd" id="8_07md7"]
 [ext_resource type="Texture2D" uid="uid://cgceauk46iquy" path="res://Assets/UI/Buttons/botao_sec_padrao.png" id="8_jralj"]
+[ext_resource type="Texture2D" uid="uid://b1414aihw8jm2" path="res://Assets/Icons/VolumeOn-Icon.png" id="8_k7vye"]
 [ext_resource type="Texture2D" uid="uid://cat5x4hm2pqvj" path="res://Assets/UI/Buttons/botao_sec_hover.png" id="9_k7vye"]
 [ext_resource type="Script" uid="uid://b7x0lgn3ivdb3" path="res://Scenes/UIScenes/Pause/h_slider.gd" id="11_i3i3m"]
 
@@ -146,7 +147,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-texture = ExtResource("6_k6jkc")
+texture = ExtResource("8_k7vye")
 
 [node name="Name" type="Label" parent="VBoxContainer/BestCat/Background/MarginContainer/Container/SFXVolume/HBoxContainer"]
 layout_mode = 2

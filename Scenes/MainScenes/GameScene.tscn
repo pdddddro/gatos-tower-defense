@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://dk6vdxcwe0mx1" path="res://Assets/Icons/Next.png" id="16_0dyjl"]
 
 [node name="GameScene" type="Node2D"]
+process_mode = 1
 script = ExtResource("1_hosin")
 
 [node name="Map1" parent="." instance=ExtResource("1_ianr5")]

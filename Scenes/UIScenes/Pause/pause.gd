@@ -36,6 +36,14 @@ func _ready():
 	music_slider.mouse_exited.connect(music_slider.release_focus)
 	sfx_slider.mouse_exited.connect(sfx_slider.release_focus)
 
+	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+
+func _unhandled_input(event):
+	if event is InputEventKey and event.pressed:
+		if event.keycode == KEY_ESCAPE:
+			_on_main_action_pressed()  # Usa a função existente para fechar
+
+	
 func setup_sliders():
 	# Configurar propriedades dos sliders
 	music_slider.min_value = 0.0
