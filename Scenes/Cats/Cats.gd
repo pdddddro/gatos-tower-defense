@@ -151,13 +151,27 @@ func apply_card_effect(effect_data: Dictionary):
 		
 		"speed_boost":
 			if power_type == "percentage":
-				var cooldown_reduction = individual_stats["atkcooldown"] * (power / 100.0)  # Usa stats individuais
-				individual_stats["atkcooldown"] = max(0.1, individual_stats["atkcooldown"] - cooldown_reduction)
-				print("Velocidade aumentada em ", power, "% (", cooldown_reduction, "s). Novo cooldown: ", individual_stats["atkcooldown"])
+				# Converte cooldown para attack speed
+				var current_attack_speed = 1.0 / individual_stats["atkcooldown"]
+				
+				# Aplica o buff percentual no attack speed
+				var new_attack_speed = current_attack_speed * (1.0 + power / 100.0)
+				
+				# Converte de volta para cooldown
+				individual_stats["atkcooldown"] = max(0.1, 1.0 / new_attack_speed)
+				
+				print("Attack speed aumentado em ", power, "%. De ", current_attack_speed, " para ", new_attack_speed, " ataques/s. Novo cooldown: ", individual_stats["atkcooldown"])
 			else:
-				individual_stats["atkcooldown"] = max(0.1, individual_stats["atkcooldown"] - power)
-				print("Velocidade aumentada em ", power, "s. Novo cooldown: ", individual_stats["atkcooldown"])
-		
+				# Para valores absolutos, trabalha diretamente com attack speed
+				var current_attack_speed = 1.0 / individual_stats["atkcooldown"]
+				var new_attack_speed = current_attack_speed + power
+				
+				# Garante que não fique negativo ou muito baixo
+				new_attack_speed = max(0.1, new_attack_speed)
+				individual_stats["atkcooldown"] = 1.0 / new_attack_speed
+				
+				print("Attack speed aumentado em ", power, " ataques/s. De ", current_attack_speed, " para ", new_attack_speed, " ataques/s. Novo cooldown: ", individual_stats["atkcooldown"])
+				
 		"range_boost":
 			if power_type == "percentage":
 				var range_increase = individual_stats["range"] * (power / 100.0)  # Usa stats individuais
@@ -417,14 +431,27 @@ func remove_card_effect(effect_data: Dictionary):
 		
 		"speed_boost":
 			if power_type == "percentage":
-				var base_cooldown = GameData.cat_data[type]["atkcooldown"] # Usa stats base
-				var cooldown_increase = base_cooldown * (power / 100.0)
-				individual_stats["atkcooldown"] += cooldown_increase
-				print("Velocidade reduzida em ", power, "% (", cooldown_increase, "s). Novo cooldown: ", individual_stats["atkcooldown"])
+				# Converte cooldown atual para attack speed
+				var current_attack_speed = 1.0 / individual_stats["atkcooldown"]
+				
+				# Remove o buff percentual
+				var original_attack_speed = current_attack_speed / (1.0 + power / 100.0)
+				
+				# Converte de volta para cooldown
+				individual_stats["atkcooldown"] = 1.0 / original_attack_speed
+				
+				print("Attack speed reduzido em ", power, "%. De ", current_attack_speed, " para ", original_attack_speed, " ataques/s. Novo cooldown: ", individual_stats["atkcooldown"])
 			else:
-				individual_stats["atkcooldown"] += power
-				print("Velocidade reduzida em ", power, "s. Novo cooldown: ", individual_stats["atkcooldown"])
-		
+				# Para valores absolutos, remove diretamente do attack speed
+				var current_attack_speed = 1.0 / individual_stats["atkcooldown"]
+				var original_attack_speed = current_attack_speed - power
+				
+				# Garante que não fique muito baixo
+				original_attack_speed = max(0.1, original_attack_speed)
+				individual_stats["atkcooldown"] = 1.0 / original_attack_speed
+				
+				print("Attack speed reduzido em ", power, " ataques/s. De ", current_attack_speed, " para ", original_attack_speed, " ataques/s. Novo cooldown: ", individual_stats["atkcooldown"])
+						
 		"range_boost":
 			if power_type == "percentage":
 				var base_range = GameData.cat_data[type]["range"] # Usa stats base

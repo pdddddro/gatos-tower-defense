@@ -67,6 +67,8 @@ func _process(delta):
 	if card_drag_mode:
 		update_card_preview()
 	GameData.time_in_game += delta
+	
+	update_build_buttons()
 
 func connect_card_signals():
 	# Esta função deve ser chamada quando novas cartas são adicionadas ao inventário

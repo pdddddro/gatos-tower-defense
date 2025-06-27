@@ -95,8 +95,4 @@ func _on_card_selected(selected_card_data):
 	#Analytics.add_event("Carta escolhidas no Pack", {"Carta": "TESTE"})
 	#await Analytics
 	
-	var game_scene = get_tree().get_first_node_in_group("game_scene")
-	if game_scene:
-		game_scene.update_build_buttons()
-	
 	queue_free()

@@ -47,7 +47,7 @@ var cat_data = { ## "Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 		"name": "Pelé",
 		"sprite": "res://Assets/Cats/Pele/Pele.png",
 		"damage": 5,
-		"atkcooldown": .4,
+		"atkcooldown": 0.5,
 		"range": 90,
 		"cost": 250,
 		"critical_chance": 0,
@@ -98,6 +98,8 @@ func update_fish_quantity(amount: int):
 	fish_quantity += amount
 	emit_signal("fish_quantity_updated", fish_quantity)
 	print("Moeda total agora: ", fish_quantity)
+	
+	var game_scene = get_tree().get_first_node_in_group("game_scene")
 
 ## Enemies
 var enemies_data = {
@@ -234,7 +236,7 @@ var card_data = {
 		}
 		,{
 			"name": "Veterano de Guerra I",
-			"description": "Você não quer saber o que esse gato ja viveu... - 50% mais dano contra todos os slimes comuns",
+			"description": "Você não quer saber o que esse gato ja viveu... 50% mais dano contra todos os slimes comuns",
 			"icon": "res://Assets/Icons/Cards/Veterano-Guerra-Icon.png",
 			"effects": [
 				{"type": "damage_vs_type", "target_type": "Plastico", "power": 50, "power_type": "percentage"},
@@ -311,7 +313,7 @@ var card_data = {
 			"icon": "res://Assets/Icons/Cards/Treinanmeto-Basico-Icon.png",
 			"effects": [
 				{"type": "damage_boost", "power": 10, "power_type": "absolute"},
-				{"type": "speed_boost", "power": .4, "power_type": "absolute"},
+				{"type": "speed_boost", "power": 0.4, "power_type": "absolute"},
 				{"type": "range_boost", "power": 15, "power_type": "percentage"},
 				{"type": "critic_boost", "power": 30, "power_type": "absolute"}
 			],
@@ -328,7 +330,7 @@ var card_data = {
 		}
 		,{
 			"name": "Veterano de Guerra II",
-			"description": "Você não quer saber o que esse gato ja viveu... - 70% mais dano contra todos os slimes comuns",
+			"description": "Você não quer saber o que esse gato ja viveu... 70% mais dano contra todos os slimes comuns",
 			"icon": "res://Assets/Icons/Cards/Veterano-Guerra-Icon.png",
 			"effects": [
 				{"type": "damage_vs_type", "target_type": "Plastico", "power": 70, "power_type": "percentage"},
@@ -364,7 +366,7 @@ var card_data = {
 
 	"rare": [
 		{
-			"name": "ASMR de Elevação Quantica",
+			"name": "ASMR de Elevação quantica",
 			"description": "Este gato transcendeu as limitações físicas, - aumenta o dano em 15, crítico em 40%, alcance em 20% e velocidade de ataque em 0.6s",
 			"icon": "res://Assets/Icons/Cards/Treinanmeto-Basico-Icon.png",
 			"effects": [
@@ -425,7 +427,7 @@ var card_data = {
 		#}
 		,{
 			"name": "Veterano de Guerra III",
-			"description": "Você não quer saber o que esse gato ja viveu... - 100% mais dano contra todos os slimes comuns",
+			"description": "Você não quer saber o que esse gato ja viveu... 100% mais dano contra todos os slimes comuns",
 			"icon": "res://Assets/Icons/Cards/Veterano-Guerra-Icon.png",
 			"effects": [
 				{"type": "damage_vs_type", "target_type": "Plastico", "power": 100, "power_type": "percentage"},
@@ -1154,6 +1156,11 @@ var waves = {
 			["Radioativo", .5],
 			["Metal", .5],
 		],
+			"text_box": {
+			"show": true,
+			"title": "Estou começando a me sentir estranho...",
+			"message": "Culpa do o Slime Radioativo! Pelé odeia radiação, ele nem vai chegar perto!"
+		}
 	},
 	
 	"wave18": { ##  Olha quem chegou... Maldito Slime Radioativo!
@@ -1170,12 +1177,7 @@ var waves = {
 			["Radioativo", .5],
 			["Radioativo", .5],
 			["Pilha", 3],
-		],
-			"text_box": {
-			"show": true,
-			"title": "Estou começando a me sentir estranho...",
-			"message": "Culpa do o Slime Radioativo! Pelé odeia radiação, ele nem vai chegar perto!"
-		}
+		]
 	},
 	
 	"wave19": {

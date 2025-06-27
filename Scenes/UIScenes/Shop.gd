@@ -65,6 +65,7 @@ func _process(delta):
 		if _target_anchor == _down_anchor and shop_container.visibility_layer:
 			shop_container.visibility_layer = false
 
+
 func _on_cat_clicked(cat_node):
 	print("Gato clicado: ", cat_node.name)
 
@@ -83,6 +84,10 @@ func _on_cat_shop_pressed() -> void:
 	cards_control.visible = false
 	cat_info.visible = false
 	texture_rect.visible = true
+	
+	var game_scene = get_tree().get_first_node_in_group("game_scene")
+	if game_scene:
+		game_scene.update_build_buttons()
 	
 	if current_cat_reference:
 		current_cat_reference.hide_range()
@@ -116,6 +121,9 @@ func _on_cards_pressed() -> void:
 	
 	if open == false:
 		open_container()
+		
+
+		
 
 func open_container():
 	shop_container.visibility_layer = true
