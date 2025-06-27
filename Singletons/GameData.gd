@@ -656,9 +656,50 @@ func mark_tutorial_completed():
 	save_game_data()
 	print("Tutorial marcado como completo e salvo")
 
-# NOVA FUNÇÃO: Para mostrar tutorial manualmente (botão de ajuda)
 func show_tutorial_manually():
 	print("Tutorial solicitado manualmente pelo jogador")
+
+func reset_all_game_data():
+	# Reseta variáveis de jogo
+	fish_quantity = default_fish_quantity
+	health_quantity = default_health_quantity
+	current_round = 1
+	
+	# Reseta estatísticas
+	reset_statistics()
+	
+	# Reseta coleção de cartas
+	card_collection.clear()
+	
+	# Reseta flags de progresso
+	tutorial_completed = false
+	has_won_at_least_once = false
+	
+	# Reseta volumes para padrão
+	music_volume = 1.0
+	sfx_volume = 1.0
+	
+	# Remove arquivo de save
+	delete_save_file()
+	
+	# Salva o estado resetado
+	save_game_data()
+	
+	print("Todos os dados do jogo foram resetados!")
+
+func delete_save_file():
+	if FileAccess.file_exists(save_file_path):
+		var dir = DirAccess.open("user://")
+		if dir:
+			var result = dir.remove(save_file_path.get_file())
+			if result == OK:
+				print("Arquivo de save deletado com sucesso")
+			else:
+				print("Erro ao deletar arquivo de save: ", result)
+		else:
+			print("Erro ao acessar diretório user://")
+	else:
+		print("Arquivo de save não existe")
 
 ## Audio
 
