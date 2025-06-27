@@ -30,7 +30,7 @@ script = ExtResource("1_0tan2")
 modulate = Color(0.909804, 0.415686, 0.690196, 1)
 texture_filter = 1
 layout_mode = 1
-offset_right = 640.0
+offset_right = 1117.0
 offset_bottom = 360.0
 texture = ExtResource("2_0tan2")
 stretch_mode = 1
@@ -143,6 +143,7 @@ expand_mode = 1
 [node name="TextureRect" type="TextureRect" parent="Margin/VBoxContainer2/TextureRect"]
 modulate = Color(0.4, 0.096, 0.298667, 0.164706)
 custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
 offset_top = 1.0
 offset_right = 50.0
 offset_bottom = 51.0

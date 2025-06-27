@@ -33,7 +33,7 @@ func reset_fish_quantity():
 ## Cats
 var cat_data = { ## "Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 	"Chicao": { ## Chicão não ataca slimes pilha pra não dar ainda mais energia pra eles
-		"name": "Chicao",
+		"name": "Chicão",
 		"sprite": "res://Assets/Cats/Chicao/Chicao.png",
 		"damage": 25,
 		"atkcooldown": 1.8,
@@ -44,11 +44,11 @@ var cat_data = { ## "Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 	},
 	
 	"Pele": { ## Apesar de afiada, as garras de Pelé não conseguem destruir o Slime Metal
-		"name": "Pele",
+		"name": "Pelé",
 		"sprite": "res://Assets/Cats/Pele/Pele.png",
-		"damage": 15,
-		"atkcooldown": 1.3,
-		"range": 96,
+		"damage": 5,
+		"atkcooldown": .3,
+		"range": 90,
 		"cost": 250,
 		"critical_chance": 0,
 		"target_types": ["Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo", "Papel", "Radioativo"]
@@ -57,10 +57,10 @@ var cat_data = { ## "Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 	"Nino": { ## Nino não consegue ver o slime de plástico com um olho só por conta da sua trasparência
 		"name": "Nino",
 		"sprite": "res://Assets/Cats/Nino/Nino.png",
-		"damage": 25,
-		"atkcooldown": 1.8,
-		"range": 160,
-		"cost": 200,
+		"damage": 10,
+		"atkcooldown": 1,
+		"range": 200,
+		"cost": 250,
 		"critical_chance": 0,
 		"target_types": ["Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo", "Papel", "Radioativo"]
 	},
@@ -68,8 +68,8 @@ var cat_data = { ## "Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 	"Cartolina": { ## Cartolina não bate no slime de chiclete, seria horrivel ter chiclete em seus pelos
 		"name": "Cartolina",
 		"sprite": "res://Assets/Cats/Cartolina/Cartolina.png",
-		"damage": 20,
-		"atkcooldown": 1.5,
+		"damage": 10,
+		"atkcooldown": 1,
 		"range": 96,
 		"cost": 200,
 		"critical_chance": 0,
@@ -81,7 +81,7 @@ var cat_data = { ## "Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 		"sprite": "res://Assets/Cats/Nut/Nut.png",
 		"damage": 15,
 		"atkcooldown": 1.3,
-		"range": 128,
+		"range": 300,
 		"cost": 250,
 		"critical_chance": 0,
 		"target_types": ["Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo", "Papel", "Radioativo"]
@@ -105,49 +105,49 @@ var enemies_data = {
 		"damage": 5,
 		"speed": 45,
 		"hp": 20,
-		"fish_reward": 8
+		"fish_reward": 10
 	},
 	"Chiclete": {
 		"damage": 8,
 		"speed": 34,
 		"hp": 45,
-		"fish_reward": 12
+		"fish_reward": 14
 	},
 	"Plastico": {
 		"damage": 15,
 		"speed": 45,
 		"hp": 80,
-		"fish_reward": 18
+		"fish_reward": 20
 	},
 	"Metal": {
 		"damage": 15,
 		"speed": 30,
 		"hp": 160,
-		"fish_reward": 25
+		"fish_reward": 27
 	},
 	"Pilha": {
 		"damage": 20,
 		"speed": 70,
 		"hp": 90,
-		"fish_reward": 30
+		"fish_reward": 32
 	},
 	"Radioativo": {
 		"damage": 25,
 		"speed": 40,
 		"hp": 150,
-		"fish_reward": 35
+		"fish_reward": 37
 	},
 	"BossRadioativo": {
 		"damage": 99,
 		"speed": 26,
 		"hp": 2000,
-		"fish_reward": 500
+		"fish_reward": 900
 	},
 	"BossPneu": {
 		"damage": 99,
 		"speed": 55,
 		"hp": 1500,
-		"fish_reward": 350
+		"fish_reward": 600
 	}
 }
 
@@ -830,11 +830,13 @@ var waves = {
 			["Papel", 2],
 			["Papel", 2],
 			["Papel", 2],
+			["Papel", 2],
 		]
 	},
 	
 	"wave2": {
 		"enemies": [
+			["Papel", 1],
 			["Papel", 1],
 			["Papel", 1],
 			["Papel", 1],
@@ -893,12 +895,8 @@ var waves = {
 		],
 	},
 	
-	"wave6": { ## Chiclete com papel
+	"wave6": {
 		"enemies": [
-			["Chiclete", .2],
-			["Chiclete", .2],
-			["Chiclete", .2],
-			["Chiclete", .2],
 			["Chiclete", .2],
 			["Chiclete", .2],
 			["Chiclete", .2],
@@ -910,6 +908,8 @@ var waves = {
 	
 	"wave7": { ## E nao é que eles grudam mesmo? Mas algo pior está vindo, a Pilha!
 		"enemies": [
+			["Chiclete", .3],
+			["Chiclete", .3],
 			["Chiclete", .3],
 			["Chiclete", .3],
 			["Chiclete", .3],

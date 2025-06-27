@@ -2,7 +2,7 @@ extends Area2D
 
 var enemy: Node
 var type: String
-var speed = 400
+var speed = 200
 var damage: int
 
 var is_critical = false 
