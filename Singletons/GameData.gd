@@ -105,37 +105,37 @@ var enemies_data = {
 		"damage": 5,
 		"speed": 45,
 		"hp": 20,
-		"fish_reward": 15
+		"fish_reward": 18
 	},
 	"Chiclete": {
 		"damage": 8,
 		"speed": 34,
 		"hp": 45,
-		"fish_reward": 20
+		"fish_reward": 22
 	},
 	"Plastico": {
 		"damage": 15,
 		"speed": 45,
 		"hp": 70,
-		"fish_reward": 25
+		"fish_reward": 27
 	},
 	"Metal": {
 		"damage": 15,
 		"speed": 30,
 		"hp": 160,
-		"fish_reward": 35
+		"fish_reward": 37
 	},
 	"Pilha": {
 		"damage": 20,
 		"speed": 70,
-		"hp": 90,
-		"fish_reward": 40
+		"hp": 80,
+		"fish_reward": 50
 	},
 	"Radioativo": {
 		"damage": 25,
 		"speed": 40,
 		"hp": 150,
-		"fish_reward": 60
+		"fish_reward": 62
 	},
 	"BossRadioativo": {
 		"damage": 99,
@@ -870,10 +870,10 @@ func get_current_music_type() -> String:
 var waves = {
 	"wave1": {
 		"enemies": [
-			["BossRadioativo", 2]
-			#["Papel", 2],
-			#["Papel", 2],
-			#["Papel", 2],
+			["Papel", 2],
+			["Papel", 2],
+			["Papel", 2],
+			["Papel", 2],
 		],
 		"text_box": {
 			"show": true,
@@ -923,7 +923,7 @@ var waves = {
 		"text_box": {
 			"show": true,
 			"title": "O que é isso Rosa?",
-			"message": "Acho que foi um Slime Chiclete... Cartolina vai ficar furiosa se grudar no rabo dela..."
+			"message": "Acho que foi um Slime Chiclete... Cartolina vai ficar longe, vai que gruda no rabo dela..."
 		}
 	},
 	
@@ -964,7 +964,7 @@ var waves = {
 		"text_box": {
 			"show": true,
 			"title": "E nao é que eles grudam mesmo??",
-			"message": "Mas algo pior está vindo, o Slime Pilha - Melhor Chicão não gritar perto deles para não energiza-los ainda mais!"
+			"message": "Mas algo pior está vindo, o Slime Pilha. Melhor Chicão não gritar perto deles para não energiza-los ainda mais!"
 		}
 	},
 	
