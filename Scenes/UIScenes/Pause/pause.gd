@@ -82,6 +82,7 @@ func _on_main_action_pressed() -> void:
 
 func _on_reset_pressed() -> void:
 	scene_handler.on_new_game_pressed()
+	GameData.current_round = 1
 
 func _on_menu_pressed() -> void:
 	if scene_handler:

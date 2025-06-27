@@ -19,7 +19,7 @@ var build_tile
 ## Building Functions
 var drag_mode = false
 var drag_start_pos = Vector2.ZERO
-var drag_threshold = 2  # pixels para considerar arrasto
+var drag_threshold = 30  # pixels para considerar arrasto
 
 ## Card Drag and Drop
 var card_drag_mode = false
