@@ -18,7 +18,7 @@ extends Node
 ## Brincadeira, se quiser ajudar no projeto, só chamar @joguegatinhos na DM
 
 
-var default_fish_quantity = 550
+var default_fish_quantity = 5500
 var fish_quantity: int = default_fish_quantity  # Valor inicial de moedas
 
 var default_health_quantity = 10000
@@ -224,7 +224,7 @@ var card_data = {
 			"sell_value": "100"
 		}
 		,{
-			"name": "Pré-treino Radioativo I",
+			"name": "Bebida Radioativa I",
 			"description": "Tomou uma substância verde esquisita que encontrou, agora tem 30% de chance de crítico",
 			"icon": "res://Assets/Icons/Cards/Pre-Treino-icon.png",
 			"effects": [
@@ -279,7 +279,7 @@ var card_data = {
 			"sell_value": "50"
 		}
 		,{
-			"name": "Pré-treino Radioativo II",
+			"name": "Bebida Radioativa II",
 			"description": "Tomou uma substância verde esquisita que encontrou, agora tem mais 60% de chance de crítico",
 			"icon": "res://Assets/Icons/Cards/Pre-Treino-icon.png",
 			"effects": [
@@ -377,7 +377,7 @@ var card_data = {
 			"sell_value": "100"
 		}
 		,{
-			"name": "Pré-treino Radioativo III",
+			"name": "Bebida Radioativa III",
 			"description": "Tomou uma substância verde esquisita que encontrou, agora tem mais 100% de chance de crítico",
 			"icon": "res://Assets/Icons/Cards/Pre-Treino-icon.png",
 			"effects": [

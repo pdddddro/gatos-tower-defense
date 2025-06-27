@@ -38,10 +38,31 @@ func setup_card_data(card_node, card_data):
 	card_node.card_data = card_data
 
 func generate_3_random_cards():
-	var cards = []
-	for i in 3:
-		cards.append(get_random_card())
-	return cards
+	var selected_cards = []
+	var max_attempts = 50  # Evita loop infinito
+	var attempts = 0
+	
+	while selected_cards.size() < 3 and attempts < max_attempts:
+		var new_card = get_random_card()
+		
+		# Verifica se a carta já foi selecionada
+		var is_duplicate = false
+		for existing_card in selected_cards:
+			if existing_card.name == new_card.name:
+				is_duplicate = true
+				break
+		
+		# Se não é duplicata, adiciona à lista
+		if not is_duplicate:
+			selected_cards.append(new_card)
+		
+		attempts += 1
+	
+	# Se por algum motivo não conseguiu 3 cartas diferentes, completa com cartas aleatórias
+	while selected_cards.size() < 3:
+		selected_cards.append(get_random_card())
+	
+	return selected_cards
 
 func get_random_card():
 	# Calcula total de chances
