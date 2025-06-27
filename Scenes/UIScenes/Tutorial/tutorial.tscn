@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dtm2702711ct3"]
+[gd_scene load_steps=17 format=3 uid="uid://dtm2702711ct3"]
 
 [ext_resource type="Texture2D" uid="uid://0byb8mpdvpgy" path="res://Assets/UI/Art/Background.png" id="1_1s4ul"]
 [ext_resource type="Script" uid="uid://tgu4lrdwc6eu" path="res://Scenes/UIScenes/Tutorial/tutorial.gd" id="1_6r8ot"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cdunclj7frjlu" path="res://Assets/UI/Buttons/botao_disabled.png" id="6_1s4ul"]
 [ext_resource type="Texture2D" uid="uid://cgceauk46iquy" path="res://Assets/UI/Buttons/botao_sec_padrao.png" id="7_6r8ot"]
 [ext_resource type="Texture2D" uid="uid://cat5x4hm2pqvj" path="res://Assets/UI/Buttons/botao_sec_hover.png" id="8_lkjwt"]
+[ext_resource type="Script" uid="uid://c2nlmty2nmu5n" path="res://Scenes/UIScenes/Buttons/button.gd" id="10_6r8ot"]
 [ext_resource type="Texture2D" uid="uid://dj0vxiygyj66q" path="res://Assets/UI/Tutorial/Border.png" id="12_6r8ot"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lkjwt"]
@@ -215,6 +216,7 @@ texture_normal = ExtResource("7_6r8ot")
 texture_hover = ExtResource("8_lkjwt")
 texture_disabled = ExtResource("6_1s4ul")
 stretch_mode = 0
+script = ExtResource("10_6r8ot")
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer2/Content/MarginContainer/Content/Controls/Back"]
 layout_mode = 1
@@ -239,6 +241,7 @@ texture_normal = ExtResource("4_n426m")
 texture_hover = ExtResource("5_s3cqf")
 texture_disabled = ExtResource("6_1s4ul")
 stretch_mode = 0
+script = ExtResource("10_6r8ot")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer2/Content/MarginContainer/Content/Controls/Next"]
 layout_mode = 1
@@ -265,6 +268,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 mouse_default_cursor_shape = 2
 stretch_mode = 0
+script = ExtResource("10_6r8ot")
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer2/SkipTutorial"]
 texture_filter = 1

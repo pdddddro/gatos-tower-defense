@@ -79,6 +79,15 @@ texture_normal = ExtResource("6_h0y4r")
 stretch_mode = 0
 script = ExtResource("7_wb53i")
 
+[node name="Pause" type="TextureButton" parent="UI/HUD/MarginContainer/GameControls/Pause"]
+process_mode = 3
+custom_minimum_size = Vector2(32, 32)
+size_flags_horizontal = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("6_h0y4r")
+stretch_mode = 0
+script = ExtResource("7_wb53i")
+
 [node name="Play" type="TextureButton" parent="UI/HUD/MarginContainer/GameControls"]
 process_mode = 3
 custom_minimum_size = Vector2(32, 32)
@@ -227,6 +236,7 @@ texture = ExtResource("16_0dyjl")
 
 [connection signal="pressed" from="UI/HUD/MarginContainer/GameControls/QuestionMark" to="." method="_on_question_mark_pressed"]
 [connection signal="pressed" from="UI/HUD/MarginContainer/GameControls/Pause" to="." method="_on_pause_pressed"]
+[connection signal="pressed" from="UI/HUD/MarginContainer/GameControls/Pause/Pause" to="." method="_on_pause_pressed"]
 [connection signal="pressed" from="UI/HUD/MarginContainer/GameControls/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="UI/HUD/MarginContainer/WaveContainer/Navegation/Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="UI/HUD/MarginContainer/WaveContainer/Navegation/Next" to="." method="_on_next_pressed"]

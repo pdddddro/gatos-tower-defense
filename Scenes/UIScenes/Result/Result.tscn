@@ -551,14 +551,13 @@ size_flags_horizontal = 4
 theme_override_constants/separation = 4
 
 [node name="Card1" type="TextureButton" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cards"]
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 texture_normal = ExtResource("16_d55iw")
 texture_hover = ExtResource("18_bcbo1")
 ignore_texture_size = true
-stretch_mode = 0
 
 [node name="CardIcon" type="TextureRect" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cards/Card1"]
 custom_minimum_size = Vector2(32, 32)
@@ -568,10 +567,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -8.0
-offset_top = -8.0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("19_flsdf")
@@ -579,14 +578,13 @@ script = ExtResource("19_flsdf")
 [node name="Tooltip" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cards/Card1/CardIcon" instance=ExtResource("20_vw8t1")]
 
 [node name="Card2" type="TextureButton" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cards"]
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 texture_normal = ExtResource("16_d55iw")
 texture_hover = ExtResource("18_bcbo1")
 ignore_texture_size = true
-stretch_mode = 0
 
 [node name="CardIcon" type="TextureRect" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cards/Card2"]
 custom_minimum_size = Vector2(32, 32)
@@ -596,10 +594,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -8.0
-offset_top = -8.0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("19_flsdf")
@@ -607,14 +605,13 @@ script = ExtResource("19_flsdf")
 [node name="Tooltip" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cards/Card2/CardIcon" instance=ExtResource("20_vw8t1")]
 
 [node name="Card3" type="TextureButton" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cards"]
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 texture_normal = ExtResource("16_d55iw")
 texture_hover = ExtResource("18_bcbo1")
 ignore_texture_size = true
-stretch_mode = 0
 
 [node name="CardIcon" type="TextureRect" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cards/Card3"]
 custom_minimum_size = Vector2(32, 32)
@@ -624,10 +621,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -8.0
-offset_top = -8.0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("19_flsdf")
@@ -635,14 +632,13 @@ script = ExtResource("19_flsdf")
 [node name="Tooltip" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cards/Card3/CardIcon" instance=ExtResource("20_vw8t1")]
 
 [node name="Card4" type="TextureButton" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cards"]
-custom_minimum_size = Vector2(32, 32)
+custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 texture_normal = ExtResource("16_d55iw")
 texture_hover = ExtResource("18_bcbo1")
 ignore_texture_size = true
-stretch_mode = 0
 
 [node name="CardIcon" type="TextureRect" parent="VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/Cards/Card4"]
 custom_minimum_size = Vector2(32, 32)
@@ -652,10 +648,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -8.0
-offset_top = -8.0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("19_flsdf")

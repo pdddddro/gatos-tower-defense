@@ -533,3 +533,13 @@ func clear_current_enemies():
 	enemies_in_wave = 0
 	
 	print("Inimigos da wave atual removidos")
+
+
+func _on_question_mark_pressed() -> void:
+	var tutorial_scene = preload("res://Scenes/UIScenes/Tutorial/tutorial.tscn")
+	var tutorial_instance = tutorial_scene.instantiate()
+	var ui_node = get_node("UI")
+	ui_node.add_child(tutorial_instance)
+	
+	tutorial_instance.z_index = 1000
+	get_tree().paused = true

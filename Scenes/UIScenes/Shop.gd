@@ -70,6 +70,7 @@ func _on_cat_clicked(cat_node):
 
 func _on_close_pressed():
 	close_button.visibility_layer = false
+	close_button.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_target_anchor = _down_anchor
 	close_cat_info()
 	
@@ -119,6 +120,7 @@ func _on_cards_pressed() -> void:
 func open_container():
 	shop_container.visibility_layer = true
 	close_button.visibility_layer = true
+	close_button.mouse_filter = Control.MOUSE_FILTER_PASS
 	_target_anchor = _up_anchor
 
 func open_cat_info():

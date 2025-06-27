@@ -197,17 +197,23 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 texture = ExtResource("5_0hvsp")
 
-[node name="Handle" type="Label" parent="VBoxContainer/BestCat/Background/MarginContainer/ScrollContainer/Container/TeamMembers/TeamContainer/TeamMember/Text/HBoxContainer/Instagram"]
+[node name="Handle" type="LinkButton" parent="VBoxContainer/BestCat/Background/MarginContainer/ScrollContainer/Container/TeamMembers/TeamContainer/TeamMember/Text/HBoxContainer/Instagram"]
 texture_filter = 1
-custom_minimum_size = Vector2(64, 0)
+custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
+theme_override_colors/font_focus_color = Color(0.443137, 0.321569, 0.231373, 1)
+theme_override_colors/font_pressed_color = Color(0.538941, 0.39751, 0.292879, 1)
+theme_override_colors/font_hover_color = Color(0.641989, 0.483725, 0.367233, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.643137, 0.482353, 0.368627, 1)
 theme_override_fonts/font = ExtResource("3_l1ugq")
 theme_override_font_sizes/font_size = 16
 text = "@pdrohls"
-vertical_alignment = 1
+underline = 1
+uri = "https://www.instagram.com/pdrohls"
+text_direction = 1
 
 [node name="LinkedIn" type="HBoxContainer" parent="VBoxContainer/BestCat/Background/MarginContainer/ScrollContainer/Container/TeamMembers/TeamContainer/TeamMember/Text/HBoxContainer"]
 layout_mode = 2
@@ -218,17 +224,23 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 texture = ExtResource("6_0l6uu")
 
-[node name="Handle" type="Label" parent="VBoxContainer/BestCat/Background/MarginContainer/ScrollContainer/Container/TeamMembers/TeamContainer/TeamMember/Text/HBoxContainer/LinkedIn"]
+[node name="Handle2" type="LinkButton" parent="VBoxContainer/BestCat/Background/MarginContainer/ScrollContainer/Container/TeamMembers/TeamContainer/TeamMember/Text/HBoxContainer/LinkedIn"]
 texture_filter = 1
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
+theme_override_colors/font_focus_color = Color(0.443137, 0.321569, 0.231373, 1)
+theme_override_colors/font_pressed_color = Color(0.538941, 0.39751, 0.292879, 1)
+theme_override_colors/font_hover_color = Color(0.641989, 0.483725, 0.367233, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.643137, 0.482353, 0.368627, 1)
 theme_override_fonts/font = ExtResource("3_l1ugq")
 theme_override_font_sizes/font_size = 16
 text = "pdrohls"
-vertical_alignment = 1
+underline = 1
+uri = "https://www.linkedin.com/in/pdrohls"
+text_direction = 1
 
 [node name="TeamMember2" type="HBoxContainer" parent="VBoxContainer/BestCat/Background/MarginContainer/ScrollContainer/Container/TeamMembers/TeamContainer"]
 layout_mode = 2
@@ -277,17 +289,23 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 texture = ExtResource("5_0hvsp")
 
-[node name="Handle" type="Label" parent="VBoxContainer/BestCat/Background/MarginContainer/ScrollContainer/Container/TeamMembers/TeamContainer/TeamMember2/Text/HBoxContainer/Instagram"]
+[node name="Handle2" type="LinkButton" parent="VBoxContainer/BestCat/Background/MarginContainer/ScrollContainer/Container/TeamMembers/TeamContainer/TeamMember2/Text/HBoxContainer/Instagram"]
 texture_filter = 1
-custom_minimum_size = Vector2(64, 0)
+custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
+theme_override_colors/font_focus_color = Color(0.443137, 0.321569, 0.231373, 1)
+theme_override_colors/font_pressed_color = Color(0.538941, 0.39751, 0.292879, 1)
+theme_override_colors/font_hover_color = Color(0.641989, 0.483725, 0.367233, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.643137, 0.482353, 0.368627, 1)
 theme_override_fonts/font = ExtResource("3_l1ugq")
 theme_override_font_sizes/font_size = 16
 text = "@eululisss"
-vertical_alignment = 1
+underline = 1
+uri = "https://www.instagram.com/eululisss"
+text_direction = 1
 
 [node name="LinkedIn" type="HBoxContainer" parent="VBoxContainer/BestCat/Background/MarginContainer/ScrollContainer/Container/TeamMembers/TeamContainer/TeamMember2/Text/HBoxContainer"]
 layout_mode = 2
@@ -298,17 +316,23 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 texture = ExtResource("6_0l6uu")
 
-[node name="Handle" type="Label" parent="VBoxContainer/BestCat/Background/MarginContainer/ScrollContainer/Container/TeamMembers/TeamContainer/TeamMember2/Text/HBoxContainer/LinkedIn"]
+[node name="Handle2" type="LinkButton" parent="VBoxContainer/BestCat/Background/MarginContainer/ScrollContainer/Container/TeamMembers/TeamContainer/TeamMember2/Text/HBoxContainer/LinkedIn"]
 texture_filter = 1
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
+theme_override_colors/font_focus_color = Color(0.443137, 0.321569, 0.231373, 1)
+theme_override_colors/font_pressed_color = Color(0.538941, 0.39751, 0.292879, 1)
+theme_override_colors/font_hover_color = Color(0.641989, 0.483725, 0.367233, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.643137, 0.482353, 0.368627, 1)
 theme_override_fonts/font = ExtResource("3_l1ugq")
 theme_override_font_sizes/font_size = 16
 text = "lmfialho"
-vertical_alignment = 1
+underline = 1
+uri = "https://www.linkedin.com/in/lmfialho"
+text_direction = 1
 
 [node name="CTA" type="VBoxContainer" parent="VBoxContainer/BestCat/Background/MarginContainer/ScrollContainer/Container"]
 custom_minimum_size = Vector2(0, 50)

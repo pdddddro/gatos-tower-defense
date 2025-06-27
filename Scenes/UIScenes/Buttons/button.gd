@@ -10,3 +10,4 @@ func _on_hover():
 func _on_click():
 	GameData.play_sound("ui", "button", "click")
 	
+	

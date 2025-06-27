@@ -18,10 +18,10 @@ extends Node
 ## Brincadeira, se quiser ajudar no projeto, só chamar @joguegatinhos na DM
 
 
-var default_fish_quantity = 500
+var default_fish_quantity = 550
 var fish_quantity: int = default_fish_quantity  # Valor inicial de moedas
 
-var default_health_quantity = 100
+var default_health_quantity = 10000
 var health_quantity: int = default_health_quantity  # Valor inicial de moedas
 
 var totalWaveNumber = 30
@@ -35,8 +35,8 @@ var cat_data = { ## "Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 	"Chicao": { ## Chicão não ataca slimes pilha pra não dar ainda mais energia pra eles
 		"name": "Chicão",
 		"sprite": "res://Assets/Cats/Chicao/Chicao.png",
-		"damage": 2500,
-		"atkcooldown": .2,
+		"damage": 10,
+		"atkcooldown": 1.2,
 		"range": 160,
 		"cost": 200,
 		"critical_chance": 0,
@@ -166,102 +166,103 @@ var card_data = {
 	"basic": [
 		{
 			"name": "Pelas tartarugas!",
-			"description": "Este gato desenvolveu alergia a materiais sintéticos, 50% mais dano contra os slimes de Plástico",
+			"description": "Este gato desenvolveu alergia a materiais sintéticos, 100% mais dano contra os slimes de Plástico",
 			"icon": "res://Assets/Icons/Cards/Tartaruga-icon.png",
 			"effects": [
-				{"type": "damage_vs_type", "target_type": "Plastico", "power": 50, "power_type": "percentage"}
+				{"type": "damage_vs_type", "target_type": "Plastico", "power": 100, "power_type": "percentage"}
 			],
 			"sell_value": "25"
 		}
 		,{
 			"name": "Sou do Rock",
-			"description": "Ouviu muito Heavy Metal e agora causa 35% de dano bônus em Slimes Metal",
+			"description": "Ouviu muito Heavy Metal e agora causa 80% de dano bônus em Slimes Metal e Pilha",
 			"icon": "res://Assets/Icons/Cards/rock-icon.png",
 			"effects": [
 				{"type": "target_expansion", "target_types": ["Metal", "Pilha"]},
-				{"type": "damage_vs_type", "target_type": "Metal", "power": 35, "power_type": "percentage"},
-				{"type": "damage_vs_type", "target_type": "Pilha", "power": 35, "power_type": "percentage"}
+				{"type": "damage_vs_type", "target_type": "Metal", "power": 80, "power_type": "percentage"},
+				{"type": "damage_vs_type", "target_type": "Pilha", "power": 80, "power_type": "percentage"}
 			],
 			"sell_value": "25"
 		}
 		,{
 			"name": "Petisco sabor Whey l",
-			"description": "Este gato descobriu os petiscos proteicos do dono - Cada ataque da 30 de dano adicional",
+			"description": "Este gato descobriu os petiscos proteicos do dono - Cada ataque da 15 de dano adicional",
 			"icon": "res://Assets/Icons/Cards/biceps-icon.png",
 			"effects": [
-				{"type": "damage_boost", "power": 30, "power_type": "absolute"}
+				{"type": "damage_boost", "power": 15, "power_type": "absolute"}
 			],
 			"sell_value": "25"
 		}
 		,{
 			"name": "Treinamento Básico",
-			"description": "Assistiu 'Como ser um Gato Guerreiro' no YouTube, aumenta todos os atributos em 7%",
+			"description": "Assistiu 'Como ser um Gato Guerreiro' no YouTube, aumenta o dano em 7, crítico em 20%, alcance em 5% e velocidade de ataque em 0.2s",
 			"icon": "res://Assets/Icons/Cards/Treinanmeto-Basico-Icon.png",
 			"effects": [
-				{"type": "damage_boost", "power": 7, "power_type": "percentage"},
-				{"type": "speed_boost", "power": 7, "power_type": "percentage"},
-				{"type": "range_boost", "power": 7, "power_type": "percentage"},
-				{"type": "critic_boost", "power": 7, "power_type": "percentage"}
-			],
-			"sell_value": "100"
-		}
-		,{
-			"name": "Ritmo do Ronronar II",
-			"description": "Quanto mais ronrona, mais rápido bate! Ganha +15% de velocidade de ataque",
-			"icon": "res://Assets/Icons/Cards/ronronar-icon.png",
-			"effects": [
-				{"type": "speed_boost", "power": 20, "power_type": "percentage"},
-			],
-			"sell_value": "100"
-		}
-		,{
-			"name": "Hora do Patê I",
-			"description": "Esse gato está ficando com fome, quer acabar com isso logo - Ganha 20% de alcance",
-			"icon": "res://Assets/Icons/Cards/Sache-Icon.png",
-			"effects": [
-				{"type": "range_boost", "power": 15, "power_type": "percentage"},
-			],
-			"sell_value": "100"
-		}
-		,{
-			"name": "Pré-treino Radioativo I",
-			"description": "Tomou uma substância verde esquisita que encontrou, agora tem 20% de chance de crítico",
-			"icon": "res://Assets/Icons/Cards/Pre-Treino-icon.png",
-			"effects": [
+				{"type": "damage_boost", "power": 7, "power_type": "absolute"},
+				{"type": "speed_boost", "power": .3, "power_type": "absolute"},
+				{"type": "range_boost", "power": 5, "power_type": "percentage"},
 				{"type": "critic_boost", "power": 20, "power_type": "absolute"}
 			],
 			"sell_value": "100"
 		}
 		,{
+			"name": "Ritmo do Ronronar I",
+			"description": "Quanto mais ronrona, mais rápido bate! Ganha 0,5 de velocidade de ataque",
+			"icon": "res://Assets/Icons/Cards/ronronar-icon.png",
+			"effects": [
+				{"type": "speed_boost", "power": 0.5, "power_type": "absolute"},
+			],
+			"sell_value": "100"
+		}
+		,{
+			"name": "Hora do Patê I",
+			"description": "Esse gato está ficando com fome, quer acabar com isso logo - Ganha 30% de alcance",
+			"icon": "res://Assets/Icons/Cards/Sache-Icon.png",
+			"effects": [
+				{"type": "range_boost", "power": 30, "power_type": "percentage"},
+			],
+			"sell_value": "100"
+		}
+		,{
+			"name": "Pré-treino Radioativo I",
+			"description": "Tomou uma substância verde esquisita que encontrou, agora tem 30% de chance de crítico",
+			"icon": "res://Assets/Icons/Cards/Pre-Treino-icon.png",
+			"effects": [
+				{"type": "critic_boost", "power": 30, "power_type": "absolute"}
+			],
+			"sell_value": "100"
+		}
+		,{
 			"name": "Veterano de Guerra I",
-			"description": "Você não quer saber o que esse gato ja viveu... - 20% mais dano contra todos os slimes comuns",
+			"description": "Você não quer saber o que esse gato ja viveu... - 50% mais dano contra todos os slimes comuns",
 			"icon": "res://Assets/Icons/Cards/Veterano-Guerra-Icon.png",
 			"effects": [
-				{"type": "damage_vs_type", "target_type": "Plastico", "power": 20, "power_type": "percentage"},
-				{"type": "damage_vs_type", "target_type": "Metal", "power": 20, "power_type": "percentage"},
-				{"type": "damage_vs_type", "target_type": "Pilha", "power": 20, "power_type": "percentage"},
-				{"type": "damage_vs_type", "target_type": "Chiclete", "power": 20, "power_type": "percentage"},
-				{"type": "damage_vs_type", "target_type": "BossRadioativo", "power": 20, "power_type": "percentage"},
-				{"type": "damage_vs_type", "target_type": "BossPneu", "power": 20, "power_type": "percentage"}
+				{"type": "damage_vs_type", "target_type": "Plastico", "power": 50, "power_type": "percentage"},
+				{"type": "damage_vs_type", "target_type": "Metal", "power": 50, "power_type": "percentage"},
+				{"type": "damage_vs_type", "target_type": "Pilha", "power": 50, "power_type": "percentage"},
+				{"type": "damage_vs_type", "target_type": "Chiclete", "power": 50, "power_type": "percentage"},
+				{"type": "damage_vs_type", "target_type": "BossRadioativo", "power": 50, "power_type": "percentage"},
+				{"type": "damage_vs_type", "target_type": "BossPneu", "power": 50, "power_type": "percentage"}
 		],
 			"sell_value": "25"
 		}
 		,{
 			"name": "Sem Paciência I",
-			"description": "Não aguenta mais, só quer que isso acabe logo. Bate 20% mais rápido",
+			"description": "Não aguenta mais, só quer que isso acabe logo. Ganha 0,4s de velocidade de ataque e 15% de alcance",
 			"icon": "res://Assets/Icons/Cards/Sem paciencia-icon.png",
 			"effects": [
-				{"type": "speed_boost", "power": 20, "power_type": "percentage"}
+				{"type": "speed_boost", "power": 0.4, "power_type": "absolute"},
+				{"type": "range_boost", "power": 20, "power_type": "percentage"}
 		],
 			"sell_value": "25"
 		}
 		,{
 			"name": "Gato Míope I",
-			"description": "Não enxerga longe mas compensa com ataques rápidos - Ataca 40% mais rápido porém perde 30% de Alcance",
+			"description": "Não enxerga longe mas compensa com ataques rápidos - Ataca 50% mais rápido porém perde 20% de Alcance",
 			"icon": "res://Assets/Icons/Cards/GatoMiope-Icon.png",
 			"effects": [
-				{"type": "speed_boost", "power": 40, "power_type": "percentage"},
-				{"type": "range_boost", "power": -30, "power_type": "percentage"}
+				{"type": "speed_boost", "power": 50, "power_type": "percentage"},
+				{"type": "range_boost", "power": -20, "power_type": "percentage"}
 			],
 			"sell_value": "100"
 		}
@@ -270,34 +271,34 @@ var card_data = {
 	"medium": [
 		{
 			"name": "Mestrado no RU",
-			"description": "Sobreviveu 4 anos comendo no restaurante universitário, agora tem estômago de ferro - 30% de dano no Slime Metal",
+			"description": "Sobreviveu 4 anos comendo no restaurante universitário, agora tem estômago de ferro - 150% de dano no Slime Metal e Pilha",
 			"icon": "res://Assets/Icons/Cards/Mestrado-RU-Icxon.png",
 			"effects": [
-				{"type": "damage_vs_type", "target_type": "Metal", "power": 30, "power_type": "percentage"},
+				{"type": "damage_vs_type", "target_type": "Metal", "power": 150, "power_type": "percentage"},
 			],
 			"sell_value": "50"
 		}
 		,{
 			"name": "Pré-treino Radioativo II",
-			"description": "Tomou uma substância verde esquisita que encontrou, agora tem mais 30% de chance de crítico",
+			"description": "Tomou uma substância verde esquisita que encontrou, agora tem mais 60% de chance de crítico",
 			"icon": "res://Assets/Icons/Cards/Pre-Treino-icon.png",
 			"effects": [
-				{"type": "critic_boost", "power": 30, "power_type": "absolute"}
+				{"type": "critic_boost", "power": 60, "power_type": "absolute"}
 			],
 			"sell_value": "100"
 		}
 		,{
 			"name": "Ritmo do Ronronar II",
-			"description": "Quanto mais ronrona, mais rápido bate! Ganha +30% de velocidade de ataque",
+			"description": "Quanto mais ronrona, mais rápido bate! Ganha 1s de velocidade de ataque",
 			"icon": "res://Assets/Icons/Cards/ronronar-icon.png",
 			"effects": [
-				{"type": "speed_boost", "power": 30, "power_type": "percentage"},
+				{"type": "speed_boost", "power": 1, "power_type": "absolute"},
 			],
 			"sell_value": "100"
 		}
 		,{
 			"name": "Hora do Patê II",
-			"description": "Esse gato está com tanta fome que vai fazer de tudo para acabar a partida mais rápido, ganha 35% de alcance",
+			"description": "Esse gato está com tanta fome que vai fazer de tudo para acabar a partida mais rápido, ganha 45% de alcance",
 			"icon": "res://Assets/Icons/Cards/Sache-Icon.png",
 			"effects": [
 				{"type": "range_boost", "power": 25, "power_type": "percentage"},
@@ -318,43 +319,44 @@ var card_data = {
 		}
 		,{
 			"name": "Petisco sabor Whey II",
-			"description": "Este gato descobriu os petiscos proteicos do dono - Cada ataque da 60 de dano adicional",
+			"description": "Este gato descobriu os petiscos proteicos do dono - Cada ataque da 30 de dano adicional",
 			"icon": "res://Assets/Icons/Cards/biceps-icon.png",
 			"effects": [
-				{"type": "damage_boost", "power": 60, "power_type": "absolute"}
+				{"type": "damage_boost", "power": 30, "power_type": "absolute"}
 			],
 			"sell_value": "25"
 		}
 		,{
 			"name": "Veterano de Guerra II",
-			"description": "Você não quer saber o que esse gato ja viveu... - 30% mais dano contra todos os slimes comuns",
+			"description": "Você não quer saber o que esse gato ja viveu... - 70% mais dano contra todos os slimes comuns",
 			"icon": "res://Assets/Icons/Cards/Veterano-Guerra-Icon.png",
 			"effects": [
-				{"type": "damage_vs_type", "target_type": "Plastico", "power": 30, "power_type": "percentage"},
-				{"type": "damage_vs_type", "target_type": "Metal", "power": 30, "power_type": "percentage"},
-				{"type": "damage_vs_type", "target_type": "Pilha", "power": 30, "power_type": "percentage"},
-				{"type": "damage_vs_type", "target_type": "Chiclete", "power": 30, "power_type": "percentage"},
-				{"type": "damage_vs_type", "target_type": "BossRadioativo", "power": 30, "power_type": "percentage"},
-				{"type": "damage_vs_type", "target_type": "BossPneu", "power": 30, "power_type": "percentage"}
+				{"type": "damage_vs_type", "target_type": "Plastico", "power": 70, "power_type": "percentage"},
+				{"type": "damage_vs_type", "target_type": "Metal", "power": 70, "power_type": "percentage"},
+				{"type": "damage_vs_type", "target_type": "Pilha", "power": 70, "power_type": "percentage"},
+				{"type": "damage_vs_type", "target_type": "Chiclete", "power": 70, "power_type": "percentage"},
+				{"type": "damage_vs_type", "target_type": "BossRadioativo", "power": 70, "power_type": "percentage"},
+				{"type": "damage_vs_type", "target_type": "BossPneu", "power": 70, "power_type": "percentage"}
 		],
 			"sell_value": "25"
 		}
 		,{
 			"name": "Sem Paciência II",
-			"description": "Não aguenta mais, só quer que isso acabe logo. Bate 40% mais rápido",
+			"description": "Não aguenta mais, só quer que isso acabe logo. Ganha 0,6s de velocidade de ataque e 20% de alcance",
 			"icon": "res://Assets/Icons/Cards/Sem paciencia-icon.png",
 			"effects": [
-				{"type": "speed_boost", "power": 40, "power_type": "percentage"}
+				{"type": "speed_boost", "power": 0.6, "power_type": "absolute"},
+				{"type": "range_boost", "power": 20, "power_type": "percentage"}
 		],
 			"sell_value": "25"
 		}
 		,{
 			"name": "Gato Míope II",
-			"description": "Não enxerga longe mas compensa com ataques rápidos - Ataca 60% mais rápido porém perde 40% de Alcance",
+			"description": "Não enxerga longe mas compensa com ataques rápidos - Ataca 60% mais rápido porém perde 35% de Alcance",
 			"icon": "res://Assets/Icons/Cards/GatoMiope-Icon.png",
 			"effects": [
 				{"type": "speed_boost", "power": 60, "power_type": "percentage"},
-				{"type": "range_boost", "power": -40, "power_type": "percentage"}
+				{"type": "range_boost", "power": -35, "power_type": "percentage"}
 			],
 			"sell_value": "100"
 		}
@@ -376,25 +378,25 @@ var card_data = {
 		}
 		,{
 			"name": "Pré-treino Radioativo III",
-			"description": "Tomou uma substância verde esquisita que encontrou, agora tem mais 50% de chance de crítico",
+			"description": "Tomou uma substância verde esquisita que encontrou, agora tem mais 100% de chance de crítico",
 			"icon": "res://Assets/Icons/Cards/Pre-Treino-icon.png",
 			"effects": [
-				{"type": "critic_boost", "power": 50, "power_type": "absolute"}
+				{"type": "critic_boost", "power": 100, "power_type": "absolute"}
 			],
 			"sell_value": "100"
 		}
 		,{
 			"name": "Ritmo do Ronronar III",
-			"description": "Quanto mais ronrona, mais rápido bate! Ganha +40% de velocidade de ataque",
+			"description": "Quanto mais ronrona, mais rápido bate! Ganha 2s de velocidade de ataque",
 			"icon": "res://Assets/Icons/Cards/ronronar-icon.png",
 			"effects": [
-				{"type": "speed_boost", "power": 40, "power_type": "percentage"},
+				{"type": "speed_boost", "power": 2, "power_type": "absolute"},
 			],
 			"sell_value": "100"
 		}
 		,{
 			"name": "Hora do Patê III",
-			"description": "Esse gato está quer devorar tudo que vê pela frente, +50% de alcance",
+			"description": "Esse gato está quer devorar tudo que vê pela frente, +70% de alcance",
 			"icon": "res://Assets/Icons/Cards/Sache-Icon.png",
 			"effects": [
 				{"type": "range_boost", "power": 40, "power_type": "percentage"},
@@ -403,11 +405,12 @@ var card_data = {
 		}
 		,{
 			"name": "O gato mais forte de todos",
-			"description": "EU SOU O MAIS FORTE DE TODOS!! Aumenta a chance de crítico em 99% mas perde 30% de velocidade de ataque",
+			"description": "EU SOU O MAIS FORTE DE TODOS!! Aumenta a chance de crítico em 60%, dano em 30 e aumente em a 30% de velocidade de ataque",
 			"icon": "res://Assets/Icons/Cards/O-melhor-gato-icon.png",
 			"effects": [
-				{"type": "range_boost", "power": -30, "power_type": "percentage"},
-				{"type": "critic_boost", "power": 99, "power_type": "absolute"}
+				{"type": "damage_boost", "power": 30, "power_type": "absolute"},
+				{"type": "critic_boost", "power": 60, "power_type": "absolute"},
+				{"type": "speed_boost", "power": 30, "power_type": "percentage"}
 			],
 			"sell_value": "100"
 		}
@@ -422,43 +425,44 @@ var card_data = {
 		#}
 		,{
 			"name": "Veterano de Guerra III",
-			"description": "Você não quer saber o que esse gato ja viveu... - 60% mais dano contra todos os slimes comuns",
+			"description": "Você não quer saber o que esse gato ja viveu... - 100% mais dano contra todos os slimes comuns",
 			"icon": "res://Assets/Icons/Cards/Veterano-Guerra-Icon.png",
 			"effects": [
-				{"type": "damage_vs_type", "target_type": "Plastico", "power": 60, "power_type": "percentage"},
-				{"type": "damage_vs_type", "target_type": "Metal", "power": 60, "power_type": "percentage"},
-				{"type": "damage_vs_type", "target_type": "Pilha", "power": 60, "power_type": "percentage"},
-				{"type": "damage_vs_type", "target_type": "Chiclete", "power": 60, "power_type": "percentage"},
-				{"type": "damage_vs_type", "target_type": "BossRadioativo", "power": 60, "power_type": "percentage"},
-				{"type": "damage_vs_type", "target_type": "BossPneu", "power": 60, "power_type": "percentage"}
+				{"type": "damage_vs_type", "target_type": "Plastico", "power": 100, "power_type": "percentage"},
+				{"type": "damage_vs_type", "target_type": "Metal", "power": 100, "power_type": "percentage"},
+				{"type": "damage_vs_type", "target_type": "Pilha", "power": 100, "power_type": "percentage"},
+				{"type": "damage_vs_type", "target_type": "Chiclete", "power": 100, "power_type": "percentage"},
+				{"type": "damage_vs_type", "target_type": "BossRadioativo", "power": 100, "power_type": "percentage"},
+				{"type": "damage_vs_type", "target_type": "BossPneu", "power": 100, "power_type": "percentage"}
 		],
 			"sell_value": "25"
 		}
 		,{
 			"name": "Sem Paciência III",
-			"description": "Não aguenta mais, só quer que isso acabe logo. Bate 60% mais rápido",
+			"description": "Não aguenta mais, só quer que isso acabe logo. Ganha 0,8s de velocidade de ataque e 25% de alcance",
 			"icon": "res://Assets/Icons/Cards/Sem paciencia-icon.png",
 			"effects": [
-				{"type": "speed_boost", "power": 60, "power_type": "percentage"}
+				{"type": "speed_boost", "power": 0.8, "power_type": "absolute"},
+				{"type": "range_boost", "power": 25, "power_type": "percentage"}
 		],
 			"sell_value": "25"
 		}
 		,{
 			"name": "Gato Míope III",
-			"description": "Não enxerga longe mas compensa com ataques rápidos - Ataca 100% mais rápido porém perde 60% de Alcance",
+			"description": "Não enxerga longe mas compensa com ataques rápidos - Ataca 100% mais rápido porém perde 50% de Alcance",
 			"icon": "res://Assets/Icons/Cards/GatoMiope-Icon.png",
 			"effects": [
 				{"type": "speed_boost", "power": 100, "power_type": "percentage"},
-				{"type": "range_boost", "power": -60, "power_type": "percentage"}
+				{"type": "range_boost", "power": -50, "power_type": "percentage"}
 			],
 			"sell_value": "100"
 		}
 		,{
 			"name": "Petisco sabor Whey III",
-			"description": "Este gato descobriu os petiscos proteicos do dono - Cada ataque da 100 de dano adicional",
+			"description": "Este gato descobriu os petiscos proteicos do dono - Cada ataque da 60 de dano adicional",
 			"icon": "res://Assets/Icons/Cards/biceps-icon.png",
 			"effects": [
-				{"type": "damage_boost", "power": 100, "power_type": "absolute"}
+				{"type": "damage_boost", "power": 60, "power_type": "absolute"}
 			],
 			"sell_value": "25"
 		}
@@ -654,10 +658,6 @@ func update_music_volume_from_ui(volume_percentage: float):
 func mark_tutorial_completed():
 	tutorial_completed = true
 	save_game_data()
-	print("Tutorial marcado como completo e salvo")
-
-func show_tutorial_manually():
-	print("Tutorial solicitado manualmente pelo jogador")
 
 func reset_all_game_data():
 	# Reseta variáveis de jogo
@@ -732,20 +732,20 @@ var sound_data = {
 			"walk": {"path": "res://Audio/Enemies/Metal/Walk.ogg", "volume": -10}
 		},
 		"Pilha": {
-			"death": {"path": "", "volume": 0},
-			"walk": {"path": "", "volume": 0}
+			"death": {"path": "res://Audio/Enemies/Pilha/Dead.ogg", "volume": -10},
+			"walk": {"path": "res://Audio/Enemies/Pilha/Walk.ogg", "volume": -10}
 		},
 		"Radioativo": {
-			"death": {"path": "", "volume": 0},
-			"walk": {"path": "", "volume": 0}
+			"death": {"path": "res://Audio/Enemies/Radioativo/Death.ogg", "volume": 0},
+			"walk": {"path": "res://Audio/Enemies/Radioativo/Walk.ogg", "volume": -8}
 		},
 		"BossRadioativo": {
-			"death": {"path": "", "volume": 0},
-			"walk": {"path": "", "volume": 0}
+			"death": {"path": "res://Audio/Enemies/BossRadioativo/Death.ogg", "volume": -5},
+			"walk": {"path": "res://Audio/Enemies/Radioativo/Walk.ogg", "volume": -10}
 		},
 		"BossPneu": {
-			"death": {"path": "", "volume": 0},
-			"walk": {"path": "", "volume": 0}
+			"death": {"path": "res://Audio/Enemies/BossPneu/792520__modusmogulus__retro-small-bomb-explosion.wav", "volume": -5},
+			"walk": {"path": "res://Audio/Enemies/BossPneu/Walk.ogg", "volume": -7}
 		}
 	},
 	"cats": {
@@ -772,7 +772,7 @@ var sound_data = {
 	},
 	"ui": {
 		"button": {
-			"click": {"path": "res://Audio/UI/593955__mincedbeats__mouse-button-click.ogg", "volume": 0},
+			"click": {"path": "res://Audio/UI/593955__mincedbeats__mouse-button-click.ogg", "volume": -5},
 			"hover": {"path": "res://Audio/UI/166186__drminky__menu-screen-mouse-over.ogg", "volume": 0},	
 		},
 		"card_equip": {"path": "", "volume": 0},
@@ -870,10 +870,10 @@ func get_current_music_type() -> String:
 var waves = {
 	"wave1": {
 		"enemies": [
-			["Papel", 2],
-			["Papel", 2],
-			["Papel", 2],
-			["Papel", 2],
+			["BossRadioativo", 2]
+			#["Papel", 2],
+			#["Papel", 2],
+			#["Papel", 2],
 		],
 		"text_box": {
 			"show": true,
@@ -881,7 +881,6 @@ var waves = {
 			"message": "Se posicionem estrategicamente, preparem suas cartas e matem esse Slime Papel todo amassado que está vindo!"
 		}
 	},
-	
 	
 	"wave2": {
 		"enemies": [
