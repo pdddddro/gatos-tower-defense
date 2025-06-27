@@ -6,10 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://bgba1jqqv4rpe" path="res://Assets/Icons/Close.png" id="2_5s4do"]
 [ext_resource type="FontFile" uid="uid://dypca4yn0mcqr" path="res://Assets/Fonts/retro_gaming/Retro Gaming.ttf" id="2_jx0qf"]
 [ext_resource type="FontFile" uid="uid://bxh8oh1s7ap4j" path="res://Assets/Fonts/medodicaregular.otf" id="3_l1ugq"]
-[ext_resource type="Texture2D" uid="uid://c7pqt3atbvqu3" path="res://Assets/UI/Photo/pedropixel.png" id="4_jx0qf"]
 [ext_resource type="Texture2D" uid="uid://xvjesvsh2vh8" path="res://Assets/Icons/Social Media/Insta.png" id="5_0hvsp"]
 [ext_resource type="Texture2D" uid="uid://cn0qpqwv6feij" path="res://Assets/Icons/Social Media/Linkedin.png" id="6_0l6uu"]
-[ext_resource type="Texture2D" uid="uid://ccxj37gq2soj7" path="res://Assets/UI/Photo/lumapixel.png" id="7_0l6uu"]
+[ext_resource type="Texture2D" uid="uid://jge6ymwvk3dj" path="res://Assets/UI/Photo/luma.jpg" id="10_4wfam"]
+[ext_resource type="Texture2D" uid="uid://criax4ram0va3" path="res://Assets/487433704_1312343273397265_72656.jpg" id="11_dwgd0"]
 
 [node name="About" type="Control"]
 layout_mode = 3
@@ -123,15 +123,13 @@ theme_override_constants/outline_size = 0
 theme_override_constants/shadow_outline_size = 0
 theme_override_fonts/font = ExtResource("3_l1ugq")
 theme_override_font_sizes/font_size = 16
-text = "Nesse jogo, gatos carismáticos cansam da inércia humana em relação ao descarte de lixo na natureza e, afestados pela radiação, eles se unem para defender o mundo de inimigos bem esquisitos: slimes feitos de lixo.
+text = "Nesse jogo, gatos carismáticos cansam da inércia humana em relação ao descarte de lixo na natureza e, afetados pela radiação, eles se unem para defender o mundo de inimigos bem esquisitos: slimes feitos de lixo.
 
-Esse foi um projeto desenvolvido por 2 alunos do curso de Design da UFBA, com a missão de criar algo divertido que fizesse pensar, que de alguma forma agregue na sociedade. A gente acredita que jogos podem ir além do entretenimento: podem informar, provocar e engajar. É aí que entra o design engajado: um jeito de pensar o jogo como uma experiência que conversa com o mundo fora da tela.
-
-Tudo no jogo foi pensado com muito carinho pra trazer a pauta da sustentabilidade de um jeito leve, acessível e criativo. Sem discurso chato e engessado, e sim com a nossa personalidade (e umas boas piadinhas de gato).
+Esse foi um projeto desenvolvido por 2 alunos do curso de Design da UFBA, com a missão de criar algo divertido que fizesse pensar, que de alguma forma agregue na sociedade, indo além do entretenimento. É aí que entra o design engajado, um jeito de pensar o jogo como uma experiência que conversa com o mundo fora da tela, com a nossa personalidade (e umas boas piadinhas de gato).
 
 Além disso, o projeto busca colher arrecadações para os gatinhos da Escola de Belas Artes (QRCode e Chave PIX na tela inicial)
 
-No fim, G.A.T.I.N.H.O.S. é sobre isso: jogar, se divertir e, quem sabe, sair da partida querendo mudar um hábito ou prestar mais atenção ao lixo que a gente gera."
+No fim, G.A.T.I.N.H.O.S. é sobre isso: jogar, se divertir e, quem sabe, sair da partida querendo mudar um hábito ou prestar mais atenção ao lixo que a gente gera!"
 vertical_alignment = 1
 autowrap_mode = 3
 
@@ -154,12 +152,13 @@ theme_override_constants/separation = 16
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="Photo" type="TextureRect" parent="VBoxContainer/BestCat/Background/MarginContainer/ScrollContainer/Container/TeamMembers/TeamContainer/TeamMember"]
+[node name="Photo2" type="TextureRect" parent="VBoxContainer/BestCat/Background/MarginContainer/ScrollContainer/Container/TeamMembers/TeamContainer/TeamMember"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-texture = ExtResource("4_jx0qf")
+texture = ExtResource("11_dwgd0")
+expand_mode = 1
 
 [node name="Text" type="VBoxContainer" parent="VBoxContainer/BestCat/Background/MarginContainer/ScrollContainer/Container/TeamMembers/TeamContainer/TeamMember"]
 layout_mode = 2
@@ -246,12 +245,13 @@ text_direction = 1
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="Photo" type="TextureRect" parent="VBoxContainer/BestCat/Background/MarginContainer/ScrollContainer/Container/TeamMembers/TeamContainer/TeamMember2"]
+[node name="Photo2" type="TextureRect" parent="VBoxContainer/BestCat/Background/MarginContainer/ScrollContainer/Container/TeamMembers/TeamContainer/TeamMember2"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-texture = ExtResource("7_0l6uu")
+texture = ExtResource("10_4wfam")
+expand_mode = 1
 
 [node name="Text" type="VBoxContainer" parent="VBoxContainer/BestCat/Background/MarginContainer/ScrollContainer/Container/TeamMembers/TeamContainer/TeamMember2"]
 layout_mode = 2

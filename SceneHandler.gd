@@ -36,6 +36,8 @@ func on_new_game_pressed():
 	# Verifica se deve mostrar o tutorial automaticamente
 	if not GameData.tutorial_completed:
 		show_tutorial_overlay(game_scene, false) # false = automático
+		
+	Analytics.add_event("Jogos Iniciados")
 
 func show_tutorial_overlay(game_scene, is_manual: bool = false):
 	# Carrega e instancia a cena de tutorial
@@ -58,6 +60,7 @@ func show_tutorial_overlay(game_scene, is_manual: bool = false):
 		tutorial_scene.connect("tutorial_completed", _on_tutorial_completed.bind(is_manual))
 	if tutorial_scene.has_signal("tutorial_skipped"):
 		tutorial_scene.connect("tutorial_skipped", _on_tutorial_skipped.bind(is_manual))
+		Analytics.add_event("Tutorial Pulado")
 	
 	print("Tutorial overlay adicionado - Manual: ", is_manual)
 
@@ -81,6 +84,7 @@ func show_tutorial_from_game():
 func on_about_pressed():
 	var about_scene = load("res://Scenes/MainScenes/About.tscn").instantiate()
 	add_child(about_scene)
+	Analytics.add_event("Sobre")
 
 #func on_quit_pressed():
 	#get_tree().quit()
@@ -97,6 +101,7 @@ func unload_game(result):
 	ui_node.add_child(result_scene)
 	
 	get_tree().paused = true  # Pausa o jogo enquanto a tela de resultado está aberta
+	
 
 func return_to_main_menu():
 	for child in get_children():

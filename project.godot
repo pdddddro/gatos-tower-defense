@@ -24,6 +24,7 @@ buses/default_bus_layout="uid://cokvbmsyokj45"
 
 GameData="*res://Singletons/GameData.gd"
 AudioManager="*res://Singletons/AudioManager.gd"
+Analytics="*res://addons/quiver_analytics/analytics.tscn"
 
 [display]
 
@@ -32,6 +33,10 @@ window/size/viewport_height=360
 window/size/resizable=false
 window/stretch/mode="canvas_items"
 window/stretch/scale_mode="integer"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/quiver_analytics/plugin.cfg")
 
 [file_customization]
 

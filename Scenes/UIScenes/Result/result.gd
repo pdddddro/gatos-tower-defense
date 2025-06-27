@@ -16,8 +16,10 @@ func _ready() -> void:
 func setup_result_ui():
 	if victory_result:
 		$VBoxContainer/Result.play("win")
+		Analytics.add_event("Vitorias")
 	else:
 		$VBoxContainer/Result.play("lose")
+		Analytics.add_event("Derrotas")
 		
 	update_stats_ui()
 
@@ -37,11 +39,12 @@ func _on_main_action_pressed() -> void:
 		best_cat.visible = true
 		
 		screen_step += 1
-		#await Analytics.handle_exit()
+		await Analytics.handle_exit()
 		return
 		
 	if screen_step == 1:
 		if scene_handler:
+			Analytics.add_event("Jogou Novamente")
 			scene_handler.on_new_game_pressed()
 			screen_step += 1  # (opcional, se quiser evitar múltiplos cliques)
 			return

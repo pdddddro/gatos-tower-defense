@@ -227,10 +227,10 @@ var card_data = {
 		}
 		,{
 			"name": "Química do Mal I",
-			"description": "Tomou uma substância verde esquisita que encontrou, agora tem 30% de chance de crítico",
+			"description": "O gato tomou uma substância verde esquisita que encontrou, agora tem 25% de chance de crítico",
 			"icon": "res://Assets/Icons/Cards/Pre-Treino-icon.png",
 			"effects": [
-				{"type": "critic_boost", "power": 30, "power_type": "absolute"}
+				{"type": "critic_boost", "power": 25, "power_type": "absolute"}
 			],
 			"sell_value": "100"
 		}
@@ -282,7 +282,7 @@ var card_data = {
 		}
 		,{
 			"name": "Química do Mal II",
-			"description": "Tomou uma substância verde esquisita que encontrou, agora tem mais 60% de chance de crítico",
+			"description": "O gato tomou uma substância verde esquisita que encontrou, agora tem mais 60% de chance de crítico",
 			"icon": "res://Assets/Icons/Cards/Pre-Treino-icon.png",
 			"effects": [
 				{"type": "critic_boost", "power": 60, "power_type": "absolute"}
@@ -380,7 +380,7 @@ var card_data = {
 		}
 		,{
 			"name": "Química do Mal III",
-			"description": "Tomou uma substância verde esquisita que encontrou, agora tem mais 100% de chance de crítico",
+			"description": "O gato tomou uma substância verde esquisita que encontrou, agora tem mais 100% de chance de crítico",
 			"icon": "res://Assets/Icons/Cards/Pre-Treino-icon.png",
 			"effects": [
 				{"type": "critic_boost", "power": 100, "power_type": "absolute"}
@@ -742,11 +742,11 @@ var sound_data = {
 			"walk": {"path": "res://Audio/Enemies/Radioativo/Walk.ogg", "volume": -8}
 		},
 		"BossRadioativo": {
-			"death": {"path": "res://Audio/Enemies/BossRadioativo/Death.ogg", "volume": -5},
+			"death": {"path": "res://Audio/Enemies/BossPneu/792520__modusmogulus__retro-small-bomb-explosion.wav", "volume": -10},
 			"walk": {"path": "res://Audio/Enemies/Radioativo/Walk.ogg", "volume": -10}
 		},
 		"BossPneu": {
-			"death": {"path": "res://Audio/Enemies/BossPneu/792520__modusmogulus__retro-small-bomb-explosion.wav", "volume": -5},
+			"death": {"path": "res://Audio/Enemies/BossPneu/792520__modusmogulus__retro-small-bomb-explosion.wav", "volume": -10},
 			"walk": {"path": "res://Audio/Enemies/BossPneu/Walk.ogg", "volume": -7}
 		}
 	},
@@ -924,8 +924,8 @@ var waves = {
 		],
 		"text_box": {
 			"show": true,
-			"title": "O que é isso Rosa?",
-			"message": "Acho que foi um Slime Chiclete... Cartolina vai ficar longe, vai que gruda no rabo dela..."
+			"title": "O que foi essa coisa rosa que passou aqui?",
+			"message": "Acho que foi um Slime Chiclete... Cartolina vai ficar longe, vai que gruda no rabo dele..."
 		}
 	},
 	
@@ -1407,36 +1407,52 @@ var waves = {
 }
 var random_phrases = {
 	"phrase1": {
-		"title": "Curiosidade Felina",
-		"message": "Você sabia que os gatos podem dormir até 16 horas por dia? Talvez por isso eles são tão eficientes em batalha!"
+		"title": "1 milhão de sacolas por minuto. Socorro!",
+		"message": "É isso mesmo. E muitas vão parar em rios e oceanos. Tá na hora de mudar isso aí."
 	},
 	"phrase2": {
-		"title": "Dica Estratégica",
-		"message": "Posicionar seus gatos em pontos de curva do caminho maximiza o tempo de ataque contra os slimes!"
+		"title": "400 anos de preguiça? Nem eu aguento!",
+		"message": "Um pedaço de plástico pode demorar até 400 anos pra desaparecer da natureza. Nem eu, com sete vidas, esperaria tudo isso."
 	},
 	"phrase3": {
-		"title": "Fato Ambiental",
-		"message": "O plástico pode levar até 400 anos para se degradar na natureza. Por isso nossos gatinhos estão aqui para ajudar!"
+		"title": "Quer reciclar? Dá um banho primeiro.",
+		"message": "Tampinhas e potes limpos podem ser reciclados e reaproveitados. Mas sujos? Acabam indo pro lixo comum e viram slime fedido."
 	},
 	"phrase4": {
-		"title": "Segredo dos Gatinhos",
-		"message": "Cada gato tem personalidade única! Observe como eles reagem diferente a cada tipo de slime."
+		"title": "Plástico no chão não vira brinquedo",
+		"message": "Se for pro lugar certo, o plástico vira coisa útil. No chão, vira vergonha e sujeira."
 	},
 	"phrase5": {
-		"title": "Sustentabilidade",
+		"title": "Uma latinha, três horas de sofá!", ## Arrumar
 		"message": "Reciclar uma lata de alumínio economiza energia suficiente para manter uma TV ligada por 3 horas!"
 	},
 	"phrase6": {
-		"title": "Poder Felino",
-		"message": "Os bigodes dos gatos são sensores super precisos. Eles podem detectar até as menores vibrações!"
+		"title": "A latinha mais rápida do Nordeste",
+		"message": "Reciclando, uma latinha vira outra em até 60 dias. Sem reciclagem, ela só enferruja e atrapalha."
 	},
 	"phrase7": {
-		"title": "Eco Dica",
-		"message": "Separar o lixo corretamente é o primeiro passo para um planeta mais limpo. Nossos gatos aprovam!"
+		"title": "Papel bom é papel com sete vidas",
+		"message": "O papel pode ser reciclado até 7 vezes, é quase um gato de papel!"
 	},
 	"phrase8": {
-		"title": "Curiosidade",
-		"message": "Um gato pode fazer mais de 100 sons diferentes, enquanto um cachorro faz apenas 10!"
+		"title": "Árvores em pé, gatinhos felizes",
+		"message": "Reciclar papel evita o corte de árvores. E eu amo árvores. Especialmente pra subir nelas."
+	},
+	"phrase9": {
+		"title": "Sete anos de azar e ainda machuca",
+		"message": "Vidro quebrado no lixo comum é perigoso, depois alguem se machuca querem reclamar comigo por dar azar!"
+	},
+	"phrase10": {
+		"title": "As vezes ",
+		"message": "Vidro quebrado no lixo comum é perigoso, depois alguem se machuca querem reclamar comigo por dar azar!"
+	},
+	"phrase11": {
+		"title": "O lixo não some, ele só troca de cenário",
+		"message": "Cada coisa no lugar certo evita que o lixo vá parar no lugar errado. Tipo dentro de um peixinho"
+	},
+	"phrase12": {
+		"title": "Reciclar é evoluir, tipo Pokémon!",
+		"message": "Quando recicla, o material pode virar algo novo. Evolução pura, sem precisar de pedra da lua."
 	}
 }
 
