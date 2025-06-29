@@ -32,6 +32,12 @@ var card_detail_scene = preload("res://Scenes/UIScenes/CardDetail.tscn")
 
 @onready var sell_cat_button = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/Cat/Sell
 
+## Nova seleção e compra de gatos
+var selected_shop_cat: TextureButton = null
+var selected_cat_type: String = ""
+@onready var cat_buy_button = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatsControl/Buy
+@onready var cat_details_button = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatsControl/Details
+
 func _ready():
 	anchor_top = _down_anchor.x
 	anchor_bottom = _down_anchor.y
@@ -40,10 +46,6 @@ func _ready():
 
 	shop_container.visibility_layer = false
 	close_button.visibility_layer = false
-
-	for child in cat_list.get_children():
-		if child is TextureButton:
-			child.pressed.connect(_on_close_pressed)
 	
 	GameData.card_added_to_inventory.connect(_on_card_added_to_inventory)
 	GameData.fish_quantity_updated.connect(_on_fish_quantity_updated)
@@ -56,6 +58,8 @@ func _ready():
 	
 	sell_cat_button.pressed.connect(_on_sell_cat_button_pressed)
 	
+	setup_cat_shop_buttons()
+	disable_cat_shop_buttons()
 
 
 func _process(delta):
@@ -75,6 +79,11 @@ func _on_close_pressed():
 	_target_anchor = _down_anchor
 	close_cat_info()
 	
+	if selected_shop_cat and is_instance_valid(selected_shop_cat):
+		selected_shop_cat.texture_normal = selected_shop_cat.get_meta("normal_texture") if selected_shop_cat.has_meta("normal_texture") else selected_shop_cat.texture_normal
+	selected_shop_cat = null
+	selected_cat_type = ""
+	disable_cat_shop_buttons()
 
 signal cat_shop_opened
 
@@ -94,12 +103,9 @@ func _on_cat_shop_pressed() -> void:
 		
 	if !texture_rect:
 		texture_rect.visible = true
-	
-	for child in cat_list.get_children():
-		if child is TextureButton and not child.is_in_group("build_buttons"):
-			child.add_to_group("build_buttons")
 			
 	cat_shop_opened.emit()
+	setup_cat_shop_buttons()
 	
 	if open == false:
 		open_container()
@@ -111,10 +117,7 @@ func _on_cards_pressed() -> void:
 	
 	if current_cat_reference:
 		current_cat_reference.hide_range()
-	
-	for child in cat_list.get_children():
-		if child is TextureButton and child.is_in_group("build_buttons"):
-			child.remove_from_group("build_buttons")
+
 			
 	card_list.visible = true
 	cards_control.visible = true
@@ -132,9 +135,6 @@ func open_container():
 	_target_anchor = _up_anchor
 
 func open_cat_info():
-	for child in cat_list.get_children():
-		if child is TextureButton and child.is_in_group("build_buttons"):
-			child.remove_from_group("build_buttons")
 	cat_list.visible = false
 	card_list.visible = false
 	cards_control.visible = false
@@ -555,11 +555,7 @@ func _on_sell_pressed() -> void:
 			GameData.update_fish_quantity(int(sell_value))
 			print("Carta vendida por ", sell_value, " moedas. Moeda total agora: ", GameData.fish_quantity)
 			
-			#game_scene.update_build_buttons
-			
 			selected_inventory_card.queue_free()
-			
-			#GameScene.update_build_buttons()
 			
 			GameData.card_collection.erase(card_data)
 			
@@ -577,3 +573,100 @@ func _on_sell_pressed() -> void:
 
 var selected_cat_card: TextureButton = null
 var cat_card_sell_mode = false
+
+func setup_cat_shop_buttons():
+	# Conecta os sinais dos botões de gatos
+	if cat_buy_button:
+		cat_buy_button.pressed.connect(_on_cat_buy_pressed)
+	if cat_details_button:
+		cat_details_button.pressed.connect(_on_cat_details_pressed)
+	
+	# Conecta os sinais de clique para cada gato na loja
+	for child in cat_list.get_children():
+		if child is TextureButton:
+			# Desconecta o sinal antigo que iniciava build_mode diretamente
+			if child.is_connected("pressed", _on_close_pressed):
+				child.disconnect("pressed", _on_close_pressed)
+			
+			# Desconecta sinais anteriores de seleção se existirem
+			if child.is_connected("pressed", _on_shop_cat_selected):
+				child.disconnect("pressed", _on_shop_cat_selected)
+			
+			# Conecta apenas o novo sinal de seleção
+			child.pressed.connect(_on_shop_cat_selected.bind(child))
+			
+	
+
+func disable_cat_shop_buttons():
+	if cat_buy_button:
+		cat_buy_button.disabled = true
+	if cat_details_button:
+		cat_details_button.disabled = true
+
+func enable_cat_shop_buttons():
+	if cat_buy_button:
+		cat_buy_button.disabled = false
+	if cat_details_button:
+		cat_details_button.disabled = false
+
+func _on_shop_cat_selected(cat_button: TextureButton):
+	var cat_type = cat_button.name
+	
+	# Se o gato clicado já está selecionado, desseleciona
+	if selected_shop_cat == cat_button:
+		cat_button.texture_normal = cat_button.get_meta("normal_texture") if cat_button.has_meta("normal_texture") else cat_button.texture_normal
+		selected_shop_cat = null
+		selected_cat_type = ""
+		disable_cat_shop_buttons()
+		print("Gato da loja desselecionado: ", cat_type)
+	else:
+		# Desmarca o gato anterior, se houver
+		if selected_shop_cat and is_instance_valid(selected_shop_cat):
+			selected_shop_cat.texture_normal = selected_shop_cat.get_meta("normal_texture") if selected_shop_cat.has_meta("normal_texture") else selected_shop_cat.texture_normal
+		
+		# Salva a textura normal se ainda não foi salva
+		if not cat_button.has_meta("normal_texture"):
+			cat_button.set_meta("normal_texture", cat_button.texture_normal)
+		
+		# Marca o novo gato selecionado
+		selected_shop_cat = cat_button
+		selected_cat_type = cat_type
+		selected_shop_cat.texture_normal = selected_shop_cat.texture_pressed
+		enable_cat_shop_buttons()
+		print("Gato da loja selecionado: ", cat_type)
+
+func _on_cat_buy_pressed():
+	if selected_cat_type == "":
+		return
+	
+	print("Comprando gato: ", selected_cat_type)
+	
+	# Obtém referência para a cena do jogo
+	var game_scene = get_tree().get_first_node_in_group("game_scene")
+	if game_scene:
+		# Inicia o modo de construção como se o usuário tivesse clicado no botão do gato
+		game_scene.initiate_build_mode(selected_cat_type)
+		
+		# Fecha a loja
+		_on_close_pressed()
+	else:
+		print("ERRO: Cena do jogo não encontrada")
+
+func _on_cat_details_pressed():
+	if selected_cat_type == "":
+		return
+	
+	print("Mostrando detalhes do gato: ", selected_cat_type)
+	
+	# Placeholder para a cena de detalhes - você pode ajustar o caminho depois
+	placeholder_show_cat_details(selected_cat_type)
+
+func placeholder_show_cat_details(cat_type: String):
+	# Função placeholder - você pode implementar a lógica específica depois
+	print("PLACEHOLDER: Abrindo detalhes para ", cat_type)
+	# Exemplo de como poderia ser implementado:
+	# var details_scene = preload("res://Scenes/UIScenes/CatDetails.tscn")
+	# var details_instance = details_scene.instantiate()
+	# get_parent().get_parent().get_parent().add_child(details_instance)
+	# details_instance.setup_cat_details(GameData.cat_data[cat_type])
+	# get_tree().paused = true
