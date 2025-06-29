@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b3oj3u5omej0y"]
+[gd_scene load_steps=17 format=3 uid="uid://b3oj3u5omej0y"]
 
 [ext_resource type="Script" uid="uid://d3rxrafiwqqn2" path="res://Scenes/MainScenes/GameScene.gd" id="1_hosin"]
 [ext_resource type="PackedScene" uid="uid://b4lqfl3wc00q3" path="res://Scenes/Maps/Map1.tscn" id="1_ianr5"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://b411g780km2rh" path="res://Assets/Icons/QuestionMark.png" id="6_j856t"]
 [ext_resource type="Texture2D" uid="uid://8adf7fkny4qr" path="res://Assets/Icons/Play.png" id="6_jem3k"]
 [ext_resource type="Script" uid="uid://ber1tq1cvvvc3" path="res://Scenes/UIScenes/TextBox/tooltip_Interact.gd" id="7_80vwl"]
-[ext_resource type="FontFile" uid="uid://8qe2jqb87ubg" path="res://Assets/Fonts/press_start_2p/PressStart2P.ttf" id="7_jem3k"]
 [ext_resource type="Script" uid="uid://c2nlmty2nmu5n" path="res://Scenes/UIScenes/Buttons/button.gd" id="7_wb53i"]
 [ext_resource type="FontFile" uid="uid://dypca4yn0mcqr" path="res://Assets/Fonts/retro_gaming/Retro Gaming.ttf" id="8_0dyjl"]
 [ext_resource type="PackedScene" uid="uid://lhinuy75rcjw" path="res://Scenes/UIScenes/TextBox/text_box.tscn" id="9_tcjp3"]
@@ -80,7 +79,7 @@ theme_override_constants/separation = -2
 [node name="Rodada" type="Label" parent="UI/HUD/MarginContainer/WaveContainer"]
 layout_mode = 2
 size_flags_vertical = 0
-theme_override_colors/font_shadow_color = Color(0.290196, 0.329412, 0.384314, 1)
+theme_override_colors/font_shadow_color = Color(0.2, 0.223529, 0.254902, 1)
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 1
 theme_override_constants/shadow_outline_size = 0
@@ -93,9 +92,9 @@ vertical_alignment = 1
 [node name="WaveCount" type="Label" parent="UI/HUD/MarginContainer/WaveContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
-theme_override_colors/font_shadow_color = Color(0.290196, 0.329412, 0.384314, 1)
+theme_override_colors/font_shadow_color = Color(0.2, 0.223529, 0.254902, 1)
 theme_override_constants/shadow_offset_x = 0
-theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_offset_y = 2
 theme_override_constants/shadow_outline_size = 0
 theme_override_fonts/font = ExtResource("8_0dyjl")
 theme_override_font_sizes/font_size = 22
@@ -156,7 +155,7 @@ size_flags_vertical = 0
 
 [node name="QuestionMark" type="TextureButton" parent="UI/HUD/MarginContainer/HBoxContainer"]
 process_mode = 3
-custom_minimum_size = Vector2(16, 16)
+custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 size_flags_horizontal = 0
 mouse_default_cursor_shape = 16
@@ -166,7 +165,7 @@ script = ExtResource("7_wb53i")
 
 [node name="Pause" type="TextureButton" parent="UI/HUD/MarginContainer/HBoxContainer"]
 process_mode = 3
-custom_minimum_size = Vector2(16, 16)
+custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
@@ -179,7 +178,7 @@ script = ExtResource("7_wb53i")
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-theme_override_constants/separation = 8
+theme_override_constants/separation = 16
 
 [node name="HeartContainer" type="HBoxContainer" parent="UI/HUD/MarginContainer/Status"]
 layout_mode = 2
@@ -193,18 +192,18 @@ tooltip_content = "Vida Atual"
 show_title = false
 
 [node name="HeartIcon" type="TextureRect" parent="UI/HUD/MarginContainer/Status/HeartContainer"]
-custom_minimum_size = Vector2(16, 16)
+custom_minimum_size = Vector2(16, 6)
 layout_mode = 2
 texture = ExtResource("12_wb53i")
 
 [node name="HeartLabel" type="Label" parent="UI/HUD/MarginContainer/Status/HeartContainer"]
 layout_mode = 2
-theme_override_colors/font_shadow_color = Color(0.290196, 0.329412, 0.384314, 1)
+theme_override_colors/font_shadow_color = Color(0.2, 0.223529, 0.254902, 1)
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 1
 theme_override_constants/shadow_outline_size = 0
-theme_override_fonts/font = ExtResource("7_jem3k")
-theme_override_font_sizes/font_size = 8
+theme_override_fonts/font = ExtResource("8_0dyjl")
+theme_override_font_sizes/font_size = 11
 text = "Vida"
 
 [node name="FishContainer" type="HBoxContainer" parent="UI/HUD/MarginContainer/Status"]
@@ -225,12 +224,12 @@ texture = ExtResource("10_h0y4r")
 
 [node name="FishLabel" type="Label" parent="UI/HUD/MarginContainer/Status/FishContainer"]
 layout_mode = 2
-theme_override_colors/font_shadow_color = Color(0.290196, 0.329412, 0.384314, 1)
+theme_override_colors/font_shadow_color = Color(0.2, 0.223529, 0.254902, 1)
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 1
 theme_override_constants/shadow_outline_size = 0
-theme_override_fonts/font = ExtResource("7_jem3k")
-theme_override_font_sizes/font_size = 8
+theme_override_fonts/font = ExtResource("8_0dyjl")
+theme_override_font_sizes/font_size = 11
 text = "Dinheiro"
 
 [connection signal="pressed" from="UI/HUD/MarginContainer/GameControls/Play" to="." method="_on_play_pressed"]
