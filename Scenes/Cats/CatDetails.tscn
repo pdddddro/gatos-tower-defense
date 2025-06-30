@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ben3dqxkr563c"]
+[gd_scene load_steps=16 format=3 uid="uid://ben3dqxkr563c"]
 
 [ext_resource type="Texture2D" uid="uid://bgba1jqqv4rpe" path="res://Assets/Icons/Close.png" id="1_alsmx"]
 [ext_resource type="Script" uid="uid://cyrllx68cv05u" path="res://Scenes/Cats/cat_details.gd" id="1_g36xl"]
@@ -14,7 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://bc60e3ombl6k6" path="res://Assets/Icons/Inimogos-Derrotados-Icon.png" id="8_ue7xy"]
 [ext_resource type="Texture2D" uid="uid://da2dt4pmnwtgf" path="res://Assets/Icons/AttackSpeed-Icon.png" id="9_il7mk"]
 [ext_resource type="Texture2D" uid="uid://60efpom832f2" path="res://Assets/Icons/Range-ICON.png" id="10_ijufu"]
-[ext_resource type="Texture2D" uid="uid://n014gcnl2mp4" path="res://Assets/Icons/V-ICON.png" id="12_vo36s"]
 [ext_resource type="Texture2D" uid="uid://cun5xvixbvcbc" path="res://Assets/Icons/X-ICON.png" id="14_dlrcu"]
 
 [node name="CatDetails" type="Control"]
@@ -320,11 +319,11 @@ custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextureRect2" type="TextureRect" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer/Papel"]
-layout_mode = 2
-texture = ExtResource("12_vo36s")
-
 [node name="TextureRect" type="TextureRect" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer/Papel"]
+layout_mode = 2
+texture = ExtResource("14_dlrcu")
+
+[node name="Slime" type="TextureRect" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer/Papel"]
 layout_mode = 2
 texture = ExtResource("8_ue7xy")
 
@@ -341,11 +340,11 @@ custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextureRect2" type="TextureRect" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer/Chiclete"]
-layout_mode = 2
-texture = ExtResource("12_vo36s")
-
 [node name="TextureRect" type="TextureRect" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer/Chiclete"]
+layout_mode = 2
+texture = ExtResource("14_dlrcu")
+
+[node name="Slime" type="TextureRect" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer/Chiclete"]
 layout_mode = 2
 texture = ExtResource("8_ue7xy")
 
@@ -362,11 +361,11 @@ custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextureRect2" type="TextureRect" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer/Pilha"]
-layout_mode = 2
-texture = ExtResource("12_vo36s")
-
 [node name="TextureRect" type="TextureRect" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer/Pilha"]
+layout_mode = 2
+texture = ExtResource("14_dlrcu")
+
+[node name="Slime" type="TextureRect" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer/Pilha"]
 layout_mode = 2
 texture = ExtResource("8_ue7xy")
 
@@ -383,11 +382,11 @@ custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextureRect2" type="TextureRect" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer/Metal"]
+[node name="TextureRect" type="TextureRect" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer/Metal"]
 layout_mode = 2
 texture = ExtResource("14_dlrcu")
 
-[node name="TextureRect" type="TextureRect" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer/Metal"]
+[node name="Slime" type="TextureRect" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer/Metal"]
 layout_mode = 2
 texture = ExtResource("8_ue7xy")
 
@@ -404,11 +403,11 @@ custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextureRect2" type="TextureRect" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer/Plastico"]
+[node name="TextureRect" type="TextureRect" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer/Plastico"]
 layout_mode = 2
 texture = ExtResource("14_dlrcu")
 
-[node name="TextureRect" type="TextureRect" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer/Plastico"]
+[node name="Slime" type="TextureRect" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer/Plastico"]
 layout_mode = 2
 texture = ExtResource("8_ue7xy")
 
@@ -425,11 +424,11 @@ custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextureRect2" type="TextureRect" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer/Radioativos"]
+[node name="TextureRect" type="TextureRect" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer/Radioativos"]
 layout_mode = 2
 texture = ExtResource("14_dlrcu")
 
-[node name="TextureRect" type="TextureRect" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer/Radioativos"]
+[node name="Slime" type="TextureRect" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer/Radioativos"]
 layout_mode = 2
 texture = ExtResource("8_ue7xy")
 
@@ -446,11 +445,11 @@ custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextureRect2" type="TextureRect" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer/Pneu"]
+[node name="TextureRect" type="TextureRect" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer/Pneu"]
 layout_mode = 2
 texture = ExtResource("14_dlrcu")
 
-[node name="TextureRect" type="TextureRect" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer/Pneu"]
+[node name="Slime" type="TextureRect" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer/Pneu"]
 layout_mode = 2
 texture = ExtResource("8_ue7xy")
 
@@ -461,3 +460,5 @@ theme_override_fonts/font = ExtResource("5_64t0c")
 theme_override_font_sizes/font_size = 16
 text = "Pneu"
 vertical_alignment = 1
+
+[connection signal="pressed" from="Container/Close" to="." method="_on_close_pressed"]
