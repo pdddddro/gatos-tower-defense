@@ -41,7 +41,7 @@
 [ext_resource type="Texture2D" uid="uid://d1yb4hos4dxxd" path="res://Assets/Cats/Nino/NinoCard.png" id="31_r373f"]
 [ext_resource type="Texture2D" uid="uid://bxcxnewuqv410" path="res://Assets/Cats/Nut/NutCard.png" id="32_wa4i2"]
 [ext_resource type="Texture2D" uid="uid://n721k2b4gra6" path="res://Assets/Cats/Cartolina/CarolinaCard.png" id="33_wgxyr"]
-[ext_resource type="Texture2D" uid="uid://bgb2pgder2u78" path="res://Assets/UI/Buttons/botao_principal_giga.png" id="41_wgxyr"]
+[ext_resource type="Texture2D" uid="uid://yck8kgrj4rch" path="res://Assets/UI/Buttons/giga/botao_principal_giga.png" id="41_wgxyr"]
 [ext_resource type="Texture2D" uid="uid://cgba0gdgnm8iy" path="res://Assets/UI/Buttons/giga/botao_principal_giga_disabled.png" id="42_eyq04"]
 [ext_resource type="Texture2D" uid="uid://bj5endpxpqlo8" path="res://Assets/UI/Buttons/giga/botao_principal_giga_hover.png" id="42_lsdds"]
 [ext_resource type="Texture2D" uid="uid://dhl3f58l6j7vd" path="res://Assets/UI/Buttons/giga/botao_sec_giga.png" id="43_lsdds"]

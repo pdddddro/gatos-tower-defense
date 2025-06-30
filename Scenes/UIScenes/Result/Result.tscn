@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://c3eo4k3gsmtd0"]
+[gd_scene load_steps=45 format=3 uid="uid://c3eo4k3gsmtd0"]
 
 [ext_resource type="Script" uid="uid://c4terrj7gjgx0" path="res://Scenes/UIScenes/Result/result.gd" id="1_adago"]
 [ext_resource type="Texture2D" uid="uid://0byb8mpdvpgy" path="res://Assets/UI/Art/Background.png" id="2_3orr4"]
@@ -16,7 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://ctuv2rvyv1x6j" path="res://Assets/Icons/FishDead.png" id="12_flsdf"]
 [ext_resource type="Texture2D" uid="uid://ycbwxuewd3jo" path="res://Assets/Icons/Catt3.png" id="13_vw8t1"]
 [ext_resource type="Texture2D" uid="uid://bc60e3ombl6k6" path="res://Assets/Icons/Inimogos-Derrotados-Icon.png" id="14_0fubg"]
-[ext_resource type="FontFile" uid="uid://8qe2jqb87ubg" path="res://Assets/Fonts/press_start_2p/PressStart2P.ttf" id="14_j4aux"]
 [ext_resource type="Texture2D" uid="uid://l3qb28hgmuhn" path="res://Assets/UI/Equipped_card_background.png" id="16_d55iw"]
 [ext_resource type="Texture2D" uid="uid://bfwtkfw56eu2j" path="res://Assets/UI/Equipped_card_background_hover.png" id="18_bcbo1"]
 [ext_resource type="Script" uid="uid://ber1tq1cvvvc3" path="res://Scenes/UIScenes/TextBox/tooltip_Interact.gd" id="19_flsdf"]
@@ -286,8 +285,8 @@ custom_minimum_size = Vector2(40, 16)
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
-theme_override_fonts/font = ExtResource("14_j4aux")
-theme_override_font_sizes/font_size = 8
+theme_override_fonts/font = ExtResource("3_nh3lf")
+theme_override_font_sizes/font_size = 11
 text = "000.0k"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -318,8 +317,8 @@ custom_minimum_size = Vector2(40, 16)
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
-theme_override_fonts/font = ExtResource("14_j4aux")
-theme_override_font_sizes/font_size = 8
+theme_override_fonts/font = ExtResource("3_nh3lf")
+theme_override_font_sizes/font_size = 11
 text = "000.0k"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -350,8 +349,8 @@ custom_minimum_size = Vector2(40, 16)
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
-theme_override_fonts/font = ExtResource("14_j4aux")
-theme_override_font_sizes/font_size = 8
+theme_override_fonts/font = ExtResource("3_nh3lf")
+theme_override_font_sizes/font_size = 11
 text = "000.0k"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -382,8 +381,8 @@ custom_minimum_size = Vector2(40, 16)
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
-theme_override_fonts/font = ExtResource("14_j4aux")
-theme_override_font_sizes/font_size = 8
+theme_override_fonts/font = ExtResource("3_nh3lf")
+theme_override_font_sizes/font_size = 11
 text = "000.0k"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -414,8 +413,8 @@ custom_minimum_size = Vector2(40, 16)
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
-theme_override_fonts/font = ExtResource("14_j4aux")
-theme_override_font_sizes/font_size = 8
+theme_override_fonts/font = ExtResource("3_nh3lf")
+theme_override_font_sizes/font_size = 11
 text = "000.0k"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -446,8 +445,8 @@ custom_minimum_size = Vector2(40, 16)
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
-theme_override_fonts/font = ExtResource("14_j4aux")
-theme_override_font_sizes/font_size = 8
+theme_override_fonts/font = ExtResource("3_nh3lf")
+theme_override_font_sizes/font_size = 11
 text = "000.0k"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -684,8 +683,8 @@ custom_minimum_size = Vector2(40, 16)
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
-theme_override_fonts/font = ExtResource("14_j4aux")
-theme_override_font_sizes/font_size = 8
+theme_override_fonts/font = ExtResource("3_nh3lf")
+theme_override_font_sizes/font_size = 11
 text = "000.0k"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -716,8 +715,8 @@ custom_minimum_size = Vector2(40, 16)
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
-theme_override_fonts/font = ExtResource("14_j4aux")
-theme_override_font_sizes/font_size = 8
+theme_override_fonts/font = ExtResource("3_nh3lf")
+theme_override_font_sizes/font_size = 11
 text = "000.0k"
 horizontal_alignment = 2
 vertical_alignment = 1
@@ -748,8 +747,8 @@ custom_minimum_size = Vector2(40, 16)
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
-theme_override_fonts/font = ExtResource("14_j4aux")
-theme_override_font_sizes/font_size = 8
+theme_override_fonts/font = ExtResource("3_nh3lf")
+theme_override_font_sizes/font_size = 11
 text = "000.0k"
 horizontal_alignment = 2
 vertical_alignment = 1

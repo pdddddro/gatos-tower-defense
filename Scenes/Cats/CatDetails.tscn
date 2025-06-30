@@ -1,0 +1,463 @@
+[gd_scene load_steps=17 format=3 uid="uid://ben3dqxkr563c"]
+
+[ext_resource type="Texture2D" uid="uid://bgba1jqqv4rpe" path="res://Assets/Icons/Close.png" id="1_alsmx"]
+[ext_resource type="Script" uid="uid://cyrllx68cv05u" path="res://Scenes/Cats/cat_details.gd" id="1_g36xl"]
+[ext_resource type="Texture2D" uid="uid://dv3g48f7hixr8" path="res://Assets/UI/ui_background.png" id="1_t2b8n"]
+[ext_resource type="Script" uid="uid://c2nlmty2nmu5n" path="res://Scenes/UIScenes/Buttons/button.gd" id="2_g36xl"]
+[ext_resource type="Texture2D" uid="uid://dvhrsyngix8od" path="res://Assets/Cats/Sombra.png" id="2_l0rvg"]
+[ext_resource type="Texture2D" uid="uid://0byb8mpdvpgy" path="res://Assets/UI/Art/Background.png" id="2_ue7xy"]
+[ext_resource type="Texture2D" uid="uid://c75b523rfmig3" path="res://Assets/Cats/Empty.png" id="3_j2mov"]
+[ext_resource type="FontFile" uid="uid://dypca4yn0mcqr" path="res://Assets/Fonts/retro_gaming/Retro Gaming.ttf" id="4_w0j8i"]
+[ext_resource type="FontFile" uid="uid://bxh8oh1s7ap4j" path="res://Assets/Fonts/medodicaregular.otf" id="5_64t0c"]
+[ext_resource type="Texture2D" uid="uid://m1uvhny1k7xm" path="res://Assets/Icons/Dano-Causado-ICon.png" id="6_alsmx"]
+[ext_resource type="Texture2D" uid="uid://bja4m423dmu6i" path="res://Assets/Icons/Attack.png" id="8_gydxm"]
+[ext_resource type="Texture2D" uid="uid://bc60e3ombl6k6" path="res://Assets/Icons/Inimogos-Derrotados-Icon.png" id="8_ue7xy"]
+[ext_resource type="Texture2D" uid="uid://da2dt4pmnwtgf" path="res://Assets/Icons/AttackSpeed-Icon.png" id="9_il7mk"]
+[ext_resource type="Texture2D" uid="uid://60efpom832f2" path="res://Assets/Icons/Range-ICON.png" id="10_ijufu"]
+[ext_resource type="Texture2D" uid="uid://n014gcnl2mp4" path="res://Assets/Icons/V-ICON.png" id="12_vo36s"]
+[ext_resource type="Texture2D" uid="uid://cun5xvixbvcbc" path="res://Assets/Icons/X-ICON.png" id="14_dlrcu"]
+
+[node name="CatDetails" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g36xl")
+
+[node name="Background" type="TextureRect" parent="."]
+modulate = Color(0, 0, 0, 0.643137)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ue7xy")
+
+[node name="Container" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -184.0
+offset_right = 200.0
+offset_bottom = 162.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 2
+
+[node name="Close" type="TextureButton" parent="Container"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("1_alsmx")
+stretch_mode = 0
+script = ExtResource("2_g36xl")
+
+[node name="CatContainer" type="VBoxContainer" parent="Container"]
+layout_mode = 2
+size_flags_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+alignment = 2
+
+[node name="Background" type="NinePatchRect" parent="Container/CatContainer"]
+texture_filter = 1
+clip_contents = true
+custom_minimum_size = Vector2(400, 318)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+texture = ExtResource("1_t2b8n")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="MarginContainer" type="MarginContainer" parent="Container/CatContainer/Background"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Container/CatContainer/Background/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Shadow" type="TextureRect" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/HBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.341176)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_l0rvg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/HBoxContainer/Shadow"]
+
+[node name="CatSprite" type="TextureRect" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/HBoxContainer/Shadow"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -34.0
+offset_right = 34.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("3_j2mov")
+
+[node name="CatSprite" type="VBoxContainer" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="CatName" type="Label" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/HBoxContainer/CatSprite"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("4_w0j8i")
+theme_override_font_sizes/font_size = 11
+text = "Nome do Gato"
+
+[node name="Description" type="Label" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/HBoxContainer/CatSprite"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("5_64t0c")
+theme_override_font_sizes/font_size = 16
+text = "Texto falando um pouco sobre o gato, o que ele faz e como ele é lindo e tals coisa e tal bla bla bla bla bla bla bla bla bla bla bla"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="CatStats" type="VBoxContainer" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/CatStats"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("4_w0j8i")
+theme_override_font_sizes/font_size = 11
+text = "Atributos Base"
+
+[node name="AttackDamage" type="HBoxContainer" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/CatStats"]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_constants/separation = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/CatStats/AttackDamage"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/CatStats/AttackDamage/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("8_gydxm")
+
+[node name="Label" type="Label" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/CatStats/AttackDamage/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
+theme_override_fonts/font = ExtResource("5_64t0c")
+theme_override_font_sizes/font_size = 16
+text = "Dano de Ataque"
+vertical_alignment = 1
+
+[node name="Number" type="Label" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/CatStats/AttackDamage"]
+custom_minimum_size = Vector2(40, 16)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("4_w0j8i")
+theme_override_font_sizes/font_size = 11
+text = "000.0k"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="AttackSpeed" type="HBoxContainer" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/CatStats"]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_constants/separation = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/CatStats/AttackSpeed"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/CatStats/AttackSpeed/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("9_il7mk")
+
+[node name="Label" type="Label" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/CatStats/AttackSpeed/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
+theme_override_fonts/font = ExtResource("5_64t0c")
+theme_override_font_sizes/font_size = 16
+text = "Velocidade de Ataque"
+vertical_alignment = 1
+
+[node name="Number" type="Label" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/CatStats/AttackSpeed"]
+custom_minimum_size = Vector2(40, 16)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("4_w0j8i")
+theme_override_font_sizes/font_size = 11
+text = "000.0k"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Range" type="HBoxContainer" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/CatStats"]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_constants/separation = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/CatStats/Range"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/CatStats/Range/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("10_ijufu")
+
+[node name="Label" type="Label" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/CatStats/Range/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
+theme_override_fonts/font = ExtResource("5_64t0c")
+theme_override_font_sizes/font_size = 16
+text = "Alcance"
+vertical_alignment = 1
+
+[node name="Number" type="Label" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/CatStats/Range"]
+custom_minimum_size = Vector2(40, 16)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("4_w0j8i")
+theme_override_font_sizes/font_size = 11
+text = "000.0k"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="CriticalChance" type="HBoxContainer" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/CatStats"]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_constants/separation = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/CatStats/CriticalChance"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/CatStats/CriticalChance/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("6_alsmx")
+
+[node name="Label" type="Label" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/CatStats/CriticalChance/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
+theme_override_fonts/font = ExtResource("5_64t0c")
+theme_override_font_sizes/font_size = 16
+text = "Chance de Ataque Crítico"
+vertical_alignment = 1
+
+[node name="Number" type="Label" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/CatStats/CriticalChance"]
+custom_minimum_size = Vector2(40, 16)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("4_w0j8i")
+theme_override_font_sizes/font_size = 11
+text = "000.0k"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="SlimeRelation" type="VBoxContainer" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="CatName" type="Label" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("4_w0j8i")
+theme_override_font_sizes/font_size = 11
+text = "Especialidades"
+
+[node name="HFlowContainer" type="HFlowContainer" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation"]
+layout_mode = 2
+theme_override_constants/v_separation = 8
+last_wrap_alignment = 1
+
+[node name="Papel" type="HBoxContainer" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect2" type="TextureRect" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer/Papel"]
+layout_mode = 2
+texture = ExtResource("12_vo36s")
+
+[node name="TextureRect" type="TextureRect" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer/Papel"]
+layout_mode = 2
+texture = ExtResource("8_ue7xy")
+
+[node name="Label" type="Label" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer/Papel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
+theme_override_fonts/font = ExtResource("5_64t0c")
+theme_override_font_sizes/font_size = 16
+text = "Papel"
+vertical_alignment = 1
+
+[node name="Chiclete" type="HBoxContainer" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect2" type="TextureRect" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer/Chiclete"]
+layout_mode = 2
+texture = ExtResource("12_vo36s")
+
+[node name="TextureRect" type="TextureRect" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer/Chiclete"]
+layout_mode = 2
+texture = ExtResource("8_ue7xy")
+
+[node name="Label" type="Label" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer/Chiclete"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
+theme_override_fonts/font = ExtResource("5_64t0c")
+theme_override_font_sizes/font_size = 16
+text = "Chiclete"
+vertical_alignment = 1
+
+[node name="Pilha" type="HBoxContainer" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect2" type="TextureRect" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer/Pilha"]
+layout_mode = 2
+texture = ExtResource("12_vo36s")
+
+[node name="TextureRect" type="TextureRect" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer/Pilha"]
+layout_mode = 2
+texture = ExtResource("8_ue7xy")
+
+[node name="Label" type="Label" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer/Pilha"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
+theme_override_fonts/font = ExtResource("5_64t0c")
+theme_override_font_sizes/font_size = 16
+text = "Pilha"
+vertical_alignment = 1
+
+[node name="Metal" type="HBoxContainer" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect2" type="TextureRect" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer/Metal"]
+layout_mode = 2
+texture = ExtResource("14_dlrcu")
+
+[node name="TextureRect" type="TextureRect" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer/Metal"]
+layout_mode = 2
+texture = ExtResource("8_ue7xy")
+
+[node name="Label" type="Label" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer/Metal"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
+theme_override_fonts/font = ExtResource("5_64t0c")
+theme_override_font_sizes/font_size = 16
+text = "Metal"
+vertical_alignment = 1
+
+[node name="Plastico" type="HBoxContainer" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect2" type="TextureRect" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer/Plastico"]
+layout_mode = 2
+texture = ExtResource("14_dlrcu")
+
+[node name="TextureRect" type="TextureRect" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer/Plastico"]
+layout_mode = 2
+texture = ExtResource("8_ue7xy")
+
+[node name="Label" type="Label" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer/Plastico"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
+theme_override_fonts/font = ExtResource("5_64t0c")
+theme_override_font_sizes/font_size = 16
+text = "Plástico"
+vertical_alignment = 1
+
+[node name="Radioativos" type="HBoxContainer" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect2" type="TextureRect" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer/Radioativos"]
+layout_mode = 2
+texture = ExtResource("14_dlrcu")
+
+[node name="TextureRect" type="TextureRect" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer/Radioativos"]
+layout_mode = 2
+texture = ExtResource("8_ue7xy")
+
+[node name="Label" type="Label" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer/Radioativos"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
+theme_override_fonts/font = ExtResource("5_64t0c")
+theme_override_font_sizes/font_size = 16
+text = "Radioativos"
+vertical_alignment = 1
+
+[node name="Pneu" type="HBoxContainer" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect2" type="TextureRect" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer/Pneu"]
+layout_mode = 2
+texture = ExtResource("14_dlrcu")
+
+[node name="TextureRect" type="TextureRect" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer/Pneu"]
+layout_mode = 2
+texture = ExtResource("8_ue7xy")
+
+[node name="Label" type="Label" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer/SlimeRelation/HFlowContainer/Pneu"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
+theme_override_fonts/font = ExtResource("5_64t0c")
+theme_override_font_sizes/font_size = 16
+text = "Pneu"
+vertical_alignment = 1

@@ -662,11 +662,8 @@ func _on_cat_details_pressed():
 	placeholder_show_cat_details(selected_cat_type)
 
 func placeholder_show_cat_details(cat_type: String):
-	# Função placeholder - você pode implementar a lógica específica depois
-	print("PLACEHOLDER: Abrindo detalhes para ", cat_type)
-	# Exemplo de como poderia ser implementado:
-	# var details_scene = preload("res://Scenes/UIScenes/CatDetails.tscn")
-	# var details_instance = details_scene.instantiate()
-	# get_parent().get_parent().get_parent().add_child(details_instance)
-	# details_instance.setup_cat_details(GameData.cat_data[cat_type])
-	# get_tree().paused = true
+	var details_scene = preload("res://Scenes/Cats/CatDetails.tscn")
+	var details_instance = details_scene.instantiate()
+	get_parent().get_parent().get_parent().add_child(details_instance)
+	details_instance.setup_cat_details(cat_type)
+	get_tree().paused = true
