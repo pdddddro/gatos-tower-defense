@@ -41,7 +41,7 @@ var cat_data = { ## "Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 		"cost": 200,
 		"critical_chance": 0,
 		"target_types": ["Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo", "Papel", "Radioativo", "BossPneu"],
-		"description": "texto"
+		"description": "Essa tela está em andamento"
 	},
 	
 	"Pele": { ## Apesar de afiada, as garras de Pelé não conseguem destruir o Slime Metal
@@ -53,7 +53,7 @@ var cat_data = { ## "Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 		"cost": 250,
 		"critical_chance": 0,
 		"target_types": ["Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo", "Papel", "Radioativo", "BossPneu"],
-		"description": "texto"
+		"description": "Essa tela está em andamento"
 	},
 	
 	"Nino": { ## Nino não consegue ver o slime de plástico com um olho só por conta da sua trasparência
@@ -65,7 +65,7 @@ var cat_data = { ## "Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 		"cost": 250,
 		"critical_chance": 0,
 		"target_types": ["Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo", "Papel", "Radioativo", "BossPneu"],
-		"description": "texto"
+		"description": "Essa tela está em andamento"
 	},
 	
 	"Cartolina": { ## Cartolina não bate no slime de chiclete, seria horrivel ter chiclete em seus pelos
@@ -77,7 +77,7 @@ var cat_data = { ## "Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 		"cost": 200,
 		"critical_chance": 0,
 		"target_types": ["Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo", "Papel", "Radioativo", "BossPneu"],
-		"description": "texto"
+		"description": "Essa tela está em andamento"
 	},
 	
 	"Nut": { ## Os novelos de lã de nut não passam de carinhos no slime metal, então ele nem gasta sua lã com ele
@@ -89,7 +89,7 @@ var cat_data = { ## "Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 		"cost": 250,
 		"critical_chance": 0,
 		"target_types": ["Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo", "Papel", "Radioativo", "BossPneu"],
-		"description": "texto"
+		"description": "Essa tela está em andamento"
 	}
 }
 

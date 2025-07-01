@@ -617,9 +617,20 @@ func enable_cat_shop_buttons():
 func _on_shop_cat_selected(cat_button: TextureButton):
 	var cat_type = cat_button.name
 	
+	# Force o reset de hover em todos os botões primeiro (importante para mobile)
+	for child in cat_list.get_children():
+		if child is TextureButton and child != cat_button:
+			# Remove hover de outros botões
+			child.texture_hover = child.texture_normal
+			# Força reset da textura atual
+			if child.has_meta("normal_texture"):
+				child.texture_normal = child.get_meta("normal_texture")
+	
 	# Se o gato clicado já está selecionado, desseleciona
 	if selected_shop_cat == cat_button:
 		cat_button.texture_normal = cat_button.get_meta("normal_texture") if cat_button.has_meta("normal_texture") else cat_button.texture_normal
+		# Remove hover também
+		cat_button.texture_hover = cat_button.texture_normal
 		selected_shop_cat = null
 		selected_cat_type = ""
 		disable_cat_shop_buttons()
@@ -627,7 +638,9 @@ func _on_shop_cat_selected(cat_button: TextureButton):
 	else:
 		# Desmarca o gato anterior, se houver
 		if selected_shop_cat and is_instance_valid(selected_shop_cat):
-			selected_shop_cat.texture_normal = selected_shop_cat.get_meta("normal_texture") if selected_shop_cat.has_meta("normal_texture") else selected_shop_cat.texture_normal
+			var old_normal = selected_shop_cat.get_meta("normal_texture") if selected_shop_cat.has_meta("normal_texture") else selected_shop_cat.texture_normal
+			selected_shop_cat.texture_normal = old_normal
+			selected_shop_cat.texture_hover = old_normal
 		
 		# Salva a textura normal se ainda não foi salva
 		if not cat_button.has_meta("normal_texture"):
@@ -637,6 +650,8 @@ func _on_shop_cat_selected(cat_button: TextureButton):
 		selected_shop_cat = cat_button
 		selected_cat_type = cat_type
 		selected_shop_cat.texture_normal = selected_shop_cat.texture_pressed
+		# Define hover como pressed também para evitar conflitos
+		selected_shop_cat.texture_hover = selected_shop_cat.texture_pressed
 		enable_cat_shop_buttons()
 		print("Gato da loja selecionado: ", cat_type)
 
