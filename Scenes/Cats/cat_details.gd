@@ -63,4 +63,5 @@ func update_slime_relation(cat_type):
 
 
 func _on_close_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().paused = false
+	queue_free()

@@ -32,6 +32,8 @@ var card_detail_scene = preload("res://Scenes/UIScenes/CardDetail.tscn")
 
 @onready var sell_cat_button = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/Cat/Sell
 
+@onready var cats_control = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatsControl
+
 ## Nova seleção e compra de gatos
 var selected_shop_cat: TextureButton = null
 var selected_cat_type: String = ""
@@ -93,6 +95,7 @@ func _on_cat_shop_pressed() -> void:
 	cards_control.visible = false
 	cat_info.visible = false
 	texture_rect.visible = true
+	cats_control.visible = true
 	
 	var game_scene = get_tree().get_first_node_in_group("game_scene")
 	if game_scene:
@@ -113,6 +116,7 @@ func _on_cat_shop_pressed() -> void:
 func _on_cards_pressed() -> void:
 	cat_list.visible = false
 	cat_info.visible = false
+	cats_control.visible = false
 	texture_rect.visible = true
 	
 	if current_cat_reference:
@@ -140,6 +144,7 @@ func open_cat_info():
 	cards_control.visible = false
 	texture_rect.visible = false
 	cat_info.visible = true
+	cats_control.visible = false
 	open_container()
 	
 ## cat_data

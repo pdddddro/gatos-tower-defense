@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://cun5xvixbvcbc" path="res://Assets/Icons/X-ICON.png" id="14_dlrcu"]
 
 [node name="CatDetails" type="Control"]
+process_mode = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

@@ -19,7 +19,7 @@ var build_tile
 ## Building Functions
 var drag_mode = false
 var drag_start_pos = Vector2.ZERO
-var drag_threshold = 30  # pixels para considerar arrasto
+var drag_threshold = 5  # pixels para considerar arrasto
 
 ## Card Drag and Drop
 var card_drag_mode = false
@@ -172,19 +172,46 @@ func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
-				# Verifica clique nos botões de construção
+				# Armazena posição inicial para drag
+				drag_start_pos = event.position
+				drag_mode = false
+				
+				# Verifica se clicou em algum botão de construção
+				var clicked_button = false
 				for button in get_tree().get_nodes_in_group("build_buttons"):
 					if button.get_global_rect().has_point(event.global_position):
 						initiate_build_mode(button.get_name())
-						drag_start_pos = event.position
-						drag_mode = false  # Resetar estado de arrasto
+						clicked_button = true
 						break
+				
+				# Se não clicou em botão e está em build_mode, prepara para drag
+				if not clicked_button and build_mode:
+					drag_mode = false # Será ativado no motion se mover o suficiente
 			else:
-				if drag_mode:  # Só constrói se houve arrasto
-					verify_and_build()
-
+				# Mouse released
 				if build_mode:
+					if drag_mode:
+						# Só constrói se houve arrasto
+						verify_and_build()
 					cancel_build_mode()
+				
+				# Reset drag state
+				drag_mode = false
+	
+	elif event is InputEventMouseMotion:
+		if build_mode:
+			# Atualiza preview durante movimento
+			update_cat_preview()
+			
+			# Ativa modo drag se mover além do threshold
+			if not drag_mode and event.position.distance_to(drag_start_pos) > drag_threshold:
+				drag_mode = true
+				print("Drag mode ativado!")
+	
+	# Cancela drag de carta com clique direito
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
+		if card_drag_mode:
+			cancel_card_drag_mode()
 
 	elif event is InputEventMouseMotion and build_mode:
 		# Atualiza preview durante arrasto
