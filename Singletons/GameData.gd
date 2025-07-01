@@ -599,7 +599,7 @@ func save_game_data():
 			"tutorial_completed": tutorial_completed,
 			"music_volume": music_volume,
 			"sfx_volume": sfx_volume,
-			"has_won_at_least_once": has_won_at_least_once  # ADICIONE ESTA LINHA
+			"has_won_at_least_once": has_won_at_least_once
 		}
 		file.store_string(JSON.stringify(save_data))
 		file.close()
