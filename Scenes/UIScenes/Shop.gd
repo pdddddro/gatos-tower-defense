@@ -197,31 +197,25 @@ func format_number_k(value: float) -> String:
 		return str(int(value))
 
 func update_cat_shop_prices():
-	# Acessa o CatList através do caminho correto da estrutura
 	var cat_list_node = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList
-	
-	# Para cada gato na loja
 	for child in cat_list_node.get_children():
-		# Verifica se tem a estrutura VBoxContainer/HBoxContainer/CatPrice
 		var vbox = child.get_node_or_null("VBoxContainer")
 		if vbox:
 			var hbox = vbox.get_node_or_null("HBoxContainer")
 			if hbox:
 				var price_label = hbox.get_node_or_null("CatPrice")
 				if price_label:
-					# Usa o nome do nó como tipo do gato
 					var cat_type = child.name
 					if GameData.cat_data.has(cat_type):
-						price_label.text = str(GameData.cat_data[cat_type]["cost"])
-						print("Preço atualizado para ", cat_type, ": ", GameData.cat_data[cat_type]["cost"])
-					else:
-						print("ERRO: Gato não encontrado no GameData: ", cat_type)
-				else:
-					print("ERRO: CatPrice não encontrado para: ", child.name)
-			else:
-				print("ERRO: HBoxContainer não encontrado para: ", child.name)
-		else:
-			print("ERRO: VBoxContainer não encontrado para: ", child.name)
+						var cat_cost = GameData.cat_data[cat_type]["cost"]
+						price_label.text = str(cat_cost)
+						# Desativa botão se não tiver dinheiro
+						child.disabled = GameData.fish_quantity < cat_cost
+						# Feedback visual
+						if child.disabled:
+							child.modulate = Color("d0ab89")
+						else:
+							child.modulate = Color.WHITE
 
 ### Cat Cards
 @onready var card_slot_1 = $MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/CatInfo/TextureRect/MarginContainer/Info/EquippedCards/Cards/Card1

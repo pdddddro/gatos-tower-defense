@@ -206,6 +206,7 @@ func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 		if card_drag_mode:
 			cancel_card_drag_mode()
+			
 		elif build_mode:
 			cancel_build_mode()
 
@@ -286,7 +287,12 @@ func verify_and_build():
 			
 			GameData.money_spent += cat_cost
 			GameData.number_of_cats += 1
-		
+			
+			if shop and shop.has_method("update_cat_shop_prices"):
+				shop.update_cat_shop_prices()
+			if shop and shop.has_method("setup_cat_shop_buttons"):
+				shop.setup_cat_shop_buttons()
+			
 		cancel_build_mode()
 		
 ## Wave Functions e TextBox
