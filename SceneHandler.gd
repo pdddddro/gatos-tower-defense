@@ -32,54 +32,8 @@ func on_new_game_pressed():
 	add_child(game_scene)
 	get_tree().paused = false
 	game_scene.connect("game_finished", self.unload_game)
-	
-	# Verifica se deve mostrar o tutorial automaticamente
-	if not GameData.tutorial_completed:
-		show_tutorial_overlay(game_scene, false) # false = automático
 		
 	Analytics.add_event("Jogos Iniciados")
-
-func show_tutorial_overlay(game_scene, is_manual: bool = false):
-	# Carrega e instancia a cena de tutorial
-	var tutorial_scene = load("res://Scenes/UIScenes/Tutorial/tutorial.tscn").instantiate()
-	tutorial_scene.name = "TutorialOverlay"
-	
-	# Adiciona como overlay na UI do jogo
-	var ui_node = game_scene.get_node("UI")
-	ui_node.add_child(tutorial_scene)
-	
-	# Define z_index alto para ficar por cima
-	tutorial_scene.z_index = 1000
-	
-	# Passa informação se é manual para o tutorial
-	if tutorial_scene.has_method("set_manual_mode"):
-		tutorial_scene.set_manual_mode(is_manual)
-	
-	# Conecta sinais do tutorial se existirem
-	if tutorial_scene.has_signal("tutorial_completed"):
-		tutorial_scene.connect("tutorial_completed", _on_tutorial_completed.bind(is_manual))
-	if tutorial_scene.has_signal("tutorial_skipped"):
-		tutorial_scene.connect("tutorial_skipped", _on_tutorial_skipped.bind(is_manual))
-		Analytics.add_event("Tutorial Pulado")
-	
-	print("Tutorial overlay adicionado - Manual: ", is_manual)
-
-func _on_tutorial_completed(is_manual: bool = false):
-	if not is_manual:
-		GameData.mark_tutorial_completed()
-	print("Tutorial finalizado - Manual: ", is_manual)
-
-func _on_tutorial_skipped(is_manual: bool = false):
-	if not is_manual:
-		GameData.mark_tutorial_completed()
-	print("Tutorial pulado - Manual: ", is_manual)
-
-func show_tutorial_from_game():
-	var game_scene = get_node_or_null("GameScene")
-	if game_scene:
-		show_tutorial_overlay(game_scene, true) # true = manual
-	else:
-		print("GameScene não encontrada para mostrar tutorial")
 
 func on_about_pressed():
 	var about_scene = load("res://Scenes/MainScenes/About.tscn").instantiate()

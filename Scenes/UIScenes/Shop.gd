@@ -90,6 +90,18 @@ func _on_close_pressed():
 signal cat_shop_opened
 
 func _on_cat_shop_pressed() -> void:
+	if GameData.tutorial_active:
+		var current_data = GameData.get_current_tutorial_data()
+		var required_action = current_data.get("required_action", "")
+		
+		# Se tutorial requer colocar gato, PERMITE abrir loja de gatos
+		if required_action == "place_cat":
+			# Loja de gatos liberada durante tutorial_2
+			pass
+		elif required_action != "" and required_action != "place_cat":
+			print("Loja de gatos bloqueada pelo tutorial")
+			return
+	
 	cat_list.visible = true
 	card_list.visible = false
 	cards_control.visible = false
@@ -114,6 +126,18 @@ func _on_cat_shop_pressed() -> void:
 		open_container()
 
 func _on_cards_pressed() -> void:
+	if GameData.tutorial_active:
+		var current_data = GameData.get_current_tutorial_data()
+		var required_action = current_data.get("required_action", "")
+		
+		# Se tutorial requer colocar gato, PERMITE abrir loja de gatos
+		if required_action == "equip_card":
+			# Loja de gatos liberada durante tutorial_2
+			pass
+		elif required_action != "" and required_action != "equip_card":
+			print("Loja de cartas bloqueada pelo tutorial")
+			return
+			
 	cat_list.visible = false
 	cat_info.visible = false
 	cats_control.visible = false
@@ -121,15 +145,12 @@ func _on_cards_pressed() -> void:
 	
 	if current_cat_reference:
 		current_cat_reference.hide_range()
-
 			
 	card_list.visible = true
 	cards_control.visible = true
 	
 	if open == false:
 		open_container()
-		
-
 		
 
 func open_container():

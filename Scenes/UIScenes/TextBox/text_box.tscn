@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://lhinuy75rcjw"]
+[gd_scene load_steps=12 format=3 uid="uid://lhinuy75rcjw"]
 
 [ext_resource type="Texture2D" uid="uid://cb11eet122olt" path="res://Assets/UI/TextBox/TextBoxBackground.png" id="1_hvwag"]
 [ext_resource type="Script" uid="uid://2o4s5huofeat" path="res://Scenes/UIScenes/TextBox/text_box.gd" id="1_iuwvp"]
@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://bgba1jqqv4rpe" path="res://Assets/Icons/Close.png" id="2_y10mh"]
 [ext_resource type="Texture2D" uid="uid://d0r1ny1eiup5u" path="res://Assets/IDV/CatLogo.png" id="4_g70id"]
 [ext_resource type="FontFile" uid="uid://dypca4yn0mcqr" path="res://Assets/Fonts/retro_gaming/Retro Gaming.ttf" id="4_y8pgx"]
+[ext_resource type="Texture2D" uid="uid://baepjslnydqim" path="res://Assets/UI/Buttons/botao_principal_padrao.png" id="6_wx58d"]
+[ext_resource type="Texture2D" uid="uid://mx3dyc0tnke" path="res://Assets/UI/Buttons/botao_principal_hover.png" id="7_lvhx4"]
+[ext_resource type="Texture2D" uid="uid://cdunclj7frjlu" path="res://Assets/UI/Buttons/botao_disabled.png" id="8_iw8bl"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y8pgx"]
 content_margin_left = 0.0
@@ -80,9 +83,13 @@ theme_override_constants/margin_bottom = 8
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VBoxContainer/TextBox/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 2
+theme_override_constants/separation = 8
 
-[node name="Title" type="RichTextLabel" parent="VBoxContainer/VBoxContainer/TextBox/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VBoxContainer/TextBox/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Title" type="RichTextLabel" parent="VBoxContainer/VBoxContainer/TextBox/MarginContainer/VBoxContainer/VBoxContainer"]
 texture_filter = 1
 layout_mode = 2
 size_flags_vertical = 4
@@ -98,7 +105,7 @@ horizontal_alignment = 1
 vertical_alignment = 3
 justification_flags = 161
 
-[node name="Content" type="RichTextLabel" parent="VBoxContainer/VBoxContainer/TextBox/MarginContainer/VBoxContainer"]
+[node name="Content" type="RichTextLabel" parent="VBoxContainer/VBoxContainer/TextBox/MarginContainer/VBoxContainer/VBoxContainer"]
 texture_filter = 1
 layout_mode = 2
 size_flags_vertical = 4
@@ -113,6 +120,31 @@ shortcut_keys_enabled = false
 horizontal_alignment = 1
 vertical_alignment = 3
 justification_flags = 161
+
+[node name="Next" type="TextureButton" parent="VBoxContainer/VBoxContainer/TextBox/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("6_wx58d")
+texture_hover = ExtResource("7_lvhx4")
+texture_disabled = ExtResource("8_iw8bl")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/TextBox/MarginContainer/VBoxContainer/Next"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.0138108, 0.2322, 0.0459039, 1)
+theme_override_fonts/font = ExtResource("4_y8pgx")
+theme_override_font_sizes/font_size = 11
+text = "Próximo"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Tail" type="TextureRect" parent="VBoxContainer"]
 layout_mode = 2

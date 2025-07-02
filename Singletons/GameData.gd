@@ -104,7 +104,6 @@ func update_fish_quantity(amount: int):
 	emit_signal("fish_quantity_updated", fish_quantity)
 	print("Moeda total agora: ", fish_quantity)
 	
-	var game_scene = get_tree().get_first_node_in_group("game_scene")
 
 ## Enemies
 var enemies_data = {
@@ -492,9 +491,9 @@ func _ready():
 
 ## Round Rarity
 var card_rarity_chances = {
-	"basic": 60,
-	"medium": 30, 
-	"rare": 10
+	"basic": 100,
+	"medium": 0, 
+	"rare": 0
 }
 
 ## Rarity Table
@@ -597,9 +596,9 @@ func save_game_data():
 	if file:
 		var save_data = {
 			"tutorial_completed": tutorial_completed,
+			"has_won_once": has_won_once,
 			"music_volume": music_volume,
 			"sfx_volume": sfx_volume,
-			"has_won_at_least_once": has_won_at_least_once
 		}
 		file.store_string(JSON.stringify(save_data))
 		file.close()
@@ -620,15 +619,11 @@ func load_game_data():
 			if parse_result == OK:
 				var save_data = json.data
 				tutorial_completed = save_data.get("tutorial_completed", false)
+				has_won_once = save_data.get("has_won_once", false)
 				music_volume = save_data.get("music_volume", 1.0)
 				sfx_volume = save_data.get("sfx_volume", 1.0)
-				has_won_at_least_once = save_data.get("has_won_at_least_once", false)  # ADICIONE ESTA LINHA
-				
-				# Aplicar volumes salvos APENAS se os buses existirem
 				call_deferred("apply_saved_volumes")
-				print("Dados carregados: tutorial_completed = ", tutorial_completed)
-				print("has_won_at_least_once = ", has_won_at_least_once)  # ADICIONE ESTA LINHA
-				print("Volumes carregados - Música: ", music_volume, " SFX: ", sfx_volume)
+				print("Dados carregados: tutorial_completed = ", tutorial_completed, ", has_won_once = ", has_won_once)
 			else:
 				print("Erro ao fazer parse do JSON")
 		else:
@@ -662,36 +657,23 @@ func update_music_volume_from_ui(volume_percentage: float):
 	save_game_data()
 
 # Função para marcar tutorial como completo
-func mark_tutorial_completed():
-	tutorial_completed = true
+func mark_victory():
+	has_won_once = true
+	print("Primeira vitória alcançada!")
 	save_game_data()
 
 func reset_all_game_data():
-	# Reseta variáveis de jogo
 	fish_quantity = default_fish_quantity
 	health_quantity = default_health_quantity
 	current_round = 1
-	
-	# Reseta estatísticas
 	reset_statistics()
-	
-	# Reseta coleção de cartas
 	card_collection.clear()
-	
-	# Reseta flags de progresso
 	tutorial_completed = false
-	has_won_at_least_once = false
-	
-	# Reseta volumes para padrão
+	has_won_once = false
 	music_volume = 1.0
 	sfx_volume = 1.0
-	
-	# Remove arquivo de save
 	delete_save_file()
-	
-	# Salva o estado resetado
 	save_game_data()
-	
 	print("Todos os dados do jogo foram resetados!")
 
 func delete_save_file():
@@ -1410,146 +1392,190 @@ var waves = {
 		}
 	},
 }
+
 var random_phrases = {
 	"phrase1": {
 		"title": "1 milhão de sacolas por minuto. Socorro!",
-		"message": "É isso mesmo. E muitas vão parar em rios e oceanos. Tá na hora de mudar isso aí."
+		"message": "É isso mesmo. E muitas vão parar em rios e oceanos. Tá na hora de mudar isso aí.",
+		"show_close": true
 	},
 	"phrase2": {
 		"title": "400 anos de preguiça? Nem eu aguento!",
-		"message": "Um pedaço de plástico pode demorar até 400 anos pra desaparecer da natureza. Nem eu, com sete vidas, esperaria tudo isso."
+		"message": "Um pedaço de plástico pode demorar até 400 anos pra desaparecer da natureza. Nem eu, com sete vidas, esperaria tudo isso.",
+		"show_close": true
 	},
 	"phrase3": {
 		"title": "Quer reciclar? Dá um banho primeiro.",
-		"message": "Tampinhas e potes limpos podem ser reciclados e reaproveitados. Mas sujos? Acabam indo pro lixo comum e viram slime fedido."
+		"message": "Tampinhas e potes limpos podem ser reciclados e reaproveitados. Mas sujos? Acabam indo pro lixo comum e viram slime fedido.",
+		"show_close": true
 	},
 	"phrase4": {
 		"title": "Plástico no chão não vira brinquedo",
-		"message": "Se for pro lugar certo, o plástico vira coisa útil. No chão, vira vergonha e sujeira."
+		"message": "Se for pro lugar certo, o plástico vira coisa útil. No chão, vira vergonha e sujeira.",
+		"show_close": true
 	},
 	"phrase5": {
 		"title": "Uma latinha, três horas de sofá!", ## Arrumar
-		"message": "Reciclar uma lata de alumínio economiza energia suficiente para manter uma TV ligada por 3 horas!"
+		"message": "Reciclar uma lata de alumínio economiza energia suficiente para manter uma TV ligada por 3 horas!",
+		"show_close": true
 	},
 	"phrase6": {
 		"title": "A latinha mais rápida do Nordeste",
-		"message": "Reciclando, uma latinha vira outra em até 60 dias. Sem reciclagem, ela só enferruja e atrapalha."
+		"message": "Reciclando, uma latinha vira outra em até 60 dias. Sem reciclagem, ela só enferruja e atrapalha.",
+		"show_close": true
 	},
 	"phrase7": {
 		"title": "Papel bom é papel com sete vidas",
-		"message": "O papel pode ser reciclado até 7 vezes, é quase um gato de papel!"
+		"message": "O papel pode ser reciclado até 7 vezes, é quase um gato de papel!",
+		"show_close": true
 	},
 	"phrase8": {
 		"title": "Árvores em pé, gatinhos felizes",
-		"message": "Reciclar papel evita o corte de árvores. E eu amo árvores. Especialmente pra subir nelas."
+		"message": "Reciclar papel evita o corte de árvores. E eu amo árvores. Especialmente pra subir nelas.",
+		"show_close": true
 	},
 	"phrase9": {
 		"title": "Sete anos de azar e ainda machuca",
-		"message": "Vidro quebrado no lixo comum é perigoso, depois alguem se machuca querem reclamar comigo por dar azar!"
+		"message": "Vidro quebrado no lixo comum é perigoso, depois alguem se machuca querem reclamar comigo por dar azar!",
+		"show_close": true
 	},
 	"phrase10": {
 		"title": "As vezes ",
-		"message": "Vidro quebrado no lixo comum é perigoso, depois alguem se machuca querem reclamar comigo por dar azar!"
+		"message": "Vidro quebrado no lixo comum é perigoso, depois alguem se machuca querem reclamar comigo por dar azar!",
+		"show_close": true
 	},
 	"phrase11": {
 		"title": "O lixo não some, ele só troca de cenário",
-		"message": "Cada coisa no lugar certo evita que o lixo vá parar no lugar errado. Tipo dentro de um peixinho"
+		"message": "Cada coisa no lugar certo evita que o lixo vá parar no lugar errado. Tipo dentro de um peixinho",
+		"show_close": true
 	},
 	"phrase12": {
 		"title": "Reciclar é evoluir, tipo Pokémon!",
-		"message": "Quando recicla, o material pode virar algo novo. Evolução pura, sem precisar de pedra da lua."
+		"message": "Quando recicla, o material pode virar algo novo. Evolução pura, sem precisar de pedra da lua.",
+		"show_close": true
 	}
 }
 
-# Função para obter uma frase aleatória
-func get_random_phrase() -> Dictionary:
-	var phrase_keys = random_phrases.keys()
-	var random_key = phrase_keys[randi() % phrase_keys.size()]
-	return random_phrases[random_key]
+var has_won_once: bool = false
 
-var has_won_at_least_once = false
+var tutorial_data = {
+	"tutorial_1": {
+		"title": "Bem-vindos à defesa felina!",
+		"message": "Os slimes poluentes estão vindo pela estrada à direita! Prepare-se para defender nosso planeta!",
+		"type": "info",
+		"required_action": "start",
+		"button_text": "E o que eu faço?",
+		"show_close": false,
+		"next_step": "tutorial_2"
+	},
+	"tutorial_2": {
+		"title": "Posicione seus defensores!",
+		"message": "Clique no ícone do gato abaixo e posicione um gatinho no campo perto da estrada para defender contra os slimes!",
+		"type": "action_required",
+		"required_action": "place_cat",
+		"button_text": "Certo!",
+		"show_close": false,
+		"next_step": "tutorial_3"
+	},
+	"tutorial_3": {
+		"title": "Fortaleça seus guerreiros!",
+		"message": "Perfeito! Agora clique no ícone das cartas, compre uma carta e equipe no seu gato arrastando para torná-lo mais forte!",
+		"type": "action_required",
+		"required_action": "equip_card",
+		"button_text": "Beleza!",
+		"show_close": false,
+		"next_step": "tutorial_4"
+	},
+	"tutorial_4": {
+		"title": "Inicie a batalha!",
+		"message": "Perfeito! Agora clique no botão PLAY no canto superior direito para começar a primeira onda de inimigos!",
+		"type": "action_required",
+		"required_action": "start_wave",
+		"button_text": "Vamos lá!",
+		"show_close": false,
+		"next_step": "tutorial_complete"
+	}
+}
+
+# Adicione estas variáveis de controle do tutorial:
+var tutorial_active: bool = false
+var current_tutorial_step: String = ""
+var tutorial_step_completed: bool = false
+
+func should_start_tutorial() -> bool:
+	return not tutorial_completed and not has_won_once
 
 func should_show_textbox(wave_number: int) -> bool:
-	# Rodada 1 sempre mostra frase (boas-vindas ou tutorial)
-	if wave_number == 1:
-		return true
+	# Se está no tutorial, não mostra frases das waves
+	if tutorial_active:
+		return false
 	
-	# Se nunca ganhou, usa o sistema original de tutorial
-	if not has_won_at_least_once:
-		var wave_key = "wave" + str(wave_number)
-		var full_wave_data = waves.get(wave_key, {})
-		return full_wave_data.has("text_box") and full_wave_data.text_box.show
+	# Se o jogador nunca venceu, não mostra frases aleatórias
+	if not has_won_once:
+		return false
 	
-	# Se já ganhou pelo menos 1x, mostra frases aleatórias a cada 5 rodadas
-	return wave_number % 5 == 0
+	var wave_key = "wave" + str(wave_number)
+	var wave_data = waves.get(wave_key, {})
+	return wave_data.has("text_box") and wave_data["text_box"].get("show", false)
 
-# Função para marcar que o jogador ganhou
-func mark_victory():
-	has_won_at_least_once = true
+# Adicione estas funções:
+func start_tutorial():
+	tutorial_active = true
+	current_tutorial_step = "tutorial_1"
+	tutorial_step_completed = false
+
+func get_current_tutorial_data() -> Dictionary:
+	return tutorial_data.get(current_tutorial_step, {})
+
+func advance_tutorial():
+	var current_data = get_current_tutorial_data()
+	var next_step = current_data.get("next_step", "")
+	
+	if next_step == "tutorial_complete":
+		complete_tutorial()
+	else:
+		current_tutorial_step = next_step
+		tutorial_step_completed = false
+
+func complete_tutorial_action(action: String):
+	var current_data = get_current_tutorial_data()
+	if current_data.get("required_action", "") == action:
+		tutorial_step_completed = true
+
+func complete_tutorial():
+	tutorial_active = false
+	tutorial_completed = true
 	save_game_data()
 
-# Função para determinar qual tipo de frase mostrar
-func get_textbox_data(wave_number: int) -> Dictionary:
-	# Rodada 1: boas-vindas se já ganhou pelo menos 1x, senão tutorial original
-	if wave_number == 1:
-		if has_won_at_least_once:
-			return get_welcome_phrase()
-		else:
-			# Retorna a frase original do tutorial da wave1
-			var wave_data = waves.get("wave1", {})
-			if wave_data.has("text_box"):
-				return wave_data.text_box
+func is_tutorial_blocking_action(action: String) -> bool:
+	if not tutorial_active:
+		return false
 	
-	# Para outras waves: só mostra frases padrão se nunca ganhou
-	if not has_won_at_least_once:
-		var wave_key = "wave" + str(wave_number)
-		var wave_data = waves.get(wave_key, {})
-		if wave_data.has("text_box"):
-			return wave_data.text_box
-	else:
-		# Se já ganhou pelo menos 1x, mostra frases aleatórias a cada 5 rodadas
-		if wave_number % 5 == 0:
-			return get_random_phrase()
+	var current_data = get_current_tutorial_data()
+	var required_action = current_data.get("required_action", "")
+	
+	# Se há uma ação requerida e não é a ação atual, bloqueia
+	if required_action != "" and required_action != action:
+		return true
+	
+	return false
+
+func get_textbox_data(wave_number: int) -> Dictionary:
+	# Se não venceu ainda, retorna vazio
+	if not has_won_once:
+		return {}
+	
+	var wave_key = "wave" + str(wave_number)
+	var wave_data = waves.get(wave_key, {})
+	
+	# Se a wave tem textbox configurado, usa ele
+	if wave_data.has("text_box") and wave_data["text_box"].get("show", false):
+		return wave_data["text_box"]
+	
+	# Senão, usa uma frase aleatória ocasionalmente
+	if randf() < 0.3: # 30% de chance de mostrar frase aleatória
+		var phrase_keys = random_phrases.keys()
+		var random_key = phrase_keys[randi() % phrase_keys.size()]
+		return random_phrases[random_key]
 	
 	return {}
-
-var welcome_phrases = {
-	"welcome1": {
-		"title": "Bem-vindo, Guardião!",
-		"message": "Os gatinhos estão prontos para defender nosso planeta! Prepare-se para uma aventura ecológica!"
-	},
-	"welcome2": {
-		"title": "Missão Iniciada!",
-		"message": "Hora de mostrar para esses slimes poluentes quem manda aqui! Nossos felinos estão ansiosos!"
-	},
-	"welcome3": {
-		"title": "Defesa Ativada!",
-		"message": "O sistema de defesa felino foi ativado! Cada gato tem habilidades únicas para proteger o ambiente!"
-	},
-	"welcome4": {
-		"title": "Eco-Guerreiros!",
-		"message": "Nossos gatinhos eco-guerreiros estão prontos! Juntos vamos limpar este mundo da poluição!"
-	},
-	"welcome5": {
-		"title": "Aventura Sustentável!",
-		"message": "Bem-vindo à maior aventura de sustentabilidade! Cada vitória é um passo para um planeta mais limpo!"
-	},
-	"welcome6": {
-		"title": "Força Felina!",
-		"message": "A força felina está do nosso lado! Prepare-se para enfrentar ondas de desafios ambientais!"
-	},
-	"welcome7": {
-		"title": "Proteção Ambiental!",
-		"message": "Hora de proteger nosso lar! Os gatos sabem exatamente como lidar com invasores indesejados!"
-	},
-	"welcome8": {
-		"title": "Início da Jornada!",
-		"message": "Sua jornada como protetor ambiental começa agora! Confie nos seus companheiros felinos!"
-	}
-}
-
-# Função para obter uma frase de boas-vindas aleatória
-func get_welcome_phrase() -> Dictionary:
-	var phrase_keys = welcome_phrases.keys()
-	var random_key = phrase_keys[randi() % phrase_keys.size()]
-	return welcome_phrases[random_key]

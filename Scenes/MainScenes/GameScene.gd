@@ -59,6 +59,10 @@ func _ready() -> void:
 	
 	get_node("UI/HUD/MarginContainer/WaveContainer/Navegation/Back").pressed.connect(_on_back_pressed)
 	get_node("UI/HUD/MarginContainer/WaveContainer/Navegation/Next").pressed.connect(_on_next_pressed)
+	
+	# Inicia tutorial após 5 segundos se necessário
+	if GameData.should_start_tutorial():
+		call_deferred("start_tutorial_sequence")
 
 func _process(delta):
 	if build_mode:
@@ -153,11 +157,19 @@ func can_apply_card_to_cat(cat_node) -> bool:
 
 func apply_card_to_cat(card_node, target_cat):
 	var card_data = card_node.get_meta("card_data")
-	
 	var success = target_cat.equip_card(card_data)
-	card_node.queue_free()
-	GameData.card_collection.erase(card_data)
-	print("Carta removida do inventário")
+	
+	if success:
+		card_node.queue_free()
+		GameData.card_collection.erase(card_data)
+		
+		# Verifica se é parte do tutorial
+		if GameData.tutorial_active:
+			var current_data = GameData.get_current_tutorial_data()
+			if current_data.get("required_action", "") == "equip_card":
+				GameData.complete_tutorial_action("equip_card")
+				GameData.advance_tutorial()
+				show_tutorial_textbox()
 		
 func cancel_card_drag_mode():
 	card_drag_mode = false
@@ -226,6 +238,8 @@ func update_build_buttons():
 			button.modulate = Color("FFFFFF")
 
 func initiate_build_mode(cat_type):
+	if GameData.is_tutorial_blocking_action("place_cat"):
+		return
 	# Função original mantida
 	print("Building Mode Iniciado")
 	if build_mode:
@@ -292,6 +306,13 @@ func verify_and_build():
 				shop.update_cat_shop_prices()
 			if shop and shop.has_method("setup_cat_shop_buttons"):
 				shop.setup_cat_shop_buttons()
+			
+			if GameData.tutorial_active:
+				var current_data = GameData.get_current_tutorial_data()
+				if current_data.get("required_action", "") == "place_cat":
+					GameData.complete_tutorial_action("place_cat")
+					GameData.advance_tutorial()
+					show_tutorial_textbox()
 			
 		cancel_build_mode()
 		
@@ -386,7 +407,7 @@ func check_wave_end():
 		current_wave += 1
 		WaveCount.text = str(current_wave) + "/" + str(GameData.totalWaveNumber)
 		
-		## Vitória
+		# Vitória
 		if current_wave > GameData.totalWaveNumber and base_health > 0:
 			await get_tree().create_timer(1.0).timeout
 			GameData.mark_victory()
@@ -395,7 +416,6 @@ func check_wave_end():
 		
 		GameData.current_round = current_wave
 		GameData.update_rarity_chances()
-		
 		play_button.texture_normal = play
 		
 		if fast_mode:
@@ -433,13 +453,30 @@ func _on_fish_quantity_updated(new_amount: int):
 var fast_mode = true
 
 func _on_play_pressed() -> void:
+	if GameData.tutorial_active:
+		var current_data = GameData.get_current_tutorial_data()
+		var required_action = current_data.get("required_action", "")
+		
+		# Se tutorial requer iniciar wave, PERMITE clicar no play
+		if required_action == "start_wave":
+			# Play liberado durante tutorial_4
+			pass
+		elif required_action != "" and required_action != "start_wave":
+			print("Botão play bloqueado pelo tutorial")
+			return
+	
 	if build_mode:
 		cancel_build_mode()
 
 	if current_textbox:
 		return
-		
-	# Inicia a wave se nenhuma estiver ativa
+	
+	if GameData.tutorial_active:
+		var current_data = GameData.get_current_tutorial_data()
+		if current_data.get("required_action", "") == "start_wave":
+			GameData.complete_tutorial_action("start_wave")
+			GameData.advance_tutorial()
+	
 	if enemies_in_wave <= 0:
 		print("Iniciando wave " + str(current_wave))
 		start_next_wave()
@@ -506,13 +543,6 @@ func _on_pause_pressed() -> void:
 	pause_instance.z_index = 1000
 	get_tree().paused = true
 
-func show_tutorial_help():
-	var scene_handler = get_node("/root/SceneHandler")
-	if scene_handler:
-		scene_handler.show_tutorial_from_game()
-	else:
-		print("SceneHandler não encontrado")
-
 ## Wave Control
 
 func _on_back_pressed() -> void:
@@ -569,3 +599,47 @@ func _on_question_mark_pressed() -> void:
 	
 	tutorial_instance.z_index = 1000
 	get_tree().paused = true
+
+## Tutorial
+
+func start_tutorial_sequence():
+	GameData.start_tutorial()
+	await get_tree().create_timer(.5).timeout
+	show_tutorial_textbox()
+
+# Modifique a função show_wave_textbox para ser mais genérica:
+func show_tutorial_textbox():
+	var tutorial_data = GameData.get_current_tutorial_data()
+	
+	if tutorial_data.is_empty():
+		return
+	
+	# Remove textbox anterior se existir
+	if current_textbox:
+		current_textbox.queue_free()
+	
+	# Instancia nova textbox
+	current_textbox = textbox_scene.instantiate()
+	get_node("UI").add_child(current_textbox)
+	
+	# Conecta os sinais
+	current_textbox.textbox_opened.connect(_on_textbox_opened)
+	current_textbox.textbox_closed.connect(_on_tutorial_textbox_closed)
+	
+	# Mostra a textbox com os dados do tutorial
+	current_textbox.show_textbox(tutorial_data)
+
+# Nova função para lidar com fechamento do tutorial textbox:
+func _on_tutorial_textbox_closed():
+	current_textbox = null
+	
+	var current_data = GameData.get_current_tutorial_data()
+	var tutorial_type = current_data.get("type", "info")
+	
+	if tutorial_type == "info":
+		# Se é só informação, avança automaticamente
+		GameData.advance_tutorial()
+		show_tutorial_textbox()
+	elif tutorial_type == "action_required":
+		# Se requer ação, espera o jogador fazer a ação
+		pass
