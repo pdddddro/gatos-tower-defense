@@ -41,7 +41,7 @@ var cat_data = { ## "Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 		"cost": 200,
 		"critical_chance": 0,
 		"target_types": ["Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo", "Papel", "Radioativo", "BossPneu"],
-		"description": "Essa tela está em andamento"
+		"description": "Ninguém ignora Chicão. Com seu miado potente e uma carinha meiga, ele exige carinho na base do grito. Os slimes não aguentam!"
 	},
 	
 	"Pele": { ## Apesar de afiada, as garras de Pelé não conseguem destruir o Slime Metal

@@ -206,6 +206,8 @@ func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
 		if card_drag_mode:
 			cancel_card_drag_mode()
+		elif build_mode:
+			cancel_build_mode()
 
 var cat_cost
 
