@@ -453,6 +453,7 @@ func _on_buy_pressed() -> void:
 
 func _on_fish_quantity_updated(new_amount: int):
 	update_buy_button()
+	update_cat_shop_prices()
 
 func update_buy_button():
 	if GameData.fish_quantity >= pack_cost:

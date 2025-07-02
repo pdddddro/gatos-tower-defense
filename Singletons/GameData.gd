@@ -41,7 +41,7 @@ var cat_data = { ## "Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 		"cost": 200,
 		"critical_chance": 0,
 		"target_types": ["Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo", "Papel", "Radioativo", "BossPneu"],
-		"description": "Ninguém ignora Chicão. Com seu miado potente e uma carinha meiga, ele exige carinho na base do grito. Os slimes não aguentam!"
+		"description": "Ninguém ignora Chicão. Com seu miado potente e uma carinha meiga, ele exige carinho na base do grito. Drama é sua linguagem!"
 	},
 	
 	"Pele": { ## Apesar de afiada, as garras de Pelé não conseguem destruir o Slime Metal
@@ -53,7 +53,7 @@ var cat_data = { ## "Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 		"cost": 250,
 		"critical_chance": 0,
 		"target_types": ["Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo", "Papel", "Radioativo", "BossPneu"],
-		"description": "Essa tela está em andamento"
+		"description": "Idoso, elegante e tranquilo. Mas cuidado: por trás da fofura se esconde um guerreiro pronto pra dar patada se mexerem no lugar dele no sofá."
 	},
 	
 	"Nino": { ## Nino não consegue ver o slime de plástico com um olho só por conta da sua trasparência
@@ -65,7 +65,7 @@ var cat_data = { ## "Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 		"cost": 250,
 		"critical_chance": 0,
 		"target_types": ["Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo", "Papel", "Radioativo", "BossPneu"],
-		"description": "Essa tela está em andamento"
+		"description": "Ele só precisa de um olho pra te fulminar com um olhar. Um guerreirinho de bigodes que dispara indignação concentrada em forma de laser felino. "
 	},
 	
 	"Cartolina": { ## Cartolina não bate no slime de chiclete, seria horrivel ter chiclete em seus pelos
@@ -77,7 +77,7 @@ var cat_data = { ## "Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 		"cost": 200,
 		"critical_chance": 0,
 		"target_types": ["Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo", "Papel", "Radioativo", "BossPneu"],
-		"description": "Essa tela está em andamento"
+		"description": "Cartolina foi adotado e podia estar de boa no colo de alguém… mas escolheu voltar. Porque amigos não se deixam sozinhos diante de slimes. Especialmente quando se tem um rabo afiado."
 	},
 	
 	"Nut": { ## Os novelos de lã de nut não passam de carinhos no slime metal, então ele nem gasta sua lã com ele
@@ -89,7 +89,7 @@ var cat_data = { ## "Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 		"cost": 250,
 		"critical_chance": 0,
 		"target_types": ["Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo", "Papel", "Radioativo", "BossPneu"],
-		"description": "Essa tela está em andamento"
+		"description": "Ninguém sabe ao certo quantos anos Nut tem. Alguns dizem que ele já era velho quando os humanos ainda mandavam cartas. Só se sabe de uma coisa: esse ancião ainda sabe usar um novelo como poucos."
 	}
 }
 

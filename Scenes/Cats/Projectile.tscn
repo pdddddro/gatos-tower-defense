@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bnwtcb3cixuh0"]
+[gd_scene load_steps=18 format=3 uid="uid://bnwtcb3cixuh0"]
 
 [ext_resource type="Script" uid="uid://dub7lrxxduh83" path="res://Scenes/Cats/Projectile.gd" id="1_bsn35"]
 [ext_resource type="Texture2D" uid="uid://crcplq7bkvij0" path="res://Assets/Cats/SpriteSheet.png" id="2_qj1g6"]
@@ -30,10 +30,6 @@ region = Rect2(48, 32, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_j3i2x"]
 atlas = ExtResource("3_qj1g6")
 region = Rect2(64, 32, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3mq28"]
-atlas = ExtResource("3_qj1g6")
-region = Rect2(80, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_snxof"]
 atlas = ExtResource("3_qj1g6")
@@ -84,9 +80,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_j3i2x")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3mq28")
 }],
 "loop": false,
 "name": &"Chicao",
@@ -135,7 +128,6 @@ debug_color = Color(0.788516, 0.415031, 0.314463, 0.42)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qmhup")
-animation = &"Nut"
-frame_progress = 0.508561
+animation = &"Chicao"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
