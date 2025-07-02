@@ -94,34 +94,49 @@ func _on_cat_shop_pressed() -> void:
 		var current_data = GameData.get_current_tutorial_data()
 		var required_action = current_data.get("required_action", "")
 		
-		# Se tutorial requer colocar gato, PERMITE abrir loja de gatos
+		# Tutorial 1: Loja de gatos bloqueada
+		if required_action == "start":
+			print("Loja de gatos bloqueada durante tutorial 1")
+			return
+		
+		# Tutorial 2: Loja de gatos liberada
 		if required_action == "place_cat":
 			# Loja de gatos liberada durante tutorial_2
 			pass
+		
+		# Tutorial 3: Loja de gatos bloqueada
+		elif required_action == "equip_card":
+			print("Loja de gatos bloqueada durante tutorial 3")
+			return
+		
+		# Tutorial 4: Loja de gatos bloqueada
+		elif required_action == "start_wave":
+			print("Loja de gatos bloqueada durante tutorial 4")
+			return
 		elif required_action != "" and required_action != "place_cat":
 			print("Loja de gatos bloqueada pelo tutorial")
 			return
-	
+
 	cat_list.visible = true
 	card_list.visible = false
 	cards_control.visible = false
 	cat_info.visible = false
 	texture_rect.visible = true
 	cats_control.visible = true
-	
+
 	var game_scene = get_tree().get_first_node_in_group("game_scene")
 	if game_scene:
 		game_scene.update_build_buttons()
-	
+
 	if current_cat_reference:
 		current_cat_reference.hide_range()
-		
+
 	if !texture_rect:
 		texture_rect.visible = true
-			
+
 	cat_shop_opened.emit()
 	setup_cat_shop_buttons()
-	
+
 	if open == false:
 		open_container()
 
@@ -130,25 +145,40 @@ func _on_cards_pressed() -> void:
 		var current_data = GameData.get_current_tutorial_data()
 		var required_action = current_data.get("required_action", "")
 		
-		# Se tutorial requer colocar gato, PERMITE abrir loja de gatos
+		# Tutorial 1: Loja de cartas bloqueada
+		if required_action == "start":
+			print("Loja de cartas bloqueada durante tutorial 1")
+			return
+		
+		# Tutorial 2: Loja de cartas bloqueada
+		if required_action == "place_cat":
+			print("Loja de cartas bloqueada durante tutorial 2")
+			return
+		
+		# Tutorial 3: Loja de cartas liberada
 		if required_action == "equip_card":
-			# Loja de gatos liberada durante tutorial_2
+			# Loja de cartas liberada durante tutorial_3
 			pass
+		
+		# Tutorial 4: Loja de cartas bloqueada
+		elif required_action == "start_wave":
+			print("Loja de cartas bloqueada durante tutorial 4")
+			return
 		elif required_action != "" and required_action != "equip_card":
 			print("Loja de cartas bloqueada pelo tutorial")
 			return
-			
+
 	cat_list.visible = false
 	cat_info.visible = false
 	cats_control.visible = false
 	texture_rect.visible = true
-	
+
 	if current_cat_reference:
 		current_cat_reference.hide_range()
-			
+
 	card_list.visible = true
 	cards_control.visible = true
-	
+
 	if open == false:
 		open_container()
 		

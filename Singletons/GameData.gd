@@ -659,7 +659,8 @@ func update_music_volume_from_ui(volume_percentage: float):
 # Função para marcar tutorial como completo
 func mark_victory():
 	has_won_once = true
-	print("Primeira vitória alcançada!")
+	tutorial_completed = true  # Agora marca o tutorial como completo
+	print("Primeira vitória alcançada! Tutorial completo.")
 	save_game_data()
 
 func reset_all_game_data():
@@ -1503,22 +1504,19 @@ var current_tutorial_step: String = ""
 var tutorial_step_completed: bool = false
 
 func should_start_tutorial() -> bool:
-	return not tutorial_completed and not has_won_once
+	return not has_won_once
 
 func should_show_textbox(wave_number: int) -> bool:
-	# Se está no tutorial, não mostra frases das waves
 	if tutorial_active:
 		return false
 	
-	# Se o jogador nunca venceu, não mostra frases aleatórias
 	if not has_won_once:
 		return false
 	
 	var wave_key = "wave" + str(wave_number)
 	var wave_data = waves.get(wave_key, {})
 	return wave_data.has("text_box") and wave_data["text_box"].get("show", false)
-
-# Adicione estas funções:
+	
 func start_tutorial():
 	tutorial_active = true
 	current_tutorial_step = "tutorial_1"
@@ -1538,9 +1536,10 @@ func advance_tutorial():
 		tutorial_step_completed = false
 
 func complete_tutorial_action(action: String):
-	var current_data = get_current_tutorial_data()
-	if current_data.get("required_action", "") == action:
-		tutorial_step_completed = true
+	# Não desativar o tutorial aqui, apenas marcar como completo
+	tutorial_step_completed = true
+
+
 
 func complete_tutorial():
 	tutorial_active = false

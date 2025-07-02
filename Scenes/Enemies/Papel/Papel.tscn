@@ -154,12 +154,18 @@ animations = [{
 }]
 
 [node name="Papel" type="PathFollow2D" groups=["enemies"]]
-y_sort_enabled = true
 rotates = false
 loop = false
 script = ExtResource("1_sgw5u")
 
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.341176)
+y_sort_enabled = true
+position = Vector2(0, -11)
+texture = ExtResource("3_k5l4u")
+
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+z_index = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
 position = Vector2(0, 2)
@@ -171,9 +177,3 @@ y_sort_enabled = true
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_nlrk2")
 animation = &"WalkRight"
-
-[node name="Shadow" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.341176)
-y_sort_enabled = true
-position = Vector2(0, -11)
-texture = ExtResource("3_k5l4u")

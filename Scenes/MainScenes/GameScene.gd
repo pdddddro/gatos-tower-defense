@@ -61,7 +61,7 @@ func _ready() -> void:
 	get_node("UI/HUD/MarginContainer/WaveContainer/Navegation/Next").pressed.connect(_on_next_pressed)
 	
 	# Inicia tutorial após 5 segundos se necessário
-	if GameData.should_start_tutorial():
+	if not GameData.has_won_once:
 		call_deferred("start_tutorial_sequence")
 
 func _process(delta):
@@ -168,6 +168,8 @@ func apply_card_to_cat(card_node, target_cat):
 			var current_data = GameData.get_current_tutorial_data()
 			if current_data.get("required_action", "") == "equip_card":
 				GameData.complete_tutorial_action("equip_card")
+				# Aguardar um frame antes de avançar
+				await get_tree().process_frame
 				GameData.advance_tutorial()
 				show_tutorial_textbox()
 		
@@ -311,6 +313,8 @@ func verify_and_build():
 				var current_data = GameData.get_current_tutorial_data()
 				if current_data.get("required_action", "") == "place_cat":
 					GameData.complete_tutorial_action("place_cat")
+					# Aguardar um frame antes de avançar
+					await get_tree().process_frame
 					GameData.advance_tutorial()
 					show_tutorial_textbox()
 			
@@ -452,41 +456,57 @@ func _on_fish_quantity_updated(new_amount: int):
 
 var fast_mode = true
 
+
 func _on_play_pressed() -> void:
 	if GameData.tutorial_active:
 		var current_data = GameData.get_current_tutorial_data()
 		var required_action = current_data.get("required_action", "")
 		
-		# Se tutorial requer iniciar wave, PERMITE clicar no play
+		# Tutorial 1: Play bloqueado
+		if required_action == "start":
+			print("Botão play bloqueado durante tutorial 1")
+			return
+		
+		# Tutorial 2: Play bloqueado
+		if required_action == "place_cat":
+			print("Botão play bloqueado durante tutorial 2")
+			return
+		
+		# Tutorial 3: Play bloqueado
+		if required_action == "equip_card":
+			print("Botão play bloqueado durante tutorial 3")
+			return
+		
+		# Tutorial 4: Play liberado
 		if required_action == "start_wave":
 			# Play liberado durante tutorial_4
 			pass
 		elif required_action != "" and required_action != "start_wave":
 			print("Botão play bloqueado pelo tutorial")
 			return
-	
+
 	if build_mode:
 		cancel_build_mode()
 
 	if current_textbox:
 		return
-	
+
 	if GameData.tutorial_active:
 		var current_data = GameData.get_current_tutorial_data()
 		if current_data.get("required_action", "") == "start_wave":
 			GameData.complete_tutorial_action("start_wave")
+			await get_tree().process_frame
 			GameData.advance_tutorial()
-	
+
 	if enemies_in_wave <= 0:
 		print("Iniciando wave " + str(current_wave))
 		start_next_wave()
 
-# Alterna velocidade e textura
+	# Alterna velocidade e textura
 	if fast_mode:
 		Engine.set_time_scale(1.0)
 		play_button.texture_normal = normal_speed
 		fast_mode = false
-		
 	else:
 		Engine.set_time_scale(2.0)
 		play_button.texture_normal = speed_up
@@ -497,6 +517,33 @@ func _on_play_pressed() -> void:
 var cat_shop_instance: Control = null
 
 func _on_cat_shop_pressed() -> void:
+	if GameData.tutorial_active:
+		var current_data = GameData.get_current_tutorial_data()
+		var required_action = current_data.get("required_action", "")
+		
+		# Tutorial 1: Loja de gatos bloqueada
+		if required_action == "start":
+			print("Loja de gatos bloqueada durante tutorial 1")
+			return
+		
+		# Tutorial 2: Loja de gatos liberada
+		if required_action == "place_cat":
+			# Loja de gatos liberada durante tutorial_2
+			pass
+		
+		# Tutorial 3: Loja de gatos bloqueada
+		elif required_action == "equip_card":
+			print("Loja de gatos bloqueada durante tutorial 3")
+			return
+		
+		# Tutorial 4: Loja de gatos bloqueada
+		elif required_action == "start_wave":
+			print("Loja de gatos bloqueada durante tutorial 4")
+			return
+		elif required_action != "" and required_action != "place_cat":
+			print("Loja de gatos bloqueada pelo tutorial")
+			return
+
 	if not cat_shop_instance:
 		cat_shop_instance = CatShopScene.instantiate()
 		$UI/HUD/MarginContainer.add_child(cat_shop_instance)
@@ -607,31 +654,34 @@ func start_tutorial_sequence():
 	await get_tree().create_timer(.5).timeout
 	show_tutorial_textbox()
 
-# Modifique a função show_wave_textbox para ser mais genérica:
 func show_tutorial_textbox():
-	var tutorial_data = GameData.get_current_tutorial_data()
-	
-	if tutorial_data.is_empty():
+	if not GameData.tutorial_active:
 		return
 	
-	# Remove textbox anterior se existir
+	var tutorial_data = GameData.get_current_tutorial_data()
+	if tutorial_data.is_empty():
+		print("Dados do tutorial vazios, finalizando tutorial")
+		GameData.complete_tutorial()
+		return
+
 	if current_textbox:
 		current_textbox.queue_free()
-	
-	# Instancia nova textbox
+		current_textbox = null
+
 	current_textbox = textbox_scene.instantiate()
 	get_node("UI").add_child(current_textbox)
-	
-	# Conecta os sinais
+
 	current_textbox.textbox_opened.connect(_on_textbox_opened)
 	current_textbox.textbox_closed.connect(_on_tutorial_textbox_closed)
-	
-	# Mostra a textbox com os dados do tutorial
+
 	current_textbox.show_textbox(tutorial_data)
 
-# Nova função para lidar com fechamento do tutorial textbox:
 func _on_tutorial_textbox_closed():
 	current_textbox = null
+	
+	# Verificar se o tutorial ainda está ativo
+	if not GameData.tutorial_active:
+		return
 	
 	var current_data = GameData.get_current_tutorial_data()
 	var tutorial_type = current_data.get("type", "info")

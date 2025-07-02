@@ -187,6 +187,12 @@ rotates = false
 loop = false
 script = ExtResource("1_xf0nl")
 
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.341176)
+y_sort_enabled = true
+position = Vector2(0, -11)
+texture = ExtResource("3_v3vb5")
+
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
@@ -199,9 +205,3 @@ y_sort_enabled = true
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_nlrk2")
 animation = &"WalkRight"
-
-[node name="Shadow" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.341176)
-y_sort_enabled = true
-position = Vector2(0, -11)
-texture = ExtResource("3_v3vb5")
