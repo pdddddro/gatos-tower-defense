@@ -195,24 +195,26 @@ script = ExtResource("1_nhsbb")
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.341176)
 y_sort_enabled = true
-position = Vector2(-1, -2)
+position = Vector2(-1, -6)
 texture = ExtResource("2_wfxnj")
 
 [node name="Range" type="Area2D" parent="."]
+position = Vector2(0, -4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
 shape = SubResource("CircleShape2D_66lg1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(0, -4)
+position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_qs2hh")
 animation = &"IdleDownLeft"
 
 [node name="Aim" type="Marker2D" parent="."]
-position = Vector2(0, -8)
+position = Vector2(0, -12)
 
 [node name="ClickableArea" type="Area2D" parent="."]
+position = Vector2(0, -4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClickableArea"]
 shape = SubResource("CapsuleShape2D_0vk2m")

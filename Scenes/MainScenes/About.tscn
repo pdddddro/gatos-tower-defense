@@ -8,7 +8,7 @@
 [ext_resource type="FontFile" uid="uid://bxh8oh1s7ap4j" path="res://Assets/Fonts/medodicaregular.otf" id="3_l1ugq"]
 [ext_resource type="Texture2D" uid="uid://xvjesvsh2vh8" path="res://Assets/Icons/Social Media/Insta.png" id="5_0hvsp"]
 [ext_resource type="Texture2D" uid="uid://cn0qpqwv6feij" path="res://Assets/Icons/Social Media/Linkedin.png" id="6_0l6uu"]
-[ext_resource type="Texture2D" uid="uid://wbr3px7j1n3e" path="res://Assets/UI/Photo/pedro.jpg" id="7_4wfam"]
+[ext_resource type="Texture2D" uid="uid://bxdh3cd1ohrxt" path="res://Assets/UI/Photo/pedro.png" id="7_4wfam"]
 [ext_resource type="Texture2D" uid="uid://jge6ymwvk3dj" path="res://Assets/UI/Photo/luma.jpg" id="10_4wfam"]
 
 [node name="About" type="Control"]
@@ -123,11 +123,11 @@ theme_override_constants/outline_size = 0
 theme_override_constants/shadow_outline_size = 0
 theme_override_fonts/font = ExtResource("3_l1ugq")
 theme_override_font_sizes/font_size = 16
-text = "Nesse jogo, gatos cansam da inércia humana em relação ao descarte de lixo na natureza e, afetados pela radiação, eles se unem para defender o mundo de inimigos bem esquisitos: slimes feitos de lixo. G.A.T.I.N.H.O.S significa Grupo Acadêmico de Táticas Inteligentes para Neutralizar Horríveis Objetos Sujos.
+text = "Nesse jogo, gatos cansam da inércia humana em relação ao descarte de lixo na natureza e, afetados pela radiação, eles se unem para defender o mundo de inimigos bem esquisitos: slimes feitos de lixo.
 
-Esse foi um projeto desenvolvido por 2 alunos do curso de Design da UFBA, com a missão de criar algo divertido e que fizesse pensar, agregando na sociedade, indo além do entretenimento. É aí que entra o design engajado, um jeito de pensar o jogo como uma experiência que conversa com o mundo fora da tela, com a nossa personalidade (e umas boas piadinhas de gato).
+Esse foi um projeto desenvolvido por 2 alunos do curso de Design da UFBA, com base no design engajado, um jeito de pensar o jogo como uma experiência que conversa com o mundo fora da tela, com a nossa personalidade e umas boas piadinhas de gato.
 
-Além disso, o projeto busca colher arrecadações para os gatinhos da Escola de Belas Artes (QRCode e Chave PIX na tela inicial)
+Além disso, o projeto busca colher doações para os gatinhos da Escola de Belas Artes, que são mantidos 100% pelo professor Mike e estudantes.
 
 No fim, G.A.T.I.N.H.O.S. é sobre isso: jogar, se divertir e, quem sabe, sair da partida querendo mudar um hábito ou prestar mais atenção ao lixo que a gente gera!"
 vertical_alignment = 1

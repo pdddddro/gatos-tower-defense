@@ -172,7 +172,7 @@ theme_override_fonts/font = ExtResource("5_64t0c")
 theme_override_font_sizes/font_size = 16
 text = "Ninguém ignora Chicão. Com seu miado potente e uma carinha de poucos amigos, ele exige carinho na base do grito. Drama é sua linguagem"
 vertical_alignment = 1
-autowrap_mode = 1
+autowrap_mode = 3
 
 [node name="CatStats" type="VBoxContainer" parent="Container/CatContainer/Background/MarginContainer/HBoxContainer"]
 layout_mode = 2

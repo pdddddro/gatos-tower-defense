@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://3n4enlhcgms4"]
+[gd_scene load_steps=13 format=3 uid="uid://3n4enlhcgms4"]
 
 [ext_resource type="Script" uid="uid://gjhy6gu7wr75" path="res://Scenes/UIScenes/main_menu.gd" id="1_0tan2"]
 [ext_resource type="Texture2D" uid="uid://bkyrigc8mec4h" path="res://Assets/UI/Art/Sprite-0001.png" id="2_0tan2"]
@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://63b0al8uqp8a" path="res://Assets/UI/Buttons/tall/botao_principal_padrao.png" id="10_mfebp"]
 [ext_resource type="Texture2D" uid="uid://mx3dyc0tnke" path="res://Assets/UI/Buttons/botao_principal_hover.png" id="11_nmscp"]
 [ext_resource type="Texture2D" uid="uid://dgo2ohg2inm6a" path="res://Assets/UI/Buttons/tall/botao_disabled.png" id="13_ufffl"]
-[ext_resource type="FontFile" uid="uid://8qe2jqb87ubg" path="res://Assets/Fonts/press_start_2p/PressStart2P.ttf" id="14_mfebp"]
 [ext_resource type="Texture2D" uid="uid://n20rclfqrjrx" path="res://Assets/IDV/Logo.png" id="14_nmscp"]
 
 [node name="MainMenu" type="Control"]
@@ -45,6 +44,19 @@ theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
+
+[node name="Label2" type="Label" parent="Margin"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.717647, 0.878431, 0.968627, 1)
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("4_mfebp")
+theme_override_font_sizes/font_size = 16
+text = "Última Atualização: 02/06 - 01:01"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Reset" type="TextureButton" parent="Margin"]
 visible = false
@@ -92,7 +104,7 @@ theme_override_constants/shadow_offset_y = 1
 theme_override_constants/shadow_outline_size = 0
 theme_override_fonts/font = ExtResource("2_nmscp")
 theme_override_font_sizes/font_size = 11
-text = "Próximas Atualizações "
+text = "Novidades!"
 vertical_alignment = 1
 autowrap_mode = 2
 
@@ -103,7 +115,7 @@ theme_override_colors/font_color = Color(0.725735, 0.883712, 0.970677, 1)
 theme_override_constants/line_spacing = 0
 theme_override_fonts/font = ExtResource("4_mfebp")
 theme_override_font_sizes/font_size = 16
-text = "- Melhorias de balanceamento"
+text = "1. Novos gatos: Guile e Loirinha"
 vertical_alignment = 1
 autowrap_mode = 2
 
@@ -114,18 +126,7 @@ theme_override_colors/font_color = Color(0.725735, 0.883712, 0.970677, 1)
 theme_override_constants/line_spacing = 0
 theme_override_fonts/font = ExtResource("4_mfebp")
 theme_override_font_sizes/font_size = 16
-text = "- Mais Efeitos Sonoros"
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="Label4" type="Label" parent="Margin/VBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(0.725735, 0.883712, 0.970677, 1)
-theme_override_constants/line_spacing = 0
-theme_override_fonts/font = ExtResource("4_mfebp")
-theme_override_font_sizes/font_size = 16
-text = "- Ranking"
+text = "2. Ranking!"
 vertical_alignment = 1
 autowrap_mode = 2
 
@@ -136,7 +137,7 @@ theme_override_colors/font_color = Color(0.725735, 0.883712, 0.970677, 1)
 theme_override_constants/line_spacing = 0
 theme_override_fonts/font = ExtResource("4_mfebp")
 theme_override_font_sizes/font_size = 16
-text = "- Maior caracterização dos Gatos"
+text = "3. Detalhes sobre cada gatinho"
 vertical_alignment = 1
 autowrap_mode = 2
 
@@ -147,29 +148,18 @@ theme_override_colors/font_color = Color(0.725735, 0.883712, 0.970677, 1)
 theme_override_constants/line_spacing = 0
 theme_override_fonts/font = ExtResource("4_mfebp")
 theme_override_font_sizes/font_size = 16
-text = "- Transições"
+text = "4. Nova música"
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Label3" type="Label" parent="Margin/VBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(0.725735, 0.883712, 0.970677, 1)
-theme_override_constants/line_spacing = 0
-theme_override_fonts/font = ExtResource("4_mfebp")
-theme_override_font_sizes/font_size = 16
-text = "- Mapa 2"
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="Margin"]
+[node name="DonationContainer" type="VBoxContainer" parent="Margin"]
 custom_minimum_size = Vector2(140, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 theme_override_constants/separation = 8
 
-[node name="Label" type="Label" parent="Margin/VBoxContainer2"]
+[node name="Label" type="Label" parent="Margin/DonationContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(3.36915e-07, 0.392752, 0.583726, 0.517647)
@@ -184,26 +174,25 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="About" type="TextureButton" parent="Margin/VBoxContainer2"]
+[node name="Donation" type="TextureButton" parent="Margin/DonationContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_default_cursor_shape = 2
-disabled = true
 texture_normal = ExtResource("8_nmscp")
 texture_hover = ExtResource("9_nmscp")
 texture_disabled = ExtResource("13_ufffl")
 stretch_mode = 0
 script = ExtResource("8_0tan2")
 
-[node name="Label" type="Label" parent="Margin/VBoxContainer2/About"]
+[node name="Label" type="Label" parent="Margin/DonationContainer/Donation"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.596078, 0.435294, 0.301961, 1)
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 1
 theme_override_constants/shadow_outline_size = 0
@@ -349,51 +338,6 @@ text = "Ranking"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Update" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -304.0
-offset_top = -90.0
-offset_right = 304.0
-offset_bottom = -42.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 4
-theme_override_constants/separation = 4
-
-[node name="Beta" type="Label" parent="Update"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/line_spacing = 0
-theme_override_constants/shadow_offset_x = 0
-theme_override_constants/shadow_offset_y = 1
-theme_override_constants/shadow_outline_size = 0
-theme_override_fonts/font = ExtResource("14_mfebp")
-theme_override_font_sizes/font_size = 8
-text = "BETA"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
-[node name="Label2" type="Label" parent="Update"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-theme_override_colors/font_color = Color(0.717647, 0.878431, 0.968627, 1)
-theme_override_constants/line_spacing = 0
-theme_override_fonts/font = ExtResource("4_mfebp")
-theme_override_font_sizes/font_size = 16
-text = "Última Atualização:
-02/06 - 01:01"
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 2
-
 [node name="Logo" type="TextureRect" parent="."]
 texture_filter = 1
 layout_mode = 1
@@ -401,10 +345,12 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -75.0
-offset_top = 16.0
+offset_top = 32.0
 offset_right = 75.0
-offset_bottom = 92.0
+offset_bottom = 108.0
 grow_horizontal = 2
+scale = Vector2(1.5, 1.5)
+pivot_offset = Vector2(75, 0)
 texture = ExtResource("14_nmscp")
 
 [connection signal="pressed" from="Margin/Reset" to="." method="_on_reset_pressed"]

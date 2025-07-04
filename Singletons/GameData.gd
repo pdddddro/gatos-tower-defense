@@ -18,7 +18,7 @@ extends Node
 ## Brincadeira, se quiser ajudar no projeto, só chamar @joguegatinhos na DM
 
 
-var default_fish_quantity = 500
+var default_fish_quantity = 600
 var fish_quantity: int = default_fish_quantity  # Valor inicial de moedas
 
 var default_health_quantity = 100
@@ -40,7 +40,7 @@ var cat_data = { ## "Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 		"range": 160,
 		"cost": 200,
 		"critical_chance": 0,
-		"target_types": ["Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo", "Papel", "Radioativo", "BossPneu"],
+		"target_types": ["Plástico", "Pilha", "Chiclete", "BossRadioativo", "Papel", "Radioativo", "BossPneu"],
 		"description": "Ninguém ignora Chicão. Com seu miado potente e uma carinha meiga, ele exige carinho na base do grito. Drama é sua linguagem!"
 	},
 	
@@ -90,6 +90,28 @@ var cat_data = { ## "Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 		"critical_chance": 0,
 		"target_types": ["Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo", "Papel", "Radioativo", "BossPneu"],
 		"description": "Ninguém sabe ao certo quantos anos Nut tem. Alguns dizem que ele já era velho quando os humanos ainda mandavam cartas. Só se sabe de uma coisa: esse ancião ainda sabe usar um novelo como poucos."
+	},
+	"Guile": {
+		"name": "Guile",
+		"sprite": "res://Assets/Cats/Guile/Guile.png",
+		"damage": 10,
+		"atkcooldown": 1.8,
+		"range": 300,
+		"cost": 250,
+		"critical_chance": 0,
+		"target_types": ["Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo", "Papel", "Radioativo", "BossPneu"],
+		"description": "Olhos lacrimejando, fungadas constantes e um espirro sempre prestes a acontecer. Guile é o terror dos slimes. Não pela força bruta, mas pela mira certeira de seu jato de catarro."
+	},
+	"Loirinha": {
+		"name": "Loirinha",
+		"sprite": "res://Assets/Cats/Guile/Guile.png",
+		"damage": 10,
+		"atkcooldown": 1.8,
+		"range": 300,
+		"cost": 250,
+		"critical_chance": 0,
+		"target_types": ["Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo", "Papel", "Radioativo", "BossPneu"],
+		"description": "Gata de personalidade forte e temperamento explosivo, Loirinha usa sua mordida como defesa e ataque, sempre pronta pra proteger seus amigos e mostrar quem manda no pedaço."
 	}
 }
 
@@ -165,7 +187,6 @@ var enemies_data = {
 ## money_boost
 ## can_attack_target {"type": "target_expansion", "target_types": ["all", "Metal", Plastico, etc]}
 ## damage_vs_type {"type": "damage_vs_type", "target_type": "Metal", "power": 25, "power_type": "percentage/absolute"}
-
 
 ## Cards
 var card_data = {
@@ -499,35 +520,35 @@ var card_rarity_chances = {
 ## Rarity Table
 var rarity_table = {
 	1: {"basic": 100, "medium": 0, "rare": 0},
-	2: {"basic": 95, "medium": 5, "rare": 0},
-	3: {"basic": 90, "medium": 8, "rare": 2},
-	4: {"basic": 85, "medium": 12, "rare": 3},
-	5: {"basic": 80, "medium": 15, "rare": 5},
-	6: {"basic": 75, "medium": 18, "rare": 7},
-	7: {"basic": 70, "medium": 22, "rare": 8},
-	8: {"basic": 65, "medium": 25, "rare": 10},
-	9: {"basic": 60, "medium": 28, "rare": 12},
-	10: {"basic": 55, "medium": 30, "rare": 15},
-	11: {"basic": 50, "medium": 32, "rare": 18},
-	12: {"basic": 45, "medium": 35, "rare": 20},
-	13: {"basic": 40, "medium": 37, "rare": 23},
-	14: {"basic": 35, "medium": 40, "rare": 25},
-	15: {"basic": 30, "medium": 42, "rare": 28},
-	16: {"basic": 25, "medium": 45, "rare": 30},
-	17: {"basic": 22, "medium": 46, "rare": 32},
-	18: {"basic": 20, "medium": 47, "rare": 33},
-	19: {"basic": 18, "medium": 47, "rare": 35},
-	20: {"basic": 10, "medium": 35, "rare": 55},  # BOSS - Salto maior
-	21: {"basic": 8, "medium": 34, "rare": 58},   # Continua crescendo
-	22: {"basic": 7, "medium": 33, "rare": 60},
-	23: {"basic": 6, "medium": 32, "rare": 62},
-	24: {"basic": 5, "medium": 31, "rare": 64},
-	25: {"basic": 3, "medium": 27, "rare": 70},   # BOSS - Salto maior
-	26: {"basic": 3, "medium": 25, "rare": 72},   # Continua crescendo (mas não passa de 70% rare)
-	27: {"basic": 2, "medium": 24, "rare": 74},   # Ajustado para não passar de 70%
-	28: {"basic": 2, "medium": 23, "rare": 75},   # Ajustado
-	29: {"basic": 1, "medium": 22, "rare": 77},   # BOSS - Máximo (ajustado)
-	30: {"basic": 1, "medium": 21, "rare": 78}    # Final - básico muito baixo (ajustado)
+	2: {"basic": 100, "medium": 0, "rare": 0},
+	3: {"basic": 99, "medium": 1, "rare": 0},
+	4: {"basic": 95, "medium": 5, "rare": 0},
+	5: {"basic": 95, "medium": 5, "rare": 0},
+	6: {"basic": 90, "medium": 10, "rare": 0},
+	7: {"basic": 90, "medium": 10, "rare": 0},
+	8: {"basic": 85, "medium": 15, "rare": 0},
+	9: {"basic": 85, "medium": 15, "rare": 0},
+	10: {"basic": 80, "medium": 19, "rare": 1},
+	11: {"basic": 80, "medium": 19, "rare": 1},
+	12: {"basic": 75, "medium": 24, "rare": 1},
+	13: {"basic": 75, "medium": 24, "rare": 1},
+	14: {"basic": 70, "medium": 29, "rare": 1},
+	15: {"basic": 60, "medium": 38, "rare": 2},
+	16: {"basic": 50, "medium": 45, "rare": 5},
+	17: {"basic": 40, "medium": 55, "rare": 5},
+	18: {"basic": 20, "medium": 60, "rare": 10},
+	19: {"basic": 5, "medium": 80, "rare": 15},
+	20: {"basic": 0, "medium": 80, "rare": 20},
+	21: {"basic": 0, "medium": 70, "rare": 30},
+	22: {"basic": 0, "medium": 65, "rare": 35},
+	23: {"basic": 0, "medium": 60, "rare": 40},
+	24: {"basic": 0, "medium": 55, "rare": 45},
+	25: {"basic": 0, "medium": 50, "rare": 50},
+	26: {"basic": 0, "medium": 45, "rare": 55},
+	27: {"basic": 0, "medium": 40, "rare": 60},
+	28: {"basic": 0, "medium": 35, "rare": 65},
+	29: {"basic": 0, "medium": 30, "rare": 70},
+	30: {"basic": 0, "medium": 25, "rare": 75}   
 }
 
 var current_round: int = 1
@@ -1470,8 +1491,8 @@ var tutorial_data = {
 		"next_step": "tutorial_2"
 	},
 	"tutorial_2": {
-		"title": "Posicione seus defensores!",
-		"message": "Clique no ícone do gato abaixo e posicione um gatinho no campo perto da estrada para defender contra os slimes!",
+		"title": "Recrute defensores!",
+		"message": "Clique no ícone da Loja de Gato, clique em um gato, veja seus detalhes, compre e o posicione perto do caminho!",
 		"type": "action_required",
 		"required_action": "place_cat",
 		"button_text": "Certo!",

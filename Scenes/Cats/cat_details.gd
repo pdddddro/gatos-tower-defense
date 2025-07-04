@@ -43,7 +43,7 @@ func update_slime_relation(cat_type):
 		"Chiclete": "Chiclete",
 		"Pilha": "Pilha",
 		"Metal": "Metal",
-		"Plastico": "Plastico",
+		"Plástico": "Plástico",
 		"Radioativos": "Radioativo",
 		"Pneu": "BossPneu"
 	}

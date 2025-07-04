@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://d0y6aaiw6832f"]
+[gd_scene load_steps=51 format=3 uid="uid://d0y6aaiw6832f"]
 
 [ext_resource type="Script" uid="uid://dh2a0v6qsoipe" path="res://Scenes/UIScenes/Shop.gd" id="1_ba3kk"]
 [ext_resource type="Texture2D" uid="uid://ycbwxuewd3jo" path="res://Assets/Icons/Catt3.png" id="2_k8126"]
@@ -38,6 +38,8 @@
 [ext_resource type="Texture2D" uid="uid://dcbuhbtk2btfc" path="res://Assets/Icons/Rarity/Rara.png" id="29_vsduq"]
 [ext_resource type="Texture2D" uid="uid://dbt6e16kfjtib" path="res://Assets/Cats/Chicao/ChicaoCard.png" id="29_ympee"]
 [ext_resource type="Texture2D" uid="uid://cs8b8u0okq1go" path="res://Assets/Cats/Pele/ChicaoAttack.png" id="30_4wtvo"]
+[ext_resource type="Texture2D" uid="uid://bfjn78dem6yje" path="res://Assets/Cats/Guile/GuileCard.png" id="30_mguir"]
+[ext_resource type="Texture2D" uid="uid://djxret4olpkgh" path="res://Assets/Cats/Loirinha/LoirinhaCard.png" id="31_nhei3"]
 [ext_resource type="Texture2D" uid="uid://d1yb4hos4dxxd" path="res://Assets/Cats/Nino/NinoCard.png" id="31_r373f"]
 [ext_resource type="Texture2D" uid="uid://bxcxnewuqv410" path="res://Assets/Cats/Nut/NutCard.png" id="32_wa4i2"]
 [ext_resource type="Texture2D" uid="uid://n721k2b4gra6" path="res://Assets/Cats/Cartolina/CarolinaCard.png" id="33_wgxyr"]
@@ -655,6 +657,190 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 
+[node name="Guile" type="TextureButton" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList"]
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("6_y2hbt")
+texture_pressed = ExtResource("28_lsdds")
+texture_hover = ExtResource("8_qah3m")
+stretch_mode = 0
+script = ExtResource("3_ympee")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Guile"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -36.0
+offset_right = 32.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_hxsv2")
+
+[node name="CatName" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Guile/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("8_0ya3t")
+theme_override_font_sizes/font_size = 11
+text = "Guile"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Guile/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.341176)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("8_uhyj3")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Guile/VBoxContainer/TextureRect2"]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -18.0
+offset_right = 17.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("30_mguir")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Guile/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="FishIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Guile/VBoxContainer/HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("10_8gkmu")
+expand_mode = 1
+
+[node name="CatPrice" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Guile/VBoxContainer/HBoxContainer"]
+texture_filter = 3
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
+theme_override_fonts/font = ExtResource("8_0ya3t")
+theme_override_font_sizes/font_size = 11
+text = "0"
+
+[node name="Loirinha" type="TextureButton" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList"]
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("6_y2hbt")
+texture_pressed = ExtResource("28_lsdds")
+texture_hover = ExtResource("8_qah3m")
+stretch_mode = 0
+script = ExtResource("3_ympee")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Loirinha"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -36.0
+offset_right = 32.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_hxsv2")
+
+[node name="CatName" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Loirinha/VBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("8_0ya3t")
+theme_override_font_sizes/font_size = 11
+text = "Guile"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Loirinha/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.341176)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("8_uhyj3")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Loirinha/VBoxContainer/TextureRect2"]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -18.0
+offset_right = 17.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("31_nhei3")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Loirinha/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="FishIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Loirinha/VBoxContainer/HBoxContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("10_8gkmu")
+expand_mode = 1
+
+[node name="CatPrice" type="Label" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList/Loirinha/VBoxContainer/HBoxContainer"]
+texture_filter = 3
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
+theme_override_fonts/font = ExtResource("8_0ya3t")
+theme_override_font_sizes/font_size = 11
+text = "0"
+
 [node name="Chicao" type="TextureButton" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer/TextureRect/MarginContainer/ScrollContainer/CatList"]
 custom_minimum_size = Vector2(72, 0)
 layout_mode = 2
@@ -1138,6 +1324,7 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="CardsControl" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ShopContainer/Background/MarginContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2

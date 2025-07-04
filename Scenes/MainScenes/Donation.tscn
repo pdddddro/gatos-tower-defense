@@ -1,0 +1,191 @@
+[gd_scene load_steps=9 format=3 uid="uid://cb4mj5q5i11ni"]
+
+[ext_resource type="Script" uid="uid://edfvu7nj7liq" path="res://Scenes/MainScenes/about.gd" id="1_3ifdu"]
+[ext_resource type="Texture2D" uid="uid://0byb8mpdvpgy" path="res://Assets/UI/Art/Background.png" id="2_givk2"]
+[ext_resource type="Texture2D" uid="uid://bgba1jqqv4rpe" path="res://Assets/Icons/Close.png" id="3_ou2d2"]
+[ext_resource type="Texture2D" uid="uid://dv3g48f7hixr8" path="res://Assets/UI/ui_background.png" id="4_m6gtg"]
+[ext_resource type="FontFile" uid="uid://dypca4yn0mcqr" path="res://Assets/Fonts/retro_gaming/Retro Gaming.ttf" id="5_6qy27"]
+[ext_resource type="FontFile" uid="uid://bxh8oh1s7ap4j" path="res://Assets/Fonts/medodicaregular.otf" id="6_g4l23"]
+[ext_resource type="Texture2D" uid="uid://1mb7tqbadahl" path="res://Assets/UI/QRCode.png" id="7_2e6xg"]
+[ext_resource type="Texture2D" uid="uid://xvjesvsh2vh8" path="res://Assets/Icons/Social Media/Insta.png" id="8_gy4o3"]
+
+[node name="Donation" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3ifdu")
+
+[node name="Background" type="TextureRect" parent="."]
+modulate = Color(0, 0, 0, 0.588235)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_givk2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -146.0
+offset_right = 146.0
+offset_bottom = 328.0
+grow_horizontal = 2
+
+[node name="Close" type="TextureButton" parent="VBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_ou2d2")
+stretch_mode = 0
+
+[node name="BestCat" type="VBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 292)
+layout_mode = 2
+size_flags_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+alignment = 2
+
+[node name="Background" type="NinePatchRect" parent="VBoxContainer/BestCat"]
+texture_filter = 1
+clip_contents = true
+custom_minimum_size = Vector2(292, 234)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+texture = ExtResource("4_m6gtg")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/BestCat/Background"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/BestCat/Background/MarginContainer"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="Container" type="VBoxContainer" parent="VBoxContainer/BestCat/Background/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_constants/separation = 16
+
+[node name="Content" type="VBoxContainer" parent="VBoxContainer/BestCat/Background/MarginContainer/ScrollContainer/Container"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="VBoxContainer/BestCat/Background/MarginContainer/ScrollContainer/Container/Content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("5_6qy27")
+theme_override_font_sizes/font_size = 11
+text = "Ajude os Gatinhos reais!"
+
+[node name="Text" type="Label" parent="VBoxContainer/BestCat/Background/MarginContainer/ScrollContainer/Container/Content"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
+theme_override_colors/font_shadow_color = Color(0.54, 0.33687, 0.2106, 0.121569)
+theme_override_constants/paragraph_spacing = -4
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 0
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("6_g4l23")
+theme_override_font_sizes/font_size = 16
+text = "O projeto G.A.T.I.N.H.O.S. busca colher doações para os gatinhos da Escola de Belas Artes, que são mantidos  pelo professor Mike e estudantes."
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Pix" type="VBoxContainer" parent="VBoxContainer/BestCat/Background/MarginContainer/ScrollContainer/Container"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/BestCat/Background/MarginContainer/ScrollContainer/Container/Pix"]
+modulate = Color(0.258824, 0.152941, 0.141176, 1)
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("7_2e6xg")
+expand_mode = 1
+
+[node name="Handle2" type="Label" parent="VBoxContainer/BestCat/Background/MarginContainer/ScrollContainer/Container/Pix"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("6_g4l23")
+theme_override_font_sizes/font_size = 16
+text = "Chave PIX:
+pintura-eba@hotmail.com"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CTA" type="VBoxContainer" parent="VBoxContainer/BestCat/Background/MarginContainer/ScrollContainer/Container"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Name" type="Label" parent="VBoxContainer/BestCat/Background/MarginContainer/ScrollContainer/Container/CTA"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("5_6qy27")
+theme_override_font_sizes/font_size = 11
+text = "Ficou com alguma dúvida ou quer ajudar de outra forma? Entre em contato!"
+autowrap_mode = 3
+
+[node name="Instagram" type="HBoxContainer" parent="VBoxContainer/BestCat/Background/MarginContainer/ScrollContainer/Container/CTA"]
+layout_mode = 2
+
+[node name="Logo" type="TextureRect" parent="VBoxContainer/BestCat/Background/MarginContainer/ScrollContainer/Container/CTA/Instagram"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("8_gy4o3")
+
+[node name="Handle" type="Label" parent="VBoxContainer/BestCat/Background/MarginContainer/ScrollContainer/Container/CTA/Instagram"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
+theme_override_fonts/font = ExtResource("6_g4l23")
+theme_override_font_sizes/font_size = 16
+text = "@joguegatinhos"
+vertical_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/Close" to="." method="_on_close_pressed"]
