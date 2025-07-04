@@ -10,3 +10,6 @@ func _on_reset_pressed() -> void:
 	# Reseta todos os dados do jogo
 	GameData.reset_all_game_data()
 	print("Dados do jogo resetados!")
+
+func _on_feedback_pressed() -> void:
+	Analytics.add_event("Feedback Clicado")

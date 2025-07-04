@@ -304,6 +304,9 @@ func verify_and_build():
 			GameData.money_spent += cat_cost
 			GameData.number_of_cats += 1
 			
+			#var card_name_to_analytics = new_cat.type
+			Analytics.add_event("Gatos Construídos", {"Gato": new_cat.type})
+	
 			if shop and shop.has_method("update_cat_shop_prices"):
 				shop.update_cat_shop_prices()
 			if shop and shop.has_method("setup_cat_shop_buttons"):

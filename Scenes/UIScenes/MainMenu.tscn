@@ -355,3 +355,4 @@ pivot_offset = Vector2(75, 0)
 texture = ExtResource("14_nmscp")
 
 [connection signal="pressed" from="Margin/Reset" to="." method="_on_reset_pressed"]
+[connection signal="pressed" from="Margin/VBox/Feedback" to="." method="_on_feedback_pressed"]

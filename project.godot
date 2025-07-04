@@ -25,6 +25,7 @@ buses/default_bus_layout="uid://cokvbmsyokj45"
 GameData="*res://Singletons/GameData.gd"
 AudioManager="*res://Singletons/AudioManager.gd"
 Analytics="*res://addons/quiver_analytics/analytics.tscn"
+SilentWolf="*res://addons/silent_wolf/SilentWolf.gd"
 
 [display]
 
@@ -35,7 +36,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/quiver_analytics/plugin.cfg")
+enabled=PackedStringArray("res://addons/quiver_analytics/plugin.cfg", "res://addons/silent_wolf/plugin.cfg")
 
 [file_customization]
 

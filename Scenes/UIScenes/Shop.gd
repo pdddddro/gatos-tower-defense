@@ -542,6 +542,9 @@ func _on_card_added_to_inventory(card_data: Dictionary):
 	inventory_card.card_dropped.connect(game_scene._on_card_dropped)
 		
 	print("Carta adicionada ao inventário: ", card_data.name)
+	
+	var card_name_to_analytics = card_data.name
+	Analytics.add_event("Carta Escolhida", {"Carta": card_name_to_analytics})
 
 var selected_inventory_card: TextureButton = null
 
