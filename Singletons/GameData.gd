@@ -509,6 +509,12 @@ func add_card_to_collection(card_data: Dictionary):
 func _ready():
 	update_rarity_chances()
 	load_game_data()
+	
+	SilentWolf.configure({
+		"api_key": "ptCcmwWz0r145MhzXbBEx9bNxMSnJtCo2V4mq3Hz",
+		"game_id": "gatinhos12",
+		"log_level": 1
+	})
 
 ## Round Rarity
 var card_rarity_chances = {
@@ -639,7 +645,7 @@ func load_game_data():
 			var parse_result = json.parse(json_string)
 			if parse_result == OK:
 				var save_data = json.data
-				var saved_version = save_data.get("game_version", "0.0")
+				var saved_version = save_data.get("game_version", "1.0")
 				if saved_version != game_version:
 					reset_all_game_data()
 					print("Versão antiga detectada, dados resetados para nova versão: ", game_version)
