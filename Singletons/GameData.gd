@@ -627,8 +627,8 @@ func save_game_data():
 	else:
 		print("Erro ao salvar dados")
 		
+var game_version = "1.0"  # Atualize conforme necessário
 
-# Função para carregar dados
 func load_game_data():
 	if FileAccess.file_exists(save_file_path):
 		var file = FileAccess.open(save_file_path, FileAccess.READ)
@@ -639,18 +639,24 @@ func load_game_data():
 			var parse_result = json.parse(json_string)
 			if parse_result == OK:
 				var save_data = json.data
-				tutorial_completed = save_data.get("tutorial_completed", false)
-				has_won_once = save_data.get("has_won_once", false)
-				music_volume = save_data.get("music_volume", 1.0)
-				sfx_volume = save_data.get("sfx_volume", 1.0)
-				call_deferred("apply_saved_volumes")
-				print("Dados carregados: tutorial_completed = ", tutorial_completed, ", has_won_once = ", has_won_once)
+				var saved_version = save_data.get("game_version", "0.0")
+				if saved_version != game_version:
+					reset_all_game_data()
+					print("Versão antiga detectada, dados resetados para nova versão: ", game_version)
+				else:
+					tutorial_completed = save_data.get("tutorial_completed", false)
+					has_won_once = save_data.get("has_won_once", false)
+					music_volume = save_data.get("music_volume", 1.0)
+					sfx_volume = save_data.get("sfx_volume", 1.0)
+					call_deferred("apply_saved_volumes")
+					print("Dados carregados normalmente")
 			else:
 				print("Erro ao fazer parse do JSON")
 		else:
 			print("Erro ao abrir arquivo de save")
 	else:
-		print("Arquivo de save não existe, usando valores padrão")
+		reset_all_game_data()
+		print("Arquivo de save não existe, dados resetados")
 
 func apply_saved_volumes():
 	var music_bus = AudioServer.get_bus_index("Music")
