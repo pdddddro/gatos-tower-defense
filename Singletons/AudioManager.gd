@@ -5,6 +5,7 @@ extends Node
 
 var current_sfx_index = 0
 var max_sfx_players = 10
+var current_music_type: String = "background"  # Para rastrear qual música está tocando
 
 func _ready():
 	# Criar múltiplos players para efeitos sonoros
@@ -20,6 +21,8 @@ func _ready():
 	music_player.bus = "Music"  # Definir bus para música
 	music_player.process_mode = Node.PROCESS_MODE_ALWAYS
 	add_child(music_player)
+	
+	music_player.finished.connect(_on_music_finished)
 
 	call_deferred("start_background_music")
 
@@ -41,6 +44,17 @@ func start_background_music():
 			print("ERRO: Arquivo de música não encontrado: ", music_path)
 	else:
 		print("ERRO: Dados de música de fundo não encontrados")
+
+func _on_music_finished():
+	if current_music_type == "background":
+		music_player.play()
+		print("Música de fundo reiniciada automaticamente.")
+	else:
+		print("Música atual não é background, não será reiniciada.")
+		
+func change_music(music_type: String):
+	GameData.change_background_music(music_type)
+	current_music_type = music_type
 
 # Nova função para aplicar volume específico
 func set_music_volume_from_data(music_type: String):
@@ -64,10 +78,6 @@ func play_sfx(sound_path: String, volume_db: float = 0.0, pitch_variation: float
 	
 	player.play()
 	current_sfx_index = (current_sfx_index + 1) % max_sfx_players
-
-# Nova função para trocar música usando GameData
-func change_music(music_type: String):
-	GameData.change_background_music(music_type)
 
 func stop_music():
 	music_player.stop()

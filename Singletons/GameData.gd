@@ -645,7 +645,7 @@ func load_game_data():
 			var parse_result = json.parse(json_string)
 			if parse_result == OK:
 				var save_data = json.data
-				var saved_version = save_data.get("game_version", "1.0")
+				var saved_version = save_data.get("game_version", "0.0")
 				if saved_version != game_version:
 					reset_all_game_data()
 					print("Versão antiga detectada, dados resetados para nova versão: ", game_version)
@@ -897,12 +897,7 @@ var waves = {
 			["Papel", 2],
 			["Papel", 2],
 			["Papel", 2],
-		],
-		"text_box": {
-			"show": true,
-			"title": "Prontos para a batalha gatinhos?",
-			"message": "Se posicionem estrategicamente, preparem suas cartas e matem esse Slime Papel todo amassado que está vindo!"
-		}
+		]
 	},
 	
 	"wave2": {

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://3n4enlhcgms4"]
+[gd_scene load_steps=14 format=3 uid="uid://3n4enlhcgms4"]
 
 [ext_resource type="Script" uid="uid://gjhy6gu7wr75" path="res://Scenes/UIScenes/main_menu.gd" id="1_0tan2"]
 [ext_resource type="Texture2D" uid="uid://bkyrigc8mec4h" path="res://Assets/UI/Art/Sprite-0001.png" id="2_0tan2"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://w3t2q3rk4gun" path="res://Assets/UI/Buttons/tall/botao_sec_padrao.png" id="8_nmscp"]
 [ext_resource type="Texture2D" uid="uid://cat5x4hm2pqvj" path="res://Assets/UI/Buttons/botao_sec_hover.png" id="9_0tan2"]
 [ext_resource type="Texture2D" uid="uid://bv0omd16udiup" path="res://Assets/UI/Buttons/tall/botao_sec_hover.png" id="9_nmscp"]
+[ext_resource type="Texture2D" uid="uid://c3axmy84re87b" path="res://Assets/UI/Buttons/tall/botao_principal_hover.png" id="10_fuxq6"]
 [ext_resource type="Texture2D" uid="uid://63b0al8uqp8a" path="res://Assets/UI/Buttons/tall/botao_principal_padrao.png" id="10_mfebp"]
 [ext_resource type="Texture2D" uid="uid://mx3dyc0tnke" path="res://Assets/UI/Buttons/botao_principal_hover.png" id="11_nmscp"]
 [ext_resource type="Texture2D" uid="uid://dgo2ohg2inm6a" path="res://Assets/UI/Buttons/tall/botao_disabled.png" id="13_ufffl"]
@@ -45,19 +46,6 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="Label2" type="Label" parent="Margin"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-theme_override_colors/font_color = Color(0.827451, 0.92549, 0.980392, 0.337255)
-theme_override_constants/line_spacing = 0
-theme_override_fonts/font = ExtResource("4_mfebp")
-theme_override_font_sizes/font_size = 16
-text = "Última Atualização: 04/07 - 14:10"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Reset" type="TextureButton" parent="Margin"]
 visible = false
 custom_minimum_size = Vector2(112, 32)
@@ -88,6 +76,20 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
+[node name="Label3" type="Label" parent="Margin"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.827451, 0.92549, 0.980392, 0.337255)
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("4_mfebp")
+theme_override_font_sizes/font_size = 16
+text = "Última Atualização:
+04/07 - 14:10"
+horizontal_alignment = 2
+vertical_alignment = 1
+
 [node name="VBoxContainer" type="VBoxContainer" parent="Margin"]
 custom_minimum_size = Vector2(153, 0)
 layout_mode = 2
@@ -97,7 +99,7 @@ size_flags_vertical = 8
 [node name="Title" type="Label" parent="Margin/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.885606, 0.950866, 0.988206, 1)
-theme_override_colors/font_shadow_color = Color(0, 0.392157, 0.584314, 0.517647)
+theme_override_colors/font_shadow_color = Color(0.109804, 0.541176, 0.760784, 1)
 theme_override_constants/line_spacing = 0
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 1
@@ -149,6 +151,17 @@ theme_override_constants/line_spacing = 0
 theme_override_fonts/font = ExtResource("4_mfebp")
 theme_override_font_sizes/font_size = 16
 text = "4. Nova música"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label8" type="Label" parent="Margin/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.827451, 0.92549, 0.980392, 1)
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("4_mfebp")
+theme_override_font_sizes/font_size = 16
+text = "5. Novo Tutorial"
 vertical_alignment = 1
 autowrap_mode = 2
 
@@ -215,9 +228,8 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("10_mfebp")
-texture_hover = ExtResource("11_nmscp")
+texture_hover = ExtResource("10_fuxq6")
 texture_focused = ExtResource("11_nmscp")
-stretch_mode = 0
 script = ExtResource("8_0tan2")
 
 [node name="Label" type="Label" parent="Margin/VBox/NewGame"]
@@ -350,7 +362,6 @@ offset_top = 32.0
 offset_right = 75.0
 offset_bottom = 108.0
 grow_horizontal = 2
-scale = Vector2(1.5, 1.5)
 pivot_offset = Vector2(75, 0)
 texture = ExtResource("14_nmscp")
 
