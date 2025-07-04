@@ -155,6 +155,7 @@ size_flags_vertical = 0
 
 [node name="QuestionMark" type="TextureButton" parent="UI/HUD/MarginContainer/HBoxContainer"]
 process_mode = 3
+visible = false
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 size_flags_horizontal = 0

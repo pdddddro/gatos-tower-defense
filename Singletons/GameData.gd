@@ -1482,35 +1482,44 @@ var has_won_once: bool = false
 
 var tutorial_data = {
 	"tutorial_1": {
-		"title": "Bem-vindos à defesa felina!",
-		"message": "Os slimes poluentes estão vindo pela estrada à direita! Prepare-se para defender nosso planeta!",
+		"title": "Seja bem-vind@!",
+		"message": "Nós cansamos da inércia humano e vamos resolver o problema do lixo com nossas patinhas!",
 		"type": "info",
 		"required_action": "start",
-		"button_text": "E o que eu faço?",
+		"button_text": "Eu posso ajudar?",
 		"show_close": false,
 		"next_step": "tutorial_2"
 	},
 	"tutorial_2": {
-		"title": "Recrute defensores!",
-		"message": "Clique no ícone da Loja de Gato, clique em um gato, veja seus detalhes, compre e o posicione perto do caminho!",
-		"type": "action_required",
-		"required_action": "place_cat",
-		"button_text": "Certo!",
+		"title": "Pode, mas cuidado!",
+		"message": "Os slimes de lixo estão vindo pela estrada à esquerda! Prepare-se para defender nosso planeta!",
+		"type": "info",
+		"required_action": "start",
+		"button_text": "O que eu faço?",
 		"show_close": false,
 		"next_step": "tutorial_3"
 	},
 	"tutorial_3": {
-		"title": "Fortaleça seus guerreiros!",
-		"message": "Perfeito! Agora clique no ícone das cartas, compre uma carta e equipe no seu gato arrastando para torná-lo mais forte!",
+		"title": "Recrute um gatinho!",
+		"message": "Clique no ícone da Loja de Gato, clique em um gato, veja seus detalhes, compre e posicione-o perto do caminho!",
 		"type": "action_required",
-		"required_action": "equip_card",
-		"button_text": "Beleza!",
+		"required_action": "place_cat",
+		"button_text": "Certo!",
 		"show_close": false,
 		"next_step": "tutorial_4"
 	},
 	"tutorial_4": {
-		"title": "Inicie a batalha!",
-		"message": "Perfeito! Agora clique no botão PLAY no canto superior direito para começar a primeira onda de inimigos!",
+		"title": "Perfeito! Chegou a hora de fortaleçer seus guerreiros!",
+		"message": "Clique no ícone da Loja de Cartas, abra um pacote, arraste-a para o gato, clique nele e veja ele se tornando mais forte!",
+		"type": "action_required",
+		"required_action": "equip_card",
+		"button_text": "Beleza!",
+		"show_close": false,
+		"next_step": "tutorial_5"
+	},
+	"tutorial_5": {
+		"title": "Ótimo, Agora inicie a batalha!",
+		"message": "Clique no ícone Play no canto superior direito para começar a primeira onda de inimigos!",
 		"type": "action_required",
 		"required_action": "start_wave",
 		"button_text": "Vamos lá!",
