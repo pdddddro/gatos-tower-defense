@@ -1447,11 +1447,6 @@ var random_phrases = {
 		"message": "Reciclar uma lata de alumínio economiza energia suficiente para manter uma TV ligada por 3 horas!",
 		"show_close": true
 	},
-	"phrase6": {
-		"title": "A latinha mais rápida do Nordeste",
-		"message": "Reciclando, uma latinha vira outra em até 60 dias. Sem reciclagem, ela só enferruja e atrapalha.",
-		"show_close": true
-	},
 	"phrase7": {
 		"title": "Papel bom é papel com sete vidas",
 		"message": "O papel pode ser reciclado até 7 vezes, é quase um gato de papel!",
@@ -1481,6 +1476,16 @@ var random_phrases = {
 		"title": "Reciclar é evoluir, tipo Pokémon!",
 		"message": "Quando recicla, o material pode virar algo novo. Evolução pura, sem precisar de pedra da lua.",
 		"show_close": true
+	},
+	"phrase13": {
+		"title": "Você Sabia?",
+		"message": "G.A.T.I.N.H.O.S. significa Grupo Acadêmico de Táticas Inteligentes para Neutralizar Horríveis Objetos Sujos, legal né?",
+		"show_close": true
+	},
+	"phrase14": {
+		"title": "Você Sabia?",
+		"message": "Reciclando, uma latinha vira outra em até 60 dias. Sem reciclagem, ela só enferruja e atrapalha.",
+		"show_close": true
 	}
 }
 
@@ -1489,7 +1494,7 @@ var has_won_once: bool = false
 var tutorial_data = {
 	"tutorial_1": {
 		"title": "Seja bem-vind@!",
-		"message": "Nós cansamos da inércia humano e vamos resolver o problema do lixo com nossas patinhas!",
+		"message": "Nós cansamos da inércia humana e vamos resolver o problema do lixo com nossas patinhas!",
 		"type": "info",
 		"required_action": "start",
 		"button_text": "Eu posso ajudar?",

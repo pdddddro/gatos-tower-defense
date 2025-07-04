@@ -86,11 +86,13 @@ func get_random_card():
 	var cards_of_rarity = GameData.card_data[selected_rarity]
 	var random_card = cards_of_rarity[randi() % cards_of_rarity.size()]
 	
+	
 	return random_card
 
 func _on_card_selected(selected_card_data):
 	GameData.add_card_to_collection(selected_card_data)
 	get_tree().paused = false
 	print(GameData.card_collection)
+	Analytics.add_event("Carta Escolhida", {"Carta": GameData.card_collection})
 	
 	queue_free()

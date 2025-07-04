@@ -173,6 +173,78 @@ animations = [{
 "texture": SubResource("AtlasTexture_bp0wf")
 }, {
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_66ww1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3atk3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bp0wf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66ww1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3atk3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bp0wf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66ww1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3atk3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bp0wf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66ww1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3atk3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bp0wf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66ww1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3atk3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bp0wf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66ww1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3atk3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bp0wf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66ww1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3atk3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bp0wf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66ww1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3atk3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bp0wf")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_kkfd8")
 }],
 "loop": false,
@@ -220,8 +292,13 @@ position = Vector2(112, 176)
 sprite_frames = SubResource("SpriteFrames_g86u4")
 autoplay = "default"
 
-[node name="Cats" type="Node2D" parent="."]
+[node name="5" type="AnimatedSprite2D" parent="."]
+position = Vector2(144, 176)
+sprite_frames = SubResource("SpriteFrames_g86u4")
+autoplay = "default"
 
 [node name="Path" type="Path2D" parent="."]
 position = Vector2(0, 1)
 curve = SubResource("Curve2D_gatv1")
+
+[node name="Cats" type="Node2D" parent="."]

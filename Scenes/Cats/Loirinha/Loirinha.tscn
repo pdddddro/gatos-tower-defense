@@ -10,13 +10,13 @@
 atlas = ExtResource("3_cmvq4")
 region = Rect2(288, 400, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yuq2r"]
-atlas = ExtResource("3_cmvq4")
-region = Rect2(320, 400, 32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_v0fh5"]
 atlas = ExtResource("3_cmvq4")
 region = Rect2(352, 400, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yuq2r"]
+atlas = ExtResource("3_cmvq4")
+region = Rect2(320, 400, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yoa0g"]
 atlas = ExtResource("3_cmvq4")
@@ -57,10 +57,10 @@ animations = [{
 "texture": SubResource("AtlasTexture_xdurv")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yuq2r")
+"texture": SubResource("AtlasTexture_v0fh5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_v0fh5")
+"texture": SubResource("AtlasTexture_yuq2r")
 }],
 "loop": false,
 "name": &"AttackDownLeft",
@@ -71,10 +71,10 @@ animations = [{
 "texture": SubResource("AtlasTexture_xdurv")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yuq2r")
+"texture": SubResource("AtlasTexture_v0fh5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_v0fh5")
+"texture": SubResource("AtlasTexture_yuq2r")
 }],
 "loop": false,
 "name": &"AttackDownRight",
@@ -198,7 +198,7 @@ shape = SubResource("CircleShape2D_66lg1")
 texture_filter = 1
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_qs2hh")
-animation = &"IdleDownRight"
+animation = &"AttackDownLeft"
 
 [node name="Aim" type="Marker2D" parent="."]
 position = Vector2(0, -12)
