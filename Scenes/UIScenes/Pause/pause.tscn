@@ -1,13 +1,14 @@
-[gd_scene load_steps=16 format=3 uid="uid://bqgryvp00o5tn"]
+[gd_scene load_steps=17 format=3 uid="uid://bqgryvp00o5tn"]
 
 [ext_resource type="Script" uid="uid://o17y5t7odt15" path="res://Scenes/UIScenes/Pause/pause.gd" id="1_gyyt8"]
 [ext_resource type="Texture2D" uid="uid://0byb8mpdvpgy" path="res://Assets/UI/Art/Background.png" id="1_vf8ia"]
-[ext_resource type="Texture2D" uid="uid://n20rclfqrjrx" path="res://Assets/IDV/Logo.png" id="2_gyyt8"]
 [ext_resource type="FontFile" uid="uid://dypca4yn0mcqr" path="res://Assets/Fonts/retro_gaming/Retro Gaming.ttf" id="3_i3i3m"]
+[ext_resource type="Texture2D" uid="uid://bgba1jqqv4rpe" path="res://Assets/Icons/Close.png" id="3_k6jkc"]
 [ext_resource type="Texture2D" uid="uid://dv3g48f7hixr8" path="res://Assets/UI/ui_background.png" id="4_5bar8"]
 [ext_resource type="Texture2D" uid="uid://baepjslnydqim" path="res://Assets/UI/Buttons/botao_principal_padrao.png" id="4_07md7"]
 [ext_resource type="Texture2D" uid="uid://mx3dyc0tnke" path="res://Assets/UI/Buttons/botao_principal_hover.png" id="5_i24kg"]
 [ext_resource type="Texture2D" uid="uid://cdunclj7frjlu" path="res://Assets/UI/Buttons/botao_disabled.png" id="6_5bar8"]
+[ext_resource type="Texture2D" uid="uid://bjfvhsd0bqhge" path="res://Assets/Icons/Pause.png" id="6_jralj"]
 [ext_resource type="Texture2D" uid="uid://i2hcc1bn7gtm" path="res://Assets/Icons/Cards/ronronar-icon.png" id="6_k6jkc"]
 [ext_resource type="Texture2D" uid="uid://8adf7fkny4qr" path="res://Assets/Icons/Play.png" id="7_k6jkc"]
 [ext_resource type="Script" uid="uid://c2nlmty2nmu5n" path="res://Scenes/UIScenes/Buttons/button.gd" id="8_07md7"]
@@ -27,7 +28,7 @@ grow_vertical = 2
 script = ExtResource("1_gyyt8")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-modulate = Color(0, 0, 0, 0.72549)
+modulate = Color(0, 0, 0, 0.784314)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -49,26 +50,30 @@ offset_right = 72.0
 offset_bottom = 55.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 16
+theme_override_constants/separation = 8
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 2
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/VBoxContainer"]
+[node name="Close" type="TextureButton" parent="VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-size_flags_horizontal = 4
-texture = ExtResource("2_gyyt8")
-stretch_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_k6jkc")
+stretch_mode = 0
+script = ExtResource("8_07md7")
 
-[node name="BestCat" type="VBoxContainer" parent="VBoxContainer"]
+[node name="BestCat" type="VBoxContainer" parent="VBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 2
 mouse_filter = 2
 theme_override_constants/separation = 8
 alignment = 2
 
-[node name="Background" type="NinePatchRect" parent="VBoxContainer/BestCat"]
+[node name="Background" type="NinePatchRect" parent="VBoxContainer/VBoxContainer/BestCat"]
 texture_filter = 1
 clip_contents = true
 custom_minimum_size = Vector2(292, 150)
@@ -82,12 +87,15 @@ patch_margin_top = 16
 patch_margin_right = 16
 patch_margin_bottom = 16
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/BestCat/Background"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/VBoxContainer/BestCat/Background"]
 clip_contents = true
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 14
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.5
+offset_top = -75.0
+offset_bottom = 75.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -96,103 +104,89 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="Container" type="VBoxContainer" parent="VBoxContainer/BestCat/Background/MarginContainer"]
+[node name="Container" type="VBoxContainer" parent="VBoxContainer/VBoxContainer/BestCat/Background/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_constants/separation = 16
 
-[node name="Label" type="Label" parent="VBoxContainer/BestCat/Background/MarginContainer/Container"]
+[node name="TitleContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/BestCat/Background/MarginContainer/Container"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/VBoxContainer/BestCat/Background/MarginContainer/Container/TitleContainer"]
+layout_mode = 2
+texture = ExtResource("6_jralj")
+
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/BestCat/Background/MarginContainer/Container/TitleContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
 theme_override_fonts/font = ExtResource("3_i3i3m")
 theme_override_font_sizes/font_size = 11
-text = "Jogo Pausado"
+text = "Menu"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MusicVolume" type="VBoxContainer" parent="VBoxContainer/BestCat/Background/MarginContainer/Container"]
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/VBoxContainer/BestCat/Background/MarginContainer/Container/TitleContainer"]
+layout_mode = 2
+texture = ExtResource("6_jralj")
+
+[node name="MusicVolume" type="VBoxContainer" parent="VBoxContainer/VBoxContainer/BestCat/Background/MarginContainer/Container"]
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/BestCat/Background/MarginContainer/Container/MusicVolume"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/BestCat/Background/MarginContainer/Container/MusicVolume"]
 layout_mode = 2
 
-[node name="Logo" type="TextureRect" parent="VBoxContainer/BestCat/Background/MarginContainer/Container/MusicVolume/HBoxContainer"]
+[node name="Logo" type="TextureRect" parent="VBoxContainer/VBoxContainer/BestCat/Background/MarginContainer/Container/MusicVolume/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 texture = ExtResource("6_k6jkc")
 
-[node name="Name" type="Label" parent="VBoxContainer/BestCat/Background/MarginContainer/Container/MusicVolume/HBoxContainer"]
+[node name="Name" type="Label" parent="VBoxContainer/VBoxContainer/BestCat/Background/MarginContainer/Container/MusicVolume/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
 theme_override_fonts/font = ExtResource("3_i3i3m")
 theme_override_font_sizes/font_size = 11
 text = "Volume da Música"
 
-[node name="MusicSlider" type="HSlider" parent="VBoxContainer/BestCat/Background/MarginContainer/Container/MusicVolume"]
+[node name="MusicSlider" type="HSlider" parent="VBoxContainer/VBoxContainer/BestCat/Background/MarginContainer/Container/MusicVolume"]
 layout_mode = 2
 max_value = 1.0
 step = 0.5
 script = ExtResource("11_i3i3m")
 
-[node name="SFXVolume" type="VBoxContainer" parent="VBoxContainer/BestCat/Background/MarginContainer/Container"]
+[node name="SFXVolume" type="VBoxContainer" parent="VBoxContainer/VBoxContainer/BestCat/Background/MarginContainer/Container"]
 layout_mode = 2
 theme_override_constants/separation = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/BestCat/Background/MarginContainer/Container/SFXVolume"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/BestCat/Background/MarginContainer/Container/SFXVolume"]
 layout_mode = 2
 
-[node name="Logo" type="TextureRect" parent="VBoxContainer/BestCat/Background/MarginContainer/Container/SFXVolume/HBoxContainer"]
+[node name="Logo" type="TextureRect" parent="VBoxContainer/VBoxContainer/BestCat/Background/MarginContainer/Container/SFXVolume/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 texture = ExtResource("8_k7vye")
 
-[node name="Name" type="Label" parent="VBoxContainer/BestCat/Background/MarginContainer/Container/SFXVolume/HBoxContainer"]
+[node name="Name" type="Label" parent="VBoxContainer/VBoxContainer/BestCat/Background/MarginContainer/Container/SFXVolume/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
 theme_override_fonts/font = ExtResource("3_i3i3m")
 theme_override_font_sizes/font_size = 11
 text = "Volume dos Efeitos Sonoros"
 
-[node name="SFXSlider" type="HSlider" parent="VBoxContainer/BestCat/Background/MarginContainer/Container/SFXVolume"]
+[node name="SFXSlider" type="HSlider" parent="VBoxContainer/VBoxContainer/BestCat/Background/MarginContainer/Container/SFXVolume"]
 layout_mode = 2
 max_value = 1.0
 step = 0.1
 script = ExtResource("11_i3i3m")
 
-[node name="ActionButtons" type="HBoxContainer" parent="VBoxContainer"]
+[node name="ActionButtons" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 2
 theme_override_constants/separation = 4
-
-[node name="Menu" type="TextureButton" parent="VBoxContainer/ActionButtons"]
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-mouse_default_cursor_shape = 2
-texture_normal = ExtResource("8_jralj")
-texture_hover = ExtResource("9_k7vye")
-texture_disabled = ExtResource("6_5bar8")
-stretch_mode = 0
-script = ExtResource("8_07md7")
-
-[node name="Label" type="Label" parent="VBoxContainer/ActionButtons/Menu"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
-theme_override_fonts/font = ExtResource("3_i3i3m")
-theme_override_font_sizes/font_size = 11
-text = "Voltar ao Menu"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="MainAction" type="TextureButton" parent="VBoxContainer/ActionButtons"]
 custom_minimum_size = Vector2(0, 24)
@@ -257,6 +251,33 @@ text = "Reiniciar Nível"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="VBoxContainer/ActionButtons/Menu" to="." method="_on_menu_pressed"]
+[node name="Menu" type="TextureButton" parent="VBoxContainer/ActionButtons"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("8_jralj")
+texture_hover = ExtResource("9_k7vye")
+texture_disabled = ExtResource("6_5bar8")
+stretch_mode = 0
+script = ExtResource("8_07md7")
+
+[node name="Label" type="Label" parent="VBoxContainer/ActionButtons/Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("3_i3i3m")
+theme_override_font_sizes/font_size = 11
+text = "Voltar ao Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/Close" to="." method="_on_close_pressed"]
 [connection signal="pressed" from="VBoxContainer/ActionButtons/MainAction" to="." method="_on_main_action_pressed"]
 [connection signal="pressed" from="VBoxContainer/ActionButtons/Reset" to="." method="_on_reset_pressed"]
+[connection signal="pressed" from="VBoxContainer/ActionButtons/Menu" to="." method="_on_menu_pressed"]

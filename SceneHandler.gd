@@ -9,7 +9,8 @@ func load_main_menu():
 	get_node("MainMenu/Margin/VBox/About").pressed.connect(on_about_pressed)
 	get_node("MainMenu/Margin/VBox/Ranking").pressed.connect(on_ranking_pressed)
 	get_node("MainMenu/Margin/DonationContainer/Donation").pressed.connect(on_donation_pressed)
-
+	get_node("MainMenu/Margin/Pause").pressed.connect(on_pause_pressed)
+	
 func on_new_game_pressed():
 	GameData.reset_fish_quantity()
 	GameData.reset_statistics()
@@ -81,3 +82,14 @@ func on_ranking_pressed():
 	ranking_scene.set_view_only_mode(true)
 	add_child(ranking_scene)
 	Analytics.add_event("Ranking")
+
+func on_pause_pressed() -> void:
+	var pause_scene = preload("res://Scenes/UIScenes/Pause/pause.tscn")
+	var pause_instance = pause_scene.instantiate()
+	var ui_node = get_node("UI")
+	add_child(pause_instance)
+	
+	pause_instance.click_from_menu()
+	
+	pause_instance.z_index = 1000
+	get_tree().paused = true

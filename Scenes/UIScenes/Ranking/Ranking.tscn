@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cdhs1nim37v3w"]
+[gd_scene load_steps=22 format=3 uid="uid://cdhs1nim37v3w"]
 
 [ext_resource type="FontFile" uid="uid://dypca4yn0mcqr" path="res://Assets/Fonts/retro_gaming/Retro Gaming.ttf" id="1_dcowx"]
 [ext_resource type="Script" uid="uid://jmibxnbaqpv5" path="res://Scenes/UIScenes/Ranking/ranking.gd" id="1_ghhnv"]
@@ -13,7 +13,12 @@
 [ext_resource type="Texture2D" uid="uid://cqvuhooeqjbyd" path="res://Assets/Icons/Relogio-Icone.png" id="10_b7rx8"]
 [ext_resource type="Texture2D" uid="uid://cgceauk46iquy" path="res://Assets/UI/Buttons/botao_sec_padrao.png" id="11_kjhqh"]
 [ext_resource type="Texture2D" uid="uid://cat5x4hm2pqvj" path="res://Assets/UI/Buttons/botao_sec_hover.png" id="12_3fbhg"]
+[ext_resource type="Texture2D" uid="uid://bilws2sliagsf" path="res://Assets/Icons/trofeu-icon.png" id="12_4r503"]
 [ext_resource type="Texture2D" uid="uid://d0r1ny1eiup5u" path="res://Assets/IDV/CatLogo.png" id="13_3fbhg"]
+[ext_resource type="Texture2D" uid="uid://dahq70rsnb1fi" path="res://Assets/UI/ScrollBackground.png" id="13_ditvc"]
+[ext_resource type="Texture2D" uid="uid://ca2a5oihspbmf" path="res://Assets/Icons/Ranking/medalhaouro-icone.png" id="14_6hu17"]
+[ext_resource type="Texture2D" uid="uid://dphsf5eh0v6e5" path="res://Assets/Icons/Ranking/medalhaprata-icone.png" id="15_88jsf"]
+[ext_resource type="Texture2D" uid="uid://cyurswpahsvxn" path="res://Assets/Icons/Ranking/medalhabronze-icone.png" id="16_2y7k6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kjhqh"]
 bg_color = Color(0.890196, 0.682353, 0.443137, 0.345098)
@@ -56,9 +61,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -36.0
-offset_top = -102.5
+offset_top = -109.5
 offset_right = 36.0
-offset_bottom = -53.5
+offset_bottom = -60.5
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("13_3fbhg")
@@ -89,7 +94,7 @@ alignment = 2
 [node name="Background" type="NinePatchRect" parent="Input/BestCat"]
 texture_filter = 1
 clip_contents = true
-custom_minimum_size = Vector2(220, 90)
+custom_minimum_size = Vector2(220, 104)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
@@ -134,7 +139,7 @@ theme_override_colors/font_color = Color(0.662745, 0.486275, 0.34902, 1)
 theme_override_constants/line_spacing = -2
 theme_override_fonts/font = ExtResource("6_vqtud")
 theme_override_font_sizes/font_size = 16
-text = "E descubra se você está entre os mais rápidos!"
+text = "E descubra se você está entre os mais rápidos em salvar o planeta desses Slimes feios! "
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -287,40 +292,27 @@ theme_override_constants/margin_bottom = 8
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking"]
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="Title3" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.662745, 0.486275, 0.34902, 1)
-theme_override_fonts/font = ExtResource("1_dcowx")
-theme_override_font_sizes/font_size = 11
-text = "Ranking"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking"]
 layout_mode = 2
 theme_override_constants/separation = 8
 alignment = 1
 
-[node name="TextureRect2" type="TextureRect" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/VBoxContainer/HBoxContainer"]
+[node name="TextureRect2" type="TextureRect" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
-texture = ExtResource("10_b7rx8")
+texture = ExtResource("12_4r503")
 stretch_mode = 2
 
-[node name="Title" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/VBoxContainer/HBoxContainer"]
+[node name="Title" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
 theme_override_fonts/font = ExtResource("1_dcowx")
-theme_override_font_sizes/font_size = 22
-text = "Melhor Tempo"
+theme_override_font_sizes/font_size = 11
+text = "Ranking Melhor Tempo"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureRect3" type="TextureRect" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/VBoxContainer/HBoxContainer"]
+[node name="TextureRect3" type="TextureRect" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 texture = ExtResource("10_b7rx8")
@@ -328,22 +320,20 @@ stretch_mode = 2
 
 [node name="RankingPositions" type="VBoxContainer" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking"]
 layout_mode = 2
-theme_override_constants/separation = 4
+theme_override_constants/separation = 8
 
 [node name="Slot1" type="HBoxContainer" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions"]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="Position" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot1"]
-custom_minimum_size = Vector2(18, 0)
+[node name="Position" type="TextureRect" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot1"]
+custom_minimum_size = Vector2(18, 16)
 layout_mode = 2
-size_flags_horizontal = 0
-theme_override_colors/font_color = Color(0.841552, 0.508069, 7.70092e-07, 1)
-theme_override_fonts/font = ExtResource("1_dcowx")
-theme_override_font_sizes/font_size = 11
-text = "1."
-horizontal_alignment = 1
-vertical_alignment = 1
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("14_6hu17")
+expand_mode = 2
+stretch_mode = 3
 
 [node name="Name" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot1"]
 clip_contents = true
@@ -369,22 +359,21 @@ size_flags_horizontal = 8
 theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
 theme_override_fonts/font = ExtResource("1_dcowx")
 theme_override_font_sizes/font_size = 11
+text = "--:--"
 horizontal_alignment = 2
 
 [node name="Slot2" type="HBoxContainer" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions"]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="Position" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot2"]
-custom_minimum_size = Vector2(18, 0)
+[node name="Position" type="TextureRect" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot2"]
+custom_minimum_size = Vector2(18, 16)
 layout_mode = 2
-size_flags_horizontal = 0
-theme_override_colors/font_color = Color(0.49, 0.49, 0.49, 1)
-theme_override_fonts/font = ExtResource("1_dcowx")
-theme_override_font_sizes/font_size = 11
-text = "2."
-horizontal_alignment = 1
-vertical_alignment = 1
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("15_88jsf")
+expand_mode = 2
+stretch_mode = 3
 
 [node name="Name" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot2"]
 clip_contents = true
@@ -410,22 +399,21 @@ size_flags_horizontal = 8
 theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
 theme_override_fonts/font = ExtResource("1_dcowx")
 theme_override_font_sizes/font_size = 11
+text = "--:--"
 horizontal_alignment = 2
 
 [node name="Slot3" type="HBoxContainer" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions"]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="Position" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot3"]
-custom_minimum_size = Vector2(18, 0)
+[node name="Position" type="TextureRect" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot3"]
+custom_minimum_size = Vector2(18, 16)
 layout_mode = 2
-size_flags_horizontal = 0
-theme_override_colors/font_color = Color(0.671587, 0.415833, 0.222171, 1)
-theme_override_fonts/font = ExtResource("1_dcowx")
-theme_override_font_sizes/font_size = 11
-text = "3."
-horizontal_alignment = 1
-vertical_alignment = 1
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("16_2y7k6")
+expand_mode = 2
+stretch_mode = 3
 
 [node name="Name" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot3"]
 clip_contents = true
@@ -451,6 +439,7 @@ size_flags_horizontal = 8
 theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
 theme_override_fonts/font = ExtResource("1_dcowx")
 theme_override_font_sizes/font_size = 11
+text = "--:--"
 horizontal_alignment = 2
 
 [node name="Slot4" type="HBoxContainer" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions"]
@@ -461,7 +450,7 @@ theme_override_constants/separation = 8
 custom_minimum_size = Vector2(18, 0)
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
 theme_override_fonts/font = ExtResource("1_dcowx")
 theme_override_font_sizes/font_size = 11
 text = "4."
@@ -492,6 +481,7 @@ size_flags_horizontal = 8
 theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
 theme_override_fonts/font = ExtResource("1_dcowx")
 theme_override_font_sizes/font_size = 11
+text = "--:--"
 horizontal_alignment = 2
 
 [node name="Slot5" type="HBoxContainer" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions"]
@@ -502,7 +492,7 @@ theme_override_constants/separation = 8
 custom_minimum_size = Vector2(18, 0)
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
 theme_override_fonts/font = ExtResource("1_dcowx")
 theme_override_font_sizes/font_size = 11
 text = "5."
@@ -533,6 +523,7 @@ size_flags_horizontal = 8
 theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
 theme_override_fonts/font = ExtResource("1_dcowx")
 theme_override_font_sizes/font_size = 11
+text = "--:--"
 horizontal_alignment = 2
 
 [node name="Slot6" type="HBoxContainer" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions"]
@@ -543,7 +534,7 @@ theme_override_constants/separation = 8
 custom_minimum_size = Vector2(18, 0)
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
 theme_override_fonts/font = ExtResource("1_dcowx")
 theme_override_font_sizes/font_size = 11
 text = "6."
@@ -574,6 +565,7 @@ size_flags_horizontal = 8
 theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
 theme_override_fonts/font = ExtResource("1_dcowx")
 theme_override_font_sizes/font_size = 11
+text = "--:--"
 horizontal_alignment = 2
 
 [node name="Slot7" type="HBoxContainer" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions"]
@@ -584,7 +576,7 @@ theme_override_constants/separation = 8
 custom_minimum_size = Vector2(18, 0)
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
 theme_override_fonts/font = ExtResource("1_dcowx")
 theme_override_font_sizes/font_size = 11
 text = "7."
@@ -615,6 +607,7 @@ size_flags_horizontal = 8
 theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
 theme_override_fonts/font = ExtResource("1_dcowx")
 theme_override_font_sizes/font_size = 11
+text = "--:--"
 horizontal_alignment = 2
 
 [node name="Slot8" type="HBoxContainer" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions"]
@@ -625,7 +618,7 @@ theme_override_constants/separation = 8
 custom_minimum_size = Vector2(18, 0)
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
 theme_override_fonts/font = ExtResource("1_dcowx")
 theme_override_font_sizes/font_size = 11
 text = "8."
@@ -656,6 +649,7 @@ size_flags_horizontal = 8
 theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
 theme_override_fonts/font = ExtResource("1_dcowx")
 theme_override_font_sizes/font_size = 11
+text = "--:--"
 horizontal_alignment = 2
 
 [node name="Slot9" type="HBoxContainer" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions"]
@@ -666,7 +660,7 @@ theme_override_constants/separation = 8
 custom_minimum_size = Vector2(18, 0)
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
 theme_override_fonts/font = ExtResource("1_dcowx")
 theme_override_font_sizes/font_size = 11
 text = "9."
@@ -697,6 +691,7 @@ size_flags_horizontal = 8
 theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
 theme_override_fonts/font = ExtResource("1_dcowx")
 theme_override_font_sizes/font_size = 11
+text = "--:--"
 horizontal_alignment = 2
 
 [node name="Slot10" type="HBoxContainer" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions"]
@@ -706,7 +701,7 @@ theme_override_constants/separation = 8
 [node name="Position" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot10"]
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
 theme_override_fonts/font = ExtResource("1_dcowx")
 theme_override_font_sizes/font_size = 11
 text = "10."
@@ -737,6 +732,62 @@ size_flags_horizontal = 8
 theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
 theme_override_fonts/font = ExtResource("1_dcowx")
 theme_override_font_sizes/font_size = 11
+text = "--:--"
+horizontal_alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+alignment = 1
+
+[node name="Divisor" type="TextureRect" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/VBoxContainer"]
+modulate = Color(1, 1, 1, 0.470588)
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+size_flags_vertical = 0
+texture = ExtResource("13_ditvc")
+expand_mode = 1
+
+[node name="Slot11" type="HBoxContainer" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Position" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot11"]
+custom_minimum_size = Vector2(18, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("1_dcowx")
+theme_override_font_sizes/font_size = 11
+text = "11."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Name" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot11"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
+theme_override_fonts/font = ExtResource("1_dcowx")
+theme_override_font_sizes/font_size = 11
+
+[node name="Name2" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot11"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 0.2)
+theme_override_fonts/font = ExtResource("1_dcowx")
+theme_override_font_sizes/font_size = 11
+text = "......................................................................."
+clip_text = true
+
+[node name="Score" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot11"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("1_dcowx")
+theme_override_font_sizes/font_size = 11
+text = "--:--"
 horizontal_alignment = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="RankingContainer"]
@@ -767,7 +818,7 @@ text = "Voltar ao Menu"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SendButton" type="TextureButton" parent="RankingContainer/HBoxContainer"]
+[node name="NewGame" type="TextureButton" parent="RankingContainer/HBoxContainer"]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -779,7 +830,7 @@ texture_disabled = ExtResource("5_b7rx8")
 stretch_mode = 0
 script = ExtResource("6_xldhw")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="RankingContainer/HBoxContainer/SendButton"]
+[node name="HBoxContainer" type="HBoxContainer" parent="RankingContainer/HBoxContainer/NewGame"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -788,14 +839,14 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="PlayIcon" type="TextureRect" parent="RankingContainer/HBoxContainer/SendButton/HBoxContainer"]
+[node name="PlayIcon" type="TextureRect" parent="RankingContainer/HBoxContainer/NewGame/HBoxContainer"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 texture = ExtResource("7_kjhqh")
 
-[node name="Label" type="Label" parent="RankingContainer/HBoxContainer/SendButton/HBoxContainer"]
+[node name="Label" type="Label" parent="RankingContainer/HBoxContainer/NewGame/HBoxContainer"]
 texture_filter = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0.0138108, 0.2322, 0.0459039, 1)
@@ -807,4 +858,4 @@ vertical_alignment = 1
 
 [connection signal="pressed" from="Input/SendButton" to="." method="_on_send_button_pressed"]
 [connection signal="pressed" from="RankingContainer/HBoxContainer/Menu" to="." method="_on_menu_pressed"]
-[connection signal="pressed" from="RankingContainer/HBoxContainer/SendButton" to="." method="_on_send_button_pressed"]
+[connection signal="pressed" from="RankingContainer/HBoxContainer/NewGame" to="." method="_on_new_game_pressed"]

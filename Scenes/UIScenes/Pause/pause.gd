@@ -1,13 +1,14 @@
 extends Control
 
 @onready var scene_handler = get_node("/root/SceneHandler")
-@onready var music_slider = $VBoxContainer/BestCat/Background/MarginContainer/Container/MusicVolume/MusicSlider  # Ajuste o caminho conforme sua estrutura
-@onready var sfx_slider = $VBoxContainer/BestCat/Background/MarginContainer/Container/SFXVolume/SFXSlider      # Ajuste o caminho conforme sua estrutura
+@onready var music_slider = $VBoxContainer/VBoxContainer/BestCat/Background/MarginContainer/Container/MusicVolume/MusicSlider
+@onready var sfx_slider = $VBoxContainer/VBoxContainer/BestCat/Background/MarginContainer/Container/SFXVolume/SFXSlider
+@onready var action_buttons = $VBoxContainer/ActionButtons
+@onready var title = $VBoxContainer/VBoxContainer/BestCat/Background/MarginContainer/Container/Label
 
 # Índices dos buses de áudio
 var music_bus_index: int
 var sfx_bus_index: int
-
 func _ready():
 	# Verificar se os buses existem
 	music_bus_index = AudioServer.get_bus_index("Music")
@@ -87,3 +88,10 @@ func _on_reset_pressed() -> void:
 func _on_menu_pressed() -> void:
 	if scene_handler:
 		scene_handler.return_to_main_menu()
+
+func click_from_menu():
+	action_buttons.hide()
+
+func _on_close_pressed() -> void:
+	get_tree().paused = false
+	queue_free()

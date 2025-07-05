@@ -94,8 +94,8 @@ var cat_data = { ## "Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 	"Guile": {
 		"name": "Guile",
 		"sprite": "res://Assets/Cats/Guile/Guile.png",
-		"damage": 10,
-		"atkcooldown": 1.8,
+		"damage": 1000,
+		"atkcooldown": 0,
 		"range": 300,
 		"cost": 250,
 		"critical_chance": 0,
@@ -1402,17 +1402,6 @@ var waves = {
 	"wave30": { ## Boss Radioativo ## To me sentindo meio estranho... Tem algo vindo... que t-t-temos um problema Gatinhos!
 		"enemies": [
 			["BossPneu", 3],
-			["BossPneu", 3],
-			["Radioativo", .5],
-			["Radioativo", .5],
-			["Radioativo", .5],
-			["Radioativo", .5],
-			["BossRadioativo", 3],
-			["BossRadioativo", 5],
-			["Pilha", 1],
-			["Pilha", 1],
-			["Pilha", 1],
-			["Pilha", 1],
 		],
 			"text_box": {
 			"show": true,
