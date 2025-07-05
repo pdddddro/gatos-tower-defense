@@ -7,6 +7,7 @@ func _ready():
 func load_main_menu():
 	get_node("MainMenu/Margin/VBox/NewGame").pressed.connect(on_new_game_pressed)
 	get_node("MainMenu/Margin/VBox/About").pressed.connect(on_about_pressed)
+	get_node("MainMenu/Margin/VBox/Ranking").pressed.connect(on_ranking_pressed)
 	get_node("MainMenu/Margin/DonationContainer/Donation").pressed.connect(on_donation_pressed)
 
 func on_new_game_pressed():
@@ -74,3 +75,9 @@ func return_to_main_menu():
 		add_child(main_menu)
 		load_main_menu()  # Reconecta os botões
 		get_tree().paused = false
+
+func on_ranking_pressed():
+	var ranking_scene = load("res://Scenes/UIScenes/Ranking/Ranking.tscn").instantiate()
+	ranking_scene.set_view_only_mode(true)
+	add_child(ranking_scene)
+	Analytics.add_event("Ranking")

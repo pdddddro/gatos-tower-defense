@@ -1,9 +1,11 @@
 extends Control
+
 @onready var result_text_sprite = $VBoxContainer/Result
 var victory_result = false
-
 @onready var statistics_container = $VBoxContainer/Statistics
 @onready var best_cat = $VBoxContainer/BestCat
+# Pré-carregar a cena de ranking
+var ranking_scene = preload("res://Scenes/UIScenes/Ranking/Ranking.tscn")
 
 func set_result(result: bool):
 	victory_result = result
@@ -20,7 +22,6 @@ func setup_result_ui():
 	else:
 		$VBoxContainer/Result.play("lose")
 		Analytics.add_event("Derrotas")
-		
 	update_stats_ui()
 
 @onready var scene_handler = get_node("/root/SceneHandler")
@@ -33,35 +34,45 @@ var screen_step = 0
 
 func _on_main_action_pressed() -> void:
 	if screen_step == 0:
-		$VBoxContainer/ActionButtons/MainAction/HBoxContainer/Label.text = "Novo Jogo"
-		$VBoxContainer/ActionButtons/MainAction/HBoxContainer/PlayIcon.visible = true
+		# Não alterar o texto do botão para "Novo Jogo" em caso de vitória
+		if not victory_result:
+			$VBoxContainer/ActionButtons/MainAction/HBoxContainer/Label.text = "Novo Jogo"
+			$VBoxContainer/ActionButtons/MainAction/HBoxContainer/PlayIcon.visible = true
 		statistics_container.visible = false
 		best_cat.visible = true
-		
 		screen_step += 1
 		await Analytics.handle_exit()
 		return
-		
+	
 	if screen_step == 1:
-		if scene_handler:
-			Analytics.add_event("Jogou Novamente")
-			scene_handler.on_new_game_pressed()
-			screen_step += 1  # (opcional, se quiser evitar múltiplos cliques)
-			return
+		if victory_result:
+			# Pegar o nó UI
+			var ui_node = get_node("/root/SceneHandler/GameScene/UI")
+			
+			# Instanciar o ranking dentro do UI
+			var ranking_instance = ranking_scene.instantiate()
+			ranking_instance.set_view_only_mode(false)
+			ui_node.add_child(ranking_instance)
+			
+			# Remover a tela de resultado
+			self.queue_free()
+		else:
+			if scene_handler:
+				Analytics.add_event("Jogou Novamente")
+				scene_handler.on_new_game_pressed()
+		screen_step += 1
+		return
 
 ## Melhor Gato
 func get_best_cat():
 	var best_cat = null
 	var best_damage = -1
 	var cats = get_tree().get_nodes_in_group("active_cats")
-	
 	for cat in cats:
 		var cat_damage = cat.individual_stats.get("total_damage_dealt", 0)
 		if cat_damage > best_damage:
 			best_damage = cat_damage
-			
 			best_cat = cat
-	
 	if best_cat:
 		return {
 			"cat": best_cat,
@@ -71,19 +82,15 @@ func get_best_cat():
 			"equipped_cards": best_cat.get_equipped_cards()
 		}
 	return null
-	
-	#return [best_cat, best_damage]
 
 func get_best_cat_stats():
 	var best_cat = null
 	var best_damage = -1
 	var cats = get_tree().get_nodes_in_group("active_cats")
-	
 	for cat in cats:
 		if cat.total_damage_dealt > best_damage:
 			best_damage = cat.total_damage_dealt
 			best_cat = cat
-	
 	if best_cat:
 		return {
 			"cat": best_cat,
@@ -104,7 +111,6 @@ func update_stats_ui():
 	var number_of_cats = $VBoxContainer/Statistics/Background/MarginContainer/HBoxContainer/Statistics/NumberOfCats/Number
 	
 	var total_stats = collect_all_cats_stats()
-	
 	enemies_defeated_label.text = format_number(total_stats.enemies_defeated)
 	total_damage_label.text = format_number(total_stats.total_damage)
 	fishs_collected_label.text = format_number(total_stats.fishs_collected)
@@ -113,7 +119,6 @@ func update_stats_ui():
 	number_of_cats.text = format_number(GameData.number_of_cats)
 	
 	var best_stats = get_best_cat_stats()
-	
 	if best_stats:
 		$VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/CatSprite/CatName.text = best_stats.cat.type
 		$VBoxContainer/BestCat/Background/MarginContainer/HBoxContainer/TotalDamage/Number.text = format_number(best_stats.damage)
@@ -167,7 +172,6 @@ func setup_card_slot(slot_node, card_data: Dictionary):
 		if ResourceLoader.exists(card_data["icon"]):
 			card_icon.texture = load(card_data["icon"])
 			card_icon.visible = true
-		
 		# Configura os meta dados para a tooltip - IGUAL NA LOJA
 		slot_node.set_meta("card_data", card_data)
 	else:
@@ -178,7 +182,6 @@ func clear_card_slot(slot_node):
 	if card_icon:
 		card_icon.texture = null
 		card_icon.visible = false
-	
 	# Remove os meta dados
 	if slot_node.has_meta("card_data"):
 		slot_node.remove_meta("card_data")

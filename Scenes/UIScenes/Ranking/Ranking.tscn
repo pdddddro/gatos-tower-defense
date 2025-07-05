@@ -1,15 +1,29 @@
-[gd_scene load_steps=9 format=3 uid="uid://cdhs1nim37v3w"]
+[gd_scene load_steps=17 format=3 uid="uid://cdhs1nim37v3w"]
 
 [ext_resource type="FontFile" uid="uid://dypca4yn0mcqr" path="res://Assets/Fonts/retro_gaming/Retro Gaming.ttf" id="1_dcowx"]
 [ext_resource type="Script" uid="uid://jmibxnbaqpv5" path="res://Scenes/UIScenes/Ranking/ranking.gd" id="1_ghhnv"]
+[ext_resource type="Texture2D" uid="uid://0byb8mpdvpgy" path="res://Assets/UI/Art/Background.png" id="2_ae4vi"]
 [ext_resource type="Texture2D" uid="uid://baepjslnydqim" path="res://Assets/UI/Buttons/botao_principal_padrao.png" id="3_1uwvt"]
 [ext_resource type="Texture2D" uid="uid://mx3dyc0tnke" path="res://Assets/UI/Buttons/botao_principal_hover.png" id="4_ae4vi"]
 [ext_resource type="Texture2D" uid="uid://cdunclj7frjlu" path="res://Assets/UI/Buttons/botao_disabled.png" id="5_b7rx8"]
+[ext_resource type="FontFile" uid="uid://bxh8oh1s7ap4j" path="res://Assets/Fonts/medodicaregular.otf" id="6_vqtud"]
 [ext_resource type="Script" uid="uid://c2nlmty2nmu5n" path="res://Scenes/UIScenes/Buttons/button.gd" id="6_xldhw"]
 [ext_resource type="Texture2D" uid="uid://8adf7fkny4qr" path="res://Assets/Icons/Play.png" id="7_kjhqh"]
 [ext_resource type="Texture2D" uid="uid://dv3g48f7hixr8" path="res://Assets/UI/ui_background.png" id="8_1uwvt"]
+[ext_resource type="Texture2D" uid="uid://cqvuhooeqjbyd" path="res://Assets/Icons/Relogio-Icone.png" id="10_b7rx8"]
+[ext_resource type="Texture2D" uid="uid://cgceauk46iquy" path="res://Assets/UI/Buttons/botao_sec_padrao.png" id="11_kjhqh"]
+[ext_resource type="Texture2D" uid="uid://cat5x4hm2pqvj" path="res://Assets/UI/Buttons/botao_sec_hover.png" id="12_3fbhg"]
+[ext_resource type="Texture2D" uid="uid://d0r1ny1eiup5u" path="res://Assets/IDV/CatLogo.png" id="13_3fbhg"]
 
-[node name="Ranking" type="Control" node_paths=PackedStringArray("_name", "_score", "_score_container", "_save_progress", "_load_progress", "_ranking", "_ranking_container")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kjhqh"]
+bg_color = Color(0.890196, 0.682353, 0.443137, 0.345098)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3fbhg"]
+bg_color = Color(0.89, 0.682333, 0.445, 0.345098)
+corner_detail = 1
+
+[node name="Ranking" type="Control" node_paths=PackedStringArray("_name", "_score_container", "_save_progress", "_load_progress", "_ranking", "_ranking_container")]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,13 +31,38 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ghhnv")
-_name = NodePath("Input/Name")
-_score = NodePath("Input/Score")
+_name = NodePath("Input/BestCat/Background/MarginContainer/UserName/Name")
 _score_container = NodePath("Input")
 _save_progress = NodePath("SaveProgress")
 _load_progress = NodePath("LoadProgress")
-_ranking = NodePath("RankingContainer/Background/MarginContainer/Ranking")
+_ranking = NodePath("RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions")
 _ranking_container = NodePath("RankingContainer")
+
+[node name="Background" type="TextureRect" parent="."]
+modulate = Color(0, 0, 0, 0.745098)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ae4vi")
+
+[node name="Cat" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -102.5
+offset_right = 36.0
+offset_bottom = -53.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("13_3fbhg")
+stretch_mode = 4
 
 [node name="Input" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -32,30 +71,88 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -98.0
-offset_top = -47.0
-offset_right = 98.0
-offset_bottom = 47.0
+offset_left = -110.0
+offset_top = -53.0
+offset_right = 110.0
+offset_bottom = 69.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 8
 
-[node name="Label" type="Label" parent="Input"]
+[node name="BestCat" type="VBoxContainer" parent="Input"]
 layout_mode = 2
+size_flags_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+alignment = 2
+
+[node name="Background" type="NinePatchRect" parent="Input/BestCat"]
+texture_filter = 1
+clip_contents = true
+custom_minimum_size = Vector2(220, 90)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+texture = ExtResource("8_1uwvt")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="MarginContainer" type="MarginContainer" parent="Input/BestCat/Background"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 8
+
+[node name="UserName" type="VBoxContainer" parent="Input/BestCat/Background/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="Input/BestCat/Background/MarginContainer/UserName"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
 theme_override_fonts/font = ExtResource("1_dcowx")
 theme_override_font_sizes/font_size = 11
-text = "Digite o seu nome"
+text = "Participe do ranking!"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 2
 
-[node name="Name" type="LineEdit" parent="Input"]
+[node name="Title3" type="Label" parent="Input/BestCat/Background/MarginContainer/UserName"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.662745, 0.486275, 0.34902, 1)
+theme_override_constants/line_spacing = -2
+theme_override_fonts/font = ExtResource("6_vqtud")
+theme_override_font_sizes/font_size = 16
+text = "E descubra se você está entre os mais rápidos!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Name" type="LineEdit" parent="Input/BestCat/Background/MarginContainer/UserName"]
+custom_minimum_size = Vector2(0, 22)
+layout_mode = 2
+theme_override_colors/caret_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_colors/font_placeholder_color = Color(0.66, 0.48422, 0.3498, 0.564706)
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
 theme_override_fonts/font = ExtResource("1_dcowx")
 theme_override_font_sizes/font_size = 11
-
-[node name="Score" type="LineEdit" parent="Input"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_dcowx")
-theme_override_font_sizes/font_size = 11
+theme_override_styles/focus = SubResource("StyleBoxFlat_kjhqh")
+theme_override_styles/normal = SubResource("StyleBoxFlat_3fbhg")
+placeholder_text = "Digite seu nome"
+alignment = 1
+max_length = 16
+caret_blink = true
 
 [node name="SendButton" type="TextureButton" parent="Input"]
 custom_minimum_size = Vector2(0, 24)
@@ -144,21 +241,24 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -146.0
-offset_top = -87.0
+offset_top = -161.0
 offset_right = 146.0
-offset_bottom = 87.0
+offset_bottom = 161.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="RankingContainer" type="VBoxContainer" parent="RankingContainer"]
+layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 8
 mouse_filter = 2
 theme_override_constants/separation = 0
 alignment = 2
 
-[node name="Background" type="NinePatchRect" parent="RankingContainer"]
+[node name="Background" type="NinePatchRect" parent="RankingContainer/RankingContainer"]
 texture_filter = 1
 clip_contents = true
-custom_minimum_size = Vector2(292, 174)
+custom_minimum_size = Vector2(292, 294)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
@@ -169,7 +269,7 @@ patch_margin_top = 16
 patch_margin_right = 16
 patch_margin_bottom = 16
 
-[node name="MarginContainer" type="MarginContainer" parent="RankingContainer/Background"]
+[node name="MarginContainer" type="MarginContainer" parent="RankingContainer/RankingContainer/Background"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -183,56 +283,528 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 8
 
-[node name="Ranking" type="VBoxContainer" parent="RankingContainer/Background/MarginContainer"]
+[node name="Ranking" type="VBoxContainer" parent="RankingContainer/RankingContainer/Background/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 8
 
-[node name="Label" type="Label" parent="RankingContainer/Background/MarginContainer/Ranking"]
+[node name="VBoxContainer" type="VBoxContainer" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_constants/separation = 0
+
+[node name="Title3" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.662745, 0.486275, 0.34902, 1)
 theme_override_fonts/font = ExtResource("1_dcowx")
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 11
 text = "Ranking"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Slot1" type="HBoxContainer" parent="RankingContainer/Background/MarginContainer/Ranking"]
+[node name="HBoxContainer" type="HBoxContainer" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("10_b7rx8")
+stretch_mode = 2
+
+[node name="Title" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("1_dcowx")
+theme_override_font_sizes/font_size = 22
+text = "Melhor Tempo"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect3" type="TextureRect" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("10_b7rx8")
+stretch_mode = 2
+
+[node name="RankingPositions" type="VBoxContainer" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Slot1" type="HBoxContainer" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions"]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="Position" type="Label" parent="RankingContainer/Background/MarginContainer/Ranking/Slot1"]
+[node name="Position" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot1"]
+custom_minimum_size = Vector2(18, 0)
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_colors/font_color = Color(0.841552, 0.508069, 7.70092e-07, 1)
 theme_override_fonts/font = ExtResource("1_dcowx")
 theme_override_font_sizes/font_size = 11
 text = "1."
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Name" type="Label" parent="RankingContainer/Background/MarginContainer/Ranking/Slot1"]
+[node name="Name" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot1"]
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
 theme_override_fonts/font = ExtResource("1_dcowx")
 theme_override_font_sizes/font_size = 11
-text = "Nome muito grandao"
 
-[node name="Name2" type="Label" parent="RankingContainer/Background/MarginContainer/Ranking/Slot1"]
+[node name="Name2" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot1"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 0.2)
 theme_override_fonts/font = ExtResource("1_dcowx")
 theme_override_font_sizes/font_size = 11
-text = "..................................................."
+text = "......................................................................."
 clip_text = true
 
-[node name="Score" type="Label" parent="RankingContainer/Background/MarginContainer/Ranking/Slot1"]
+[node name="Score" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot1"]
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
 theme_override_fonts/font = ExtResource("1_dcowx")
 theme_override_font_sizes/font_size = 11
-text = "999999"
 horizontal_alignment = 2
 
+[node name="Slot2" type="HBoxContainer" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Position" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot2"]
+custom_minimum_size = Vector2(18, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.49, 0.49, 0.49, 1)
+theme_override_fonts/font = ExtResource("1_dcowx")
+theme_override_font_sizes/font_size = 11
+text = "2."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Name" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot2"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
+theme_override_fonts/font = ExtResource("1_dcowx")
+theme_override_font_sizes/font_size = 11
+
+[node name="Name2" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 0.2)
+theme_override_fonts/font = ExtResource("1_dcowx")
+theme_override_font_sizes/font_size = 11
+text = "......................................................................."
+clip_text = true
+
+[node name="Score" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot2"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("1_dcowx")
+theme_override_font_sizes/font_size = 11
+horizontal_alignment = 2
+
+[node name="Slot3" type="HBoxContainer" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Position" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot3"]
+custom_minimum_size = Vector2(18, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.671587, 0.415833, 0.222171, 1)
+theme_override_fonts/font = ExtResource("1_dcowx")
+theme_override_font_sizes/font_size = 11
+text = "3."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Name" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot3"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
+theme_override_fonts/font = ExtResource("1_dcowx")
+theme_override_font_sizes/font_size = 11
+
+[node name="Name2" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 0.2)
+theme_override_fonts/font = ExtResource("1_dcowx")
+theme_override_font_sizes/font_size = 11
+text = "......................................................................."
+clip_text = true
+
+[node name="Score" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot3"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("1_dcowx")
+theme_override_font_sizes/font_size = 11
+horizontal_alignment = 2
+
+[node name="Slot4" type="HBoxContainer" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Position" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot4"]
+custom_minimum_size = Vector2(18, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("1_dcowx")
+theme_override_font_sizes/font_size = 11
+text = "4."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Name" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot4"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
+theme_override_fonts/font = ExtResource("1_dcowx")
+theme_override_font_sizes/font_size = 11
+
+[node name="Name2" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot4"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 0.2)
+theme_override_fonts/font = ExtResource("1_dcowx")
+theme_override_font_sizes/font_size = 11
+text = "......................................................................."
+clip_text = true
+
+[node name="Score" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot4"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("1_dcowx")
+theme_override_font_sizes/font_size = 11
+horizontal_alignment = 2
+
+[node name="Slot5" type="HBoxContainer" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Position" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot5"]
+custom_minimum_size = Vector2(18, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("1_dcowx")
+theme_override_font_sizes/font_size = 11
+text = "5."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Name" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot5"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
+theme_override_fonts/font = ExtResource("1_dcowx")
+theme_override_font_sizes/font_size = 11
+
+[node name="Name2" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot5"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 0.2)
+theme_override_fonts/font = ExtResource("1_dcowx")
+theme_override_font_sizes/font_size = 11
+text = "......................................................................."
+clip_text = true
+
+[node name="Score" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot5"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("1_dcowx")
+theme_override_font_sizes/font_size = 11
+horizontal_alignment = 2
+
+[node name="Slot6" type="HBoxContainer" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Position" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot6"]
+custom_minimum_size = Vector2(18, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("1_dcowx")
+theme_override_font_sizes/font_size = 11
+text = "6."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Name" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot6"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
+theme_override_fonts/font = ExtResource("1_dcowx")
+theme_override_font_sizes/font_size = 11
+
+[node name="Name2" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot6"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 0.2)
+theme_override_fonts/font = ExtResource("1_dcowx")
+theme_override_font_sizes/font_size = 11
+text = "......................................................................."
+clip_text = true
+
+[node name="Score" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot6"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("1_dcowx")
+theme_override_font_sizes/font_size = 11
+horizontal_alignment = 2
+
+[node name="Slot7" type="HBoxContainer" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Position" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot7"]
+custom_minimum_size = Vector2(18, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("1_dcowx")
+theme_override_font_sizes/font_size = 11
+text = "7."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Name" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot7"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
+theme_override_fonts/font = ExtResource("1_dcowx")
+theme_override_font_sizes/font_size = 11
+
+[node name="Name2" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot7"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 0.2)
+theme_override_fonts/font = ExtResource("1_dcowx")
+theme_override_font_sizes/font_size = 11
+text = "......................................................................."
+clip_text = true
+
+[node name="Score" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot7"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("1_dcowx")
+theme_override_font_sizes/font_size = 11
+horizontal_alignment = 2
+
+[node name="Slot8" type="HBoxContainer" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Position" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot8"]
+custom_minimum_size = Vector2(18, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("1_dcowx")
+theme_override_font_sizes/font_size = 11
+text = "8."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Name" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot8"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
+theme_override_fonts/font = ExtResource("1_dcowx")
+theme_override_font_sizes/font_size = 11
+
+[node name="Name2" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot8"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 0.2)
+theme_override_fonts/font = ExtResource("1_dcowx")
+theme_override_font_sizes/font_size = 11
+text = "......................................................................."
+clip_text = true
+
+[node name="Score" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot8"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("1_dcowx")
+theme_override_font_sizes/font_size = 11
+horizontal_alignment = 2
+
+[node name="Slot9" type="HBoxContainer" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Position" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot9"]
+custom_minimum_size = Vector2(18, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("1_dcowx")
+theme_override_font_sizes/font_size = 11
+text = "9."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Name" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot9"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
+theme_override_fonts/font = ExtResource("1_dcowx")
+theme_override_font_sizes/font_size = 11
+
+[node name="Name2" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot9"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 0.2)
+theme_override_fonts/font = ExtResource("1_dcowx")
+theme_override_font_sizes/font_size = 11
+text = "......................................................................."
+clip_text = true
+
+[node name="Score" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot9"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("1_dcowx")
+theme_override_font_sizes/font_size = 11
+horizontal_alignment = 2
+
+[node name="Slot10" type="HBoxContainer" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Position" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot10"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("1_dcowx")
+theme_override_font_sizes/font_size = 11
+text = "10."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Name" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot10"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 1)
+theme_override_fonts/font = ExtResource("1_dcowx")
+theme_override_font_sizes/font_size = 11
+
+[node name="Name2" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot10"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.443137, 0.321569, 0.231373, 0.2)
+theme_override_fonts/font = ExtResource("1_dcowx")
+theme_override_font_sizes/font_size = 11
+text = "......................................................................."
+clip_text = true
+
+[node name="Score" type="Label" parent="RankingContainer/RankingContainer/Background/MarginContainer/Ranking/RankingPositions/Slot10"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("1_dcowx")
+theme_override_font_sizes/font_size = 11
+horizontal_alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RankingContainer"]
+layout_mode = 2
+
+[node name="Menu" type="TextureButton" parent="RankingContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("11_kjhqh")
+texture_hover = ExtResource("12_3fbhg")
+texture_disabled = ExtResource("5_b7rx8")
+stretch_mode = 0
+script = ExtResource("6_xldhw")
+
+[node name="Label" type="Label" parent="RankingContainer/HBoxContainer/Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.258824, 0.152941, 0.141176, 1)
+theme_override_fonts/font = ExtResource("1_dcowx")
+theme_override_font_sizes/font_size = 11
+text = "Voltar ao Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SendButton" type="TextureButton" parent="RankingContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_1uwvt")
+texture_hover = ExtResource("4_ae4vi")
+texture_disabled = ExtResource("5_b7rx8")
+stretch_mode = 0
+script = ExtResource("6_xldhw")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RankingContainer/HBoxContainer/SendButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="PlayIcon" type="TextureRect" parent="RankingContainer/HBoxContainer/SendButton/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("7_kjhqh")
+
+[node name="Label" type="Label" parent="RankingContainer/HBoxContainer/SendButton/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0138108, 0.2322, 0.0459039, 1)
+theme_override_fonts/font = ExtResource("1_dcowx")
+theme_override_font_sizes/font_size = 11
+text = "Novo Jogo"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="pressed" from="Input/SendButton" to="." method="_on_send_button_pressed"]
+[connection signal="pressed" from="RankingContainer/HBoxContainer/Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="RankingContainer/HBoxContainer/SendButton" to="." method="_on_send_button_pressed"]

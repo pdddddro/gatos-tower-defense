@@ -759,6 +759,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 2
 
 [node name="Menu" type="TextureButton" parent="VBoxContainer/ActionButtons"]
+visible = false
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 size_flags_horizontal = 0

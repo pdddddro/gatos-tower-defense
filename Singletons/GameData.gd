@@ -104,7 +104,7 @@ var cat_data = { ## "Plastico", "Metal", "Pilha", "Chiclete", "BossRadioativo"
 	},
 	"Loirinha": {
 		"name": "Loirinha",
-		"sprite": "res://Assets/Cats/Guile/Guile.png",
+		"sprite": "res://Assets/Cats/Loirinha/Loirinha.png",
 		"damage": 10,
 		"atkcooldown": 1.8,
 		"range": 300,
