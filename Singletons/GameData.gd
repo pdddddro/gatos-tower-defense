@@ -1483,7 +1483,7 @@ var has_won_once: bool = false
 
 var tutorial_data = {
 	"tutorial_1": {
-		"title": "Seja bem-vind@!",
+		"title": "Finalmente você chegou!",
 		"message": "Nós cansamos da inércia humana e vamos resolver o problema do lixo com nossas patinhas!",
 		"type": "info",
 		"required_action": "start",
@@ -1502,7 +1502,7 @@ var tutorial_data = {
 	},
 	"tutorial_3": {
 		"title": "Recrute um gatinho!",
-		"message": "Clique no ícone da Loja de Gato, clique em um gato, veja seus detalhes, compre e posicione-o perto do caminho!",
+		"message": "Clique no ícone da Loja de Gato, clique em um deles, veja seus detalhes, compre e posicione-o perto do caminho!",
 		"type": "action_required",
 		"required_action": "place_cat",
 		"button_text": "Certo!",
@@ -1510,7 +1510,7 @@ var tutorial_data = {
 		"next_step": "tutorial_4"
 	},
 	"tutorial_4": {
-		"title": "Perfeito! Chegou a hora de fortaleçer seus guerreiros!",
+		"title": "Perfeito! Chegou a hora de fortalecer seus guerreiros!",
 		"message": "Clique no ícone da Loja de Cartas, abra um pacote, arraste-a para o gato, clique nele e veja ele se tornando mais forte!",
 		"type": "action_required",
 		"required_action": "equip_card",
@@ -1520,7 +1520,7 @@ var tutorial_data = {
 	},
 	"tutorial_5": {
 		"title": "Ótimo, Agora inicie a batalha!",
-		"message": "Clique no ícone Play no canto superior direito para começar a primeira onda de inimigos!",
+		"message": "Clique no ícone Play no canto inferior direito para começar a primeira onda de inimigos!",
 		"type": "action_required",
 		"required_action": "start_wave",
 		"button_text": "Vamos lá!",
